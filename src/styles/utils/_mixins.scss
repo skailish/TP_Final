@@ -29,20 +29,28 @@
 
 // BUTTONS
 
-@mixin button-pill($padding-all, $width) {
+@mixin button($padding-all, $width) {
   width: $width;
   padding: $padding-all;
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
+  border: none;
   margin: 40px 20px 0 0;
-  border-radius: 50px;
-  color: #fff;
+  border-radius: 10px;
+  background-color: $button-background-color;
+  color: $button-text-color;
   font-size: 1em;
-  font-weight: bolder;
   letter-spacing: 1px;
   cursor: pointer;
   transition: 0.5s ease;
+
+  &:hover {
+    background-color: #307672;
+  }
+
+
 }
 
 // RANDOM COLORS

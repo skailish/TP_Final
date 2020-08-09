@@ -1,6 +1,7 @@
 COLORS 
 CLAROS
-#e4eddb
+{color: 
+    #e4eddb
 #bbe1fa
 #f5f5f5
 #e4f9f5
@@ -43,11 +44,11 @@ OSCUROS
 #40514e
 #232931
 #393e46
-
+}
 
 FONTS 
-TEXTS: font-family: 'Karla', Verdana, Geneva, Tahoma, sans-serif;
-HEADERS: font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
+{TEXTS: font-family: 'Karla', Verdana, Geneva, Tahoma, sans-serif;
+HEADERS: font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif};
 
 
 ICONS

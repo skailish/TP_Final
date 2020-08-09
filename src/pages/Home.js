@@ -1,11 +1,14 @@
 import React from "react";
 import Hero from "../components/Hero";
+import Container from "../components/primitive/Container";
+
+
 
 const Home = () => {
   return (
-    <div>
+    <Container className="main-container">
       <Hero />
-    </div>
+    </Container>
   );
 };
 

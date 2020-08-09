@@ -8,7 +8,6 @@ import { LogIn } from "@styled-icons/ionicons-sharp/LogIn";
 import { LogOut } from "@styled-icons/ionicons-sharp/LogOut";
 import { LightbulbFlash as LightOn } from "@styled-icons/remix-fill/LightbulbFlash";
 import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFlash";
-import styled from "styled-components";
 
 const Aside = () => {
   return (

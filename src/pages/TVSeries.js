@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TV = () => {
+const TVSeries = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const TV = () => {
     )
 }
 
-export default TV
+export default TVSeries

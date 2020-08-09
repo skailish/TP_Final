@@ -2,10 +2,21 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   background-color: #1b262c;
+  color: #FFF;
+  font-family: $main-font;
+  
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5 {
+    font-family: $secondary-font;
+  }
+
+  
 }
 
-.selected {
-  color: #307672;
-}

@@ -3,5 +3,10 @@
   color: $text-darkmode-color;
 }
 .selected .nav-icon {
-  color: #3fbac2;
+  color: $default-blue;
+}
+
+.rating-icon {
+  width: 15px;
+  color: $default-blue;
 }

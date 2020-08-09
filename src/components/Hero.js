@@ -1,34 +1,60 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
+import DataContext from "../contexts/DataContext";
+import Rating from "./Rating";
+import Container from "./primitive/Container";
+import Image from "./primitive/Image";
+import Heading from "./primitive/Heading";
+import Text from "./primitive/Text";
+import Span from "./primitive/Span";
+import Button from "./primitive/Button";
 
 const Hero = () => {
-  const [data, setData] = useState([123]);
+  const { data, year, voteAverage } = useContext(DataContext);
   const { imageBaseUrl } = useContext(ImageContext);
+  const history = useHistory();
 
-  useEffect(() => {
-    const getTrending = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/trending/all/day?api_key=d6798e588b7a270cba41fa64d417d9e7"
-      );
-      const dataJson = await response.json();
-      setData(dataJson.results[0]);
-    };
-    getTrending();
-  }, []);
+  const handleGoToClick = (mediaType, id) => {
+    history.push(`/${mediaType}/${id}`);
+  };
 
   return (
     data && (
       <>
-        <header className="hero-container">
-          {console.log(`url(${imageBaseUrl}${data.backdrop_path})`)}
-          <div
-            className="hero-background-image"
-            style={{
-              backgroundImage: `url(${imageBaseUrl}${data.backdrop_path})`,
-            }}
-          ></div>
-          <div className="hero-details"></div>
-        </header>
+        <Container as="header" className="hero-container">
+          <Container className="hero-image-container" id={data.id}>
+            <Image
+              className="hero-background-image"
+              src={`${imageBaseUrl}${data.backdrop_path}`}
+              alt="Movie background image"
+            />
+          </Container>
+          <Container className="hero-info">
+            <Heading>{data.title}</Heading>
+
+            <Container className="hero-details-container">
+              <Rating voteAverage={voteAverage} />
+              <Span className="hero-details">
+                <Text>{data.vote_count}</Text> <Text>Reviews</Text>
+              </Span>
+              {year && (
+                <Span className="hero-details">
+                  <Text>{year}</Text>
+                </Span>
+              )}
+              <Span className="hero-details">
+                <Text>Popularity:</Text> <Text>{data.popularity}</Text>
+              </Span>
+            </Container>
+
+            <Text className="hero-description">{data.overview}</Text>
+
+            <Button onClick={() => handleGoToClick(data.media_type, data.id)}>
+              See details
+            </Button>
+          </Container>
+        </Container>
       </>
     )
   );
