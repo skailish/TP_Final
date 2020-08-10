@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Container className="main-container">
       <Hero />
-      {/* <CardListPreview /> */}
+      <CardListPreview mediaType="movie" category="popular" />
     </Container>
   );
 };
