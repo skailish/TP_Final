@@ -5,9 +5,8 @@
 
 body {
   background-color: #1b262c;
-  color: #FFF;
+  color: #fff;
   font-family: $main-font;
-  
 
   & h1,
   & h2,
@@ -16,7 +15,4 @@ body {
   & h5 {
     font-family: $secondary-font;
   }
-
-  
 }
-

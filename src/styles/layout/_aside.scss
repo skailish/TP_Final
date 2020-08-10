@@ -7,6 +7,11 @@
   @include position(fixed, 0, null, null, 0);
 
   @include flex(column, space-between, center);
+
+  &.light {
+    background-color: $background-aside-light;
+  }
+
   .nav-links {
     @include flex(column, space-between, center);
     height: 300px;

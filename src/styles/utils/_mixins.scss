@@ -43,14 +43,13 @@
   color: $button-text-color;
   font-size: 1em;
   letter-spacing: 1px;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.5s ease;
 
   &:hover {
     background-color: #307672;
   }
-
-
 }
 
 // RANDOM COLORS

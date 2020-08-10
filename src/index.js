@@ -5,6 +5,7 @@ import App from "./App";
 import { ImageProvider } from "./contexts/ImageContext";
 import { DataProvider } from "./contexts/DataContext";
 import { YouTubeProvider } from "./contexts/YouTubeContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -12,7 +13,9 @@ ReactDOM.render(
     <DataProvider>
       <ImageProvider>
         <YouTubeProvider>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </YouTubeProvider>
       </ImageProvider>
     </DataProvider>

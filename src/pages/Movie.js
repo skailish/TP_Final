@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import CardListPreview from "../components/CardListPreview";
 
 const Movie = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};
 
-export default Movie
+export default Movie;

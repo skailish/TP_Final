@@ -1,6 +1,14 @@
 .nav-icon {
   width: 30px;
   color: $text-darkmode-color;
+
+  &.light {
+    color: $icon-light-mode;
+  }
+}
+
+.selected .nav-icon.light {
+  color: $icon-light-selected;
 }
 .selected .nav-icon {
   color: $default-blue;
@@ -9,4 +17,8 @@
 .rating-icon {
   width: 15px;
   color: $default-blue;
+
+  &.light {
+    color: $icon-light-selected;
+  }
 }
