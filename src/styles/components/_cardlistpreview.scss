@@ -37,7 +37,7 @@
     }
   }
 
-  .chevron-container {
+  Button.chevron-container {
     position: absolute;
     height: 100%;
     width: 60px;
@@ -45,6 +45,9 @@
     @include flex(row, center, center);
     top: 20px;
     z-index: 100;
+    &.screen1::-webkit-scrollbar-track {
+      position: 20px;
+    }
 
     &.light {
       background-color: rgba(168, 169, 172, 0.5);
@@ -80,13 +83,15 @@
     display: flex;
     scroll-snap-type: x mandatory;
     position: absolute;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-align: center;
 
-    &.screen1 {
-      left: 0;
-    }
-    &.screen2 {
-      transform: translateX(calc(-100vh + 100px));
-    }
+    scroll-padding: 15px;
+    // &::-webkit-scrollbar {
+    //   display: none;
+
+    // }
 
     & img {
       transition: 0.2s ease-in-out;

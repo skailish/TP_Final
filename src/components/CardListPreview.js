@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Container from "../components/primitive/Container";
 import Card from "./Card";
@@ -7,27 +7,15 @@ import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
 import Heading from "./primitive/Heading";
 import Span from "./primitive/Span";
 import Link from "./primitive/Link";
+import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
-
-const SLIDER_SCREEN = {
-  1: "screen1",
-  2: "screen2",
-  3: "screen3",
-  4: "screen4",
-};
 
 const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
-  const [carouselMove, setCarouselMove] = useState(1);
 
   const handleExploreAllClick = (type, category) => {
     history.push(`/${type}/category/${category}`);
-  };
-
-  const handleSliderClick = (direction) => {
-    const number = direction === "right" ? +1 : -1;
-    setCarouselMove(number);
   };
 
   return (
@@ -46,23 +34,13 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
             </Link>
           </Span>
         </Container>
-        <Container className={`chevron-container chevron-left ${theme} `}>
-          <Link className="chevron-link">
-            <ChevronLeft
-              className={`chevron-icon ${theme} `}
-              onClick={() => handleSliderClick("left")}
-            />
-          </Link>
-        </Container>
-        <Container className={`chevron-container chevron-right ${theme} `}>
-          <Link className="chevron-link">
-            <ChevronRight
-              className={`chevron-icon ${theme} `}
-              onClick={() => handleSliderClick("right")}
-            />
-          </Link>
-        </Container>
-        <Container className={`media-container ${SLIDER_SCREEN[carouselMove]}`}>
+        <Button className={`chevron-container chevron-left ${theme} `}>
+          <ChevronLeft className={`chevron-icon ${theme} `} />
+        </Button>
+        <Button className={`chevron-container chevron-right ${theme} `}>
+          <ChevronRight className={`chevron-icon ${theme} `} />
+        </Button>
+        <Container className="media-container">
           {data &&
             data.map((singleCard) => (
               <Card
