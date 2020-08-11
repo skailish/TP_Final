@@ -11,22 +11,29 @@ const Home = () => {
 
   // setCategory("popular");
 
-  const { data, year, voteAverage } = useContext(DataContext);
+  const { data, year, voteAverage, mediaType } = useContext(DataContext);
   const { dataMovie } = useContext(MovieContext);
   const { dataTvShow } = useContext(TvShowContext);
 
   return (
     <Container className="main-container">
-      <Hero data={data} year={year} voteAverage={voteAverage} />
+      <Hero
+        data={data}
+        year={year}
+        voteAverage={voteAverage}
+        mediaType={mediaType}
+      />
       <CardListPreview
         mediaType="movie"
         data={dataMovie}
         sectionTitle="Trending Movies"
+        category="popular"
       />
       <CardListPreview
         mediaType="tv"
         data={dataTvShow}
         sectionTitle="Trending TV Shows"
+        category="popular"
       />
     </Container>
   );

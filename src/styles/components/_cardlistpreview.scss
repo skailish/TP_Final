@@ -2,13 +2,39 @@
   position: relative;
   width: 100%;
   height: 550px;
-  .cardlistpreview-heading {
-    color: $text-darkmode-color;
-    font-size: 25px;
-    font-weight: 300;
-    position: absolute;
+  overflow: hidden;
+
+  &.light {
+    background-color: $background-lightmode-color;
+  }
+
+  .cardlistpreview-title {
+    @include flex(row, flex-start, flex-end);
     top: 40px;
     left: 65px;
+    position: absolute;
+
+    & > span {
+      padding: 0 0 3px 10px;
+      color: $default-blue;
+      cursor: pointer;
+
+      .light {
+        color: $icon-light-selected;
+      }
+    }
+
+    .cardlistpreview-heading {
+      color: $text-darkmode-color;
+      font-size: 25px;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+
+      &.light {
+        color: $icon-light-mode;
+      }
+    }
   }
 
   .chevron-container {
@@ -18,6 +44,11 @@
     background-color: rgba(27, 38, 44, 0.5);
     @include flex(row, center, center);
     top: 20px;
+    z-index: 100;
+
+    &.light {
+      background-color: rgba(168, 169, 172, 0.5);
+    }
 
     & .chevron-icon {
       transition: 0.2s ease-out;
@@ -25,9 +56,6 @@
         cursor: pointer;
         transform: scale(1.1);
       }
-    }
-
-    &.chevron-left {
     }
 
     &.chevron-right {
@@ -39,6 +67,10 @@
     height: 40px;
     font-weight: bold;
     color: $text-darkmode-color;
+
+    &.light {
+      color: $icon-light-mode;
+    }
   }
 
   .media-container {
@@ -46,8 +78,16 @@
     width: 100%;
     height: 100%;
     display: flex;
-    overflow: hidden;
     scroll-snap-type: x mandatory;
+    position: absolute;
+
+    &.screen1 {
+      left: 0;
+    }
+    &.screen2 {
+      transform: translateX(calc(-100vh + 100px));
+    }
+
     & img {
       transition: 0.2s ease-in-out;
       cursor: pointer;

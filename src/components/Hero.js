@@ -10,7 +10,7 @@ import Text from "./primitive/Text";
 import Span from "./primitive/Span";
 import Button from "./primitive/Button";
 
-const Hero = ({ data, year, voteAverage }) => {
+const Hero = ({ data, year, voteAverage, mediaType }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
 
@@ -22,24 +22,20 @@ const Hero = ({ data, year, voteAverage }) => {
     data && (
       <>
         <Container as="header" className="hero-container">
-          <Container
-            className="hero-image-container"
-            id={data[0] && data[0].id}
-          >
+          <Container className="hero-image-container" id={data.id}>
             <Image
               className="hero-background-image"
-              src={`${imageBaseUrl}${data[0] && data[0].backdrop_path}`}
+              src={`${imageBaseUrl}${data.backdrop_path}`}
               alt="Movie background image"
             />
           </Container>
           <Container className="hero-info">
-            <Heading>{data[0] && data[0].title}</Heading>
+            <Heading>{mediaType === "movie" ? data.title : data.name}</Heading>
 
             <Container className="hero-details-container">
               <Rating voteAverage={voteAverage} />
               <Span className="hero-details">
-                <Text>{data[0] && data[0].vote_count}</Text>{" "}
-                <Text>Reviews</Text>
+                <Text>{data.vote_count}</Text> <Text>Reviews</Text>
               </Span>
               {year && (
                 <Span className="hero-details">
@@ -47,23 +43,13 @@ const Hero = ({ data, year, voteAverage }) => {
                 </Span>
               )}
               <Span className="hero-details">
-                <Text>Popularity:</Text>{" "}
-                <Text>{data[0] && data[0].popularity}</Text>
+                <Text>Popularity:</Text> <Text>{data.popularity}</Text>
               </Span>
             </Container>
 
-            <Text className="hero-description">
-              {data[0] && data[0].overview}
-            </Text>
+            <Text className="hero-description">{data.overview}</Text>
 
-            <Button
-              onClick={() =>
-                handleGoToClick(
-                  data[0] && data[0].media_type,
-                  data[0] && data[0].id
-                )
-              }
-            >
+            <Button onClick={() => handleGoToClick(data.media_type, data.id)}>
               See details
             </Button>
           </Container>

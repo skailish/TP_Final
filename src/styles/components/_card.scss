@@ -1,21 +1,34 @@
 .media-card {
-    height: 500px;
-    width: fit-content;
-    margin: 40px 15px;
-    scroll-snap-align: center;
-    @include flex(column, center, flex-start);
+  height: 500px;
+  width: fit-content;
+  margin: 40px 15px;
+  scroll-snap-align: center;
+  @include flex(column, center, flex-start);
 
-    .media-card-img {
-        height: 350px;
-    }
+  .media-card-img {
+    height: 350px;
+  }
+
+  .media-card-heading-container {
+    @include flex(row, flex-start, flex-start);
+    height: 50px;
 
     h3.media-card-heading {
-        font-size: $default-font-size;
-        font-weight: 300;
-        padding: 10px 0;
-    }
+      font-size: $default-font-size;
+      font-weight: 300;
+      padding: 10px 0;
 
-    .media-card-rating {
-        @include flex(row, flex-start, center);
+      &.light {
+        color: $icon-light-mode;
+      }
     }
+  }
+
+  .media-card-rating {
+    @include flex(row, flex-start, center);
+
+    &.light {
+      color: $icon-light-mode;
+    }
+  }
 }
