@@ -1,0 +1,7 @@
+.rating-stars {
+    @include flex(row, center, center);
+}
+
+.rating-number {
+    padding: 0 10px;
+}

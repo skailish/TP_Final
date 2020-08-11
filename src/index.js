@@ -6,19 +6,22 @@ import { ImageProvider } from "./contexts/ImageContext";
 import { DataProvider } from "./contexts/DataContext";
 import { YouTubeProvider } from "./contexts/YouTubeContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { MovieProvider } from "./contexts/MovieContext";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataProvider>
-      <ImageProvider>
-        <YouTubeProvider>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
-        </YouTubeProvider>
-      </ImageProvider>
-    </DataProvider>
+    <MovieProvider>
+      <DataProvider>
+        <ImageProvider>
+          <YouTubeProvider>
+            <ThemeProvider>
+              <App />
+            </ThemeProvider>
+          </YouTubeProvider>
+        </ImageProvider>
+      </DataProvider>
+    </MovieProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
 import CardListPreview from "../components/CardListPreview";
+import MovieContext from "../contexts/MovieContext";
 
 const Home = () => {
+  // const { setCategory } = useContext(MovieContext);
+
+  // setCategory("popular");
+
   return (
     <Container className="main-container">
       <Hero />
-      <CardListPreview mediaType="movie" category="popular" />
+      <CardListPreview mediaType="movie" />
     </Container>
   );
 };

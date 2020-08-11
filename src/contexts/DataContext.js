@@ -6,12 +6,12 @@ const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [year, setYear] = useState();
   const [voteAverage, setVoteAverage] = useState(0);
-  const [mediaType, setMediaType] = useState("all");
+
 
   useEffect(() => {
     const getTrending = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/${mediaType}/day?api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=d6798e588b7a270cba41fa64d417d9e7`
       );
       const dataJson = await response.json();
       setData(dataJson.results);
@@ -19,10 +19,10 @@ const DataProvider = ({ children }) => {
       setVoteAverage(dataJson.results[0].vote_average);
     };
     getTrending();
-  }, [mediaType]);
+  }, []);
 
   return (
-    <DataContext.Provider value={{ data, year, voteAverage, setMediaType }}>
+    <DataContext.Provider value={{ data, year, voteAverage }}>
       {children}
     </DataContext.Provider>
   );

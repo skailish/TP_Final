@@ -1,0 +1,40 @@
+.cardlistpreview-container {
+    position: relative;
+    width: 100%;
+    height: 550px;
+
+    .chevron-container {
+        position: absolute;
+        height: 100%;
+        width: 60px;
+        background-color: rgba(27, 38, 44, 0.5);
+        @include flex(row, center, center);
+        top: 20px;
+        
+        &.chevron-left {
+
+        }
+
+        &.chevron-right {
+            right: 0;
+        }
+
+
+    }
+
+    .chevron-icon {
+        height: 40px;
+        font-weight: bold;
+        color: $text-darkmode-color;
+    }
+
+    .media-container {
+        padding-left: 30px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+        scroll-padding: 0 50%;
+        scroll-snap-type: x mandatory;
+    }
+}

@@ -1,8 +1,8 @@
 import React from "react";
 
-const Heading = ({ level = 1, children }) => {
+const Heading = ({ level = 1, children, ...props }) => {
   const Heading = `h${level}`;
-  return <Heading>{children}</Heading>;
+  return <Heading {...props}>{children}</Heading>;
 };
 
 export default Heading;

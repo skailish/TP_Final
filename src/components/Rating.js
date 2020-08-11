@@ -5,7 +5,7 @@ import { StarFill } from "@styled-icons/bootstrap/StarFill";
 
 import ThemeContext from "../contexts/ThemeContext";
 
-const Rating = ({ voteAverage, voteNumber }) => {
+const Rating = ({ voteAverage, voteNumber, ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   const rating = Math.round(voteAverage) / 2;
@@ -18,16 +18,18 @@ const Rating = ({ voteAverage, voteNumber }) => {
   const arrayEmpty = emptyStarCount > 0 && Array(emptyStarCount).fill(" ");
 
   return (
-    <div>
-      <div>
-        {arrayFullStar.map(() => (
-          <StarFill className={`rating-icon ${theme}`} />
+    <div {...props}>
+      <div className="rating-stars">
+        {arrayFullStar.map((star, index) => (
+          <StarFill className={`rating-icon ${theme}`} key={index} />
         ))}
         {halfStar}
         {arrayEmpty &&
-          arrayEmpty.map(() => <Star className={`rating-icon ${theme}`} />)}
+          arrayEmpty.map((star, index) => (
+            <Star className={`rating-icon ${theme}`} key={index} />
+          ))}
       </div>
-      {voteNumber && <span>{voteNumber}</span>}
+      {voteNumber && <span className="rating-number">{voteNumber}</span>}
     </div>
   );
 };
