@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import Container from "../components/primitive/Container";
 import Card from "./Card";
 import MovieContext from "../contexts/MovieContext";
+import TvShowContext from "../contexts/TvShowContext";
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
 
 const CardListPreview = ({ mediaType }) => {
   const { dataMovie } = useContext(MovieContext);
+  const { dataTvShow } = useContext(TvShowContext);
+
+  const mediaData = mediaType === "tv" ? dataTvShow : dataMovie;
 
   return (
     dataMovie && (
@@ -15,18 +19,18 @@ const CardListPreview = ({ mediaType }) => {
           <ChevronLeft className="chevron-icon" />
         </Container>
         <Container className="media-container">
-          {dataMovie &&
-            dataMovie.map((movie) => (
+          {mediaData &&
+            mediaData.map((singleCard) => (
               <Card
-                id={movie.id}
-                src={movie.poster_path}
+                id={singleCard.id}
+                src={singleCard.poster_path}
                 title={
                   mediaType === "tv"
-                    ? movie.original_name
-                    : movie.original_title
+                    ? singleCard.original_name
+                    : singleCard.original_title
                 }
-                votes={movie.vote_average}
-                key={movie.id}
+                votes={singleCard.vote_average}
+                key={singleCard.id}
               />
             ))}
         </Container>

@@ -13,6 +13,7 @@ const Home = () => {
     <Container className="main-container">
       <Hero />
       <CardListPreview mediaType="movie" />
+      <CardListPreview mediaType="tv" />
     </Container>
   );
 };
