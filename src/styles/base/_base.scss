@@ -7,7 +7,19 @@ body {
   background-color: #1b262c;
   color: #fff;
   font-family: $main-font;
+}
 
+// Juego con el scroll... pensemos colores... para que no aparezca la barra fea del navegador
+body::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px $background-darkmode-color;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $button-background-color;
 }
 
 h1,
