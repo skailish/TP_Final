@@ -1,9 +1,13 @@
 .nav-icon {
   width: 30px;
+  transition: 0.3s;
   color: $text-darkmode-color;
 
   &.light {
     color: $icon-light-mode;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

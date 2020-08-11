@@ -12,7 +12,6 @@ const TvShowProvider = ({ children }) => {
       );
       const dataJson = await response.json();
       setDataTvShow(dataJson.results);
-      console.log(dataTvShow);
     };
     getTvShows();
   }, []);

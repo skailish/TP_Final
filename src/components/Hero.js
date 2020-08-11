@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
-import DataContext from "../contexts/DataContext";
+
 import Rating from "./Rating";
 import Container from "./primitive/Container";
 import Image from "./primitive/Image";
@@ -10,8 +10,7 @@ import Text from "./primitive/Text";
 import Span from "./primitive/Span";
 import Button from "./primitive/Button";
 
-const Hero = () => {
-  const { data, year, voteAverage } = useContext(DataContext);
+const Hero = ({ data, year, voteAverage }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
 

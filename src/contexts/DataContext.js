@@ -7,7 +7,6 @@ const DataProvider = ({ children }) => {
   const [year, setYear] = useState();
   const [voteAverage, setVoteAverage] = useState(0);
 
-
   useEffect(() => {
     const getTrending = async () => {
       const response = await fetch(
@@ -15,7 +14,9 @@ const DataProvider = ({ children }) => {
       );
       const dataJson = await response.json();
       setData(dataJson.results);
+
       setYear(dataJson.results[0].release_date.split("-")[0]);
+      console.log(year);
       setVoteAverage(dataJson.results[0].vote_average);
     };
     getTrending();

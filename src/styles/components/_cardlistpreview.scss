@@ -2,6 +2,14 @@
   position: relative;
   width: 100%;
   height: 550px;
+  .cardlistpreview-heading {
+    color: $text-darkmode-color;
+    font-size: 25px;
+    font-weight: 300;
+    position: absolute;
+    top: 40px;
+    left: 65px;
+  }
 
   .chevron-container {
     position: absolute;

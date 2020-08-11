@@ -1,26 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import Container from "../components/primitive/Container";
 import Card from "./Card";
-import MovieContext from "../contexts/MovieContext";
-import TvShowContext from "../contexts/TvShowContext";
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
+import Heading from "./primitive/Heading";
 
-const CardListPreview = ({ mediaType }) => {
-  const { dataMovie } = useContext(MovieContext);
-  const { dataTvShow } = useContext(TvShowContext);
-
-  const mediaData = mediaType === "tv" ? dataTvShow : dataMovie;
-
+const CardListPreview = ({ mediaType, data, sectionTitle }) => {
   return (
-    dataMovie && (
+    data && (
       <Container className="cardlistpreview-container">
+        <Heading className="cardlistpreview-heading" level={1}>
+          {sectionTitle}
+        </Heading>
         <Container className="chevron-container chevron-left">
           <ChevronLeft className="chevron-icon" />
         </Container>
         <Container className="media-container">
-          {mediaData &&
-            mediaData.map((singleCard) => (
+          {data &&
+            data.map((singleCard) => (
               <Card
                 id={singleCard.id}
                 src={singleCard.poster_path}
