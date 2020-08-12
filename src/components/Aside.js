@@ -20,10 +20,10 @@ const Aside = () => {
         <NavLink to="/" activeClassName="selected" exact>
           <Home className={`nav-icon ${theme}`} />
         </NavLink>
-        <NavLink to="/Movie" exact activeClassName="selected">
+        <NavLink to="/movies" exact activeClassName="selected">
           <Movie className={`nav-icon ${theme}`} />
         </NavLink>
-        <NavLink to="/TV" exact activeClassName="selected">
+        <NavLink to="/tv" exact activeClassName="selected">
           <TV className={`nav-icon ${theme}`} />
         </NavLink>
         <Search className={`nav-icon ${theme}`} />
