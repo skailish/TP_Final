@@ -32,3 +32,9 @@
 .github-icon {
   width: 22px;
 }
+.footer-icon {
+  color: $text-details-color;
+  &.light {
+    color: $icon-light-selected;
+  }
+}

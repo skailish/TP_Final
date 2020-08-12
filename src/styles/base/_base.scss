@@ -10,9 +10,10 @@ body {
   position: relative;
 }
 
-// Juego con el scroll... pensemos colores... para que no aparezca la barra fea del navegador
+//Juego con el scroll... pensemos colores... para que no aparezca la barra fea del navegador
 body::-webkit-scrollbar {
-  width: 0.3em;
+  width: 12px;
+  height: 6px;
 }
 
 body::-webkit-scrollbar-track {
@@ -20,7 +21,9 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: $button-background-color;
+  border-radius: 6px;
+  background: $icon-light-mode;
+  height: 30px;
 }
 
 h1,

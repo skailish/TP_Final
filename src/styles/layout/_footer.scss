@@ -1,10 +1,41 @@
 .footer-container {
-  height: 100px;
-  @include flex(row, space-evenly, center);
+  height: 150px;
+  @include flex(column, space-evenly, center);
   position: absolute;
   bottom: -150px;
   left: 100px;
   width: calc(100% - 100px);
-  .footer-container-personal {
+  background-color: $background-darkmode-color;
+  &.light {
+    background-color: $background-lightmode-color;
+  }
+  .footer-rights-container {
+    width: 100%;
+    padding: 25px 0 0 25px;
+    @include flex(column, space-evenly, flex-start);
+    color: $text-details-color;
+    &.light {
+      color: $icon-light-selected;
+    }
+  }
+  .personal-data-container {
+    @include flex(row, space-evenly, center);
+    width: 50%;
+    padding-top: 20px;
+    .footer-container-personal {
+      @include flex(column, space-evenly, center);
+      .footer-heading {
+        color: $text-details-color;
+        font-weight: 400;
+        padding-bottom: 5px;
+        &.light {
+          color: $icon-light-selected;
+        }
+      }
+      .footer-icons-container {
+        @include flex(row, space-evenly, center);
+        width: 80px;
+      }
+    }
   }
 }
