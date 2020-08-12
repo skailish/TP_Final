@@ -1,8 +1,8 @@
 .cardlistpreview-container {
+  padding-top: 35px;
   position: relative;
   width: 100%;
-  height: 550px;
-  overflow: hidden;
+  height: 600px;
 
   &.light {
     background-color: $background-lightmode-color;
@@ -10,7 +10,7 @@
 
   .cardlistpreview-title {
     @include flex(row, flex-start, flex-end);
-    top: 40px;
+    top: 45px;
     left: 65px;
     position: absolute;
 
@@ -37,68 +37,77 @@
     }
   }
 
-  Button.chevron-container {
-    position: absolute;
-    height: 100%;
-    width: 60px;
-    background-color: rgba(27, 38, 44, 0.5);
-    @include flex(row, center, center);
-    top: 20px;
-    z-index: 100;
-    &.screen1::-webkit-scrollbar-track {
-      position: 20px;
-    }
-
-    &.light {
-      background-color: rgba(168, 169, 172, 0.5);
-    }
-
-    & .chevron-icon {
-      transition: 0.2s ease-out;
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.1);
-      }
-    }
-
-    &.chevron-right {
-      right: 0;
-    }
-  }
-
-  .chevron-icon {
-    height: 40px;
-    font-weight: bold;
-    color: $text-darkmode-color;
-
-    &.light {
-      color: $icon-light-mode;
-    }
-  }
-
   .media-container {
-    padding-left: 30px;
-    width: 100%;
-    height: 100%;
+    padding: 25px -25px 0 45px;
+    margin: 25px 0 0 35px;
+    overflow: hidden;
+    width: 95%;
+    height: 90%;
     display: flex;
     scroll-snap-type: x mandatory;
     position: absolute;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-align: center;
-
+    scroll-behavior: smooth;
     scroll-padding: 15px;
-    // &::-webkit-scrollbar {
-    //   display: none;
 
-    // }
-
-    & img {
-      transition: 0.2s ease-in-out;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.01);
-      }
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 6px;
+      padding-left: 25px;
     }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 6px;
+      background: $icon-light-mode;
+      height: 30px;
+    }
+  }
+
+  & img {
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+}
+
+Button.chevron-container {
+  position: absolute;
+  height: 100%;
+  width: 60px;
+  background-color: rgba(27, 38, 44, 0.5);
+  @include flex(row, center, center);
+  top: 20px;
+  z-index: 100;
+  &.screen1::-webkit-scrollbar-track {
+    position: 20px;
+  }
+
+  &.light {
+    background-color: rgba(168, 169, 172, 0.5);
+  }
+
+  & .chevron-icon {
+    transition: 0.2s ease-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  &.chevron-right {
+    right: 0;
+  }
+}
+
+.chevron-icon {
+  height: 40px;
+  font-weight: bold;
+  color: $text-darkmode-color;
+
+  &.light {
+    color: $icon-light-mode;
   }
 }

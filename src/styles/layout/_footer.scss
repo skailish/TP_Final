@@ -1,0 +1,10 @@
+.footer-container {
+  height: 100px;
+  @include flex(row, space-evenly, center);
+  position: absolute;
+  bottom: -150px;
+  left: 100px;
+  width: calc(100% - 100px);
+  .footer-container-personal {
+  }
+}

@@ -34,12 +34,12 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
             </Link>
           </Span>
         </Container>
-        <Button className={`chevron-container chevron-left ${theme} `}>
+        {/* <Button className={`chevron-container chevron-left ${theme} `}>
           <ChevronLeft className={`chevron-icon ${theme} `} />
         </Button>
         <Button className={`chevron-container chevron-right ${theme} `}>
           <ChevronRight className={`chevron-icon ${theme} `} />
-        </Button>
+        </Button> */}
         <Container className="media-container">
           {data &&
             data.map((singleCard) => (
@@ -49,7 +49,7 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
                 title={
                   mediaType === "tv"
                     ? singleCard.original_name
-                    : singleCard.original_title
+                    : singleCard.title
                 }
                 votes={singleCard.vote_average}
                 key={singleCard.id}

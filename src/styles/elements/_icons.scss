@@ -1,4 +1,5 @@
-.nav-icon {
+.nav-icon,
+.footer-icon {
   width: 30px;
   transition: 0.3s;
   color: $text-darkmode-color;
@@ -26,4 +27,8 @@
   &.light {
     color: $icon-light-selected;
   }
+}
+
+.github-icon {
+  width: 22px;
 }
