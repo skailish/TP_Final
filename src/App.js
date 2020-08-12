@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 
-import Movie from "./pages/Movie";
+import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/Movie">
-            <Movie />
+            <Movies />
           </Route>
         </Switch>
       </Router>
