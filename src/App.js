@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
+import TVSeries from "./pages/TVSeries";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/movies">
             <Movies />
+          </Route>
+          <Route exact path="/tv">
+            <TVSeries />
           </Route>
         </Switch>
       </Router>
