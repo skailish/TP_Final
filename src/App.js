@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
+    <Container className="main-aside-container">
       <Router>
         <Aside />
         <Switch>
@@ -23,7 +23,7 @@ function App() {
         </Switch>
       </Router>
       <Footer />
-    </>
+    </Container>
   );
 }
 
