@@ -6,7 +6,7 @@
   transition: 0.3s ease-in;
 
   &.light {
-    background-color: $background-lightmode-color;
+    background-color: $background-lightmode;
     transition: 0.3s ease-in;
 }
 }
@@ -30,7 +30,7 @@
       font-weight: 300;
 
       &.light {
-        color: $text-lightmode-color;
+        color: $main-text-lightmode;
       }
     }
   }

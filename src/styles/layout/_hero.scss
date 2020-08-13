@@ -54,7 +54,7 @@
 .hero-details {
   padding-right: 10px;
   font-size: $default-font-size;
-  color: $text-details-color;
+  color: $third-text-color;
   @include flex(row, center, center);
 
   & p {
