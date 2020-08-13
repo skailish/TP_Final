@@ -1,8 +1,10 @@
 .media-card {
   height: 500px;
+  width: 235px;
   width: fit-content;
   margin: 20px 15px;
   scroll-snap-align: center;
+  cursor: pointer;
   @include flex(column, center, flex-start);
 
   .media-card-img {
@@ -13,6 +15,7 @@
     @include flex(row, flex-start, flex-start);
     height: 70px;
     text-overflow: ellipsis;
+    width: 235px;
 
     h3.media-card-heading {
       font-size: $default-font-size;

@@ -25,8 +25,9 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
             {sectionTitle}
           </Heading>
+          
           <Link
-            to={`${mediaType}/${category}`}
+            to={`${mediaType}/category/${category}`}
             className={`cardlistpreview-link ${theme}`}
           >
             Explore All
@@ -46,7 +47,7 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
                 src={singleCard.poster_path}
                 title={
                   mediaType === "tv"
-                    ? singleCard.original_name
+                    ? singleCard.name
                     : singleCard.title
                 }
                 votes={singleCard.vote_average}

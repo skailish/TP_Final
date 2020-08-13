@@ -1,5 +1,4 @@
-.nav-icon,
-.footer-icon {
+.nav-icon {
   width: 30px;
   transition: 0.3s;
   color: $text-darkmode-color;
@@ -8,6 +7,7 @@
   &.light {
     color: $icon-light-mode;
   }
+
   &:hover {
     transform: scale(1.1);
   }
@@ -16,6 +16,7 @@
 .selected .nav-icon.light {
   color: $icon-light-selected;
 }
+
 .selected .nav-icon {
   color: $default-blue;
 }
@@ -29,12 +30,29 @@
   }
 }
 
+.footer-icon {
+  width: 30px;
+  color: $button-hover-background;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: $button-background-color;
+    transition: 0.3s;
+  }
+  &.light {
+    color: $icon-light-selected;
+    transition: 0.3s;
+  }
+
+  &.light:hover {
+    color: $button-light;
+    transition: 0.3s;
+  }
+}
+
 .github-icon {
   width: 22px;
 }
-.footer-icon {
-  color: $text-details-color;
-  &.light {
-    color: $icon-light-selected;
-  }
-}
+
+

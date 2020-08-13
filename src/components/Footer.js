@@ -16,11 +16,15 @@ const Footer = () => {
       <Container className={`footer-rights-container ${theme}`}>
         <Text>
           © {yearCopyright} Designed and built by Angie Turne - Daniela Capponi
-          - Josefina del Rey - Lujan Sanchez. All rights reserved.
+          - Josefina del Rey - Luján Sanchez. All rights reserved.
         </Text>
         <Text>
-          Data provided by
-          <Link target="_blank" href="https://www.themoviedb.org/">
+          Data provided by{" "}
+          <Link
+            className={`footer-link ${theme}`}
+            target="_blank"
+            href="https://www.themoviedb.org/"
+          >
             TMDb.
           </Link>
         </Text>
@@ -44,7 +48,7 @@ const Footer = () => {
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
-            Lujan
+            Luján
           </Heading>
 
           <Container className="footer-icons-container">

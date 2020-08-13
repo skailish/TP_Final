@@ -1,22 +1,37 @@
+.category-pagination-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  align-items: center;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode-color;
+    transition: 0.3s ease-in;
+}
+}
+
 .main-category-container {
   @include flex(row, space-evenly, center);
   width: calc(100vw - 100px);
   margin-left: 100px;
   flex-wrap: wrap;
-  min-height: 100%;
   position: relative;
   padding-top: 80px;
-  &.light {
-    background-color: $background-lightmode-color;
-  }
+
   .category-title-container {
     top: 45px;
     left: 65px;
     position: absolute;
     text-transform: capitalize;
 
+
     .category-heading {
       font-weight: 300;
+
+      &.light {
+        color: $text-lightmode-color;
+      }
     }
   }
 }

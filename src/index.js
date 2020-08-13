@@ -8,6 +8,7 @@ import { YouTubeProvider } from "./contexts/YouTubeContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
 import { TvShowProvider } from "./contexts/TvShowContext";
+import { PaginationProvider } from "./contexts/PaginationContext";
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -19,7 +20,9 @@ ReactDOM.render(
           <ImageProvider>
             <YouTubeProvider>
               <ThemeProvider>
-                <App />
+                <PaginationProvider>
+                  <App />
+                </PaginationProvider>
               </ThemeProvider>
             </YouTubeProvider>
           </ImageProvider>

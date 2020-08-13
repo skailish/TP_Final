@@ -1,11 +1,4 @@
 .button {
   @include button(15px, 250px);
 
-  &.light {
-    background-color: $button-light;
-  }
-
-  &:hover.light {
-    background-color: $icon-light-selected;
-  }
 }

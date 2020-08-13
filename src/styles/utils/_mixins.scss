@@ -50,6 +50,14 @@
   &:hover {
     background-color: #307672;
   }
+
+  &.light {
+    background-color: $button-light;
+  }
+
+  &:hover.light {
+    background-color: $icon-light-selected;
+  }
 }
 
 // RANDOM COLORS

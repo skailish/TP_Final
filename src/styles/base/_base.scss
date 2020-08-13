@@ -8,6 +8,7 @@ body {
   color: #fff;
   font-family: $main-font;
   position: relative;
+
 }
 
 //Juego con el scroll... pensemos colores... para que no aparezca la barra fea del navegador
@@ -36,6 +37,16 @@ h5 {
 
 .main-aside-container {
   display: flex;
+  flex-direction: column;
   width: 99.2vw;
   overflow: hidden;
+}
+
+.category-pagination-container {
+  transition: 0.3s ease-in;
+
+  .light {
+    background-color: background-lightmode-color;
+    transition: 0.3s ease-in;
+  }
 }
