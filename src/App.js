@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Container from "./components/primitive/Container";
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
-import Categories from "./pages/categories/Categories";
+import TVSeries from "./pages/TVSeries";
 
 function App() {
   return (

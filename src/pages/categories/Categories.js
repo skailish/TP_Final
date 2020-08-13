@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import Container from "../../components/primitive/Container";
 import { useParams } from "react-router-dom";
@@ -38,6 +39,16 @@ const Categories = () => {
         ))}
       </Container>
     )
+=======
+import React from "react";
+import Container from "../../components/primitive/Container";
+
+const Categories = () => {
+  return (
+    <Container className="main-container">
+      <h1>Categories!!!</h1>
+    </Container>
+>>>>>>> 80542d4a42cd66ca8e05214ee4535412f46be9d9
   );
 };
 
