@@ -4,8 +4,7 @@ const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
   const [dataMovieRandom, setDataMovieRandom] = useState([]);
-  //const [category, setCategory] = useState("popular");
-  const [dataMoviePopular, setDataMoviePopular] = useState([]);
+
   const [dataMovieTop, setDataMovieTop] = useState([]);
   const [dataMovieUpcoming, setDataMovieUpcoming] = useState([]);
   const [dataNowPlaying, setDataNowPlaying] = useState([]);

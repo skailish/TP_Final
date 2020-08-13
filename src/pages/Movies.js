@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import MovieContext from "../contexts/MovieContext";
 import ThemeContext from "../contexts/ThemeContext";
 import CardListPreview from "../components/CardListPreview";
-
-//import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
 
