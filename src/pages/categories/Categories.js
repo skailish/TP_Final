@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "../../components/primitive/Container";
 import { useParams } from "react-router-dom";
 import Card from "../../components/Card";
+import ThemeContext from "../../contexts/ThemeContext";
 
 const Categories = () => {
   const { media, category } = useParams();
   const [dataByParams, setDataByParams] = useState([]);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const getDataByCategoryAndMedia = async () => {
@@ -20,7 +22,7 @@ const Categories = () => {
 
   return (
     dataByParams && (
-      <Container className="main-category-container">
+      <Container className={`main-category-container ${theme}`}>
         {console.log(dataByParams)}
         {dataByParams.map((singleCard) => (
           <Card
