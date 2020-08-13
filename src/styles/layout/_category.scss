@@ -4,7 +4,19 @@
   margin-left: 100px;
   flex-wrap: wrap;
   min-height: 100%;
+  position: relative;
+  padding-top: 80px;
   &.light {
     background-color: $background-lightmode-color;
+  }
+  .category-title-container {
+    top: 45px;
+    left: 65px;
+    position: absolute;
+    text-transform: capitalize;
+
+    .category-heading {
+      font-weight: 300;
+    }
   }
 }

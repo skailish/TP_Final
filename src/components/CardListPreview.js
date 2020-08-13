@@ -25,9 +25,12 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
             {sectionTitle}
           </Heading>
-          <Span>
-            <Link to={`${mediaType}/${category}`}>Explore All</Link>
-          </Span>
+          <Link
+            to={`${mediaType}/${category}`}
+            className={`cardlistpreview-link ${theme}`}
+          >
+            Explore All
+          </Link>
         </Container>
         {/* <Button className={`chevron-container chevron-left ${theme} `}>
           <ChevronLeft className={`chevron-icon ${theme} `} />

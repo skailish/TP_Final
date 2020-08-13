@@ -14,10 +14,15 @@
     left: 65px;
     position: absolute;
 
-    & > span {
+    a.cardlistpreview-link {
       padding: 0 0 3px 10px;
       color: $default-blue;
+      text-decoration: none;
       cursor: pointer;
+      font-size: 17px;
+      :hover {
+        color: $default-blue;
+      }
 
       .light {
         color: $icon-light-selected;
