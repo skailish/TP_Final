@@ -7,6 +7,7 @@ import Container from "./components/primitive/Container";
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import TVSeries from "./pages/TVSeries";
+import Categories from "./pages/categories/Categories";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path="/movies">
             <Movies />
+          </Route>
+          <Route exact path="/tv">
+            <TVSeries />
           </Route>
           <Route exact path="/:media/:category">
             <Categories />
