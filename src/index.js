@@ -8,6 +8,7 @@ import { YouTubeProvider } from "./contexts/YouTubeContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
 import { TvShowProvider } from "./contexts/TvShowContext";
+
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

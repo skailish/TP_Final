@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from "../components/primitive/Container";
 import Card from "./Card";
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
 import Heading from "./primitive/Heading";
 import Span from "./primitive/Span";
-import Link from "./primitive/Link";
+//import Link from "./primitive/Link";
 import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
 
 const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
-  const history = useHistory();
+  // const history = useHistory();
   const { theme } = useContext(ThemeContext);
 
-  const handleExploreAllClick = (type, category) => {
-    history.push(`/${type}/category/${category}`);
-  };
+  // const handleExploreAllClick = (type, category) => {
+  //   history.push(`/${type}/category/${category}`);
+  // };
 
   return (
     data && (
@@ -26,12 +26,7 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
             {sectionTitle}
           </Heading>
           <Span>
-            <Link
-              className={theme}
-              onClick={() => handleExploreAllClick(mediaType, category)}
-            >
-              Explore All
-            </Link>
+            <Link to={`${mediaType}/${category}`}>Explore All</Link>
           </Span>
         </Container>
         {/* <Button className={`chevron-container chevron-left ${theme} `}>
