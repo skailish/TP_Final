@@ -6,7 +6,7 @@
   z-index: 999;
   @include position(fixed, 0, null, null, 0);
   transition: 0.3s ease-in;
-  background-color: $background-darkmode-color;
+  background-color: $background-aside-darkmode;
 
   @include flex(column, space-between, center);
 
