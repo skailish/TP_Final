@@ -23,9 +23,9 @@
     font-weight: normal !important;
   }
   &.light {
-    color: $text-lightmode-color;
+    color: $main-text-lightmode;
   }
   &.light {
-    background-color: $background-lightmode-color;
+    background-color: $background-lightmode;
   }
 }
