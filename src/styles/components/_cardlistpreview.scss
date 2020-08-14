@@ -5,7 +5,7 @@
   height: 620px;
 
   &.light {
-    background-color: $background-lightmode-color;
+    background-color: $background-lightmode;
   }
 
   .cardlistpreview-title {
@@ -17,7 +17,7 @@
 
     .cardlistpreview-link {
       padding: 0px 0px 2px 10px;
-      color: $default-blue;
+      color: $fourth-color-darkmode;
       cursor: pointer;
       text-decoration: none;
       line-height: 20px;
@@ -26,12 +26,12 @@
 
 
       &:hover {
-        color: $button-hover-background;
+        color: $third-color-darkmode;
         transition: 0.3s;
       }
 
       &.light {
-        color: $icon-light-selected;
+        color: $secondary-color-lightmode;
         transition: 0.3s;
       }
 
@@ -43,14 +43,14 @@
     }
 
     .cardlistpreview-heading {
-      color: $text-darkmode-color;
+      color: $main-text-darkmode;
       font-size: 25px;
       font-weight: 300;
       margin: 0;
       padding: 0;
 
       &.light {
-        color: $icon-light-mode;
+        color: $main-text-lightmode;
       }
     }
   }
@@ -78,7 +78,7 @@
 
     &::-webkit-scrollbar-thumb {
       border-radius: 6px;
-      background: $icon-light-mode;
+      background: $main-text-lightmode;
       height: 30px;
     }
   }
@@ -127,9 +127,9 @@ Button.chevron-container {
 .chevron-icon {
   height: 40px;
   font-weight: bold;
-  color: $text-darkmode-color;
+  color: $main-text-darkmode;
 
   &.light {
-    color: $icon-light-mode;
+    color: $main-text-lightmode;
   }
 }

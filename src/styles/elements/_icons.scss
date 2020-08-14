@@ -1,11 +1,11 @@
 .nav-icon {
   width: 30px;
   transition: 0.3s;
-  color: $text-darkmode-color;
+  color: $main-text-darkmode;
   cursor: pointer;
 
   &.light {
-    color: $icon-light-mode;
+    color: $main-text-lightmode;
   }
 
   &:hover {
@@ -14,39 +14,39 @@
 }
 
 .selected .nav-icon.light {
-  color: $icon-light-selected;
+  color: $secondary-color-lightmode;
 }
 
 .selected .nav-icon {
-  color: $default-blue;
+  color: $fourth-color-darkmode;
 }
 
 .rating-icon {
   width: 15px;
-  color: $default-blue;
+  color: $fourth-color-darkmode;
 
   &.light {
-    color: $icon-light-selected;
+    color: $secondary-color-lightmode;
   }
 }
 
 .footer-icon {
   width: 30px;
-  color: $button-hover-background;
+  color: $third-color-darkmode;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    color: $button-background-color;
+    color: $secondary-color-darkmode;
     transition: 0.3s;
   }
   &.light {
-    color: $icon-light-selected;
+    color: $secondary-color-lightmode;
     transition: 0.3s;
   }
 
   &.light:hover {
-    color: $button-light;
+    color: $third-color-lightmode;
     transition: 0.3s;
   }
 }
