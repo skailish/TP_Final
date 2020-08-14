@@ -1,4 +1,30 @@
 .button {
   @include button(15px, 250px);
-
 }
+
+// .hero-button {
+//   @include flex(row, space-evenly, center);
+//   width: 180px;
+//   height: 70px;
+//   background-color: $button-background-color;
+//   outline: none;
+//   border: none;
+//   margin: 40px 20px 0 0;
+//   border-radius: 10px;
+//   letter-spacing: 1px;
+//   font-weight: 700;
+//   cursor: pointer;
+//   transition: 0.5s ease;
+//   color: $button-text-color;
+//   &:hover {
+//     background-color: #307672;
+//   }
+
+//   &.light {
+//     background-color: $button-light;
+//   }
+
+//   &:hover.light {
+//     background-color: $icon-light-selected;
+//   }
+// }
