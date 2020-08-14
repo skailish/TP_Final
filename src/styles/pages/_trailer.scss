@@ -1,0 +1,31 @@
+.main-trailer-container,
+.main-error-container {
+  margin-left: 100px;
+  width: calc(100vw - 100px);
+  min-height: calc(100vh - 200px);
+  height: 600px;
+  @include flex(column, center, center);
+  .player-container {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+.main-error-container {
+  padding-top: 50px;
+  height: 100%;
+  line-height: 120px;
+  .error-img {
+    width: 500px;
+    border-radius: 10px;
+  }
+  .error-trailer-heading {
+    font-weight: normal !important;
+  }
+  &.light {
+    color: $text-lightmode-color;
+  }
+  &.light {
+    background-color: $background-lightmode-color;
+  }
+}
