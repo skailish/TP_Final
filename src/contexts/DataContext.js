@@ -6,10 +6,12 @@ const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [year, setYear] = useState();
   const [voteAverage, setVoteAverage] = useState(0);
-  const [mediaType, setMediaType] = useState("");
+  const [mediatype, setMediatype] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getTrending = async () => {
+      setIsLoading(true);
       const pageRandom = Math.floor(Math.random() * 100) + 1;
       const indexRandom = Math.floor(Math.random() * 20);
 
@@ -24,13 +26,16 @@ const DataProvider = ({ children }) => {
           : dataJson.results[indexRandom].first_air_date.split("-")[0];
       setYear(date);
       setVoteAverage(dataJson.results[indexRandom].vote_average);
-      setMediaType(dataJson.results[indexRandom].media_type);
+      setMediatype(dataJson.results[indexRandom].media_type);
+      setIsLoading(false);
     };
     getTrending();
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, year, voteAverage, mediaType }}>
+    <DataContext.Provider
+      value={{ data, year, voteAverage, mediatype, isLoading }}
+    >
       {children}
     </DataContext.Provider>
   );

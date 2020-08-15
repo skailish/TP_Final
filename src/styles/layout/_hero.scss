@@ -62,10 +62,8 @@
     padding-right: 5px;
   }
 }
-
 .hero-description {
-  font-size: $default-font-size;
-  line-height: 20px;
+  @include ellipsis-multiline(15, 1.5, 5, 0);
 }
 
 a {

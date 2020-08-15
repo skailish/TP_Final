@@ -7,14 +7,15 @@ import ImageContext from "../contexts/ImageContext";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
 import Tooltip from "./Tooltip";
+import noPosterFound from "../images/404PosterNotFound.jpg";
 
-const Card = ({ id, src, title, votes, mediaType }) => {
+const Card = ({ id, src, title, votes, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
 
-  const handleMediaDetailsClick = (id, mediaType) => {
-    history.push(`/${mediaType}/${id}`);
+  const handleMediaDetailsClick = (id, mediatype) => {
+    history.push(`/${mediatype}/${id}`);
   };
 
   return (
@@ -23,12 +24,12 @@ const Card = ({ id, src, title, votes, mediaType }) => {
       key={id}
       as="article"
       className="media-card"
-      mediaType={mediaType}
+      mediatype={mediatype}
 
     >
-      <div onClick={() => handleMediaDetailsClick(id, mediaType)}>
+      <div onClick={() => handleMediaDetailsClick(id, mediatype)}>
 
-        <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
+        <Image src={src ? `${imageBaseUrl}${src}` : noPosterFound} className="media-card-img" alt={`Image showing poster of "${title}"`} />
         <Container className="media-card-heading-container">
           <Tooltip title={"Click for more information on this show"}>
             <Heading level={3} className={`media-card-heading ${theme} `}>

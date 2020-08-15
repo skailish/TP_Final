@@ -17,7 +17,7 @@ const Votes = ({ voteAverage, voteNumber, ...props }) => {
         placeholderRating={rating}
         fractions={2}
       />
-      {voteNumber && <span className="rating-number">{voteNumber}</span>}
+      {(voteNumber || voteNumber === 0) && <span className="rating-number">{voteNumber}</span>}
     </div>
   );
 };
