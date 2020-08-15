@@ -26,7 +26,7 @@ const Card = ({ id, src, title, votes, mediatype }) => {
       mediaType={mediaType}
 
     >
-      <div onClick={() => handleMediaDetailsClick(id, mediaType)}>
+      <div onClick={() => handleMediaDetailsClick(id, mediatype)}>
 
         <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
         <Container className="media-card-heading-container">
