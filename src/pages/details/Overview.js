@@ -12,16 +12,16 @@ const Overview = (data) => {
   return (
     data.data && (
       <Container className="main-container">
-        <Container className="container-serie">
-          <Container className="img-container-serie">
+        <Container className="serie-container">
+          <Container className="img-serie-container">
             <Image src={`${imageBaseUrl}${data.data.poster_path}`} />
           </Container>
-          <Container className="info-container-serie">
+          <Container className="info-serie-container">
             <Container className="title-serie">
               <Heading level={3}>Storyline</Heading>
               <Text>{data.data.overview}</Text>
             </Container>
-            <Container className="container-details-serie">
+            <Container className="details-serie-container">
               {data.data.genres &&
                 data.data.genres.map((genre) => <li>{genre.name}</li>)}
             </Container>

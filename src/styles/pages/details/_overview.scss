@@ -1,8 +1,8 @@
-.container-serie {
+.serie-container {
   display: flex;
   flex-direction: row;
 
-  .img-container-serie {
+  .img-serie-container {
     width: 22%;
 
     & > img {
@@ -11,7 +11,7 @@
     }
   }
 
-  .info-container-serie {
+  .info-serie-container {
     width: 50%;
     margin: 0 20px 0 64px;
   }
