@@ -1,3 +1,13 @@
+.onLoading-Container {
+  min-height: calc(100vh - 200px);
+  @include flex(row, center, center);
+
+  &.light {
+    background-color: $background-lightmode;
+
+  }
+}
+
 .category-pagination-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +18,7 @@
   &.light {
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
-}
+  }
 }
 
 .main-category-container {

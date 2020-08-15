@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
-
 import Rating from "./Rating";
 import Container from "./primitive/Container";
 import Image from "./primitive/Image";
@@ -17,8 +16,8 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    data && (
-      <>
+    <>
+      {data && (
         <Container as="header" className="hero-container">
           <Container className="hero-image-container" id={data.id}>
             <Image
@@ -55,8 +54,8 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
             </Link>
           </Container>
         </Container>
-      </>
-    )
+      )}
+    </>
   );
 };
 

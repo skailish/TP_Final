@@ -6,11 +6,13 @@ import Image from "./primitive/Image";
 import ImageContext from "../contexts/ImageContext";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
+import noPosterFound from "../images/404PosterNotFound.jpg"
 
 const Card = ({ id, src, title, votes, mediaType }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
+  
 
   const handleMediaDetailsClick = (id, mediaType) => {
     history.push(`/${mediaType}/${id}`);
@@ -22,10 +24,10 @@ const Card = ({ id, src, title, votes, mediaType }) => {
       key={id}
       as="article"
       className="media-card"
-      mediaType={mediaType}
+      mediatype={mediaType}
       onClick={() => handleMediaDetailsClick(id, mediaType)}
     >
-      <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
+      <Image src={src ? `${imageBaseUrl}${src}` : `${noPosterFound}`} className="media-card-img" />
       <Container className="media-card-heading-container">
         <Heading level={3} className={`media-card-heading ${theme} `}>
           {title}
