@@ -13,7 +13,7 @@ const Card = ({ id, src, title, votes, mediaType }) => {
   const { theme } = useContext(ThemeContext);
 
   const handleMediaDetailsClick = (id, mediaType) => {
-    history.push(`/${mediaType}/${id}`);
+    history.push(`/${mediaType}/${id}/info`);
   };
 
   return (

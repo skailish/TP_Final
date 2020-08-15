@@ -9,13 +9,12 @@ import Heading from "../../components/primitive/Heading";
 
 const Overview = (data) => {
   const { imageBaseUrl } = useContext(ImageContext);
-
   return (
-    data && (
+    data.data && (
       <Container className="main-container">
         <Container className="container-serie">
           <Container className="img-container-serie">
-            <Image src={`${imageBaseUrl}${data.data.poster_path}`}></Image>
+            <Image src={`${imageBaseUrl}${data.data.poster_path}`} />
           </Container>
           <Container className="info-container-serie">
             <Container className="title-serie">
@@ -23,9 +22,8 @@ const Overview = (data) => {
               <Text>{data.data.overview}</Text>
             </Container>
             <Container className="container-details-serie">
-              {/* {data.data.genres.map((genre) => (
-                <li>{genre.name}</li>
-              ))} */}
+              {data.data.genres &&
+                data.data.genres.map((genre) => <li>{genre.name}</li>)}
             </Container>
           </Container>
         </Container>

@@ -37,7 +37,7 @@ const TVShow = () => {
       setVoteAverage(dataJson.vote_average);
     };
     getTVShowID();
-  }, []);
+  }, [TVId]);
 
   useEffect(() => {
     // const pageRandom = Math.floor(Math.random() * 100) + 1;
@@ -49,7 +49,7 @@ const TVShow = () => {
       setSimilarShows(dataJson.results);
     };
     getSimilarShows();
-  }, []);
+  }, [TVId]);
 
   return (
     dataTVShowID && (
