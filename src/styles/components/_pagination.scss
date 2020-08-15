@@ -11,7 +11,7 @@
         
         &.light {
             transition: 0.3s ease-in;
-            color: $text-lightmode-color;
+            color: $main-text-lightmode;
         
         }
     }
@@ -24,16 +24,16 @@
         align-items: center;
         margin: 40px 20px 0 0;
         border-radius: 10px;
-        background-color: $button-background-color;
-        color: $button-text-color;
+        background-color: $secondary-color-darkmode;
+        color: $main-text-darkmode;
         font-size: 1em;
         letter-spacing: 1px;
         font-weight: 700;
         transition: 0.3s ease-in;
 
         &.light {
-            background-color: $button-light;
-            color: $text-lightmode-color;
+            background-color: $third-color-lightmode;
+            color: $main-text-lightmode;
             transition: 0.3s ease-in;
         }
     }

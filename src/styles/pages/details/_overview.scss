@@ -1,0 +1,18 @@
+.container-serie {
+  display: flex;
+  flex-direction: row;
+
+  .img-container-serie {
+    width: 22%;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info-container-serie {
+    width: 50%;
+    margin: 0 20px 0 64px;
+  }
+}

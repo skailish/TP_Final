@@ -23,7 +23,7 @@
       padding: 10px 0;
 
       &.light {
-        color: $icon-light-mode;
+        color: $main-text-lightmode;
       }
     }
   }
@@ -32,7 +32,7 @@
     @include flex(row, flex-start, center);
 
     &.light {
-      color: $icon-light-mode;
+      color: $main-text-lightmode;
     }
   }
 }

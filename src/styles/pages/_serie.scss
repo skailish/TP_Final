@@ -1,0 +1,24 @@
+.nav-tvShow {
+  @include flex(flex, space-evenly, center);
+  width: 50%;
+  padding-top: 20px;
+  margin: 15px 0 39px 0;
+
+  .navlink {
+    color: $text-details-color;
+    text-decoration: none;
+    font-size: 22px;
+    transition: 0.2s;
+    padding-bottom: 9px;
+    font-weight: 600;
+
+    &:hover {
+      color: $button-text-color;
+    }
+
+    &.selected {
+      color: $button-text-color;
+      border-bottom: 2px solid $button-text-color;
+    }
+  }
+}

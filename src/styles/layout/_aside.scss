@@ -11,7 +11,7 @@
   @include flex(column, space-between, center);
 
   &.light {
-    background-color: $background-aside-light;
+    background-color: $background-aside-lightmode;
     border-right: 1px solid #992e2e;
     transition: 0.3s;
   }

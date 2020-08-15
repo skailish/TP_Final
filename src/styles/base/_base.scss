@@ -18,12 +18,12 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px $background-darkmode-color;
+  box-shadow: inset 0 0 6px $background-darkmode;
 }
 
 body::-webkit-scrollbar-thumb {
   border-radius: 6px;
-  background: $icon-light-mode;
+  background: $main-text-lightmode;
   height: 30px;
 }
 
@@ -46,7 +46,7 @@ h5 {
   transition: 0.3s ease-in;
 
   .light {
-    background-color: background-lightmode-color;
+    background-color: background-lightmode;
     transition: 0.3s ease-in;
   }
 }

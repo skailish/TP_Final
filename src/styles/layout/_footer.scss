@@ -4,11 +4,11 @@
   position: relative;
   left: 100px;
   width: calc(100% - 100px);
-  background-color: #151E23;
+  background-color: $background-footer-darkmode;
   transition: 0.3s ease-in;
 
   &.light {
-    background-color: #868789;
+    background-color: $background-footer-lightmode;
     transition: 0.3s ease-in;
   }
 
@@ -16,7 +16,7 @@
     width: calc(100% - 100px);
     padding: 25px 0 0 25px;
     @include flex(column, space-evenly, center);
-    color: $text-details-color;
+    color: $third-text-color;
     text-align: center;
 
     & p {
@@ -27,25 +27,25 @@
       cursor: pointer;
       transition: 0.3s;
       text-decoration: none;
-      color: $button-hover-background;
+      color: $third-color-darkmode;
 
       &.light {
-        color: $button-light;
+        color: $third-color-lightmode;
 
 
         &:hover {
-          color: $icon-light-selected;
+          color: $secondary-color-lightmode;
         }
       }
 
       &:hover {
-        color: $button-background-color;
+        color: $secondary-color-darkmode;
         transition: 0.3s;
       }
     }
 
     &.light {
-      color: $text-lightmode-color;
+      color: $main-text-lightmode;
     }
 
 
@@ -60,14 +60,14 @@
       @include flex(column-reverse, space-evenly, center);
 
       .footer-heading {
-        color: $text-details-color;
+        color: $third-text-color;
         font-size: 15px;
         font-weight: 400;
         padding-bottom: 5px;
 
 
         &.light {
-          color: $text-lightmode-color;
+          color: $main-text-lightmode;
         }
 
       }

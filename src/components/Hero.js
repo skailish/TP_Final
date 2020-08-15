@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 import Rating from "./Rating";
 import Container from "./primitive/Container";
@@ -8,15 +9,12 @@ import Image from "./primitive/Image";
 import Heading from "./primitive/Heading";
 import Text from "./primitive/Text";
 import Span from "./primitive/Span";
+import { PlayCircle } from "@styled-icons/feather/PlayCircle";
 import Button from "./primitive/Button";
 
 const Hero = ({ data, year, voteAverage, mediaType }) => {
   const { imageBaseUrl } = useContext(ImageContext);
-  const history = useHistory();
-
-  const handleGoToClick = (mediaType, id) => {
-    history.push(`/${mediaType}/${id}`);
-  };
+  const { theme } = useContext(ThemeContext);
 
   return (
     data && (
@@ -49,9 +47,12 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
 
             <Text className="hero-description">{data.overview}</Text>
 
-            <Button onClick={() => handleGoToClick(data.media_type, data.id)}>
-              See details
-            </Button>
+            <Link to={`/video/${mediaType}/${data.id}`}>
+              <Button className={`button hero-button ${theme}`}>
+                <PlayCircle className="play-icon" />
+                <Text>Watch Video</Text>
+              </Button>
+            </Link>
           </Container>
         </Container>
       </>
