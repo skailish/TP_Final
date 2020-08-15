@@ -8,7 +8,7 @@ import img from "../images/Error.png";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Trailer = () => {
-  const [url, setUrl] = useState(0);
+  const [url, setUrl] = useState([]);
   const { media, id } = useParams();
   const { theme } = useContext(ThemeContext);
 
@@ -19,25 +19,19 @@ const Trailer = () => {
       );
       const dataJson = await response.json();
 
-      const getKey = (arr) => {
-        for (const i of arr) {
-          if (i.type === "Trailer") {
-            const key = i.key;
-            return key;
-          }
-        }
-      };
-      setUrl(getKey(dataJson.results));
+      const getKey = dataJson.results.filter((i) => i.type === "Trailer");
+
+      setUrl(getKey);
     };
     getVideo();
   }, []);
 
-  return url !== undefined ? (
+  return url.length !== 0 && url !== undefined ? (
     <Container className="main-trailer-container">
-      {console.log(url)}
+      {console.log(url[0].key)}
       <Container className="player-container">
         <ReactPlayer
-          url={`https://www.youtube.com/watch?v=${url}`}
+          url={`https://www.youtube.com/watch?v=${url[0].key}`}
           width="100%"
           height="100%"
           controls
