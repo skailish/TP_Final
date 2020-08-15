@@ -23,7 +23,7 @@ const Card = ({ id, src, title, votes, mediatype }) => {
       key={id}
       as="article"
       className="media-card"
-      mediaType={mediaType}
+      mediatype={mediatype}
 
     >
       <div onClick={() => handleMediaDetailsClick(id, mediatype)}>
