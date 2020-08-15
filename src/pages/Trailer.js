@@ -25,11 +25,13 @@ const Trailer = () => {
   const [url, setUrl] = useState(0);
   const { media, id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(true);
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const getVideo = async () => {
       setIsLoading(true);
+      setIsError(false);
 
       const response = await fetch(
         `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
@@ -45,6 +47,9 @@ const Trailer = () => {
         }
       };
       setUrl(getKey(dataJson.results));
+      console.log(getKey(dataJson.results));
+      console.log(getKey(dataJson.results) === undefined);
+      setIsError(getKey(dataJson.results) === undefined);
       setIsLoading(false);
     };
     getVideo();
@@ -52,7 +57,7 @@ const Trailer = () => {
 
   return (
     <>
-      {isLoading && (
+      {isLoading && !url && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
@@ -61,29 +66,29 @@ const Trailer = () => {
           )}
         </Container>
       )}
-      <Container>
-        {!isLoading && url !== undefined ? (
-          <Container className={`main-trailer-container ${theme}`}>
-            <Container className="player-container">
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${url}`}
-                width="100%"
-                height="100%"
-                controls
-                onReady
-                volume="0.5"
-              />
-            </Container>
+      {!isLoading && isError && (
+        <Container className={`main-error-container ${theme}`}>
+          <Image src={img} className="error-img" />
+          <Heading classname={`error-trailer-heading ${theme}`} level={1}>
+            ...Ups this {media} doesn´t have a trailer
+          </Heading>
+        </Container>
+      )}
+        {!isLoading && !isError && (
+        <Container className={`main-trailer-container ${theme}`}>
+          {console.log(url)}
+          <Container className="player-container">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${url}`}
+              width="100%"
+              height="100%"
+              controls
+              onReady
+              volume="0.5"
+            />
           </Container>
-        ) : (
-          <Container className={`main-error-container ${theme}`}>
-            <Image src={img} className="error-img" />
-            <Heading classname={`error-trailer-heading ${theme}`} level={1}>
-              ...Ups this {media} doesn´t have a trailer
-            </Heading>
-          </Container>
-        )}
-      </Container>
+        </Container>
+      )}
     </>
   );
 };
