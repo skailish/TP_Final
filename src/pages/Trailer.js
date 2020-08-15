@@ -47,8 +47,6 @@ const Trailer = () => {
         }
       };
       setUrl(getKey(dataJson.results));
-      console.log(getKey(dataJson.results));
-      console.log(getKey(dataJson.results) === undefined);
       setIsError(getKey(dataJson.results) === undefined);
       setIsLoading(false);
     };
@@ -69,14 +67,13 @@ const Trailer = () => {
       {!isLoading && isError && (
         <Container className={`main-error-container ${theme}`}>
           <Image src={img} className="error-img" />
-          <Heading classname={`error-trailer-heading ${theme}`} level={1}>
-            ...Ups this {media} doesn´t have a trailer
+          <Heading classname={`${theme}`} id="error-trailer-heading" level={1}>
+            ...Ups, this {media === "movie" ? media : "TV show"} doesn´t have a trailer.
           </Heading>
         </Container>
       )}
         {!isLoading && !isError && (
         <Container className={`main-trailer-container ${theme}`}>
-          {console.log(url)}
           <Container className="player-container">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${url}`}

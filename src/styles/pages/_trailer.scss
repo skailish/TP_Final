@@ -18,7 +18,7 @@
 }
 
 .main-error-container {
-  height: 90%;
+  height: 100%;
   line-height: 120px;
   min-height: calc(100vh - 200px);
 
@@ -26,13 +26,15 @@
     width: 500px;
     border-radius: 10px;
   }
-  .error-trailer-heading {
-    font-weight: normal !important;
-  }
+ 
   &.light {
     color: $main-text-lightmode;
   }
   &.light {
     background-color: $background-lightmode;
   }
+}
+
+#error-trailer-heading {
+  font-weight: normal;
 }
