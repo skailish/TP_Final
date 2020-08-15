@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination";
 import PaginationContext from "../../contexts/PaginationContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const overrideDark = css`
   & div {
@@ -52,12 +53,13 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
-          )}
+              <BounceLoader css={overrideLight} size="100" />
+            )}
         </Container>
       )}
       {!isLoading && (
         <Container className={`category-pagination-container ${theme}`}>
+          <ScrollToTop />
           <Container className={`main-category-container ${theme}`}>
             <Container className="category-title-container">
               <Heading className={`category-heading ${theme} `} level={1}>

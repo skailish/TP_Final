@@ -6,6 +6,7 @@ import Container from "../components/primitive/Container";
 import ThemeContext from "../contexts/ThemeContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollToTop from "../components/ScrollToTop";
 
 const overrideDark = css`
   & div {
@@ -60,6 +61,7 @@ const TVSeries = () => {
         year)
         && (
           <Container className="main-container">
+            <ScrollToTop />
             <Hero
               data={dataTvShowRandom}
               year={year}

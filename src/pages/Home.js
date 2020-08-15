@@ -8,6 +8,7 @@ import TvShowContext from "../contexts/TvShowContext";
 import ThemeContext from "../contexts/ThemeContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollToTop from "../components/ScrollToTop";
 
 const overrideDark = css`
   & div {
@@ -44,6 +45,7 @@ const Home = () => {
       )}
       {!isLoading && !isLoadingMovie && !isLoadingTvShow && data && (
         <Container className="main-container">
+          <ScrollToTop />
           <Hero
             data={data}
             year={year}
