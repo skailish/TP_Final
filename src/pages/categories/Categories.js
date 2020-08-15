@@ -75,7 +75,7 @@ const Categories = () => {
                 }
                 votes={singleCard.vote_average}
                 key={singleCard.id}
-                mediaType={media}
+                mediatype={media}
               />
             ))}
           </Container>

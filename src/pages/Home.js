@@ -37,9 +37,9 @@ const Home = () => {
       {(isLoading || isLoadingMovie || isLoadingTvShow) && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100" />
+            <BounceLoader css={overrideDark} size="100px" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
+            <BounceLoader css={overrideLight} size="100px" />
           )}
         </Container>
       )}
@@ -49,17 +49,17 @@ const Home = () => {
           data={data}
           year={year}
           voteAverage={voteAverage}
-          mediaType={mediaType}
+          mediatype={mediaType}
           // onLoading={isLoading}
         />
         <CardListPreview
-          mediaType="movie"
+          mediatype="movie"
           data={dataMovie}
           sectionTitle="Trending Movies"
           category="popular"
         />
         <CardListPreview
-          mediaType="tv"
+          mediatype="tv"
           data={dataTvShow}
           sectionTitle="Trending TV Shows"
           category="popular"

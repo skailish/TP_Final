@@ -39,43 +39,42 @@ const Movies = () => {
       {isLoadingMovie && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100" />
+            <BounceLoader css={overrideDark} size="100px" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
+            <BounceLoader css={overrideLight} size="100px" />
           )}
         </Container>
       )}
       {!isLoadingMovie && (
         <Container className="main-container">
-          {console.log(dataMovieTop)}
           <Hero
             data={dataMovieRandom}
             year={yearMovie}
             voteAverage={voteAverageMovie}
-            mediaType="movie"
+            mediatype="movie"
           />
 
           {/* <Container className={`container-details-movie ${theme}`}></Container> */}
           <CardListPreview
-            mediaType="movie"
+            mediatype="movie"
             data={dataMovie}
             sectionTitle="Trending Movies"
             category="popular"
           />
           <CardListPreview
-            mediaType="movie"
+            mediatype="movie"
             data={dataMovieTop}
             sectionTitle="Top Rated Movies"
             category="top_rated"
           />
           <CardListPreview
-            mediaType="movie"
+            mediatype="movie"
             data={dataMovieUpcoming}
             sectionTitle="Upcoming Movies"
             category="upcoming"
           />
           <CardListPreview
-            mediaType="movie"
+            mediatype="movie"
             data={dataNowPlaying}
             sectionTitle="Now Playing Movies"
             category="now_playing"

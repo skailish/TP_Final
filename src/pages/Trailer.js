@@ -58,9 +58,9 @@ const Trailer = () => {
       {isLoading && !url && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100" />
+            <BounceLoader css={overrideDark} size="100px" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
+            <BounceLoader css={overrideLight} size="100px" />
           )}
         </Container>
       )}

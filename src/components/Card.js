@@ -24,7 +24,7 @@ const Card = ({ id, src, title, votes, mediaType }) => {
       key={id}
       as="article"
       className="media-card"
-      mediaType={mediaType}
+      mediatype={mediaType}
       onClick={() => handleMediaDetailsClick(id, mediaType)}
     >
       <Image src={src ? `${imageBaseUrl}${src}` : `${noPosterFound}`} className="media-card-img" />
