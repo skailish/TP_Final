@@ -2,9 +2,6 @@
   min-height: calc(100vh - 200px);
   @include flex(row, center, center);
 
-  & > div {
-    
-  }
   &.light {
     background-color: $background-lightmode;
 

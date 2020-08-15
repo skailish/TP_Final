@@ -3,8 +3,24 @@ import TvShowContext from "../contexts/TvShowContext";
 import CardListPreview from "../components/CardListPreview";
 import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
+import ThemeContext from "../contexts/ThemeContext";
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
+const overrideDark = css`
+  & div {
+    background-color: #3fbac2;
+  }
+`;
+
+const overrideLight = css`
+  & div {
+    background-color: #992e2e;
+  }
+`;
 
 const TVSeries = () => {
+  const { theme } = useContext(ThemeContext);
   const {
     dataTodayTv,
     dataCurrentTv,
@@ -13,9 +29,20 @@ const TVSeries = () => {
     dataTvShow,
     voteAverage,
     year,
+    isLoadingTvShow
   } = useContext(TvShowContext);
   return (
-    dataTvShow && (
+    <>
+       {isLoadingTvShow && (
+        <Container className={`onLoading-Container ${theme}`}>
+          {theme === "dark" ? (
+            <BounceLoader css={overrideDark} size="100" />
+          ) : (
+            <BounceLoader css={overrideLight} size="100" />
+          )}
+        </Container>
+      )}
+    {!isLoadingTvShow && (
       <Container className="main-container">
         <Hero
           data={dataTvShowRandom}
@@ -49,7 +76,8 @@ const TVSeries = () => {
           category="airing_today"
         />
       </Container>
-    )
+    )}
+    </>
   );
 };
 

@@ -63,8 +63,7 @@ const Trailer = () => {
       )}
       <Container>
         {!isLoading && url !== undefined ? (
-          <Container className="main-trailer-container">
-            {console.log(url)}
+          <Container className={`main-trailer-container ${theme}`}>
             <Container className="player-container">
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${url}`}

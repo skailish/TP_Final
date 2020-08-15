@@ -3,7 +3,14 @@
   margin-left: 100px;
   width: calc(100vw - 100px);
   height: 700px;
+  transform: 0.3s ease-in;
   @include flex(column, center, center);
+
+  &.light {
+    background-color: $background-lightmode;
+    transform: 0.3s ease-in;
+  }
+
   .player-container {
     width: 70%;
     height: 80%;
