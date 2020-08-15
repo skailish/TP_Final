@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useParams } from "react-router-dom";
+import ImageContext from "../../contexts/ImageContext";
 
 import Container from "../../components/primitive/Container";
 import Image from "../../components/primitive/Image";
+import Text from "../../components/primitive/Text";
+import Heading from "../../components/primitive/Heading";
 
-const Overview = () => {
+const Overview = (data) => {
+  const { imageBaseUrl } = useContext(ImageContext);
+  console.log(data);
   return (
-    <Container className="main-container">
-      <Container className="img-container-serie"></Container>
-      <Container className="info-container-serie"></Container>
-    </Container>
+    data && (
+      <Container className="main-container">
+        <Container className="container-serie">
+          <Container className="img-container-serie">
+            <Image src={`${imageBaseUrl}${data.data.poster_path}`}></Image>
+          </Container>
+          <Container className="info-container-serie">
+            <Container className="title-serie">
+              <Heading level={3}>Storyline</Heading>
+              <Text>{data.data.overview}</Text>
+            </Container>
+            <Container className="container-details-serie">
+              {/* {data.data.genres.map((genre) => (
+                <li>{genre.name}</li>
+              ))} */}
+            </Container>
+          </Container>
+        </Container>
+      </Container>
+    )
   );
 };
 

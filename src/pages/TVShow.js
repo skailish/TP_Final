@@ -10,6 +10,7 @@ import {
 import Container from "../components/primitive/Container";
 import Hero from "../components/Hero";
 import CardListPreview from "../components/CardListPreview";
+import Nav from "../components/primitive/Nav";
 
 import Overview from "./details/Overview";
 
@@ -20,7 +21,7 @@ const TVShow = () => {
   const [similarShows, setSimilarShows] = useState([]);
 
   const { TVId } = useParams();
-  const { path } = useRouteMatch();
+  const { path, url } = useRouteMatch();
 
   useEffect(() => {
     const getTVShowID = async () => {
@@ -56,19 +57,43 @@ const TVShow = () => {
           voteAverage={voteAverage}
           mediaType="tv"
         ></Hero>
+        <Nav className="nav-tvShow">
+          <NavLink
+            to={`${url}/info`}
+            className="navlink"
+            activeClassName="selected"
+          >
+            OVERVIEW
+          </NavLink>
+          <NavLink
+            to={`${url}/season/seasonNumber`}
+            className="navlink"
+            activeClassName="selected"
+          >
+            EPISODES
+          </NavLink>
+          <NavLink
+            to={`${url}/similar`}
+            className="navlink"
+            activeClassName="selected"
+          >
+            SIMILAR
+          </NavLink>
+        </Nav>
+        <Switch>
+          <Route path={`${path}/info`}>
+            <Overview data={dataTVShowID} />
+          </Route>
+          <Route path={`${path}/season/seasonNumber`}></Route>
+          <Route path={`${path}/similar`}></Route>
+        </Switch>
+
         <CardListPreview
           mediaType="tv"
           data={similarShows}
           sectionTitle="More Like This"
           category="similar"
         ></CardListPreview>
-
-        <Switch>
-          <Route path={`/${path}/:TVId/info`}>
-            <Overview />
-          </Route>
-          <Route path={`/tv/:TVId`}></Route>
-        </Switch>
       </Container>
     )
   );

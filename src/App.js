@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/tv">
             <TVSeries />
           </Route>
-          <Route exact path="/tv/:TVId">
+          <Route path="/tv/:TVId">
             <TVShow />
           </Route>
           <Route exact path="/:media/category/:category">
