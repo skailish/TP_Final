@@ -10,7 +10,7 @@ import Span from "./primitive/Span";
 import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
 
-const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
+const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   // const history = useHistory();
   const { theme } = useContext(ThemeContext);
 
@@ -25,9 +25,9 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
             {sectionTitle}
           </Heading>
-          
+
           <Link
-            to={`${mediaType}/category/${category}`}
+            to={`${mediatype}/category/${category}`}
             className={`cardlistpreview-link ${theme}`}
           >
             Explore All
@@ -45,14 +45,10 @@ const CardListPreview = ({ mediaType, data, sectionTitle, category }) => {
               <Card
                 id={singleCard.id}
                 src={singleCard.poster_path}
-                title={
-                  mediaType === "tv"
-                    ? singleCard.name
-                    : singleCard.title
-                }
+                title={mediatype === "tv" ? singleCard.name : singleCard.title}
                 votes={singleCard.vote_average}
                 key={singleCard.id}
-                mediaType={mediaType}
+                mediatype={mediatype}
               />
             ))}
         </Container>
