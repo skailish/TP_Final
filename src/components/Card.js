@@ -23,14 +23,17 @@ const Card = ({ id, src, title, votes, mediaType }) => {
       as="article"
       className="media-card"
       mediaType={mediaType}
-      onClick={() => handleMediaDetailsClick(id, mediaType)}
+
     >
-      <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
-      <Container className="media-card-heading-container">
-        <Heading level={3} className={`media-card-heading ${theme} `}>
-          {title}
-        </Heading>
-      </Container>
+      <div onClick={() => handleMediaDetailsClick(id, mediaType)}>
+
+        <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
+        <Container className="media-card-heading-container">
+          <Heading level={3} className={`media-card-heading ${theme} `}>
+            {title}
+          </Heading>
+        </Container>
+      </div>
 
       <Votes
         voteAverage={votes}
