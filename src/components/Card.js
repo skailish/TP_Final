@@ -28,7 +28,7 @@ const Card = ({ id, src, title, votes, mediatype }) => {
     >
       <div onClick={() => handleMediaDetailsClick(id, mediatype)}>
 
-        <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
+        <Image src={src ? `${imageBaseUrl}${src}` : noPosterFound} className="media-card-img" />
         <Container className="media-card-heading-container">
           <Heading level={3} className={`media-card-heading ${theme} `}>
             {title}
