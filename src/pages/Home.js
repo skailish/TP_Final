@@ -11,7 +11,7 @@ const Home = () => {
 
   // setCategory("popular");
 
-  const { data, year, voteAverage, mediaType } = useContext(DataContext);
+  const { data, year, voteAverage, mediaType, onLoading } = useContext(DataContext);
   const { dataMovie } = useContext(MovieContext);
   const { dataTvShow } = useContext(TvShowContext);
 
@@ -22,6 +22,7 @@ const Home = () => {
         year={year}
         voteAverage={voteAverage}
         mediaType={mediaType}
+        onLoading={onLoading}
       />
       <CardListPreview
         mediaType="movie"

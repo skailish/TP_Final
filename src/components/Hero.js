@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
-
 import Rating from "./Rating";
 import Container from "./primitive/Container";
 import Image from "./primitive/Image";
@@ -11,14 +10,39 @@ import Text from "./primitive/Text";
 import Span from "./primitive/Span";
 import { PlayCircle } from "@styled-icons/feather/PlayCircle";
 import Button from "./primitive/Button";
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
-const Hero = ({ data, year, voteAverage, mediaType }) => {
+const overrideDark = css`
+  & div {
+    background-color: #3fbac2;
+  }
+`;
+
+const overrideLight = css`
+  & div {
+    background-color: #992e2e;
+  }
+`;
+
+
+const Hero = ({ data, year, voteAverage, mediaType, isLoading }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
 
-  return (
-    data && (
-      <>
+
+  return (<>
+    {isLoading && (
+        <Container className={`onLoading-Container ${theme}`}>
+          {theme === "dark" ? (
+            <BounceLoader css={overrideDark} size="100" />
+          ) : (
+            <BounceLoader css={overrideLight} size="100" />
+          )}
+        </Container>
+      )}
+    
+    {!isLoading && (
         <Container as="header" className="hero-container">
           <Container className="hero-image-container" id={data.id}>
             <Image
@@ -54,10 +78,9 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
               </Button>
             </Link>
           </Container>
-        </Container>
+        </Container>)}
       </>
-    )
-  );
+    );
 };
 
 export default Hero;
