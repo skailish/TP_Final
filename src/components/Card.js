@@ -6,6 +6,7 @@ import Image from "./primitive/Image";
 import ImageContext from "../contexts/ImageContext";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
+import Tooltip from "./Tooltip";
 
 const Card = ({ id, src, title, votes, mediaType }) => {
   const { imageBaseUrl } = useContext(ImageContext);
@@ -29,17 +30,21 @@ const Card = ({ id, src, title, votes, mediaType }) => {
 
         <Image src={`${imageBaseUrl}${src}`} className="media-card-img" />
         <Container className="media-card-heading-container">
-          <Heading level={3} className={`media-card-heading ${theme} `}>
-            {title}
-          </Heading>
+          <Tooltip title={"Click for more information on this show"}>
+            <Heading level={3} className={`media-card-heading ${theme} `}>
+              {title}
+            </Heading>
+          </Tooltip>
         </Container>
       </div>
+      <Tooltip title={"Rate this show"}>
+        <Votes
+          voteAverage={votes}
+          voteNumber={votes}
+          className={`media-card-rating ${theme} `}
+        />
+      </Tooltip>
 
-      <Votes
-        voteAverage={votes}
-        voteNumber={votes}
-        className={`media-card-rating ${theme} `}
-      />
     </Container>
   );
 };

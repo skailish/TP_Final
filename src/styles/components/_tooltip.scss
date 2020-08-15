@@ -1,0 +1,27 @@
+.tooltip {
+  position: absolute;
+  width: fit-content;
+  font-size: small;
+  height: 10px;
+  min-width: 40px;
+  padding: 10px;
+  border-radius: 2px;
+  margin: 15px 15px;
+  z-index: 9999; // porque si no quedaba abajo de algunos elementos
+  transition: 0.2s ease-in all;
+  opacity: 0;
+  @include flex(column, center, center);
+
+  &.appear {
+    opacity: 1;
+  }
+
+  &.light {
+    color: $main-text-lightmode;
+    background-color: $secondary-color-lightmode + 79;
+  }
+  &.dark {
+    color: $main-text-darkmode;
+    background-color: $secondary-color-darkmode + 79;
+  }
+}
