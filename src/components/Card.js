@@ -6,16 +6,15 @@ import Image from "./primitive/Image";
 import ImageContext from "../contexts/ImageContext";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
-import noPosterFound from "../images/404PosterNotFound.jpg"
+import noPosterFound from "../images/404PosterNotFound.jpg";
 
-const Card = ({ id, src, title, votes, mediaType }) => {
+const Card = ({ id, src, title, votes, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
-  
 
-  const handleMediaDetailsClick = (id, mediaType) => {
-    history.push(`/${mediaType}/${id}`);
+  const handleMediaDetailsClick = (id, mediatype) => {
+    history.push(`/${mediatype}/${id}`);
   };
 
   return (

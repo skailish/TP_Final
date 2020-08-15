@@ -26,7 +26,7 @@ const Home = () => {
 
   // setCategory("popular");
   const { theme } = useContext(ThemeContext);
-  const { data, year, voteAverage, mediaType, isLoading } = useContext(
+  const { data, year, voteAverage, mediatype, isLoading } = useContext(
     DataContext
   );
   const { dataMovie, isLoadingMovie } = useContext(MovieContext);
@@ -43,28 +43,29 @@ const Home = () => {
           )}
         </Container>
       )}
-      {(!isLoading && !isLoadingMovie && !isLoadingTvShow) &&
-      <Container className="main-container">
-        <Hero
-          data={data}
-          year={year}
-          voteAverage={voteAverage}
-          mediatype={mediaType}
-          // onLoading={isLoading}
-        />
-        <CardListPreview
-          mediatype="movie"
-          data={dataMovie}
-          sectionTitle="Trending Movies"
-          category="popular"
-        />
-        <CardListPreview
-          mediatype="tv"
-          data={dataTvShow}
-          sectionTitle="Trending TV Shows"
-          category="popular"
-        />
-      </Container>}
+      {!isLoading && !isLoadingMovie && !isLoadingTvShow && (
+        <Container className="main-container">
+          <Hero
+            data={data}
+            year={year}
+            voteAverage={voteAverage}
+            mediatype={mediatype}
+            // onLoading={isLoading}
+          />
+          <CardListPreview
+            mediatype="movie"
+            data={dataMovie}
+            sectionTitle="Trending Movies"
+            category="popular"
+          />
+          <CardListPreview
+            mediatype="tv"
+            data={dataTvShow}
+            sectionTitle="Trending TV Shows"
+            category="popular"
+          />
+        </Container>
+      )}
     </>
   );
 };
