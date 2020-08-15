@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Container from "./primitive/Container";
-import Rating from "./Rating";
+import Votes from "./Votes";
 import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
 import ImageContext from "../contexts/ImageContext";
@@ -32,7 +32,7 @@ const Card = ({ id, src, title, votes, mediaType }) => {
         </Heading>
       </Container>
 
-      <Rating
+      <Votes
         voteAverage={votes}
         voteNumber={votes}
         className={`media-card-rating ${theme} `}

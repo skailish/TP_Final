@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
 
-import Rating from "./Rating";
+import Votes from "./Votes";
 import Container from "./primitive/Container";
 import Image from "./primitive/Image";
 import Heading from "./primitive/Heading";
@@ -31,7 +31,7 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
             <Heading>{mediaType === "movie" ? data.title : data.name}</Heading>
 
             <Container className="hero-details-container">
-              <Rating voteAverage={voteAverage} />
+              <Votes voteAverage={voteAverage} />
               <Span className="hero-details">
                 <Text>{data.vote_count}</Text> <Text>Reviews</Text>
               </Span>
