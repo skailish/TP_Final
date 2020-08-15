@@ -3,7 +3,6 @@ import Container from "./primitive/Container";
 import Heading from "./primitive/Heading";
 import Link from "./primitive/Link";
 import Text from "./primitive/Text";
-import Tooltip from "./Tooltip";
 import { GithubSquare } from "@styled-icons/fa-brands/GithubSquare";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import ThemeContext from "../contexts/ThemeContext";
@@ -35,78 +34,78 @@ const Footer = () => {
           <Heading className={`footer-heading ${theme}`} level={3}>
             Daniela
           </Heading>
-          <Tooltip title="Get in touch with Daniela">
 
-            <Container className="footer-icons-container">
-              <Link target="_blank" href="https://gitlab.com/d-capponi">
-                <GithubSquare className={`footer-icon github-icon ${theme}`} />
-              </Link>
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/danielacapponi/"
-              >
-                <LinkedinSquare className={`footer-icon ${theme}`} />
-              </Link>
-            </Container>
-          </Tooltip>
+
+          <Container className="footer-icons-container">
+            <Link target="_blank" href="https://gitlab.com/d-capponi">
+              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/danielacapponi/"
+            >
+              <LinkedinSquare className={`footer-icon ${theme}`} />
+            </Link>
+          </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Luján
           </Heading>
-          <Tooltip title="Get in touch with Loohan">
 
-            <Container className="footer-icons-container">
-              <Link target="_blank" href="https://github.com/LoohanZero">
-                <GithubSquare className={`footer-icon github-icon ${theme}`} />
-              </Link>
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/luján-sanchez-6493ba70/"
-              >
-                <LinkedinSquare className={`footer-icon ${theme}`} />
-              </Link>
-            </Container>
-          </Tooltip>
+
+          <Container className="footer-icons-container">
+            <Link target="_blank" href="https://github.com/LoohanZero">
+              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/luján-sanchez-6493ba70/"
+            >
+              <LinkedinSquare className={`footer-icon ${theme}`} />
+            </Link>
+          </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Angie
           </Heading>
-          <Tooltip title="Get in touch with Angie">
 
-            <Container className="footer-icons-container">
-              <Link target="_blank" href="https://github.com/angieTu">
-                <GithubSquare className={`footer-icon github-icon ${theme}`} />
-              </Link>
-              <Link target="_blank" href="">
-                <LinkedinSquare
-                  className={`footer-icon ${theme}`}
-                  target="_blank"
-                  href=""
-                />
-              </Link>
-            </Container>
-          </Tooltip>
+
+          <Container className="footer-icons-container">
+            <Link target="_blank" href="https://github.com/angieTu">
+              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+            </Link>
+            <Link target="_blank" href="">
+              <LinkedinSquare
+                className={`footer-icon ${theme}`}
+                target="_blank"
+                href=""
+              />
+            </Link>
+          </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Josefina
           </Heading>
-          <Tooltip title="Get in touch with Jo">
 
-            <Container className="footer-icons-container">
-              <Link target="_blank" href="https://github.com/Jodelrey">
-                <GithubSquare className={`footer-icon github-icon ${theme}`} />
-              </Link>
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/josefina-del-rey/"
-              >
-                <LinkedinSquare className={`footer-icon ${theme}`} />
-              </Link>
-            </Container>
-          </Tooltip>
+
+          <Container className="footer-icons-container">
+            <Link target="_blank" href="https://github.com/Jodelrey">
+              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/josefina-del-rey/"
+            >
+              <LinkedinSquare className={`footer-icon ${theme}`} />
+            </Link>
+          </Container>
+
         </Container>
       </Container>
     </Container>

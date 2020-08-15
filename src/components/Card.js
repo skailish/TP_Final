@@ -6,7 +6,6 @@ import Image from "./primitive/Image";
 import ImageContext from "../contexts/ImageContext";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../contexts/ThemeContext";
-import Tooltip from "./Tooltip";
 import noPosterFound from "../images/404PosterNotFound.jpg";
 
 const Card = ({ id, src, title, votes, mediatype }) => {
@@ -31,20 +30,16 @@ const Card = ({ id, src, title, votes, mediatype }) => {
 
         <Image src={src ? `${imageBaseUrl}${src}` : noPosterFound} className="media-card-img" alt={`Image showing poster of "${title}"`} />
         <Container className="media-card-heading-container">
-          <Tooltip title={"Click for more information on this show"}>
-            <Heading level={3} className={`media-card-heading ${theme} `}>
-              {title}
-            </Heading>
-          </Tooltip>
+          <Heading level={3} className={`media-card-heading ${theme} `}>
+            {title}
+          </Heading>
         </Container>
       </div>
-      <Tooltip title={"Rate this show"}>
-        <Votes
-          voteAverage={votes}
-          voteNumber={votes}
-          className={`media-card-rating ${theme} `}
-        />
-      </Tooltip>
+      <Votes
+        voteAverage={votes}
+        voteNumber={votes}
+        className={`media-card-rating ${theme} `}
+      />
 
     </Container>
   );
