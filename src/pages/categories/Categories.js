@@ -71,7 +71,7 @@ const Categories = () => {
                 title={
                   media === "movie"
                     ? singleCard.title
-                    : singleCard.original_name
+                    : singleCard.name
                 }
                 votes={singleCard.vote_average}
                 key={singleCard.id}
