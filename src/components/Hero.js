@@ -11,7 +11,7 @@ import Span from "./primitive/Span";
 import { PlayCircle } from "@styled-icons/feather/PlayCircle";
 import Button from "./primitive/Button";
 
-const Hero = ({ data, year, voteAverage, mediaType }) => {
+const Hero = ({ data, year, voteAverage, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
 
@@ -27,7 +27,7 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
             />
           </Container>
           <Container className="hero-info">
-            <Heading>{mediaType === "movie" ? data.title : data.name}</Heading>
+            <Heading>{mediatype === "movie" ? data.title : data.name}</Heading>
 
             <Container className="hero-details-container">
               <Rating voteAverage={voteAverage} />
@@ -46,7 +46,7 @@ const Hero = ({ data, year, voteAverage, mediaType }) => {
 
             <Text className="hero-description">{data.overview}</Text>
 
-            <Link to={`/video/${mediaType}/${data.id}`}>
+            <Link to={`/video/${mediatype}/${data.id}`}>
               <Button className={`button hero-button ${theme}`}>
                 <PlayCircle className="play-icon" />
                 <Text>Watch Video</Text>
