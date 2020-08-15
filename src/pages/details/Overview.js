@@ -9,7 +9,7 @@ import Heading from "../../components/primitive/Heading";
 
 const Overview = (data) => {
   const { imageBaseUrl } = useContext(ImageContext);
-  console.log(data);
+
   return (
     data && (
       <Container className="main-container">

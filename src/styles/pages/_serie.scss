@@ -16,6 +16,10 @@
       color: $main-text-darkmode;
     }
 
+    // &.light {
+    //     background-color: ;
+    // }
+
     &.selected {
       color: $main-text-darkmode;
       border-bottom: 2px solid $main-text-darkmode;

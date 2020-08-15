@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   useParams,
   Route,
@@ -14,6 +14,8 @@ import Nav from "../components/primitive/Nav";
 
 import Overview from "./details/Overview";
 
+import ThemeContext from "../contexts/ThemeContext";
+
 const TVShow = () => {
   const [dataTVShowID, setDataTVShowID] = useState([]);
   const [year, setYear] = useState(0);
@@ -22,6 +24,7 @@ const TVShow = () => {
 
   const { TVId } = useParams();
   const { path, url } = useRouteMatch();
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const getTVShowID = async () => {
@@ -57,7 +60,7 @@ const TVShow = () => {
           voteAverage={voteAverage}
           mediaType="tv"
         ></Hero>
-        <Nav className="nav-tvShow">
+        <Nav className={`nav-tvShow ${theme}`}>
           <NavLink
             to={`${url}/info`}
             className="navlink"
