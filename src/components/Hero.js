@@ -44,7 +44,6 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
                 <Text>Popularity:</Text> <Text>{data.popularity}</Text>
               </Span>
             </Container>
-
             <Text className="hero-description">{data.overview}</Text>
 
             <Link to={`/video/${mediatype}/${data.id}`}>
