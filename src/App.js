@@ -8,6 +8,7 @@ import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import TVSeries from "./pages/TVSeries";
 import Categories from "./pages/categories/Categories";
+import TVShow from "./pages/TVShow";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/tv">
             <TVSeries />
+          </Route>
+          <Route exact path="/tv/:TVId">
+            <TVShow />
           </Route>
           <Route exact path="/:media/category/:category">
             <Categories />
