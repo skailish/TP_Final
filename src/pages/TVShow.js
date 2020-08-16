@@ -13,6 +13,8 @@ import CardListPreview from "../components/CardListPreview";
 import Nav from "../components/primitive/Nav";
 
 import Overview from "./details/Overview";
+import CategorySimilar from "./categories/CategorySimilar";
+import Episodes from "./details/Episodes";
 
 import ThemeContext from "../contexts/ThemeContext";
 
@@ -21,6 +23,7 @@ const TVShow = () => {
   const [year, setYear] = useState(0);
   const [voteAverage, setVoteAverage] = useState(0);
   const [similarShows, setSimilarShows] = useState([]);
+  const [seasons, setSeasons] = useState(0);
 
   const { TVId } = useParams();
   const { path, url } = useRouteMatch();
@@ -33,8 +36,9 @@ const TVShow = () => {
       );
       const dataJson = await response.json();
       setDataTVShowID(dataJson);
-      setYear(dataJson.first_air_date.split("-")[0]);
       setVoteAverage(dataJson.vote_average);
+      setYear(dataJson.first_air_date.split("-")[0]);
+      setSeasons(dataJson.seasons);
     };
     getTVShowID();
   }, [TVId]);
@@ -50,7 +54,7 @@ const TVShow = () => {
     };
     getSimilarShows();
   }, [TVId]);
-
+  console.log(dataTVShowID);
   return (
     dataTVShowID && (
       <Container className="main-container">
@@ -87,16 +91,13 @@ const TVShow = () => {
           <Route path={`${path}/info`}>
             <Overview data={dataTVShowID} />
           </Route>
-          <Route path={`${path}/season/seasonNumber`}></Route>
-          <Route path={`${path}/similar`}></Route>
+          <Route path={`${path}/season/:seasonNumber`}>
+            <Episodes seasons={seasons} id={dataTVShowID.id} />
+          </Route>
+          <Route path={`${path}/similar`}>
+            <CategorySimilar data={similarShows} mediaType="tv" />
+          </Route>
         </Switch>
-
-        <CardListPreview
-          mediaType="tv"
-          data={similarShows}
-          sectionTitle="More Like This"
-          category="similar"
-        ></CardListPreview>
       </Container>
     )
   );

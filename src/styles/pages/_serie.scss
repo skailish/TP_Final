@@ -1,8 +1,8 @@
 .nav-tvShow {
-  @include flex(flex, space-evenly, center);
+  @include flex(row, space-evenly, center);
   width: 50%;
   padding-top: 20px;
-  margin: 15px 0 39px 0;
+  margin-top: 15px;
 
   .navlink {
     color: $third-text-color;
@@ -23,6 +23,38 @@
     &.selected {
       color: $main-text-darkmode;
       border-bottom: 2px solid $main-text-darkmode;
+    }
+  }
+}
+
+.category-container {
+  @include flex(row, space-evenly, center);
+  width: calc(100vw - 100px);
+  flex-wrap: wrap;
+  position: relative;
+  padding-top: 80px;
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+    transition: 0.3s ease-in;
+  }
+
+  .category-title-container {
+    top: 45px;
+    left: 65px;
+    position: absolute;
+    text-transform: capitalize;
+
+    .category-heading {
+      font-weight: 300;
+
+      &.light {
+        color: $main-text-lightmode;
+      }
     }
   }
 }
