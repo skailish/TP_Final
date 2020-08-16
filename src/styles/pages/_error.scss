@@ -1,0 +1,51 @@
+.error-container {
+    min-height: calc(100vh - 100px);
+    @include flex(column, flex-start, center);
+    width: calc(100vw - 100px);
+    position: relative; 
+    left: 100px;
+
+    .error-background-container {
+        position: absolute;
+        width: 100%;
+        min-height: calc(100vh - 100px);
+        background-image: url(../../images/Upside-Down-S2.png);
+        background-position-y: center;
+        opacity: 0.9;
+    }
+
+    .error-heading-container {
+        position: absolute;
+        text-align: center;
+        padding-top: 65px;
+
+        .error-redirection-container {
+            margin-top: 55px;
+        }
+        .error-heading {
+            font-family: "ITC Benguiat";
+           font-size: 50px;
+           
+        }
+
+        .error-redirection {
+            font-family: "ITC Benguiat";
+            font-weight: normal;
+            font-size: 23px;
+            line-height: 35px;
+        
+        }
+
+        .error-link {
+            cursor: pointer;
+            color: $fourth-color-darkmode;
+            transition: 0.3s ease-in;
+
+            &:hover {
+                color: $third-color-darkmode;
+                transition: 0.3s ease-in;
+            }
+        }
+    }
+}
+
