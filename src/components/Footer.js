@@ -34,6 +34,8 @@ const Footer = () => {
           <Heading className={`footer-heading ${theme}`} level={3}>
             Daniela
           </Heading>
+
+
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://gitlab.com/d-capponi">
               <GithubSquare className={`footer-icon github-icon ${theme}`} />
@@ -45,11 +47,13 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Luján
           </Heading>
+
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/LoohanZero">
@@ -62,11 +66,14 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Angie
           </Heading>
+
+
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/angieTu">
               <GithubSquare className={`footer-icon github-icon ${theme}`} />
@@ -79,11 +86,14 @@ const Footer = () => {
               />
             </Link>
           </Container>
+
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Josefina
           </Heading>
+
+
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/Jodelrey">
               <GithubSquare className={`footer-icon github-icon ${theme}`} />
@@ -95,6 +105,7 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
+
         </Container>
       </Container>
     </Container>

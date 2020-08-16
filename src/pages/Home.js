@@ -8,6 +8,7 @@ import TvShowContext from "../contexts/TvShowContext";
 import ThemeContext from "../contexts/ThemeContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollToTop from "../components/ScrollToTop";
 
 const overrideDark = css`
   & div {
@@ -26,12 +27,11 @@ const Home = () => {
 
   // setCategory("popular");
   const { theme } = useContext(ThemeContext);
-  const { data, year, voteAverage, mediatype, isLoading } = useContext(
+  const { data, year, voteAverage, mediatype, isLoading, setIsLoading } = useContext(
     DataContext
   );
   const { dataMovie, isLoadingMovie } = useContext(MovieContext);
   const { dataTvShow, isLoadingTvShow } = useContext(TvShowContext);
-
   return (
     <>
       {(isLoading || isLoadingMovie || isLoadingTvShow) && (
@@ -39,18 +39,19 @@ const Home = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
           ) : (
-            <BounceLoader css={overrideLight} size="100px" />
-          )}
+              <BounceLoader css={overrideLight} size="100px" />
+            )}
         </Container>
       )}
-      {!isLoading && !isLoadingMovie && !isLoadingTvShow && (
+      {!isLoading && !isLoadingMovie && !isLoadingTvShow && data && (
         <Container className="main-container">
+          <ScrollToTop />
           <Hero
             data={data}
             year={year}
             voteAverage={voteAverage}
             mediatype={mediatype}
-            // onLoading={isLoading}
+          // onLoading={isLoading}
           />
           <CardListPreview
             mediatype="movie"

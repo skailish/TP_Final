@@ -6,6 +6,7 @@ import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollToTop from "../components/ScrollToTop";
 
 const overrideDark = css`
   & div {
@@ -36,51 +37,66 @@ const Movies = () => {
 
   return (
     <>
-      {isLoadingMovie && (
-        <Container className={`onLoading-Container ${theme}`}>
-          {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100px" />
-          ) : (
-            <BounceLoader css={overrideLight} size="100px" />
-          )}
-        </Container>
-      )}
-      {!isLoadingMovie && (
-        <Container className="main-container">
-          <Hero
-            data={dataMovieRandom}
-            year={yearMovie}
-            voteAverage={voteAverageMovie}
-            mediatype="movie"
-          />
+      {(isLoadingMovie ||
+        !dataMovieRandom ||
+        !yearMovie ||
+        !voteAverageMovie ||
+        !dataMovie ||
+        !dataMovieTop ||
+        !dataMovieUpcoming ||
+        !dataNowPlaying) && (
+          <Container className={`onLoading-Container ${theme}`}>
+            {theme === "dark" ? (
+              <BounceLoader css={overrideDark} size="100px" />
+            ) : (
+                <BounceLoader css={overrideLight} size="100px" />
+              )}
+          </Container>
+        )}
+      {(!isLoadingMovie &&
+        dataMovieRandom &&
+        yearMovie &&
+        voteAverageMovie &&
+        dataMovie &&
+        dataMovieTop &&
+        dataMovieUpcoming &&
+        dataNowPlaying) && (
+          <Container className="main-container">
+            <ScrollToTop />
+            <Hero
+              data={dataMovieRandom}
+              year={yearMovie}
+              voteAverage={voteAverageMovie}
+              mediatype="movie"
+            />
 
-          {/* <Container className={`container-details-movie ${theme}`}></Container> */}
-          <CardListPreview
-            mediatype="movie"
-            data={dataMovie}
-            sectionTitle="Trending Movies"
-            category="popular"
-          />
-          <CardListPreview
-            mediatype="movie"
-            data={dataMovieTop}
-            sectionTitle="Top Rated Movies"
-            category="top_rated"
-          />
-          <CardListPreview
-            mediatype="movie"
-            data={dataMovieUpcoming}
-            sectionTitle="Upcoming Movies"
-            category="upcoming"
-          />
-          <CardListPreview
-            mediatype="movie"
-            data={dataNowPlaying}
-            sectionTitle="Now Playing Movies"
-            category="now_playing"
-          />
-        </Container>
-      )}
+            {/* <Container className={`container-details-movie ${theme}`}></Container> */}
+            <CardListPreview
+              mediatype="movie"
+              data={dataMovie}
+              sectionTitle="Trending Movies"
+              category="popular"
+            />
+            <CardListPreview
+              mediatype="movie"
+              data={dataMovieTop}
+              sectionTitle="Top Rated Movies"
+              category="top_rated"
+            />
+            <CardListPreview
+              mediatype="movie"
+              data={dataMovieUpcoming}
+              sectionTitle="Upcoming Movies"
+              category="upcoming"
+            />
+            <CardListPreview
+              mediatype="movie"
+              data={dataNowPlaying}
+              sectionTitle="Now Playing Movies"
+              category="now_playing"
+            />
+          </Container>
+        )}
     </>
   );
 };
