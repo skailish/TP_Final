@@ -1,7 +1,14 @@
 .rating-stars {
-    @include flex(row, center, center);
+  @include flex(row, center, center);
+  width: 15px;
+  &.light {
+    color: $secondary-color-lightmode;
+  }
+  &.dark {
+    color: $secondary-color-darkmode;
+  }
 }
 
 .rating-number {
-    padding: 0 10px;
+  padding: 0 10px;
 }
