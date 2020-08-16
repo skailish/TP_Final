@@ -2,7 +2,7 @@
     min-height: calc(100vh - 100px);
     @include flex(column, flex-start, center);
     width: calc(100vw - 100px);
-    position: relative; 
+    position: relative;
     left: 100px;
 
     .error-background-container {
@@ -19,13 +19,16 @@
         text-align: center;
         padding-top: 65px;
 
-        .error-redirection-container {
-            margin-top: 55px;
-        }
+
+
         .error-heading {
             font-family: "ITC Benguiat";
-           font-size: 50px;
-           
+            font-size: 50px;
+
+        }
+
+        .error-redirection-container {
+            margin-top: 55px;
         }
 
         .error-redirection {
@@ -33,7 +36,7 @@
             font-weight: normal;
             font-size: 23px;
             line-height: 35px;
-        
+
         }
 
         .error-link {
@@ -49,3 +52,102 @@
     }
 }
 
+@keyframes StrangersFade {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes StrangersHeadingFade {
+    0% {
+        opacity: 1;
+    }
+
+    2% {
+        opacity: 0;
+    }
+
+    4% {
+        opacity: 1;
+    }
+    6% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+
+
+    50% {
+        opacity: 0;
+    }
+
+    52% {
+        opacity: 1;
+    }
+
+    54% {
+        opacity: 0;
+    }
+
+    56% {
+        opacity: 1;
+    }
+
+
+    94% {
+        opacity: 0;
+    }
+
+    96% {
+        opacity: 1;
+    }
+
+    98% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.error-heading {
+    animation-name: StrangersHeadingFade;
+    animation-duration: 2000ms;
+    animation-delay: 1200ms;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-in-out;
+}
+
+.error-redirection-container {
+    animation-name: StrangersFade;
+    animation-duration: 300ms;
+    animation-delay: 300ms;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-in-out;
+}
