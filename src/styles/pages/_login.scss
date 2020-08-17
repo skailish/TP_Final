@@ -1,0 +1,89 @@
+.form-container {
+  width: calc(100vw - 100px);
+  height: calc(100vh - 200px);
+  position: relative;
+  left: 100px;
+  transition: 0.3s ease-in;
+  @include flex(column, space-evenly, center);
+  .form-heading {
+    font-size: 40px;
+    font-weight: 400;
+    transition: 0.3s ease-in;
+
+    &.light {
+      transition: 0.3s ease-in;
+      color: $main-text-lightmode;
+    }
+  }
+  .form {
+    width: 80%;
+    height: 50%;
+    @include flex(column, space-between, center);
+
+    .form-label {
+      font-size: 20px;
+      width: 450px;
+      transition: 0.3s ease-in;
+
+      &.light {
+        transition: 0.3s ease-in;
+        color: $main-text-lightmode;
+      }
+
+      @include flex(row, space-between, center);
+
+      .form-input {
+        margin-left: 10px;
+        line-height: 25px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        width: 300px;
+        transition: 0.3s ease-in;
+        padding: 10px;
+        font-size: 15px;
+
+        &.light {
+          transition: 0.3s ease-in;
+          background-color: $main-text-lightmode;
+          color: $main-text-darkmode;
+        }
+      }
+    }
+  }
+  .form-text {
+    color: $main-text-darkmode;
+    font-size: 17px;
+    transition: 0.3s;
+
+    &.light {
+      transition: 0.3s;
+      color: $main-text-lightmode;
+    }
+  }
+
+  .form-link {
+    color: $third-color-darkmode;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &.light {
+      color: $secondary-color-lightmode;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      color: $secondary-color-darkmode;
+      transition: 0.3s;
+    }
+    &.light:hover {
+      color: $third-color-lightmode;
+      transition: 0.3s;
+    }
+  }
+
+  &.light {
+    transition: 0.3s ease-in;
+    background-color: $background-lightmode;
+  }
+}

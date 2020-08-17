@@ -8,10 +8,11 @@ import { LogIn } from "@styled-icons/ionicons-sharp/LogIn";
 import { LogOut } from "@styled-icons/ionicons-sharp/LogOut";
 import { LightbulbFlash as LightOn } from "@styled-icons/remix-fill/LightbulbFlash";
 import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFlash";
-import Tooltip from './Tooltip';
+import { Heart } from "@styled-icons/entypo/Heart";
+import Tooltip from "./Tooltip";
 import ThemeContext from "../contexts/ThemeContext";
 
-const Aside = () => {
+const Aside = ({ user }) => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
 
   return (
@@ -32,34 +33,44 @@ const Aside = () => {
             <TV className={`nav-icon ${theme}`} />
           </Tooltip>
         </NavLink>
+
         <Tooltip title="Search">
           <Search className={`nav-icon ${theme}`} />
         </Tooltip>
+        {user && (
+          <NavLink to="/favorites" exact activeClassName="selected">
+            <Tooltip title="Favorites">
+              <Heart className={`nav-icon ${theme}`} />
+            </Tooltip>
+          </NavLink>
+        )}
       </div>
       <div className="user-options">
-        <Tooltip title="Login">
-          <a>
-            <LogIn className={`nav-icon ${theme}`} />
-          </a>
-        </Tooltip>
-        <Tooltip title="Logout">
-          <a>
-            <LogOut className={`nav-icon ${theme}`} />
-          </a>
-        </Tooltip>
+        {!user ? (
+          <NavLink to="/login" exact activeClassName="selected">
+            <Tooltip title="Login">
+              <LogIn className={`nav-icon ${theme}`} />
+            </Tooltip>
+          </NavLink>
+        ) : (
+          <Tooltip title="Logout">
+            <a>
+              <LogOut className={`nav-icon ${theme}`} />
+            </a>
+          </Tooltip>
+        )}
         <Tooltip title="Change the theme">
-
           {theme === "dark" ? (
             <LightOn
               onClick={() => handleThemeClick(theme)}
               className={`nav-icon ${theme}`}
             />
           ) : (
-              <LightOff
-                onClick={() => handleThemeClick(theme)}
-                className={`nav-icon ${theme}`}
-              />
-            )}
+            <LightOff
+              onClick={() => handleThemeClick(theme)}
+              className={`nav-icon ${theme}`}
+            />
+          )}
         </Tooltip>
       </div>
     </aside>
