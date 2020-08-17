@@ -8,7 +8,7 @@ import Heading from "components/primitive/Heading";
 import Image from "components/primitive/Image";
 import Span from "components/primitive/Span";
 
-const CardEpisodes = (src, episode, title, overview, date) => {
+const CardEpisodes = ({ src, episode, title, overview, date }) => {
   const { imageBaseUrl } = useContext(ImageContext);
 
   return (

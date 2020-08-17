@@ -6,33 +6,51 @@ import Container from "../../components/primitive/Container";
 import Image from "../../components/primitive/Image";
 import Text from "../../components/primitive/Text";
 import Heading from "../../components/primitive/Heading";
+import Link from "../../components/primitive/Link";
 
-const Overview = (data) => {
+const Overview = ({ data, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
 
   return (
-    data.data && (
+    data &&
+    mediatype && (
       <Container className="main-container">
         <Container className="serie-container">
           <Container className="img-serie-container">
-            <Image src={`${imageBaseUrl}${data.data.poster_path}`} />
+            <Image src={`${imageBaseUrl}${data.poster_path}`} />
           </Container>
           <Container className="info-serie-container">
             <Container className="title-serie">
               <Heading level={3}>Storyline</Heading>
-              <Text>{data.data.overview}</Text>
+              <Text>{data.overview}</Text>
             </Container>
             <Container className="details-serie-container">
-              <Heading level={4}>Genres</Heading>
-              {data.data.genres &&
-                data.data.genres.map((genre) => <li>{genre.name}</li>)}
-              <Heading level={4}>
-                First Aired {data.data.first_air_date}
-              </Heading>
-              Seasons {data.data.number_of_seasons}
-              Episodes {data.data.number_of_episodes}
-              Last Aired {data.data.last_air_date}
-              Status {data.data.status}
+              <ul className="details-serie-list">
+                <ul className="list-item">Genres:</ul>
+                {data.genres &&
+                  data.genres.map((genre) => (
+                    <Link
+                      href={`/tv/category/${genre.name.toLowerCase()}`}
+                      className="list-item"
+                      key={genre.id}
+                    >
+                      {genre.name}
+                    </Link>
+                  ))}
+                <li className="list-item">
+                  First Aired: {data.first_air_date}
+                </li>
+
+                <li className="list-item">Seasons: {data.number_of_seasons}</li>
+
+                <li className="list-item">
+                  Episodes: {data.number_of_episodes}
+                </li>
+
+                <li className="list-item">Last Aired: {data.last_air_date}</li>
+
+                <li className="list-item">Status: {data.status}</li>
+              </ul>
             </Container>
           </Container>
         </Container>

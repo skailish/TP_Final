@@ -11,6 +11,7 @@ import Container from "../components/primitive/Container";
 import Hero from "../components/Hero";
 import CardListPreview from "../components/CardListPreview";
 import Nav from "../components/primitive/Nav";
+import ScrollToTop from "../components/ScrollToTop";
 
 import Overview from "./details/Overview";
 import CategorySimilar from "./categories/CategorySimilar";
@@ -54,10 +55,11 @@ const TVShow = () => {
     };
     getSimilarShows();
   }, [TVId]);
-  console.log(dataTVShowID);
+
   return (
     dataTVShowID && (
       <Container className="main-container">
+        <ScrollToTop />
         <Hero
           data={dataTVShowID}
           year={year}
@@ -89,13 +91,13 @@ const TVShow = () => {
         </Nav>
         <Switch>
           <Route path={`${path}/info`}>
-            <Overview data={dataTVShowID} />
+            <Overview data={dataTVShowID} mediatype="tv" />
           </Route>
           <Route path={`${path}/season/:seasonNumber`}>
             <Episodes seasons={seasons} id={dataTVShowID.id} />
           </Route>
           <Route path={`${path}/similar`}>
-            <CategorySimilar data={similarShows} mediaType="tv" />
+            <CategorySimilar data={similarShows} mediatype="tv" />
           </Route>
         </Switch>
       </Container>

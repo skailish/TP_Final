@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 import Heading from "../../components/primitive/Heading";
 import ThemeContext from "../../contexts/ThemeContext";
 
-const CategorySimilar = (data, mediaType) => {
+const CategorySimilar = (data, mediatype) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -12,7 +12,7 @@ const CategorySimilar = (data, mediaType) => {
       <Container className={`category-container ${theme}`}>
         <Container className="category-title-container">
           <Heading className={`category-heading ${theme} `} level={1}>
-            {mediaType === "movie" ? "Similar Movies" : "Similar Shows"}
+            {mediatype === "movie" ? "Similar Movies" : "Similar Shows"}
           </Heading>
         </Container>
         {data.data &&
@@ -21,13 +21,13 @@ const CategorySimilar = (data, mediaType) => {
               id={singleCard.id}
               src={singleCard.poster_path}
               title={
-                mediaType === "movie"
+                mediatype === "movie"
                   ? singleCard.title
                   : singleCard.original_name
               }
               votes={singleCard.vote_average}
               key={singleCard.id}
-              mediaType="tv"
+              mediatype="tv"
             />
           ))}
       </Container>
