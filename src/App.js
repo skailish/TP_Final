@@ -11,6 +11,7 @@ import Categories from "./pages/categories/Categories";
 import Trailer from "./pages/Trailer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const [user, setUser] = useState();
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <Signup user={user} />
+          </Route>
+          <Route>
+            <ErrorPage />
           </Route>
         </Switch>
       </Router>
