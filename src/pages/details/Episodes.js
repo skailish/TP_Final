@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/primitive/Container";
 import CardEpisodes from "pages/details/CardEpisodes";
+import Span from "../../components/primitive/Span";
 
 const Episodes = ({ seasons, id }) => {
   // const { TVId } = useParams();
@@ -10,7 +11,6 @@ const Episodes = ({ seasons, id }) => {
 
   useEffect(() => {
     const getEpisodes = async () => {
-      console.log(id);
       const response = await fetch(
         `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
       );
@@ -18,7 +18,6 @@ const Episodes = ({ seasons, id }) => {
       setEpisodes(dataJson.episodes);
     };
     getEpisodes();
-    console.log(episodes);
   }, [seasonNumber]);
 
   const handleChange = (event) => {
@@ -26,30 +25,39 @@ const Episodes = ({ seasons, id }) => {
     setSeasonNumber(newValue);
   };
 
+  const filterSeasons = (season) => season.name !== "Specials";
+  // const result = seasons.filter((season) => season.name !== "Specials");
+
   return (
     seasons &&
     id && (
-      <Container>
-        <select onChange={handleChange}>
+      <Container className="episodes-main-container">
+        <Container className="select-episodes-container">
+          <select onChange={handleChange}>
+            {seasons &&
+              seasons.filter(filterSeasons).map((season, index) => (
+                <option value={index + 1} key={season.id} id={season.id}>
+                  {season.name}
+                </option>
+              ))}
+          </select>
+          <Span>{seasons.length - 1} Seasons</Span>
+        </Container>
+
+        <Container className="cards-episodes-container">
           {seasons &&
-            seasons.map((season, index) => (
-              <option value={index} key={season.id} id={season.id}>
-                {season.name}
-              </option>
+            episodes &&
+            episodes.map((episode) => (
+              <CardEpisodes
+                key={episode.id}
+                src={episode.still_path}
+                episode={episode.episode_number}
+                title={episode.name}
+                overview={episode.overview}
+                date={episode.air_date}
+              ></CardEpisodes>
             ))}
-        </select>
-        {seasons &&
-          episodes &&
-          episodes.map((episode) => (
-            <CardEpisodes
-              key={episode.id}
-              src={episode.still_path}
-              episode={episode.episode_number}
-              title={episode.name}
-              overview={episode.overview}
-              date={episode.air_date}
-            ></CardEpisodes>
-          ))}
+        </Container>
       </Container>
     )
   );

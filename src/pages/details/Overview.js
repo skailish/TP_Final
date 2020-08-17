@@ -26,17 +26,21 @@ const Overview = ({ data, mediatype }) => {
             </Container>
             <Container className="details-serie-container">
               <ul className="details-serie-list">
-                <ul className="list-item">Genres:</ul>
-                {data.genres &&
-                  data.genres.map((genre) => (
-                    <Link
-                      href={`/tv/category/${genre.name.toLowerCase()}`}
-                      className="list-item"
-                      key={genre.id}
-                    >
-                      {genre.name}
-                    </Link>
-                  ))}
+                <li className="list-item">
+                  Genres:
+                  <div>
+                    {data.genres &&
+                      data.genres.map((genre) => (
+                        <Link
+                          href={`/tv/category/${genre.name.toLowerCase()}`}
+                          className="list-item"
+                          key={genre.id}
+                        >
+                          {genre.name},
+                        </Link>
+                      ))}
+                  </div>
+                </li>
                 <li className="list-item">
                   First Aired: {data.first_air_date}
                 </li>

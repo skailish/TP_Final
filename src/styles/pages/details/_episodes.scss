@@ -1,0 +1,68 @@
+.episodes-main-container {
+  width: calc(100vw - 100px);
+  overflow: hidden;
+  @include flex(column, center, center);
+  position: relative;
+
+  .select-episodes-container {
+    top: 0;
+    left: 25px;
+
+    & > select {
+      width: 115px;
+      padding: 7px;
+    }
+    & > span {
+      margin-left: 18px;
+    }
+  }
+
+  .cards-episodes-container {
+    @include flex(row, space-evenly, center);
+    width: calc(100vw - 100px);
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 80px;
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    transition: 0.3s ease-in;
+
+    .card-episode {
+      width: 28%;
+      height: 465px;
+      margin: 16px 3px;
+      .img-episode-container {
+        width: 100%;
+        height: 264px;
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .card-episode-title {
+        display: flex;
+        margin: 15px 0;
+
+        & > span {
+          color: $fourth-color-darkmode;
+        }
+        & > h3 {
+          font-size: 1em;
+          font-weight: 300;
+          margin-left: 10px;
+        }
+      }
+      .card-episode-overview {
+        margin-bottom: 12px;
+        height: 113px;
+        @include ellipsis-multiline(13, 1.5, 5, 0);
+      }
+      .card-episode-date {
+        color: $third-text-color;
+      }
+    }
+  }
+}
