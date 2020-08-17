@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'ITC Benguiat';
+    src: url('../../fonts/BenguiatITCbyBT-Book.eot');
+    /* IE9 Compat Modes */
+    src: url('../../fonts/BenguiatITCbyBT-Book.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../../fonts/BenguiatITCbyBT-Book.woff') format('woff'),
+        /* Modern Browsers */
+        url('../../fonts/BenguiatITCbyBT-Book.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../../fonts/BenguiatITCbyBT-Book.svg') format('svg');
+    /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Benguiat';
+    src: url('../../fonts/Bold/BenguiatITCbyBT-Bold.eot');
+    /* IE9 Compat Modes */
+    src: url('../../fonts/Bold/BenguiatITCbyBT-Bold.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../../fonts/Bold/BenguiatITCbyBT-Bold.woff') format('woff'),
+        /* Modern Browsers */
+        url('../../fonts/Bold/BenguiatITCbyBT-Bold.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../../fonts/Bold/BenguiatITCbyBT-Bold.svg') format('svg');
+    /* Legacy iOS */
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Benguiat';
+    src: url('../../fonts/Italic/BenguiatITCbyBT-BookItalic.eot');
+    /* IE9 Compat Modes */
+    src: url('../../fonts/Italic/BenguiatITCbyBT-BookItalic.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../../fonts/Italic/BenguiatITCbyBT-BookItalic.woff') format('woff'),
+        /* Modern Browsers */
+        url('../../fonts/Italic/BenguiatITCbyBT-BookItalic.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../../fonts/Italic/BenguiatITCbyBT-BookItalic.svg') format('svg');
+    /* Legacy iOS */
+    font-weight: normal;
+    font-style: italic;
+}

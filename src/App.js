@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import TVSeries from "./pages/TVSeries";
 import Categories from "./pages/categories/Categories";
 import Trailer from "./pages/Trailer";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/video/:media/:id">
             <Trailer />
+          </Route>
+          <Route >
+            <ErrorPage />
           </Route>
         </Switch>
       </Router>
