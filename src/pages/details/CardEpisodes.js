@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import ImageContext from "contexts/ImageContext";
+import ThemeContext from "contexts/ThemeContext";
 
 import Container from "components/primitive/Container";
 import Text from "components/primitive/Text";
@@ -10,6 +11,7 @@ import Span from "components/primitive/Span";
 
 const CardEpisodes = ({ src, episode, title, overview, date }) => {
   const { imageBaseUrl } = useContext(ImageContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <Container as="article" className="card-episode">
@@ -18,11 +20,13 @@ const CardEpisodes = ({ src, episode, title, overview, date }) => {
       </Container>
 
       <Container className="card-episode-title">
-        <Span>E{episode}</Span>
-        <Heading level={3}>{title}</Heading>
+        <Span className={`${theme}`}>E{episode}</Span>
+        <Heading className={`${theme}`} level={3}>
+          {title}
+        </Heading>
       </Container>
-      <Text className="card-episode-overview">{overview}</Text>
-      <Span className="card-episode-date">{date}</Span>
+      <Text className={`card-episode-overview ${theme}`}>{overview}</Text>
+      <Span className={`card-episode-date ${theme}`}>{date}</Span>
     </Container>
   );
 };

@@ -37,6 +37,15 @@
           list-style: none;
           margin: 13px 0;
           width: 50%;
+          display: flex;
+
+          .list-item-title {
+            width: 50%;
+          }
+
+          .list-item-details {
+            width: 100%;
+          }
         }
       }
     }

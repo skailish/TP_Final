@@ -1,59 +1,54 @@
-.nav-tvShow {
-  @include flex(row, space-evenly, center);
-  width: 50%;
-  padding-top: 20px;
-  margin-top: 15px;
-
-  .navlink {
-    color: $third-text-color;
-    text-decoration: none;
-    font-size: 22px;
-    transition: 0.2s;
-    padding-bottom: 9px;
-    font-weight: 600;
-
-    &:hover {
-      color: $main-text-darkmode;
-    }
-
-    // &.light {
-    //     background-color: ;
-    // }
-
-    &.selected {
-      color: $main-text-darkmode;
-      border-bottom: 2px solid $main-text-darkmode;
-    }
-  }
-}
-
-.category-container {
-  @include flex(row, space-evenly, center);
-  width: calc(100vw - 100px);
-  flex-wrap: wrap;
-  position: relative;
-  padding-top: 80px;
+.nav-container {
+  transition: 0.3s ease-in;
+  width: 100%;
   display: flex;
-  min-height: 100%;
-  align-items: center;
+  justify-content: center;
   transition: 0.3s ease-in;
 
   &.light {
-    background-color: $background-lightmode;
-    transition: 0.3s ease-in;
+    background-color: $background-aside-lightmode;
   }
 
-  .category-title-container {
-    top: 45px;
-    left: 65px;
-    position: absolute;
-    text-transform: capitalize;
+  .nav-tvShow {
+    @include flex(row, space-evenly, center);
+    width: 50%;
+    padding-top: 20px;
+    margin-top: 15px;
+    transition: 0.3s ease-in;
 
-    .category-heading {
-      font-weight: 300;
+    &.light {
+      background-color: $background-aside-lightmode;
+    }
+
+    .navlink {
+      color: $third-text-color;
+      text-decoration: none;
+      font-size: 22px;
+      transition: 0.2s;
+      padding-bottom: 9px;
+      font-weight: 600;
+      transition: 0.3s ease-in;
 
       &.light {
         color: $main-text-lightmode;
+
+        &.selected {
+          color: $secondary-color-lightmode;
+          border-bottom: 2px solid $secondary-color-lightmode;
+        }
+      }
+
+      &:hover {
+        color: $main-text-darkmode;
+      }
+
+      // &.light {
+      //     background-color: ;
+      // }
+
+      &.selected {
+        color: $main-text-darkmode;
+        border-bottom: 2px solid $main-text-darkmode;
       }
     }
   }

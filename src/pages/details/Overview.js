@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
 
 import ImageContext from "../../contexts/ImageContext";
+import ThemeContext from "../../contexts/ThemeContext";
 
 import Container from "../../components/primitive/Container";
 import Image from "../../components/primitive/Image";
 import Text from "../../components/primitive/Text";
 import Heading from "../../components/primitive/Heading";
 import Link from "../../components/primitive/Link";
+import Span from "../../components/primitive/Span";
+import List from "../../components/primitive/List";
+import ListItem from "../../components/primitive/ListItem";
 
 const Overview = ({ data, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     data &&
@@ -25,36 +30,55 @@ const Overview = ({ data, mediatype }) => {
               <Text>{data.overview}</Text>
             </Container>
             <Container className="details-serie-container">
-              <ul className="details-serie-list">
-                <li className="list-item">
-                  Genres:
-                  <div>
+              <List className="details-serie-list">
+                <ListItem className="list-item">
+                  <Container className="list-item-title">Genres:</Container>
+                  <Container className="list-item-details">
                     {data.genres &&
                       data.genres.map((genre) => (
-                        <Link
-                          href={`/tv/category/${genre.name.toLowerCase()}`}
-                          className="list-item"
-                          key={genre.id}
-                        >
-                          {genre.name},
-                        </Link>
+                        <Span key={genre.id}>{genre.name}, </Span>
                       ))}
-                  </div>
-                </li>
-                <li className="list-item">
-                  First Aired: {data.first_air_date}
-                </li>
+                  </Container>
+                </ListItem>
+                <ListItem className="list-item">
+                  <Container className="list-item-title">
+                    First Aired:
+                  </Container>
+                  <Container className="list-item-details">
+                    {data.first_air_date}
+                  </Container>
+                </ListItem>
 
-                <li className="list-item">Seasons: {data.number_of_seasons}</li>
+                <ListItem className="list-item">
+                  <Container className="list-item-title">Seasons:</Container>
+                  <Container className="list-item-details">
+                    {data.number_of_seasons}
+                  </Container>
+                </ListItem>
 
-                <li className="list-item">
-                  Episodes: {data.number_of_episodes}
-                </li>
+                <ListItem className="list-item">
+                  <Container className="list-item-title">Episodes:</Container>
+                  <Container className="list-item-details">
+                    {data.number_of_episodes}
+                  </Container>
+                </ListItem>
 
-                <li className="list-item">Last Aired: {data.last_air_date}</li>
+                <ListItem className="list-item">
+                  <Container className="list-item-title">
+                    Last Aired:{" "}
+                  </Container>
+                  <Container className="list-item-details">
+                    {data.last_air_date}
+                  </Container>
+                </ListItem>
 
-                <li className="list-item">Status: {data.status}</li>
-              </ul>
+                <ListItem className="list-item">
+                  <Container className="list-item-title">Status:</Container>
+                  <Container className="list-item-details">
+                    {data.status}
+                  </Container>
+                </ListItem>
+              </List>
             </Container>
           </Container>
         </Container>

@@ -66,35 +66,39 @@ const TVShow = () => {
           voteAverage={voteAverage}
           mediaType="tv"
         ></Hero>
-        <Nav className={`nav-tvShow ${theme}`}>
-          <NavLink
-            to={`${url}/info`}
-            className="navlink"
-            activeClassName="selected"
-          >
-            OVERVIEW
-          </NavLink>
-          <NavLink
-            to={`${url}/season/seasonNumber`}
-            className="navlink"
-            activeClassName="selected"
-          >
-            EPISODES
-          </NavLink>
-          <NavLink
-            to={`${url}/similar`}
-            className="navlink"
-            activeClassName="selected"
-          >
-            SIMILAR
-          </NavLink>
-        </Nav>
+        <Container className={`nav-container ${theme}`}>
+          {" "}
+          <Nav className={`nav-tvShow ${theme}`}>
+            <NavLink
+              to={`${url}/info`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              OVERVIEW
+            </NavLink>
+            <NavLink
+              to={`${url}/season/seasonNumber`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              EPISODES
+            </NavLink>
+            <NavLink
+              to={`${url}/similar`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              SIMILAR
+            </NavLink>
+          </Nav>
+        </Container>
+
         <Switch>
           <Route path={`${path}/info`}>
             <Overview data={dataTVShowID} mediatype="tv" />
           </Route>
           <Route path={`${path}/season/:seasonNumber`}>
-            <Episodes seasons={seasons} id={dataTVShowID.id} />
+            <Episodes seasons={seasons} />
           </Route>
           <Route path={`${path}/similar`}>
             <CategorySimilar data={similarShows} mediatype="tv" />
