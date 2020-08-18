@@ -27,9 +27,14 @@ const Home = () => {
 
   // setCategory("popular");
   const { theme } = useContext(ThemeContext);
-  const { data, year, voteAverage, mediatype, isLoading, setIsLoading } = useContext(
-    DataContext
-  );
+  const {
+    data,
+    year,
+    voteAverage,
+    mediatype,
+    isLoading,
+    setIsLoading,
+  } = useContext(DataContext);
   const { dataMovie, isLoadingMovie } = useContext(MovieContext);
   const { dataTvShow, isLoadingTvShow } = useContext(TvShowContext);
   return (
@@ -39,8 +44,8 @@ const Home = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
           ) : (
-              <BounceLoader css={overrideLight} size="100px" />
-            )}
+            <BounceLoader css={overrideLight} size="100px" />
+          )}
         </Container>
       )}
       {!isLoading && !isLoadingMovie && !isLoadingTvShow && data && (
@@ -51,7 +56,7 @@ const Home = () => {
             year={year}
             voteAverage={voteAverage}
             mediatype={mediatype}
-          // onLoading={isLoading}
+            // onLoading={isLoading}
           />
           <CardListPreview
             mediatype="movie"

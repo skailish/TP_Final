@@ -1,0 +1,24 @@
+.main-favs-container {
+  width: calc(100vw - 100px);
+  min-height: calc(100vh - 200px);
+  height: 100%;
+  position: relative;
+  left: 100px;
+  transition: 0.3s ease-in;
+  padding: 50px 0;
+  text-align: center;
+  @include flex(column, space-evenly, center);
+
+  .favs-heading {
+    font-size: 40px;
+    color: $main-text-darkmode;
+  }
+  .favs-cards-container {
+    @include flex(row, space-evenly, center);
+    width: calc(100vw - 100px);
+    margin-left: 100px;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 80px;
+  }
+}

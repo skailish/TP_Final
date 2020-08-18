@@ -10,33 +10,66 @@ import ThemeContext from "../contexts/ThemeContext";
 import noPosterFound from "../images/404PosterNotFound.jpg";
 import UserContext from "../contexts/UserContext";
 import { Heart } from "@styled-icons/entypo/Heart";
+import { HeartBroken } from "@styled-icons/fa-solid/HeartBroken";
+import FavsContext from "../contexts/FavsContext";
 
-const Card = ({ id, src, title, votes, mediatype }) => {
+const Card = ({ id, src, title, votes, mediatype, like }) => {
   const [fav, setFav] = useState(false);
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
+  const { favsArray, setFavsArray } = useContext(FavsContext);
 
   const handleMediaDetailsClick = (id, mediatype) => {
     history.push(`/${mediatype}/${id}`);
   };
 
   const handleFavClick = (id, src, title, votes, mediatype, user) => {
-    console.log(user.email);
-    setFav(!fav);
+    setFav(true);
+    db.collection("Favs").doc(user.email).collection(`${mediatype}`).add({
+      id: id,
+      src: src,
+      title: title,
+      votes: votes,
+      mediatype: mediatype,
+    });
+  };
+
+  const handleBreakFavClick = (id) => {
+    let selectedID = "";
+    setFav(false);
     db.collection("Favs")
       .doc(user.email)
       .collection(`${mediatype}`)
-      .add({
-        id: id,
-        src: src,
-        title: title,
-        votes: votes,
-        mediatype: mediatype,
+      .get()
+      .then((response) => {
+        response.forEach((document) => {
+          if (document.data().id === id) {
+            selectedID = document.id;
+          }
+          console.log(selectedID);
+        });
       })
-      .then((doc) => console.log(doc));
+      .then(() => {
+        deleteFav(selectedID);
+        const index = favsArray.indexOf(id);
+        const newArray = favsArray.splice(index, 1);
+        setFavsArray(newArray);
+      });
   };
+
+  const deleteFav = (id) => {
+    db.collection("Favs")
+      .doc(user.email)
+      .collection(`${mediatype}`)
+      .doc(id)
+      .delete();
+  };
+
+  // useEffect(() => {
+  //   window.localStorage.getItem("favs");
+  // }, []);
 
   return (
     <Container
@@ -64,13 +97,21 @@ const Card = ({ id, src, title, votes, mediatype }) => {
           voteNumber={votes}
           className={`media-card-rating ${theme} `}
         />
-        {user && (
-          <Heart
-            className={`fav-heart ${fav && "favAdd"}`}
-            onClick={() =>
-              handleFavClick(id, src, title, votes, mediatype, user)
-            }
-          />
+        {user && window.localStorage && (
+          <Container className="heart-icons-container">
+            {(fav || like) && (
+              <HeartBroken
+                className="fav-heart-broken"
+                onClick={() => handleBreakFavClick(id)}
+              />
+            )}
+            <Heart
+              className={`fav-heart ${fav && "favAdd"} ${like && "favAddLike"}`}
+              onClick={() =>
+                handleFavClick(id, src, title, votes, mediatype, user)
+              }
+            />
+          </Container>
         )}
       </Container>
     </Container>
