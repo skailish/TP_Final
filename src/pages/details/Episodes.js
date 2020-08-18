@@ -1,18 +1,26 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
-import Container from "../../components/primitive/Container";
+
+import { useParams, useHistory } from "react-router-dom";
+
 import CardEpisodes from "pages/details/CardEpisodes";
-import Span from "../../components/primitive/Span";
+
+import Container from "../../components/primitive/Container";
+import Text from "../../components/primitive/Text";
+import Select from "../../components/primitive/Select";
+import Option from "../../components/primitive/Option";
 
 import ThemeContext from "../../contexts/ThemeContext";
+import TvShowContext from "../../contexts/TvShowContext";
 
 const Episodes = ({ seasons }) => {
   const { TVId } = useParams();
   const [episodes, setEpisodes] = useState();
-  const [seasonNumber, setSeasonNumber] = useState(1);
+
   const [episodesLength, setEpisodesLength] = useState(0);
 
   const { theme } = useContext(ThemeContext);
+  const { seasonNumber, setSeasonNumber } = useContext(TvShowContext);
+  const history = useHistory();
 
   useEffect(() => {
     const getEpisodes = async () => {
@@ -29,24 +37,30 @@ const Episodes = ({ seasons }) => {
   const handleChange = (event) => {
     const newValue = Number(event.target.value);
     setSeasonNumber(newValue);
+    history.push(`/tv/${TVId}/season/${newValue}`);
   };
 
-  const seasonsFilter = seasons.filter((season) => season.name !== "Specials");
-
   return (
-    seasonsFilter &&
+    seasons &&
     TVId && (
       <Container className={`episodes-main-container ${theme}`}>
         <Container className="select-episodes-container">
-          <select onChange={handleChange}>
-            {seasonsFilter &&
-              seasonsFilter.map((season, index) => (
-                <option value={index + 1} key={season.id} id={season.id}>
-                  Season {index + 1}
-                </option>
-              ))}
-          </select>
-          <Span>{episodesLength} Episodes</Span>
+          <Select
+            className={`select-episodes ${theme}`}
+            onChange={handleChange}
+          >
+            {seasons &&
+              seasons
+                .filter((season) => season.name !== "Specials")
+                .map((season, index) => (
+                  <Option value={index + 1} key={season.id} id={season.id}>
+                    Season {index + 1}
+                  </Option>
+                ))}
+          </Select>
+          <Text className={`episodes-length ${theme}`}>
+            {episodesLength} Episodes
+          </Text>
         </Container>
 
         <Container className="cards-episodes-container">

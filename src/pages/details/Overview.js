@@ -7,7 +7,6 @@ import Container from "../../components/primitive/Container";
 import Image from "../../components/primitive/Image";
 import Text from "../../components/primitive/Text";
 import Heading from "../../components/primitive/Heading";
-import Link from "../../components/primitive/Link";
 import Span from "../../components/primitive/Span";
 import List from "../../components/primitive/List";
 import ListItem from "../../components/primitive/ListItem";
@@ -19,7 +18,7 @@ const Overview = ({ data, mediatype }) => {
   return (
     data &&
     mediatype && (
-      <Container className="main-container">
+      <Container className={`overview-main-container ${theme}`}>
         <Container className="serie-container">
           <Container className="img-serie-container">
             <Image src={`${imageBaseUrl}${data.poster_path}`} />

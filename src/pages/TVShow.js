@@ -9,15 +9,16 @@ import {
 
 import Container from "../components/primitive/Container";
 import Hero from "../components/Hero";
-import CardListPreview from "../components/CardListPreview";
 import Nav from "../components/primitive/Nav";
 import ScrollToTop from "../components/ScrollToTop";
 
-import Overview from "./details/Overview";
 import CategorySimilar from "./categories/CategorySimilar";
+
+import Overview from "./details/Overview";
 import Episodes from "./details/Episodes";
 
 import ThemeContext from "../contexts/ThemeContext";
+import TvShowContext from "../contexts/TvShowContext";
 
 const TVShow = () => {
   const [dataTVShowID, setDataTVShowID] = useState([]);
@@ -29,6 +30,7 @@ const TVShow = () => {
   const { TVId } = useParams();
   const { path, url } = useRouteMatch();
   const { theme } = useContext(ThemeContext);
+  const { seasonNumber } = useContext(TvShowContext);
 
   useEffect(() => {
     const getTVShowID = async () => {
@@ -77,7 +79,7 @@ const TVShow = () => {
               OVERVIEW
             </NavLink>
             <NavLink
-              to={`${url}/season/seasonNumber`}
+              to={`${url}/season/${seasonNumber}`}
               className={`navlink ${theme}`}
               activeClassName="selected"
             >

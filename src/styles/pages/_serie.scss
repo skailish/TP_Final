@@ -6,7 +6,7 @@
   transition: 0.3s ease-in;
 
   &.light {
-    background-color: $background-aside-lightmode;
+    background-color: $background-lightmode;
   }
 
   .nav-tvShow {
@@ -17,7 +17,7 @@
     transition: 0.3s ease-in;
 
     &.light {
-      background-color: $background-aside-lightmode;
+      background-color: $background-lightmode;
     }
 
     .navlink {
@@ -32,8 +32,12 @@
       &.light {
         color: $main-text-lightmode;
 
-        &.selected {
+        &:hover {
           color: $secondary-color-lightmode;
+        }
+
+        &.selected {
+          color: $third-color-lightmode;
           border-bottom: 2px solid $secondary-color-lightmode;
         }
       }

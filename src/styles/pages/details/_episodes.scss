@@ -10,7 +10,13 @@
   }
 
   .select-episodes-container {
-    & > select {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-left: 100px;
+    padding-top: 60px;
+
+    .select-episodes {
       width: 115px;
       padding: 9px;
       background-color: $background-aside-darkmode;
@@ -19,80 +25,16 @@
       color: $main-text-darkmode;
       font-family: $secondary-font;
       font-size: 16px;
+
+      &:hover {
+        background-color: #403f48;
+      }
     }
-    & > span {
+    .episodes-length {
       margin-left: 18px;
-      position: absolute;
-      left: 133px;
-      top: 7px;
-    }
-  }
-
-  .cards-episodes-container {
-    @include flex(row, space-evenly, center);
-    width: calc(100vw - 100px);
-    flex-wrap: wrap;
-    position: relative;
-    padding-top: 80px;
-    display: flex;
-    min-height: 100%;
-    align-items: center;
-    transition: 0.3s ease-in;
-
-    .card-episode {
-      width: 28%;
-      height: 465px;
-      margin: 16px 3px;
-      .img-episode-container {
-        width: 100%;
-        height: 264px;
-        & > img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-      }
-
-      .card-episode-title {
-        display: flex;
-        margin: 15px 0;
-
-        & > span {
-          color: $fourth-color-darkmode;
-          transition: 0.3s ease-in;
-
-          &.light {
-            color: $secondary-color-lightmode;
-          }
-        }
-        & > h3 {
-          font-size: 1em;
-          font-weight: 300;
-          margin-left: 10px;
-          transition: 0.3s ease-in;
-
-          &.light {
-            color: $main-text-lightmode;
-          }
-        }
-      }
-      .card-episode-overview {
-        margin-bottom: 12px;
-        height: 113px;
-        @include ellipsis-multiline(13, 1.5, 5, 0);
-        transition: 0.3s ease-in;
-
-        &.light {
-          color: $main-text-lightmode;
-        }
-      }
-      .card-episode-date {
-        color: $third-text-color;
-        transition: 0.3s ease-in;
-
-        &.light {
-          color: $secondary-color-lightmode;
-        }
+      font-size: 19px;
+      &.light {
+        color: $main-text-lightmode;
       }
     }
   }
