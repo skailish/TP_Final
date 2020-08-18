@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import firebase from "../configs/firebase";
 import { NavLink } from "react-router-dom";
 import { Home } from "@styled-icons/ionicons-solid/Home";
 import { Search } from "@styled-icons/bootstrap/Search";
@@ -14,6 +15,10 @@ import ThemeContext from "../contexts/ThemeContext";
 
 const Aside = ({ user }) => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
+
+  const handleLogoutClick = () => {
+    firebase.auth().signOut();
+  };
 
   return (
     <aside className={`aside ${theme}`}>
@@ -38,7 +43,7 @@ const Aside = ({ user }) => {
           <Search className={`nav-icon ${theme}`} />
         </Tooltip>
         {user && (
-          <NavLink to="/favorites" exact activeClassName="selected">
+          <NavLink to="/favs" exact activeClassName="selected">
             <Tooltip title="Favorites">
               <Heart className={`nav-icon ${theme}`} />
             </Tooltip>
@@ -54,7 +59,7 @@ const Aside = ({ user }) => {
           </NavLink>
         ) : (
           <Tooltip title="Logout">
-            <a>
+            <a onClick={handleLogoutClick}>
               <LogOut className={`nav-icon ${theme}`} />
             </a>
           </Tooltip>

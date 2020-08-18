@@ -15,6 +15,7 @@ const Login = ({ user }) => {
   const { theme } = useContext(ThemeContext);
 
   const handleSubmit = (event) => {
+    console.log(event);
     event.preventDefault();
     setError(false);
     firebase
@@ -29,11 +30,13 @@ const Login = ({ user }) => {
 
   return !user ? (
     <>
-      {error && <Redirect to="" />}
       <Container className={`form-container ${theme}`}>
         <Heading level={1} className={`form-heading ${theme}`}>
           Login
         </Heading>
+        <Container id="auth-error">
+          {error && <Text id="error-message">{error}</Text>}
+        </Container>
         <Container
           as="form"
           action=""
@@ -56,7 +59,7 @@ const Login = ({ user }) => {
               className={`form-input ${theme}`}
             />
           </Label>
-          <Button onClick={handleSubmit}>Sign In</Button>
+          <Button type="submit">Sign In</Button>
         </Container>
         <Text className={`form-text ${theme}`}>
           If you´re not registered, do it{" "}

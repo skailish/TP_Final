@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "configs/firebase";
 import Aside from "./components/Aside";
@@ -12,9 +12,11 @@ import Trailer from "./pages/Trailer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ErrorPage from "./pages/ErrorPage";
+import UserContext from "./contexts/UserContext";
+import Favs from "./pages/Favs";
 
 function App() {
-  const [user, setUser] = useState();
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const unsuscribe = firebase
@@ -52,6 +54,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <Signup user={user} />
+          </Route>
+          <Route exact path="/favs">
+            <Favs user={user} />
           </Route>
           <Route>
             <ErrorPage />
