@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
@@ -10,6 +10,7 @@ import Categories from "./pages/categories/Categories";
 import TVShow from "./pages/TVShow";
 import Trailer from "./pages/Trailer";
 import ErrorPage from "./pages/ErrorPage";
+import Movie from "./pages/Movie";
 
 function App() {
   return (
@@ -29,13 +30,16 @@ function App() {
           <Route path="/tv/:TVId">
             <TVShow />
           </Route>
+          <Route path="/movie/:movieId">
+            <Movie />
+          </Route>
           <Route exact path="/:media/category/:category">
             <Categories />
           </Route>
           <Route exact path="/video/:media/:id">
             <Trailer />
           </Route>
-          <Route >
+          <Route>
             <ErrorPage />
           </Route>
         </Switch>

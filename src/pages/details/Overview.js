@@ -41,33 +41,44 @@ const Overview = ({ data, mediatype }) => {
                 </ListItem>
                 <ListItem className="list-item">
                   <Container className="list-item-title">
-                    First Aired:
+                    {mediatype === "tv" ? "First Aired:" : "Released:"}
                   </Container>
                   <Container className="list-item-details">
-                    {data.first_air_date}
-                  </Container>
-                </ListItem>
-
-                <ListItem className="list-item">
-                  <Container className="list-item-title">Seasons:</Container>
-                  <Container className="list-item-details">
-                    {data.number_of_seasons}
-                  </Container>
-                </ListItem>
-
-                <ListItem className="list-item">
-                  <Container className="list-item-title">Episodes:</Container>
-                  <Container className="list-item-details">
-                    {data.number_of_episodes}
+                    {mediatype === "tv"
+                      ? data.first_air_date
+                      : data.release_date}
                   </Container>
                 </ListItem>
 
                 <ListItem className="list-item">
                   <Container className="list-item-title">
-                    Last Aired:{" "}
+                    {mediatype === "tv" ? "Seasons:" : "Runtime:"}
                   </Container>
                   <Container className="list-item-details">
-                    {data.last_air_date}
+                    {mediatype === "tv" ? data.number_of_seasons : data.runtime}
+                  </Container>
+                </ListItem>
+
+                <ListItem className="list-item">
+                  <Container className="list-item-title">
+                    {mediatype === "tv" ? "Episodes:" : "Budget"}
+                  </Container>
+                  <Container className="list-item-details">
+                    {mediatype === "tv" ? data.number_of_episodes : data.budget}
+                  </Container>
+                </ListItem>
+
+                <ListItem className="list-item">
+                  <Container className="list-item-title">
+                    {mediatype === "tv" ? "Last Aired:" : "Production"}
+                  </Container>
+                  <Container className="list-item-details">
+                    {mediatype === "tv"
+                      ? data.last_air_date
+                      : data.production_companies &&
+                        data.production_companies.map((production) => (
+                          <Span>{production.name}, </Span>
+                        ))}
                   </Container>
                 </ListItem>
 
