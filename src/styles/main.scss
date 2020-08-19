@@ -3,10 +3,12 @@
 @import "./utils/functions";
 @import "./utils/mixins";
 @import "./base/base";
+@import "./base/_font";
 
 @import "./pages/home";
 @import "./pages/category";
 @import "./pages/trailer";
+@import "./pages/error";
 @import "./layout/aside";
 @import "./layout/hero";
 @import "./layout/footer";
@@ -15,6 +17,7 @@
 @import "./components/card";
 @import "./components/rating";
 @import "./components/pagination";
+@import "./components/tooltip";
 
 @import "./elements/icons";
 @import "./elements/links";
