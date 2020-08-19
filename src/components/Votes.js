@@ -1,32 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import Star from "../components/Star";
+import ThemeContext from "../contexts/ThemeContext";
 
-const Votes = ({ voteAverage }) => {
-  const stars = Math.floor(((voteAverage * 10) / 5 / 2));
+const Votes = ({ voteAverage, voteNumber, ...props }) => {
+  const { theme } = useContext(ThemeContext);
+  const rating = Math.floor(voteAverage / 2);
   const filledStars = [];
-  for (let i = 0; i < (stars / 2); i++) {
-    filledStars.push(<Star type={'filled'} key={i} />)
+  for (let i = 0; i < rating; i++) {
+    filledStars.push(' ')
   }
-  console.log(stars);
   const emptyStars = [];
-  for (i; i < 5; i++) {
-    emptyStars.push(<Star type={'empty'} key={i} />)
+  for (let x = (rating + 1); x < 5; x++) {
+    console.log(`rating ${rating}`)
+    console.log(x);
+    emptyStars.push(' ')
   }
-
-    
-      <input type="radio" name="rating" value="2"><i></i>
-        <input type="radio" name="rating" value="3"><i></i>
-          <input type="radio" name="rating" value="4"><i></i>
-            <input type="radio" name="rating" value="5"><i></i>
-
-
-
   return (
-    <div className={"rating"}>
-      {filledStars.map(() => <Star type={'filled'} />)}
-      <Star type={'average'} voteAverage={voteAverage / 2} />
-      {emptyStars.map(() => <Star type={'empty'} />)}
-    </div>
+    <div {...props}>
+      <div className={"rating-stars"}>
+        {filledStars.map(() => <Star classname={`${theme}`} type={'filled'} />)}
+        <Star classname={`${theme}`} type={'half'} />
+        {emptyStars.map(() => <Star classname={`${theme}`} type={'empty'} />)}
+      </div>
+      {voteNumber && <span className="rating-number">{voteNumber}</span>}
+    </div >
+
   )
 };
 

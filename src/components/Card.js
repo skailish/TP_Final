@@ -36,7 +36,11 @@ const Card = ({ id, src, title, votes, mediatype }) => {
         </Container>
       </div>
 
-      <Votes voteAverage={votes} />
+      <Votes
+        voteAverage={votes}
+        voteNumber={votes}
+        className={`media-card-rating ${theme} `}
+      />
     </Container>
   );
 };
