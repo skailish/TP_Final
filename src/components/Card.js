@@ -13,8 +13,8 @@ const Card = ({ id, src, title, votes, mediatype }) => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
 
-  const handleMediaDetailsClick = (id, mediatype) => {
-    history.push(`/${mediatype}/${id}`);
+  const handleMediaDetailsClick = (id, mediaType) => {
+    history.push(`/${mediaType}/${id}/info`);
   };
 
   return (
@@ -24,11 +24,13 @@ const Card = ({ id, src, title, votes, mediatype }) => {
       as="article"
       className="media-card"
       mediatype={mediatype}
-
     >
       <div onClick={() => handleMediaDetailsClick(id, mediatype)}>
-
-        <Image src={src ? `${imageBaseUrl}${src}` : noPosterFound} className="media-card-img" alt={`Image showing poster of "${title}"`} />
+        <Image
+          src={src ? `${imageBaseUrl}${src}` : noPosterFound}
+          className="media-card-img"
+          alt={`Image showing poster of "${title}"`}
+        />
         <Container className="media-card-heading-container">
           <Heading level={3} className={`media-card-heading ${theme} `}>
             {title}
@@ -40,7 +42,6 @@ const Card = ({ id, src, title, votes, mediatype }) => {
         voteNumber={votes}
         className={`media-card-rating ${theme} `}
       />
-
     </Container>
   );
 };

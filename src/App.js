@@ -7,6 +7,7 @@ import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import TVSeries from "./pages/TVSeries";
 import Categories from "./pages/categories/Categories";
+import TVShow from "./pages/TVShow";
 import Trailer from "./pages/Trailer";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route exact path="/tv">
             <TVSeries />
+          </Route>
+          <Route path="/tv/:TVId">
+            <TVShow />
           </Route>
           <Route exact path="/:media/category/:category">
             <Categories />

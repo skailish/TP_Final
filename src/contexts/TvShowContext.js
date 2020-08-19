@@ -11,6 +11,7 @@ const TvShowProvider = ({ children }) => {
   const [dataCurrentTv, setDataCurrentTv] = useState([]);
   const [dataTodayTv, setDataTodayTv] = useState([]);
   const [isLoadingTvShow, setIsLoadingTvShow] = useState(true);
+  const [seasonNumber, setSeasonNumber] = useState(1);
 
   useEffect(() => {
     setIsLoadingTvShow(true);
@@ -96,7 +97,9 @@ const TvShowProvider = ({ children }) => {
         dataTvShowRandom,
         year,
         voteAverage,
-        isLoadingTvShow
+        isLoadingTvShow,
+        seasonNumber,
+        setSeasonNumber,
       }}
     >
       {children}
