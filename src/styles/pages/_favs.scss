@@ -1,0 +1,77 @@
+.nofavs-container {
+  min-height: calc(100vh - 200px);
+  width: calc(100vw -100px);
+  position: relative;
+  left: 100px;
+  @include flex(row, center, center);
+  transition: 0.3s ease-in-out;
+
+  &.light {
+    background-color: $background-lightmode;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nofavs-heading {
+    font-weight: normal;
+    transition: 0.3s ease-in-out;
+
+    &.light {
+      transition: 0.3s ease-in-out;
+      color: $main-text-lightmode
+    }
+  }
+
+
+}
+
+.main-favs-container {
+  width: calc(100vw - 100px);
+  min-height: calc(100vh - 200px);
+  height: 100%;
+  position: relative;
+  left: 100px;
+  transition: 0.3s ease-in;
+  padding: 50px 0;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+  @include flex(column, space-evenly, center);
+
+  &.light {
+    transition: 0.3s ease-in-out;
+    background-color: $background-lightmode;
+    
+  }
+
+  .favs-heading {
+    font-size: 40px;
+    color: $main-text-darkmode;
+    transition: 0.3s ease-in-out;
+
+    &.light {
+      transition: 0.3s ease-in-out;
+      color: $main-text-lightmode
+    }
+  }
+
+  .favs-subheading {
+    font-size: 30px;
+    text-align: left;
+    padding: 50px 0 30px 70px;
+    font-weight: normal;
+    transition: 0.3s ease-in-out;
+
+    &.light {
+      transition: 0.3s ease-in-out;
+      color: $main-text-lightmode
+    }
+  }
+
+  .favs-cards-container {
+    @include flex(row, space-evenly, center);
+    width: calc(100vw - 100px);
+
+    flex-wrap: wrap;
+    position: relative;
+
+  }
+}

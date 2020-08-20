@@ -1,0 +1,41 @@
+.episodes-main-container {
+  width: calc(100vw - 100px);
+  overflow: hidden;
+  @include flex(column, center, center);
+  position: relative;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+
+  .select-episodes-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-left: 100px;
+    padding-top: 60px;
+
+    .select-episodes {
+      width: 115px;
+      padding: 9px;
+      background-color: $background-aside-darkmode;
+      border: none;
+      left: 23px;
+      color: $main-text-darkmode;
+      font-family: $secondary-font;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #403f48;
+      }
+    }
+    .episodes-length {
+      margin-left: 18px;
+      font-size: 19px;
+      &.light {
+        color: $main-text-lightmode;
+      }
+    }
+  }
+}

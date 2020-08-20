@@ -1,0 +1,59 @@
+.nav-container {
+  transition: 0.3s ease-in;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+
+  .nav-tvShow {
+    @include flex(row, space-evenly, center);
+    width: 50%;
+    padding-top: 20px;
+    margin-top: 15px;
+    transition: 0.3s ease-in;
+
+    &.light {
+      background-color: $background-lightmode;
+    }
+
+    .navlink {
+      color: $third-text-color;
+      text-decoration: none;
+      font-size: 22px;
+      transition: 0.2s;
+      padding-bottom: 9px;
+      font-weight: 600;
+      transition: 0.3s ease-in;
+
+      &.light {
+        color: $main-text-lightmode;
+
+        &:hover {
+          color: $secondary-color-lightmode;
+        }
+
+        &.selected {
+          color: $third-color-lightmode;
+          border-bottom: 2px solid $secondary-color-lightmode;
+        }
+      }
+
+      &:hover {
+        color: $main-text-darkmode;
+      }
+
+      // &.light {
+      //     background-color: ;
+      // }
+
+      &.selected {
+        color: $main-text-darkmode;
+        border-bottom: 2px solid $main-text-darkmode;
+      }
+    }
+  }
+}

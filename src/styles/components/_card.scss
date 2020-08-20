@@ -27,12 +27,19 @@
       }
     }
   }
+  .votes-and-favs-container {
+    @include flex(row, space-between, center);
+    width: 95%;
+    .heart-icons-container {
+      @include flex(row, space-between, center);
+      width: 20%;
+    }
+    .media-card-rating {
+      @include flex(row, flex-start, center);
 
-  .media-card-rating {
-    @include flex(row, flex-start, center);
-
-    &.light {
-      color: $main-text-lightmode;
+      &.light {
+        color: $main-text-lightmode;
+      }
     }
   }
 }

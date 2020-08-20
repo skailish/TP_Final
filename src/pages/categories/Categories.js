@@ -9,6 +9,7 @@ import PaginationContext from "../../contexts/PaginationContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import ScrollToTop from "../../components/ScrollToTop";
+import FavsContext from "../../contexts/FavsContext";
 
 const overrideDark = css`
   & div {
@@ -28,6 +29,7 @@ const Categories = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { theme } = useContext(ThemeContext);
   const { page, setMaxPage } = useContext(PaginationContext);
+  const { favsArray } = useContext(FavsContext);
 
   const title2 = category.split("_").join(" ");
 
@@ -53,11 +55,11 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-              <BounceLoader css={overrideLight} size="100" />
-            )}
+            <BounceLoader css={overrideLight} size="100" />
+          )}
         </Container>
       )}
-      {!isLoading && (
+      {!isLoading && favsArray && (
         <Container className={`category-pagination-container ${theme}`}>
           <ScrollToTop />
           <Container className={`main-category-container ${theme}`}>
@@ -70,14 +72,11 @@ const Categories = () => {
               <Card
                 id={singleCard.id}
                 src={singleCard.poster_path}
-                title={
-                  media === "movie"
-                    ? singleCard.title
-                    : singleCard.name
-                }
+                title={media === "movie" ? singleCard.title : singleCard.name}
                 votes={singleCard.vote_average}
                 key={singleCard.id}
                 mediatype={media}
+                like={favsArray.includes(singleCard.id)}
               />
             ))}
           </Container>

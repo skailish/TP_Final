@@ -8,10 +8,18 @@
 @import "./pages/home";
 @import "./pages/category";
 @import "./pages/trailer";
+@import "./pages/login";
 @import "./pages/error";
+@import "./pages/favs";
+
 @import "./layout/aside";
 @import "./layout/hero";
 @import "./layout/footer";
+@import "./pages/serie";
+@import "./pages/details/overview";
+@import "./pages/details/episodes";
+@import "./pages/details/similar";
+@import "./pages/details/cardEpisodes";
 
 @import "./components/cardlistpreview";
 @import "./components/card";

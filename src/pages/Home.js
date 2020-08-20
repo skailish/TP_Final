@@ -23,11 +23,8 @@ const overrideLight = css`
 `;
 
 const Home = () => {
-  // const { setCategory } = useContext(MovieContext);
-
-  // setCategory("popular");
   const { theme } = useContext(ThemeContext);
-  const { data, year, voteAverage, mediatype, isLoading, setIsLoading } = useContext(
+  const { data, year, voteAverage, mediatype, isLoading } = useContext(
     DataContext
   );
   const { dataMovie, isLoadingMovie } = useContext(MovieContext);
@@ -39,8 +36,8 @@ const Home = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
           ) : (
-              <BounceLoader css={overrideLight} size="100px" />
-            )}
+            <BounceLoader css={overrideLight} size="100px" />
+          )}
         </Container>
       )}
       {!isLoading && !isLoadingMovie && !isLoadingTvShow && data && (
@@ -51,7 +48,6 @@ const Home = () => {
             year={year}
             voteAverage={voteAverage}
             mediatype={mediatype}
-          // onLoading={isLoading}
           />
           <CardListPreview
             mediatype="movie"
