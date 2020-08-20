@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import firebase, { db } from "../configs/firebase";
+import firebase from "../configs/firebase";
 import { useHistory, Redirect } from "react-router-dom";
 import Container from "../components/primitive/Container";
 import Input from "../components/primitive/Input";

@@ -79,7 +79,10 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
       .collection(`${mediatype}`)
       .doc(id)
       .delete()
-      .then(() => (updateSeriesFavs(user), updateMovieFavs(user)));
+      .then(() => {
+        updateSeriesFavs(user);
+        updateMovieFavs(user);
+      });
   };
 
   return (
@@ -112,16 +115,18 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
           <Container className="heart-icons-container">
             {(fav || like) && (
               <HeartBroken
-                className="fav-heart-broken"
+                className="fav-heart-broken favAdd"
                 onClick={() => handleBreakFavClick(id, like)}
               />
             )}
-            <Heart
-              className={`fav-heart ${fav && "favAdd"} ${like && "favAddLike"}`}
-              onClick={() =>
-                handleFavClick(id, src, title, votes, mediatype, user)
-              }
-            />
+            {!like && (
+              <Heart
+                className={`fav-heart ${fav && "favAdd"} ${theme}`}
+                onClick={() =>
+                  handleFavClick(id, src, title, votes, mediatype, user)
+                }
+              />
+            )}
           </Container>
         )}
       </Container>

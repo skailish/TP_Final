@@ -1,5 +1,5 @@
-import React, { createContext, useState } from "react";
-import firebase, { db } from "configs/firebase";
+import React, { createContext, useState, useEffect } from "react";
+import { db } from "configs/firebase";
 
 const FavsContext = createContext();
 const FavsProvider = ({ children }) => {
@@ -21,7 +21,6 @@ const FavsProvider = ({ children }) => {
           });
           setSeriesArray(favs);
         });
-    console.log(favs);
   };
 
   const updateMovieFavs = (user) => {
@@ -36,15 +35,17 @@ const FavsProvider = ({ children }) => {
           response.forEach((document) => {
             favs.push(document.data());
           });
-          console.log(favs);
+
           setMoviesArray(favs);
-          // setFavsArray([...moviesArray, ...seriesArray]);
         });
   };
 
-  // const spreadArray = () => {
-
-  // };
+  useEffect(() => {
+    const array = [];
+    moviesArray.map((movie) => array.push(movie.id));
+    seriesArray.map((serie) => array.push(serie.id));
+    setFavsArray(array);
+  }, [moviesArray, seriesArray]);
 
   return (
     <FavsContext.Provider

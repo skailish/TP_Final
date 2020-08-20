@@ -24,14 +24,9 @@ const overrideLight = css`
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
-  const {
-    data,
-    year,
-    voteAverage,
-    mediatype,
-    isLoading,
-    setIsLoading,
-  } = useContext(DataContext);
+  const { data, year, voteAverage, mediatype, isLoading } = useContext(
+    DataContext
+  );
   const { dataMovie, isLoadingMovie } = useContext(MovieContext);
   const { dataTvShow, isLoadingTvShow } = useContext(TvShowContext);
   return (
@@ -53,7 +48,6 @@ const Home = () => {
             year={year}
             voteAverage={voteAverage}
             mediatype={mediatype}
-            // onLoading={isLoading}
           />
           <CardListPreview
             mediatype="movie"

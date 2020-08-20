@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
-import { db } from "../configs/firebase";
+import React, { useEffect, useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
@@ -30,7 +29,6 @@ const Favs = ({ user }) => {
     updateSeriesFavs,
     updateMovieFavs,
   } = useContext(FavsContext);
-  const [favorites, setFavorites] = useState([]);
   const { theme } = useContext(ThemeContext);
   const { isLoadingMovie } = useContext(MovieContext);
   const { isLoadingTvShow } = useContext(TvShowContext);
@@ -40,31 +38,17 @@ const Favs = ({ user }) => {
     updateMovieFavs(user);
   }, [user]);
 
-  //  useEffect(() => {
-  //   const getFavs = () => {
-  //     const getFavs = () => {
-  //       let favs = [];
-  //       db.collection("Favs")
-  //         .doc(`${user.email}`)
-  //         .collection("tv")
-  //         .get()
-  //         .then((response) => {
-  //           response.docs.map((document) => {
-  //             const fav = {
-  //               ...document.data(),
-  //             };
-  //             favs.push(fav);
-  //           });
-  //         });
-  //       setFavorites(favs)
-  //     };
-  //     getFavs();
-  //  }, [])
-
   return (
     <>
-      {(isLoadingMovie ||
-        isLoadingTvShow) && (
+      {moviesArray.length <= 0 && seriesArray.length <= 0 && (
+        <Container className={`nofavs-container ${theme}`}>
+          <Heading className={`nofavs-heading ${theme}`}>
+            You have no favorites yet, go select some...
+          </Heading>
+        </Container>
+      )}
+
+      {(isLoadingMovie || isLoadingTvShow) && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
@@ -81,30 +65,46 @@ const Favs = ({ user }) => {
             <Heading level={1} className={`favs-heading ${theme}`}>
               Your Favorites
             </Heading>
-            <Container className={`favs-cards-container ${theme}`}>
-              {moviesArray.map((fav) => (
-                <Card
-                  key={fav.id}
-                  id={fav.id}
-                  src={fav.src}
-                  title={fav.title}
-                  votes={fav.votes}
-                  mediatype={fav.mediatype}
-                  like={true}
-                />
-              ))}
-              {seriesArray.map((fav) => (
-                <Card
-                  key={fav.id}
-                  id={fav.id}
-                  src={fav.src}
-                  title={fav.title}
-                  votes={fav.votes}
-                  mediatype={fav.mediatype}
-                  like={true}
-                />
-              ))}
-              {console.log(favorites)}
+            <Container>
+              {moviesArray.length > 0 && (
+                <Heading level={2} className={`favs-subheading ${theme}`}>
+                  Your Movies
+                </Heading>
+              )}
+              <Container className={`favs-cards-container ${theme}`}>
+                {moviesArray.map((fav) => (
+                  <Card
+                    key={fav.id}
+                    id={fav.id}
+                    src={fav.src}
+                    title={fav.title}
+                    votes={fav.votes}
+                    mediatype={fav.mediatype}
+                    like={true}
+                  />
+                ))}
+              </Container>
+              <Container>
+                {seriesArray.length > 0 && (
+                  <Heading level={2} className={`favs-subheading ${theme}`}>
+                    Your Series
+                  </Heading>
+                )}
+
+                <Container className={`favs-cards-container ${theme}`}>
+                  {seriesArray.map((fav) => (
+                    <Card
+                      key={fav.id}
+                      id={fav.id}
+                      src={fav.src}
+                      title={fav.title}
+                      votes={fav.votes}
+                      mediatype={fav.mediatype}
+                      like={true}
+                    />
+                  ))}
+                </Container>
+              </Container>
             </Container>
           </Container>
         )}

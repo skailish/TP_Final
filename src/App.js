@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import firebase, { db } from "configs/firebase";
+import firebase from "configs/firebase";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import Container from "./components/primitive/Container";
@@ -24,7 +24,7 @@ import FavsContext from "./contexts/FavsContext";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  const { setFavsArray, updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
+  const { updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
 
   useEffect(() => {
     const unsuscribe = firebase
@@ -38,8 +38,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    updateSeriesFavs(user)
-    updateMovieFavs(user)
+    updateSeriesFavs(user);
+    updateMovieFavs(user);
   }, [user]);
 
   return (
@@ -72,7 +72,7 @@ function App() {
             <Signup user={user} />
           </Route>
           <Route exact path="/favs">
-            {user ? <Favs user={user} /> : <Redirect />}
+            {user ? <Favs user={user} /> : <Redirect to="" />}
           </Route>
           <Route>
             <ErrorPage />

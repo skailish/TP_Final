@@ -12,13 +12,8 @@ import ThemeContext from "../contexts/ThemeContext";
 import FavsContext from "../contexts/FavsContext";
 
 const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
-  // const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { favsArray } = useContext(FavsContext);
-
-  // const handleExploreAllClick = (type, category) => {
-  //   history.push(`/${type}/category/${category}`);
-  // };
 
   return (
     data &&
