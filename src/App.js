@@ -23,7 +23,7 @@ import FavsContext from "./contexts/FavsContext";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  const { setFavsArray } = useContext(FavsContext);
+  const { setFavsArray, updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
 
   useEffect(() => {
     const unsuscribe = firebase
@@ -37,30 +37,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let favs = [];
-    user &&
-      db
-        .collection("Favs")
-        .doc(`${user.email}`)
-        .collection("tv")
-        .get()
-        .then((response) => {
-          response.forEach((document) => {
-            favs.push(document.data().id);
-          });
-        });
-    user &&
-      db
-        .collection("Favs")
-        .doc(`${user.email}`)
-        .collection("movie")
-        .get()
-        .then((response) => {
-          response.forEach((document) => {
-            favs.push(document.data().id);
-          });
-          setFavsArray(favs);
-        });
+    updateSeriesFavs(user)
+    updateMovieFavs(user)
   }, [user]);
 
   return (

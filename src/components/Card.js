@@ -19,7 +19,12 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
-  const { favsArray, setFavsArray } = useContext(FavsContext);
+  const {
+    favsArray,
+    setFavsArray,
+    updateSeriesFavs,
+    updateMovieFavs,
+  } = useContext(FavsContext);
 
   const handleMediaDetailsClick = (id, mediatype) => {
     history.push(`/${mediatype}/${id}`);
@@ -73,7 +78,8 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
       .doc(user.email)
       .collection(`${mediatype}`)
       .doc(id)
-      .delete();
+      .delete()
+      .then(() => (updateSeriesFavs(user), updateMovieFavs(user)));
   };
 
   return (
