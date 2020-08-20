@@ -59,4 +59,19 @@
   width: 22px;
 }
 
+.fav-heart {
+  width: 20px;
+  transition: 0.3s;
 
+  &.favAdd {
+    transition: 0.3s;
+    color: $secondary-color-lightmode;
+  }
+  &.favAddLike {
+    transition: 0.3s;
+    color: $secondary-color-lightmode;
+  }
+}
+.fav-heart-broken {
+  width: 15px;
+}

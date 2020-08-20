@@ -9,17 +9,20 @@ import Span from "./primitive/Span";
 //import Link from "./primitive/Link";
 import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
+import FavsContext from "../contexts/FavsContext";
 
 const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   // const history = useHistory();
   const { theme } = useContext(ThemeContext);
+  const { favsArray } = useContext(FavsContext);
 
   // const handleExploreAllClick = (type, category) => {
   //   history.push(`/${type}/category/${category}`);
   // };
 
   return (
-    data && (
+    data &&
+    favsArray && (
       <Container className={`cardlistpreview-container ${theme} `}>
         <Container className="cardlistpreview-title">
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
@@ -41,6 +44,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
         </Button> */}
         <Container className="media-container">
           {data &&
+            favsArray &&
             data.map((singleCard) => (
               <Card
                 id={singleCard.id}
@@ -49,6 +53,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
                 votes={singleCard.vote_average}
                 key={singleCard.id}
                 mediatype={mediatype}
+                like={favsArray.includes(singleCard.id)}
               />
             ))}
         </Container>

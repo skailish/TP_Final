@@ -1,5 +1,11 @@
-import React, { useContext } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import firebase, { db } from "configs/firebase";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import Container from "./components/primitive/Container";
@@ -9,13 +15,37 @@ import TVSeries from "./pages/TVSeries";
 import Categories from "./pages/categories/Categories";
 import TVShow from "./pages/TVShow";
 import Trailer from "./pages/Trailer";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import ErrorPage from "./pages/ErrorPage";
+import UserContext from "./contexts/UserContext";
+import Favs from "./pages/Favs";
+import FavsContext from "./contexts/FavsContext";
 
 function App() {
+  const { user, setUser } = useContext(UserContext);
+  const { setFavsArray, updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
+
+  useEffect(() => {
+    const unsuscribe = firebase
+      .auth()
+
+      .onAuthStateChanged((user) => {
+        setUser(user);
+      });
+
+    return () => unsuscribe();
+  }, []);
+
+  useEffect(() => {
+    updateSeriesFavs(user)
+    updateMovieFavs(user)
+  }, [user]);
+
   return (
     <Container className="main-aside-container">
       <Router>
-        <Aside />
+        <Aside user={user} />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -35,7 +65,16 @@ function App() {
           <Route exact path="/video/:media/:id">
             <Trailer />
           </Route>
-          <Route >
+          <Route exact path="/login">
+            <Login user={user} />
+          </Route>
+          <Route exact path="/signup">
+            <Signup user={user} />
+          </Route>
+          <Route exact path="/favs">
+            {user ? <Favs user={user} /> : <Redirect />}
+          </Route>
+          <Route>
             <ErrorPage />
           </Route>
         </Switch>

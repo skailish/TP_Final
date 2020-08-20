@@ -22,7 +22,7 @@
     margin-top: 50px;
   }
   .user-options {
-    @include flex(column, space-between, center);
+    @include flex(column, space-evenly, center);
     height: 150px;
   }
 }

@@ -9,26 +9,32 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
 import { TvShowProvider } from "./contexts/TvShowContext";
 import { PaginationProvider } from "./contexts/PaginationContext";
+import { UserProvider } from "./contexts/UserContext";
+import { FavsProvider } from "./contexts/FavsContext";
 
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MovieProvider>
-      <TvShowProvider>
-        <DataProvider>
-          <ImageProvider>
-            <YouTubeProvider>
-              <ThemeProvider>
-                <PaginationProvider>
-                  <App />
-                </PaginationProvider>
-              </ThemeProvider>
-            </YouTubeProvider>
-          </ImageProvider>
-        </DataProvider>
-      </TvShowProvider>
-    </MovieProvider>
+    <UserProvider>
+      <FavsProvider>
+        <MovieProvider>
+          <TvShowProvider>
+            <DataProvider>
+              <ImageProvider>
+                <YouTubeProvider>
+                  <ThemeProvider>
+                    <PaginationProvider>
+                      <App />
+                    </PaginationProvider>
+                  </ThemeProvider>
+                </YouTubeProvider>
+              </ImageProvider>
+            </DataProvider>
+          </TvShowProvider>
+        </MovieProvider>
+      </FavsProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
