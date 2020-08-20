@@ -27,35 +27,44 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
 
   const handleFavClick = (id, src, title, votes, mediatype, user) => {
     setFav(true);
-    db.collection("Favs").doc(user.email).collection(`${mediatype}`).add({
-      id: id,
-      src: src,
-      title: title,
-      votes: votes,
-      mediatype: mediatype,
-    });
+
+    db.collection("Favs")
+      .doc(user.email)
+      .collection(`${mediatype}`)
+      .add({
+        id: id,
+        src: src,
+        title: title,
+        votes: votes,
+        mediatype: mediatype,
+      })
+      .then(() => {
+        const newFavs = [...favsArray, id];
+        setFavsArray(newFavs);
+      });
   };
 
-  const handleBreakFavClick = (id) => {
-    let selectedID = "";
+  const handleBreakFavClick = (id, like) => {
     setFav(false);
+    like = false;
+
+    let selectedID = "";
     db.collection("Favs")
       .doc(user.email)
       .collection(`${mediatype}`)
       .get()
       .then((response) => {
-        response.forEach((document) => {
-          if (document.data().id === id) {
-            selectedID = document.id;
-          }
-          console.log(selectedID);
-        });
+        const docSelected = response.docs.filter(
+          (document) => document.data().id === id
+        );
+        selectedID = docSelected[0].id;
+        const index = favsArray.indexOf(id);
+        const newArray = [...favsArray];
+        newArray.splice(index, 1);
+        setFavsArray(newArray);
       })
       .then(() => {
         deleteFav(selectedID);
-        const index = favsArray.indexOf(id);
-        const newArray = favsArray.splice(index, 1);
-        setFavsArray(newArray);
       });
   };
 
@@ -66,10 +75,6 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
       .doc(id)
       .delete();
   };
-
-  // useEffect(() => {
-  //   window.localStorage.getItem("favs");
-  // }, []);
 
   return (
     <Container
@@ -97,12 +102,12 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
           voteNumber={votes}
           className={`media-card-rating ${theme} `}
         />
-        {user && window.localStorage && (
+        {user && favsArray && (
           <Container className="heart-icons-container">
             {(fav || like) && (
               <HeartBroken
                 className="fav-heart-broken"
-                onClick={() => handleBreakFavClick(id)}
+                onClick={() => handleBreakFavClick(id, like)}
               />
             )}
             <Heart

@@ -23,9 +23,6 @@ const overrideLight = css`
 `;
 
 const Home = () => {
-  // const { setCategory } = useContext(MovieContext);
-
-  // setCategory("popular");
   const { theme } = useContext(ThemeContext);
   const {
     data,

@@ -6,51 +6,65 @@ import Heading from "../components/primitive/Heading";
 import Card from "../components/Card";
 
 const Favs = ({ user }) => {
-  const [favSeries, setFavSeries] = useState([]);
-  const [favMovies, setFavMovies] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    const getFavSeries = () => {
+    const getFavs = () => {
+      let favs = [];
       db.collection("Favs")
         .doc(`${user.email}`)
         .collection("tv")
         .get()
         .then((response) => {
-          const series = [];
-          response.forEach((document) => {
-            const serie = {
+          response.docs.map((document) => {
+            const fav = {
               ...document.data(),
             };
-            series.push(serie);
+            favs.push(fav);
           });
-          setFavSeries(series);
-          window.localStorage.setItem("favs", series);
         });
+      db.collection("Favs")
+        .doc(`${user.email}`)
+        .collection("movie")
+        .get()
+        .then((response) => {
+          response.docs.map((document) => {
+            const fav = {
+              ...document.data(),
+            };
+            favs.push(fav);
+          });
+        });
+      setFavorites(favs);
+      console.log(favs);
     };
 
-    getFavSeries();
+    getFavs();
   }, [user]);
 
   return (
-    <Container className={`main-favs-container ${theme}`}>
-      <Heading level={1} className={`favs-heading ${theme}`}>
-        Your Favorites
-      </Heading>
-      <Container className={`favs-cards-container ${theme}`}>
-        {favSeries &&
-          favSeries.map((serie) => (
+    favorites.length > 0 && (
+      <Container className={`main-favs-container ${theme}`}>
+        <Heading level={1} className={`favs-heading ${theme}`}>
+          Your Favorites
+        </Heading>
+        <Container className={`favs-cards-container ${theme}`}>
+          {favorites.map((fav) => (
             <Card
-              key={serie.id}
-              id={serie.id}
-              src={serie.src}
-              title={serie.title}
-              votes={serie.votes}
-              mediatype={serie.mediatype}
+              key={fav.id}
+              id={fav.id}
+              src={fav.src}
+              title={fav.title}
+              votes={fav.votes}
+              mediatype={fav.mediatype}
+              like={true}
             />
           ))}
+          {console.log(favorites)}
+        </Container>
       </Container>
-    </Container>
+    )
   );
 };
 

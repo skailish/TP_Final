@@ -5,7 +5,12 @@ const FavsProvider = ({ children }) => {
   const [favsArray, setFavsArray] = useState([]);
 
   return (
-    <FavsContext.Provider value={{ favsArray, setFavsArray }}>
+    <FavsContext.Provider
+      value={{
+        favsArray,
+        setFavsArray,
+      }}
+    >
       {children}
     </FavsContext.Provider>
   );

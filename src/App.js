@@ -1,5 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import firebase, { db } from "configs/firebase";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
@@ -32,19 +37,30 @@ function App() {
   }, []);
 
   useEffect(() => {
-    db.collection("Favs")
-      .doc(`${user.email}`)
-      .collection("tv")
-      .get()
-      .then((response) => {
-        const series = [];
-        response.forEach((document) => {
-          series.push(document.data().id);
+    let favs = [];
+    user &&
+      db
+        .collection("Favs")
+        .doc(`${user.email}`)
+        .collection("tv")
+        .get()
+        .then((response) => {
+          response.forEach((document) => {
+            favs.push(document.data().id);
+          });
         });
-        setFavsArray(series);
-        window.localStorage.setItem("favs", series);
-        console.log(window.localStorage.getItem("favs"));
-      });
+    user &&
+      db
+        .collection("Favs")
+        .doc(`${user.email}`)
+        .collection("movie")
+        .get()
+        .then((response) => {
+          response.forEach((document) => {
+            favs.push(document.data().id);
+          });
+          setFavsArray(favs);
+        });
   }, [user]);
 
   return (
@@ -74,7 +90,7 @@ function App() {
             <Signup user={user} />
           </Route>
           <Route exact path="/favs">
-            <Favs user={user} />
+            {user ? <Favs user={user} /> : <Redirect />}
           </Route>
           <Route>
             <ErrorPage />
