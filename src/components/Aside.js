@@ -8,7 +8,7 @@ import { LogIn } from "@styled-icons/ionicons-sharp/LogIn";
 import { LogOut } from "@styled-icons/ionicons-sharp/LogOut";
 import { LightbulbFlash as LightOn } from "@styled-icons/remix-fill/LightbulbFlash";
 import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFlash";
-import Tooltip from './Tooltip';
+import Tooltip from "./Tooltip";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Aside = () => {
@@ -22,7 +22,7 @@ const Aside = () => {
             <Home className={`nav-icon ${theme}`} />
           </Tooltip>
         </NavLink>
-        <NavLink to="/movies" exact activeClassName="selected">
+        <NavLink to="/movie" exact activeClassName="selected">
           <Tooltip title="Movie">
             <Movie className={`nav-icon ${theme}`} />
           </Tooltip>
@@ -48,18 +48,17 @@ const Aside = () => {
           </a>
         </Tooltip>
         <Tooltip title="Change the theme">
-
           {theme === "dark" ? (
             <LightOn
               onClick={() => handleThemeClick(theme)}
               className={`nav-icon ${theme}`}
             />
           ) : (
-              <LightOff
-                onClick={() => handleThemeClick(theme)}
-                className={`nav-icon ${theme}`}
-              />
-            )}
+            <LightOff
+              onClick={() => handleThemeClick(theme)}
+              className={`nav-icon ${theme}`}
+            />
+          )}
         </Tooltip>
       </div>
     </aside>

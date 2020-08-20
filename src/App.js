@@ -21,20 +21,20 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/movies">
+          <Route exact path="/movie">
             <Movies />
           </Route>
           <Route exact path="/tv">
             <TVSeries />
+          </Route>
+          <Route exact path="/:media/category/:category">
+            <Categories />
           </Route>
           <Route path="/tv/:TVId">
             <TVShow />
           </Route>
           <Route path="/movie/:movieId">
             <Movie />
-          </Route>
-          <Route exact path="/:media/category/:category">
-            <Categories />
           </Route>
           <Route exact path="/video/:media/:id">
             <Trailer />

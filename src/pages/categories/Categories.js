@@ -53,8 +53,8 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-              <BounceLoader css={overrideLight} size="100" />
-            )}
+            <BounceLoader css={overrideLight} size="100" />
+          )}
         </Container>
       )}
       {!isLoading && (
@@ -70,11 +70,7 @@ const Categories = () => {
               <Card
                 id={singleCard.id}
                 src={singleCard.poster_path}
-                title={
-                  media === "movie"
-                    ? singleCard.title
-                    : singleCard.name
-                }
+                title={media === "movie" ? singleCard.title : singleCard.name}
                 votes={singleCard.vote_average}
                 key={singleCard.id}
                 mediatype={media}

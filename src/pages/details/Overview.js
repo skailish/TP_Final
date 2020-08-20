@@ -15,6 +15,12 @@ const Overview = ({ data, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
+
   return (
     data &&
     mediatype && (
@@ -55,7 +61,9 @@ const Overview = ({ data, mediatype }) => {
                     {mediatype === "tv" ? "Seasons:" : "Runtime:"}
                   </Container>
                   <Container className="list-item-details">
-                    {mediatype === "tv" ? data.number_of_seasons : data.runtime}
+                    {mediatype === "tv"
+                      ? data.number_of_seasons
+                      : data.runtime + " min"}
                   </Container>
                 </ListItem>
 
@@ -64,7 +72,11 @@ const Overview = ({ data, mediatype }) => {
                     {mediatype === "tv" ? "Episodes:" : "Budget"}
                   </Container>
                   <Container className="list-item-details">
-                    {mediatype === "tv" ? data.number_of_episodes : data.budget}
+                    {mediatype === "tv"
+                      ? data.number_of_episodes
+                      : data.budget === 0
+                      ? "-"
+                      : formatter.format(data.budget)}
                   </Container>
                 </ListItem>
 

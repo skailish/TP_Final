@@ -65,50 +65,52 @@ const Movie = () => {
   }, [movieId]);
 
   return (
-    <Container className="main-container">
-      <Hero
-        data={dataMovieID}
-        year={year}
-        voteAverage={voteAverage}
-        mediatype="movie"
-      />
-      <Container className={`nav-container ${theme}`}>
-        <Nav className={`nav-tvShow ${theme}`}>
-          <NavLink
-            to={`${url}/info`}
-            className={`navlink ${theme}`}
-            activeClassName="selected"
-          >
-            OVERVIEW
-          </NavLink>
-          <NavLink
-            to={`${url}/cast`}
-            className={`navlink ${theme}`}
-            activeClassName="selected"
-          >
-            CAST
-          </NavLink>
-          <NavLink
-            to={`${url}/similar`}
-            className={`navlink ${theme}`}
-            activeClassName="selected"
-          >
-            SIMILAR
-          </NavLink>
-        </Nav>
+    dataMovieID && (
+      <Container className="main-container">
+        <Hero
+          data={dataMovieID}
+          year={year}
+          voteAverage={voteAverage}
+          mediatype="movie"
+        />
+        <Container className={`nav-container ${theme}`}>
+          <Nav className={`nav-tvShow ${theme}`}>
+            <NavLink
+              to={`${url}/info`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              OVERVIEW
+            </NavLink>
+            <NavLink
+              to={`${url}/cast`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              CAST
+            </NavLink>
+            <NavLink
+              to={`${url}/similar`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              SIMILAR
+            </NavLink>
+          </Nav>
+        </Container>
+        <Switch>
+          <Route path={`${path}/info`}>
+            <Overview data={dataMovieID} mediatype="movie" />
+          </Route>
+          <Route path={`${path}/cast`}>
+            <Cast data={movieCast} mediatype="movie" />
+          </Route>
+          <Route path={`${path}/similar`}>
+            <CategorySimilar data={similarMovies} mediatype="movie" />
+          </Route>
+        </Switch>
       </Container>
-      <Switch>
-        <Route path={`${path}/info`}>
-          <Overview data={dataMovieID} mediatype="movie" />
-        </Route>
-        <Route path={`${path}/cast`}>
-          <Cast data={movieCast} mediatype="movie" />
-        </Route>
-        <Route path={`${path}/similar`}>
-          <CategorySimilar data={similarMovies} mediatype="movie" />
-        </Route>
-      </Switch>
-    </Container>
+    )
   );
 };
 
