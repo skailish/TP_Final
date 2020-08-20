@@ -28,12 +28,7 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
             />
           </Container>
           <Container className="hero-info">
-            <Heading>
-              <Link to={`${mediatype}/${data.id}/info`}>
-                {mediatype === "movie" ? data.title : data.name}
-              </Link>
-            </Heading>
-
+            <Heading>{mediatype === "movie" ? data.title : data.name}</Heading>
             <Container className="hero-details-container">
               <Votes voteAverage={voteAverage} />
               <Span className="hero-details">
