@@ -117,6 +117,14 @@
           background-color: $background-footer-lightmode;
           border-bottom: 1px solid #992e2e;
           color: $third-color-lightmode;
+
+          &:active,
+          &:focus {
+            transition: ease-in 0.5s;
+            background-color: $background-footer-lightmode;
+            border-bottom: 1px solid #992e2e;
+            color: $third-color-lightmode;
+          }
         }
 
         &:active,
@@ -131,6 +139,8 @@
           padding-left: 10px;
           font-size: 18px;
           transition: ease-in 0.5s;
+
+
         }
       }
 
