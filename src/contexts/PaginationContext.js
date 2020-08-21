@@ -14,10 +14,19 @@ const PaginationProvider = ({ children }) => {
     page !== maxPage ? setPage(page + 1) : setPage(page);
   };
 
-
-  const [results, setResults] = useState([])
-  const [firstResult, setFirstResult] = useState({})
-  const [lastResult, setLastResult] = useState({})
+  const onPageChange = (currentPage) => {
+    const pageButtons = [Array(5)];
+    return (
+      pageButtons.map((button, i) => {
+        if (i + 1 === 7) {
+          return (<div onClick={() => setPage(maxPage)} className={`pagination-page ${currentPage === (maxPage) ? 'active-page' : ''}`}>{maxPage}</div>)
+        } else {
+          return (<div onClick={() => setPage(i + 1)} className={`pagination-page ${currentPage === (i + 1) ? 'active-page' : ''}`}>{(i + 1)}</div>)
+        }
+      }
+      )
+    )
+  }
 
   const toLastPage = () => setPage(maxPage);
 
@@ -31,7 +40,7 @@ const PaginationProvider = ({ children }) => {
         toPreviousPage,
         toNextPage,
         toLastPage,
-        results, setResults, firstResult, setFirstResult, lastResult, setLastResult
+        onPageChange
       }}
     >
       {children}
