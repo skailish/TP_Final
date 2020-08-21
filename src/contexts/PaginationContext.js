@@ -14,6 +14,11 @@ const PaginationProvider = ({ children }) => {
     page !== maxPage ? setPage(page + 1) : setPage(page);
   };
 
+
+  const [results, setResults] = useState([])
+  const [firstResult, setFirstResult] = useState({})
+  const [lastResult, setLastResult] = useState({})
+
   const toLastPage = () => setPage(maxPage);
 
   return (
@@ -26,6 +31,7 @@ const PaginationProvider = ({ children }) => {
         toPreviousPage,
         toNextPage,
         toLastPage,
+        results, setResults, firstResult, setFirstResult, lastResult, setLastResult
       }}
     >
       {children}

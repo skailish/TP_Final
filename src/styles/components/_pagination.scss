@@ -1,40 +1,31 @@
 .pagination-container {
-    display: flex;
-    position: relative;
-    left: 100px;
-    padding-bottom: 50px;
-    
+  @include flex(row, center, center);
 
-    .pagination-button {
-        @include button(10px, 50px);
-        transition: 0.3s ease-in;
-        
-        &.light {
-            transition: 0.3s ease-in;
-            color: $main-text-lightmode;
-        
-        }
+  .pagination-button {
+    @include button(5px, 35px);
+    border-radius: 100%;
+    transition: 0.3s ease-in;
+
+    &.light {
+      transition: 0.3s ease-in;
     }
+  }
 
-    .pagination-page {
-        width: 50px;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 40px 20px 0 0;
-        border-radius: 10px;
-        background-color: $secondary-color-darkmode;
-        color: $main-text-darkmode;
-        font-size: 1em;
-        letter-spacing: 1px;
-        font-weight: 700;
-        transition: 0.3s ease-in;
+  .pagination-page {
+    width: 20px;
+    padding: 0;
+    border-radius: 100%;
+    background-color: $secondary-color-darkmode;
+    color: $main-text-darkmode;
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: 0.3s ease-in;
 
-        &.light {
-            background-color: $third-color-lightmode;
-            color: $main-text-lightmode;
-            transition: 0.3s ease-in;
-        }
+    &.light {
+      background-color: $third-color-lightmode;
+      color: $main-text-lightmode;
+      transition: 0.3s ease-in;
     }
+  }
 }

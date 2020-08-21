@@ -55,8 +55,8 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
-          )}
+              <BounceLoader css={overrideLight} size="100" />
+            )}
         </Container>
       )}
       {!isLoading && favsArray && (
@@ -80,7 +80,7 @@ const Categories = () => {
               />
             ))}
           </Container>
-          <Pagination />
+          <Pagination data={dataByParams} />
         </Container>
       )}
     </>

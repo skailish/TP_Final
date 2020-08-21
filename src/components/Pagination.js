@@ -1,41 +1,32 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react'
 import Container from "./primitive/Container";
 import Button from "./primitive/Button";
+import { ArrowLeftCircle } from "@styled-icons/bootstrap/ArrowLeftCircle";
+import { ArrowRightCircle } from "@styled-icons/bootstrap/ArrowRightCircle";
+import DataContext from "../contexts/DataContext"
 import PaginationContext from "../contexts/PaginationContext";
 import ThemeContext from "../contexts/ThemeContext";
 
-const Pagination = () => {
+
+const Pagination = ({ maxPage, currentPage, onPageChange }) => {
   const { theme } = useContext(ThemeContext);
-  const {
-    page,
-    toPreviousPage,
-    toFirstPage,
-    toNextPage,
-    toLastPage,
-  } = useContext(PaginationContext);
 
   return (
-    page && (
+    <>
       <Container className={`pagination-container ${theme}`}>
-        <Button className={`pagination-button ${theme}`} onClick={toFirstPage}>
-          {"<<"}
-        </Button>
         <Button
           className={`pagination-button ${theme}`}
-          onClick={toPreviousPage}
+          onClick={onPageChange}
         >
-          {"<"}
+          <ArrowLeftCircle />
         </Button>
-        <Container className={`pagination-page ${theme}`}>{page}</Container>
-        <Button className={`pagination-button ${theme}`} onClick={toNextPage}>
-          {">"}
-        </Button>
-        <Button className={`pagination-button ${theme}`} onClick={toLastPage}>
-          {">>"}
+        <Container className={`pagination-page ${theme}`}>{currentPage}</Container>
+        <Button className={`pagination-button ${theme}`} onClick={onPageChange}>
+          <ArrowRightCircle />
         </Button>
       </Container>
-    )
-  );
-};
+    </>
+  )
+}
 
-export default Pagination;
+export default Pagination
