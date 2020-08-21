@@ -20,6 +20,7 @@ import Signup from "./pages/Signup";
 import ErrorPage from "./pages/ErrorPage";
 import UserContext from "./contexts/UserContext";
 import Favs from "./pages/Favs";
+import SearchBar from "./components/SearchBar";
 import FavsContext from "./contexts/FavsContext";
 
 function App() {
@@ -45,7 +46,9 @@ function App() {
   return (
     <Container className="main-aside-container">
       <Router>
+        <SearchBar />
         <Aside user={user} />
+
         <Switch>
           <Route exact path="/">
             <Home />

@@ -4,6 +4,7 @@
   width: fit-content;
   margin: 20px 15px;
   scroll-snap-align: center;
+  z-index: 1;
   cursor: pointer;
   @include flex(column, center, flex-start);
 

@@ -62,7 +62,7 @@
 .fav-heart {
   width: 20px;
   transition: 0.3s;
-  
+
   &.favAdd {
     transition: 0.3s;
     color: $secondary-color-lightmode;
@@ -71,7 +71,6 @@
   &.light {
     color: $main-text-lightmode;
   }
-
 }
 .fav-heart-broken {
   width: 18px;
@@ -79,5 +78,13 @@
   &.favAdd {
     transition: 0.3s;
     color: $secondary-color-lightmode;
+  }
+}
+
+.search-icon {
+  width: 30px;
+  color: $secondary-color-darkmode;
+  &.light {
+    color: $third-color-lightmode;
   }
 }

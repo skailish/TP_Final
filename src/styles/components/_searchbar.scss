@@ -1,0 +1,122 @@
+.main-searchbar-container {
+  width: calc(100vw - 100px);
+  @include flex(column, space-evenly, flex-start);
+  position: absolute;
+  top: 0;
+  left: 100px;
+  transition: ease-in 0.5s;
+  height: 600px;
+
+  background-color: $background-darkmode;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+
+  .search-container {
+    width: calc(100vw - 100px);
+    position: absolute;
+    top: -120px;
+    transition: 0.5s ease-in;
+    height: 100px;
+    background-color: $background-darkmode;
+    z-index: 200;
+    @include flex(column, space-evenly, flex-start);
+
+    &.visible {
+      transition: 0.5s ease-in;
+      transform: translateY(120px);
+    }
+
+    .options-container {
+      @include flex(row, space-evenly, center);
+      width: 60%;
+
+      .search-text {
+        color: $main-text-darkmode;
+        font-size: 18px;
+        &.light {
+          color: $main-text-lightmode;
+        }
+      }
+
+      .search-label {
+        @include flex(row, space-evenly, center);
+        margin-right: 10px;
+        &.light {
+          color: $main-text-lightmode;
+        }
+        .radio-input {
+          margin-left: 10px;
+        }
+      }
+      .search-link {
+        color: $third-text-color;
+        font-size: 18px;
+        font-weight: 600;
+        &:hover {
+          color: $third-color-darkmode;
+        }
+      }
+    }
+    .search-input-container {
+      @include flex(row, space-evenly, center);
+      width: 60%;
+      padding-top: 10px;
+      .search-input {
+        border: none;
+        border-bottom: 1px solid #144d53;
+        background-color: $background-darkmode;
+        outline: none;
+        color: $main-text-darkmode;
+        height: 30px;
+        width: 540px;
+        padding-left: 10px;
+        font-size: 18px;
+        transition: ease-in 0.5s;
+        &.light {
+          transition: ease-in 0.5s;
+          background-color: $background-lightmode;
+          border-bottom: 1px solid #992e2e;
+          color: $third-color-lightmode;
+        }
+        &:active,
+        &:valid {
+          border: none;
+          border-bottom: 1px solid #144d53;
+          background-color: $background-darkmode;
+          outline: none;
+          color: $main-text-darkmode;
+          height: 30px;
+          width: 540px;
+          padding-left: 10px;
+          font-size: 18px;
+          transition: ease-in 0.5s;
+        }
+      }
+      .search-button {
+        width: 35px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+  .results-container {
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    height: 100%;
+    min-height: 100vh;
+    background-color: $background-darkmode;
+    @include flex(row, space-evenly, center);
+    flex-wrap: wrap;
+    z-index: -100;
+    &.showResults {
+      z-index: 200;
+      background-color: $background-darkmode;
+    }
+  }
+}

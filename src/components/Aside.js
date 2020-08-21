@@ -12,11 +12,11 @@ import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFl
 import { Heart } from "@styled-icons/entypo/Heart";
 import Tooltip from "./Tooltip";
 import ThemeContext from "../contexts/ThemeContext";
-//import UserContext from "../contexts/UserContext";
+import SearchContext from "../contexts/SearchContext";
 
 const Aside = ({ user }) => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
-  //const { user } = useContext(UserContext);
+  const { handleSearchBarVisibleClick } = useContext(SearchContext);
 
   const handleLogoutClick = () => {
     firebase.auth().signOut();
@@ -44,7 +44,10 @@ const Aside = ({ user }) => {
             </NavLink>
 
             <Tooltip title="Search">
-              <Search className={`nav-icon ${theme}`} />
+              <Search
+                className={`nav-icon ${theme}`}
+                onClick={() => handleSearchBarVisibleClick()}
+              />
             </Tooltip>
 
             <NavLink to="/favs" exact activeClassName="selected">

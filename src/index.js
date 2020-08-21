@@ -11,6 +11,7 @@ import { TvShowProvider } from "./contexts/TvShowContext";
 import { PaginationProvider } from "./contexts/PaginationContext";
 import { UserProvider } from "./contexts/UserContext";
 import { FavsProvider } from "./contexts/FavsContext";
+import { SearchProvider } from "./contexts/SearchContext";
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -25,7 +26,9 @@ ReactDOM.render(
                 <YouTubeProvider>
                   <ThemeProvider>
                     <PaginationProvider>
-                      <App />
+                      <SearchProvider>
+                        <App />
+                      </SearchProvider>
                     </PaginationProvider>
                   </ThemeProvider>
                 </YouTubeProvider>
