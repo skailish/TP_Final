@@ -26,6 +26,7 @@ import FavsContext from "./contexts/FavsContext";
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
+  
 
   useEffect(() => {
     const unsuscribe = firebase
@@ -44,10 +45,11 @@ function App() {
   }, [user]);
 
   return (
-    <Container className="main-aside-container">
+    <Container  className="main-aside-container">
       <Router>
-        <SearchBar />
         <Aside user={user} />
+
+        <SearchBar />
 
         <Switch>
           <Route exact path="/">

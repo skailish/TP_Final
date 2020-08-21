@@ -8,6 +8,7 @@ const SearchProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState([]);
   const [visibleResults, setVisibleResults] = useState(false);
+  const [mountResults, setMountResults] = useState(false);
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -21,7 +22,18 @@ const SearchProvider = ({ children }) => {
     event.preventDefault();
     setInputValue(event.target.input.value);
     setVisibleResults(true);
+    setMountResults(true);
   };
+
+  const handleCloseSearchClick = () => {
+    setVisibleResults(false);
+    setSearchVisible(false);
+  };
+
+  useEffect(() => {
+    visibleResults && setMountResults(false);
+    
+  }, [visibleResults]);
 
   useEffect(() => {
     const getSearch = async () => {
@@ -30,6 +42,7 @@ const SearchProvider = ({ children }) => {
       );
       const dataJson = await response.json();
       setResults(dataJson.results);
+      setMountResults(true);
     };
     getSearch();
   }, [inputValue, media]);
@@ -38,13 +51,17 @@ const SearchProvider = ({ children }) => {
     <SearchContext.Provider
       value={{
         searchVisible,
-        handleSearchBarVisibleClick,
-        handleMediaClick,
         visibleResults,
         results,
         media,
         inputValue,
+        mountResults,
+        handleSearchBarVisibleClick,
+        handleMediaClick,
+        setSearchVisible,
+        setVisibleResults,
         handleInputChange,
+        handleCloseSearchClick,
       }}
     >
       {children}

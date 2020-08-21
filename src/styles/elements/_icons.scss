@@ -29,6 +29,7 @@
     color: $secondary-color-lightmode;
   }
 }
+
 .play-icon {
   width: 40px;
   padding-right: 10px;
@@ -44,6 +45,7 @@
     color: $secondary-color-darkmode;
     transition: 0.3s;
   }
+
   &.light {
     color: $secondary-color-lightmode;
     transition: 0.3s;
@@ -72,6 +74,7 @@
     color: $main-text-lightmode;
   }
 }
+
 .fav-heart-broken {
   width: 18px;
 
@@ -84,7 +87,24 @@
 .search-icon {
   width: 30px;
   color: $secondary-color-darkmode;
+
   &.light {
+    color: $third-color-lightmode;
+  }
+}
+
+.close-options-icon {
+  width: 30px;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.3s ease-in;
+    color: $third-color-darkmode;
+  }
+
+  &.light {
+    transition: 0.3s ease-in;
     color: $third-color-lightmode;
   }
 }

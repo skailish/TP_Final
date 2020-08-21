@@ -5,12 +5,22 @@
   top: 0;
   left: 100px;
   transition: ease-in 0.5s;
-  height: 600px;
 
-  background-color: $background-darkmode;
+
+  background-color: $background-footer-darkmode;
 
   &.light {
     background-color: $background-lightmode;
+  }
+
+  .close-options-container {
+    @include flex(row, space-between, center);
+
+    width: calc(100% - 100px);
+
+    &.light {
+      color: $main-text-lightmode;
+    }
   }
 
   .search-container {
@@ -19,9 +29,17 @@
     top: -120px;
     transition: 0.5s ease-in;
     height: 100px;
-    background-color: $background-darkmode;
+    background-color: $background-footer-darkmode;
     z-index: 200;
     @include flex(column, space-evenly, flex-start);
+
+    &.light {
+      background-color: $background-footer-lightmode;
+      transition: 0.5s ease-in;
+      box-shadow: 2px 1px 5px 3px rgba(0, 0, 0, 0.35);
+      ;
+
+    }
 
     &.visible {
       transition: 0.5s ease-in;
@@ -35,6 +53,7 @@
       .search-text {
         color: $main-text-darkmode;
         font-size: 18px;
+
         &.light {
           color: $main-text-lightmode;
         }
@@ -43,30 +62,48 @@
       .search-label {
         @include flex(row, space-evenly, center);
         margin-right: 10px;
+
         &.light {
           color: $main-text-lightmode;
         }
+
         .radio-input {
           margin-left: 10px;
         }
       }
+
       .search-link {
         color: $third-text-color;
         font-size: 18px;
         font-weight: 600;
+        transition: 0.5s ease-in;
+
+        &.light {
+          transition: 0.5s ease-in;
+          color: $third-color-lightmode;
+        }
+
+        &.light:hover {
+          transition: 0.5s ease-in;
+          color: $secondary-color-lightmode;
+        }
+
         &:hover {
+          transition: 0.5s ease-in;
           color: $third-color-darkmode;
         }
       }
     }
+
     .search-input-container {
       @include flex(row, space-evenly, center);
       width: 60%;
       padding-top: 10px;
+
       .search-input {
         border: none;
         border-bottom: 1px solid #144d53;
-        background-color: $background-darkmode;
+        background-color: $background-footer-darkmode;
         outline: none;
         color: $main-text-darkmode;
         height: 30px;
@@ -74,17 +111,19 @@
         padding-left: 10px;
         font-size: 18px;
         transition: ease-in 0.5s;
+
         &.light {
           transition: ease-in 0.5s;
-          background-color: $background-lightmode;
+          background-color: $background-footer-lightmode;
           border-bottom: 1px solid #992e2e;
           color: $third-color-lightmode;
         }
+
         &:active,
-        &:valid {
+        &:focus {
           border: none;
           border-bottom: 1px solid #144d53;
-          background-color: $background-darkmode;
+          background-color: $background-footer-darkmode;
           outline: none;
           color: $main-text-darkmode;
           height: 30px;
@@ -94,17 +133,20 @@
           transition: ease-in 0.5s;
         }
       }
+
       .search-button {
         width: 35px;
         height: 30px;
         background: transparent;
         border: none;
         outline: none;
+        cursor: pointer;
       }
     }
   }
 
   .results-container {
+    transition: 0.3s ease-in;
     width: 100%;
     position: absolute;
     top: 100px;
@@ -114,9 +156,18 @@
     @include flex(row, space-evenly, center);
     flex-wrap: wrap;
     z-index: -100;
+    opacity: 0;
+
+
     &.showResults {
+      transition: 0.3s ease-in;
+      opacity: 1;
       z-index: 200;
       background-color: $background-darkmode;
+
+      &.light {
+        background-color: $background-lightmode;
+      }
     }
   }
 }

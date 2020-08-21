@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Container from "components/primitive/Container";
 import Input from "components/primitive/Input";
@@ -8,17 +8,19 @@ import Text from "components/primitive/Text";
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
 import { Search } from "@styled-icons/bootstrap/Search";
+import { Close } from "@styled-icons/ionicons-solid/Close";
 import Card from "components/Card";
 
 const SearchBar = () => {
   const {
     searchVisible,
     handleMediaClick,
-    handleSearchClick,
+    mountResults,
     results,
     media,
     visibleResults,
     handleInputChange,
+    handleCloseSearchClick,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
@@ -27,34 +29,37 @@ const SearchBar = () => {
       <Container
         className={`search-container ${searchVisible && "visible"}  ${theme}`}
       >
-        <Container
-          as="form"
-          className={`options-container ${theme}`}
-          onClick={(event) => handleMediaClick(event)}
-        >
-          <Text className={`search-text ${theme}`}>Filtrar por</Text>
-          <Label className={`search-label ${theme}`}>
-            Movie
-            <Input
-              type="radio"
-              name="mediatype"
-              value="movie"
-              className={`radio-input ${theme}`}
-            />
-          </Label>
-          <Label className={`search-label ${theme}`}>
-            TV Show
-            <Input
-              type="radio"
-              name="mediatype"
-              value="tv"
-              className={`radio-input ${theme}`}
-            />
-          </Label>
+        <Container className={`close-options-container ${theme}`}>
+          <Container
+            as="form"
+            className={`options-container ${theme}`}
+            onClick={(event) => handleMediaClick(event)}
+          >
+            <Text className={`search-text ${theme}`}>Filtrar por</Text>
+            <Label className={`search-label ${theme}`}>
+              Movie
+              <Input
+                type="radio"
+                name="mediatype"
+                value="movie"
+                className={`radio-input ${theme}`}
+              />
+            </Label>
+            <Label className={`search-label ${theme}`}>
+              TV Show
+              <Input
+                type="radio"
+                name="mediatype"
+                value="tv"
+                className={`radio-input ${theme}`}
+              />
+            </Label>
 
-          <Link to="" className={`search-link ${theme}`}>
-            Advanced search
-          </Link>
+            <Link to="" className={`search-link ${theme}`}>
+              Advanced search
+            </Link>
+          </Container>
+          <Close onClick={handleCloseSearchClick} className={`close-options-icon ${theme}`} />
         </Container>
         <Container
           as="form"
@@ -73,7 +78,8 @@ const SearchBar = () => {
           </Button>
         </Container>
       </Container>
-      {results && (
+
+      {results && mountResults && (
         <Container
           className={`results-container ${theme} ${
             visibleResults && "showResults"

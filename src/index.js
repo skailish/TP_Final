@@ -17,27 +17,27 @@ import { SearchProvider } from "./contexts/SearchContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <FavsProvider>
-        <MovieProvider>
-          <TvShowProvider>
-            <DataProvider>
-              <ImageProvider>
-                <YouTubeProvider>
-                  <ThemeProvider>
-                    <PaginationProvider>
-                      <SearchProvider>
+    <SearchProvider>
+      <UserProvider>
+        <FavsProvider>
+          <MovieProvider>
+            <TvShowProvider>
+              <DataProvider>
+                <ImageProvider>
+                  <YouTubeProvider>
+                    <ThemeProvider>
+                      <PaginationProvider>
                         <App />
-                      </SearchProvider>
-                    </PaginationProvider>
-                  </ThemeProvider>
-                </YouTubeProvider>
-              </ImageProvider>
-            </DataProvider>
-          </TvShowProvider>
-        </MovieProvider>
-      </FavsProvider>
-    </UserProvider>
+                      </PaginationProvider>
+                    </ThemeProvider>
+                  </YouTubeProvider>
+                </ImageProvider>
+              </DataProvider>
+            </TvShowProvider>
+          </MovieProvider>
+        </FavsProvider>
+      </UserProvider>
+    </SearchProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
