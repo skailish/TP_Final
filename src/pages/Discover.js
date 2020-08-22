@@ -8,16 +8,21 @@ import Select from "components/primitive/Select";
 import Option from "components/primitive/Option";
 import Text from "components/primitive/Text";
 import Heading from "components/primitive/Heading";
+import Button from "components/primitive/Button";
+import { Search } from "@styled-icons/bootstrap/Search";
 
 const Discover = () => {
   const {
     results,
     media,
     genres,
+    years,
+    mediaAdvance,
+    handleOrderByChange,
     handleMediaChange,
     handleGenreChange,
     handleYearChange,
-    years,
+    handleIntervalChange,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
@@ -31,11 +36,19 @@ const Discover = () => {
               <Option value="movie">Movie</Option>
               <Option value="tv">TV Show</Option>
             </Select>
+            <Input
+              type="text"
+              placeholder="Search..."
+              name="input"
+              className={`search-input ${theme}`}
+            />
             {genres && (
               <Select
                 name="genre"
                 onChange={(event) => handleGenreChange(event)}
               >
+                {" "}
+                <Option value={false}>All</Option>
                 {genres.map((genre) => (
                   <Option key={genre.id} value={genre.id}>
                     {genre.name}
@@ -44,7 +57,10 @@ const Discover = () => {
               </Select>
             )}
 
-            <Select name="year" onChange={(event) => handleYearChange(event)}>
+            <Select
+              name="year"
+              onChange={(event) => handleIntervalChange(event)}
+            >
               <Option value="before">Before than</Option>
               <Option value="exact">Exact</Option>
               <Option value="after">After than</Option>
@@ -52,19 +68,78 @@ const Discover = () => {
             {years && (
               <Select
                 name="years"
-                //onChange={(event) => handleSelectedYearChange(event)}
+                onChange={(event) => handleYearChange(event)}
               >
-                {years.map((year, index) => (
-                  <Option key={index} value={year.year}>
-                    {year.year}
+                <Option value={false}>All</Option>
+                {years.map((year) => (
+                  <Option key={year} value={year}>
+                    {year}
                   </Option>
                 ))}
               </Select>
             )}
+            <Select
+              name="order-by"
+              onChange={(event) => handleOrderByChange(event)}
+            >
+              <Option value="popularity.desc">More Popular</Option>
+              <Option value="popularity.asc">Less Popular</Option>
+              <Option
+                value={
+                  mediaAdvance === "tv"
+                    ? "first_air_date.desc"
+                    : "release_date.desc"
+                }
+              >
+                Newest
+              </Option>
+              <Option
+                value={
+                  mediaAdvance === "tv"
+                    ? "first_air_date.asc"
+                    : "release_date.asc"
+                }
+              >
+                Oldest
+              </Option>
+              <Option
+                value={
+                  mediaAdvance === "tv"
+                    ? "original_name.asc"
+                    : "original_title.asc"
+                }
+              >
+                A-Z
+              </Option>
+              <Option
+                value={
+                  mediaAdvance === "tv"
+                    ? "original_name.desc"
+                    : "original_title.desc"
+                }
+              >
+                Z-A
+              </Option>
+              {mediaAdvance === "movie" && (
+                <Option value="revenue.desc">Most Revenue</Option>
+              )}
+              {mediaAdvance === "movie" && (
+                <Option value="">Less Revenue</Option>
+              )}
+            </Select>
+            <Button
+              type="submit"
+              // onClick={handleClick}
+              className={`search-button `}
+            >
+              <Search className={`search-icon ${theme}`} />
+            </Button>
           </Container>
         </Container>
       )}
-      {results && (
+      {console.log(results)}
+      {
+            results && (
         <Container className={`results-container ${theme} `}>
           {results.map((result) => (
             <Card

@@ -13,21 +13,20 @@ const SearchProvider = ({ children }) => {
   const [mediaAdvance, setMediaAdvance] = useState("movie");
   const [genresAdvance, setGenresAdvance] = useState("");
   const [years, setYears] = useState([]);
+  const [interval, setInterval] = useState("exact");
+  const [orderBy, setOrderBy] = useState("original_title.asc");
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
     setVisibleResults(false);
   };
-  const handleMediaClick = (event) => {
-    setMedia(event.target.value);
-  };
+  const handleMediaClick = (event) => setMedia(event.target.value);
 
   const handleInputChange = (event) => {
     event.preventDefault();
     setInputValue(event.target.input.value);
     setVisibleResults(true);
     setMountResults(true);
-    console.log(event.target.input.value);
   };
 
   const handleCloseSearchClick = () => {
@@ -35,20 +34,11 @@ const SearchProvider = ({ children }) => {
     setSearchVisible(false);
   };
 
-  const handleMediaChange = (event) => {
-    setMediaAdvance(event.target.value);
-    console.log(event.target.value);
-  };
-
-  const handleGenreChange = (event) => {
-    setGenresAdvance(event.target.value);
-    console.log(event.target.value);
-  };
-
-  const handleYearChange = (event) => {
-    setYears(event.target.value);
-    console.log(event.target.value);
-  };
+  const handleMediaChange = (event) => setMediaAdvance(event.target.value);
+  const handleGenreChange = (event) => setGenresAdvance(event.target.value);
+  const handleIntervalChange = (event) => setInterval(event.target.value);
+  const handleYearChange = (event) => setYears(event.target.value);
+  const handleOrderByChange = (event) => setOrderBy(event.target.value);
 
   useEffect(() => {
     const getSearch = async () => {
@@ -74,13 +64,44 @@ const SearchProvider = ({ children }) => {
   }, [mediaAdvance]);
 
   useEffect(() => {
+    const areGenres = genresAdvance && `&with_genres=${genresAdvance}`;
+    const areQuery = inputValue && `&query=${inputValue}`;
+    const areSortBy =
+      orderBy &&
+      orderBy !== "original_name.asc" &&
+      orderBy !== "original_name.desc" &&
+      `&sort_by=${orderBy}`;
+    console
+    const reduceYears = (array, year) => {
+      if (array.length < 1) {
+        return [...array, year];
+      } else {
+        if (array.includes(year)) {
+          return array;
+        }
+        return [...array, year];
+      }
+    };
+
     const getYears = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?with_genres=${genresAdvance}&api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areQuery}`
       );
       const dataJson = await response.json();
-      setYears(dataJson.genres);
-      console.log(dataJson);
+      const jsonYears =
+        mediaAdvance === "tv"
+          ? dataJson.results
+              .map((serie) => serie.first_air_date.split("-")[0])
+              .reduce(reduceYears, [])
+              .sort()
+          : dataJson.results
+              .map((movie) => movie.release_date.split("-")[0])
+              .reduce(reduceYears, [])
+              .sort();
+
+      console.log(dataJson.results);
+      setYears(jsonYears);
+      setResults(dataJson.results);
     };
     getYears();
   }, [mediaAdvance, genresAdvance]);
@@ -94,17 +115,21 @@ const SearchProvider = ({ children }) => {
         media,
         inputValue,
         mountResults,
+        genres,
+        years,
+        interval,
+        mediaAdvance,
+        orderBy,
         handleSearchBarVisibleClick,
         handleMediaClick,
         setSearchVisible,
         setVisibleResults,
         handleInputChange,
         handleCloseSearchClick,
-        genres,
+        handleIntervalChange,
         handleMediaChange,
         handleGenreChange,
         handleYearChange,
-        years,
       }}
     >
       {children}
