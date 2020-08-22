@@ -98,13 +98,15 @@ const TVShow = () => {
             >
               EPISODES
             </NavLink>
-            <NavLink
-              to={`${url}/similar`}
-              className={`navlink ${theme}`}
-              activeClassName="selected"
-            >
-              SIMILAR
-            </NavLink>
+            {similarShows.length > 0 && (
+              <NavLink
+                to={`${url}/similar`}
+                className={`navlink ${theme}`}
+                activeClassName="selected"
+              >
+                SIMILAR
+              </NavLink>
+            )}
             <NavLink
               to={`${url}/cast`}
               className={`navlink ${theme}`}
@@ -122,9 +124,11 @@ const TVShow = () => {
           <Route path={`${path}/season/:seasonNumber`}>
             <Episodes seasons={seasons} />
           </Route>
-          <Route path={`${path}/similar`}>
-            <CategorySimilar data={similarShows} mediatype="tv" />
-          </Route>
+          {similarShows.length > 0 && (
+            <Route path={`${path}/similar`}>
+              <CategorySimilar data={similarShows} mediatype="tv" />
+            </Route>
+          )}
           <Route path={`${path}/cast`}>
             <Cast data={castTV} mediatype="tv" />
           </Route>

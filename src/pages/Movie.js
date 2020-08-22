@@ -89,13 +89,15 @@ const Movie = () => {
             >
               CAST
             </NavLink>
-            <NavLink
-              to={`${url}/similar`}
-              className={`navlink ${theme}`}
-              activeClassName="selected"
-            >
-              SIMILAR
-            </NavLink>
+            {similarMovies.length > 0 && (
+              <NavLink
+                to={`${url}/similar`}
+                className={`navlink ${theme}`}
+                activeClassName="selected"
+              >
+                SIMILAR
+              </NavLink>
+            )}
           </Nav>
         </Container>
         <Switch>
@@ -105,9 +107,11 @@ const Movie = () => {
           <Route path={`${path}/cast`}>
             <Cast data={movieCast} mediatype="movie" />
           </Route>
-          <Route path={`${path}/similar`}>
-            <CategorySimilar data={similarMovies} mediatype="movie" />
-          </Route>
+          {similarMovies.length > 0 && (
+            <Route path={`${path}/similar`}>
+              <CategorySimilar data={similarMovies} mediatype="movie" />
+            </Route>
+          )}
         </Switch>
       </Container>
     )
