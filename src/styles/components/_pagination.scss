@@ -1,40 +1,35 @@
 .pagination-container {
-    display: flex;
-    position: relative;
-    left: 100px;
-    padding-bottom: 50px;
-    
+  @include flex(row, center, center);
+  padding-bottom: 5px;
 
-    .pagination-button {
-        @include button(10px, 50px);
-        transition: 0.3s ease-in;
-        
-        &.light {
-            transition: 0.3s ease-in;
-            color: $main-text-lightmode;
-        
-        }
+  .pagination-button,
+  .pagination-arrow,
+  .pagination-arrow {
+    &:hover,
+    &.active-page {
+      background-color: $third-color-darkmode;
     }
+  }
+  .pagination-button {
+    @include button(10px, 0 5px 0 0, 35px, 50%);
+  }
+  .pagination-arrow {
+    @include button(5px, 0 5px 0 0, 20px, 50%);
+  }
 
-    .pagination-page {
-        width: 50px;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 40px 20px 0 0;
-        border-radius: 10px;
-        background-color: $secondary-color-darkmode;
-        color: $main-text-darkmode;
-        font-size: 1em;
-        letter-spacing: 1px;
-        font-weight: 700;
-        transition: 0.3s ease-in;
-
-        &.light {
-            background-color: $third-color-lightmode;
-            color: $main-text-lightmode;
-            transition: 0.3s ease-in;
-        }
+  &.light {
+    & .pagination-button {
+      transition: 0.3s ease-in;
+      color: $main-text-darkmode;
     }
+    & .pagination-page {
+      background-color: $secondary-color-lightmode;
+      color: $main-text-darkmode;
+      transition: 0.3s ease-in;
+      &:hover,
+      &.active-page {
+        background-color: $third-color-lightmode;
+      }
+    }
+  }
 }

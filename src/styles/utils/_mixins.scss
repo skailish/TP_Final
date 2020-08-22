@@ -29,7 +29,7 @@
 
 // BUTTONS
 
-@mixin button($padding-all, $width) {
+@mixin button($padding-all, $margin-all, $width, $border-radius) {
   width: $width;
   padding: $padding-all;
   display: flex;
@@ -37,8 +37,8 @@
   align-items: center;
   outline: none;
   border: none;
-  margin: 40px 20px 0 0;
-  border-radius: 10px;
+  margin: $margin-all;
+  border-radius: $border-radius;
   background-color: $secondary-color-darkmode;
   color: $main-text-darkmode;
   font-size: 1em;

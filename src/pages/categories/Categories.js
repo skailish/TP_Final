@@ -28,7 +28,7 @@ const Categories = () => {
   const [dataByParams, setDataByParams] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { theme } = useContext(ThemeContext);
-  const { page, setMaxPage } = useContext(PaginationContext);
+  const { page, setMaxPage, maxPage } = useContext(PaginationContext);
   const { favsArray } = useContext(FavsContext);
 
   const title2 = category.split("_").join(" ");
@@ -46,7 +46,7 @@ const Categories = () => {
       setIsLoading(false);
     };
     getDataByCategoryAndMedia();
-  }, [page]);
+  }, [page, media, category, setMaxPage]);
 
   return (
     <>
@@ -55,8 +55,8 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-            <BounceLoader css={overrideLight} size="100" />
-          )}
+              <BounceLoader css={overrideLight} size="100" />
+            )}
         </Container>
       )}
       {!isLoading && favsArray && (
@@ -80,7 +80,7 @@ const Categories = () => {
               />
             ))}
           </Container>
-          <Pagination />
+          <Pagination currentPage={page} />
         </Container>
       )}
     </>
