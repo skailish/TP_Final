@@ -6,7 +6,6 @@
   left: 100px;
   transition: ease-in 0.5s;
 
-
   background-color: $background-footer-darkmode;
 
   &.light {
@@ -37,8 +36,6 @@
       background-color: $background-footer-lightmode;
       transition: 0.5s ease-in;
       box-shadow: 2px 1px 5px 3px rgba(0, 0, 0, 0.35);
-      ;
-
     }
 
     &.visible {
@@ -139,8 +136,6 @@
           padding-left: 10px;
           font-size: 18px;
           transition: ease-in 0.5s;
-
-
         }
       }
 
@@ -151,32 +146,6 @@
         border: none;
         outline: none;
         cursor: pointer;
-      }
-    }
-  }
-
-  .results-container {
-    transition: 0.3s ease-in;
-    width: 100%;
-    position: absolute;
-    top: 100px;
-    height: 100%;
-    min-height: 100vh;
-    background-color: $background-darkmode;
-    @include flex(row, space-evenly, center);
-    flex-wrap: wrap;
-    z-index: -100;
-    opacity: 0;
-
-
-    &.showResults {
-      transition: 0.3s ease-in;
-      opacity: 1;
-      z-index: 200;
-      background-color: $background-darkmode;
-
-      &.light {
-        background-color: $background-lightmode;
       }
     }
   }

@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Container from "components/primitive/Container";
 import Input from "components/primitive/Input";
 import Label from "components/primitive/Label";
@@ -9,20 +9,19 @@ import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
 import { Search } from "@styled-icons/bootstrap/Search";
 import { Close } from "@styled-icons/ionicons-solid/Close";
-import Card from "components/Card";
 
 const SearchBar = () => {
   const {
     searchVisible,
     handleMediaClick,
-    mountResults,
-    results,
-    media,
-    visibleResults,
     handleInputChange,
     handleCloseSearchClick,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
+  const history = useHistory();
+
+  const handleClick = () => history.push("/discover");
+  const handleRedirectClick = () => history.push("/");
 
   return (
     <Container className={`main-searchbar-container ${theme}`}>
@@ -55,11 +54,21 @@ const SearchBar = () => {
               />
             </Label>
 
-            <Link to="" className={`search-link ${theme}`}>
+            <Link
+              to="/discover"
+              className={`search-link ${theme}`}
+              onClick={handleCloseSearchClick}
+            >
               Advanced search
             </Link>
           </Container>
-          <Close onClick={handleCloseSearchClick} className={`close-options-icon ${theme}`} />
+          <Close
+            onClick={() => {
+              handleCloseSearchClick();
+              handleRedirectClick();
+            }}
+            className={`close-options-icon ${theme}`}
+          />
         </Container>
         <Container
           as="form"
@@ -73,30 +82,15 @@ const SearchBar = () => {
             name="input"
             className={`search-input ${theme}`}
           />
-          <Button type="submit" className={`search-button `}>
+          <Button
+            type="submit"
+            onClick={handleClick}
+            className={`search-button `}
+          >
             <Search className={`search-icon ${theme}`} />
           </Button>
         </Container>
       </Container>
-
-      {results && mountResults && (
-        <Container
-          className={`results-container ${theme} ${
-            visibleResults && "showResults"
-          }`}
-        >
-          {results.map((result) => (
-            <Card
-              id={result.id}
-              src={result.poster_path}
-              title={media === "tv" ? result.name : result.title}
-              votes={result.vote_average}
-              key={result.id}
-              mediatype={result.media_type}
-            />
-          ))}
-        </Container>
-      )}
     </Container>
   );
 };

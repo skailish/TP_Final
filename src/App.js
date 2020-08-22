@@ -22,11 +22,11 @@ import UserContext from "./contexts/UserContext";
 import Favs from "./pages/Favs";
 import SearchBar from "./components/SearchBar";
 import FavsContext from "./contexts/FavsContext";
+import Discover from "./pages/Discover";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { updateSeriesFavs, updateMovieFavs } = useContext(FavsContext);
-  
 
   useEffect(() => {
     const unsuscribe = firebase
@@ -45,7 +45,7 @@ function App() {
   }, [user]);
 
   return (
-    <Container  className="main-aside-container">
+    <Container className="main-aside-container">
       <Router>
         <Aside user={user} />
 
@@ -78,6 +78,9 @@ function App() {
           </Route>
           <Route exact path="/favs">
             {user ? <Favs user={user} /> : <Redirect to="" />}
+          </Route>
+          <Route exact path="/discover">
+            <Discover />
           </Route>
           <Route>
             <ErrorPage />

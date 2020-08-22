@@ -1,0 +1,26 @@
+.main-search-container {
+  width: calc(100vw - 100px);
+  margin-left: 100px;
+  height: 300px;
+  background-color: $background-darkmode;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+}
+
+.results-container {
+  transition: 0.3s ease-in;
+  width: calc(100vw - 100px);
+  padding-top: 100px;
+  margin-left: 100px;
+  height: calc(100% - 100px);
+  min-height: calc(100vh - 400px);
+  background-color: $background-darkmode;
+  @include flex(row, space-evenly, center);
+  flex-wrap: wrap;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+}
