@@ -6,7 +6,6 @@ const PaginationProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(100);
 
-  const toFirstPage = () => setPage(1);
 
   const toPreviousPage = () => (page !== 1 ? setPage(page - 1) : setPage(page));
 
@@ -14,21 +13,22 @@ const PaginationProvider = ({ children }) => {
     page !== maxPage ? setPage(page + 1) : setPage(page);
   };
 
-  const onPageChange = (currentPage) => {
-    const pageButtons = [Array(5)];
-    return (
-      pageButtons.map((button, i) => {
-        if (i + 1 === 7) {
-          return (<div onClick={() => setPage(maxPage)} className={`pagination-page ${currentPage === (maxPage) ? 'active-page' : ''}`}>{maxPage}</div>)
-        } else {
-          return (<div onClick={() => setPage(i + 1)} className={`pagination-page ${currentPage === (i + 1) ? 'active-page' : ''}`}>{(i + 1)}</div>)
-        }
-      }
-      )
-    )
-  }
 
-  const toLastPage = () => setPage(maxPage);
+
+  // const onPageChange = (currentPage) => {
+  //   const pageButtons = [Array(5)];
+  //   return (
+  //     pageButtons.map((button, i) => {
+  //       if (i + 1 === 7) {
+  //         return (<div onClick={() => setPage(maxPage)} className={`pagination-page ${currentPage === (maxPage) ? 'active-page' : ''}`}>{maxPage}</div>)
+  //       } else {
+  //         return (<div onClick={() => setPage(i + 1)} className={`pagination-page ${currentPage === (i + 1) ? 'active-page' : ''}`}>{(i + 1)}</div>)
+  //       }
+  //     }
+  //     )
+  //   )
+  // }
+
 
   return (
     <PaginationContext.Provider
@@ -36,11 +36,9 @@ const PaginationProvider = ({ children }) => {
         page,
         setPage,
         setMaxPage,
-        toFirstPage,
+        maxPage,
         toPreviousPage,
-        toNextPage,
-        toLastPage,
-        onPageChange
+        toNextPage
       }}
     >
       {children}

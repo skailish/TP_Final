@@ -80,7 +80,7 @@ const Categories = () => {
               />
             ))}
           </Container>
-          <Pagination maxPage={maxPage} currentPage={page} />
+          <Pagination currentPage={page} />
         </Container>
       )}
     </>
