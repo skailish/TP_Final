@@ -16,6 +16,7 @@ import CategorySimilar from "./categories/CategorySimilar";
 
 import Overview from "./details/Overview";
 import Episodes from "./details/Episodes";
+import Cast from "./details/Cast";
 
 import ThemeContext from "../contexts/ThemeContext";
 import TvShowContext from "../contexts/TvShowContext";
@@ -26,6 +27,7 @@ const TVShow = () => {
   const [voteAverage, setVoteAverage] = useState(0);
   const [similarShows, setSimilarShows] = useState([]);
   const [seasons, setSeasons] = useState(0);
+  const [castTV, setCastTV] = useState([]);
 
   const { TVId } = useParams();
   const { path, url } = useRouteMatch();
@@ -58,6 +60,17 @@ const TVShow = () => {
     getSimilarShows();
   }, [TVId]);
 
+  useEffect(() => {
+    const getCastTV = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/tv/${TVId}/credits?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
+      );
+      const dataJson = await response.json();
+      setCastTV(dataJson.cast);
+    };
+    getCastTV();
+  }, [TVId]);
+
   return (
     dataTVShowID && (
       <Container className="main-container">
@@ -66,8 +79,8 @@ const TVShow = () => {
           data={dataTVShowID}
           year={year}
           voteAverage={voteAverage}
-          mediaType="tv"
-        ></Hero>
+          mediatype="tv"
+        />
         <Container className={`nav-container ${theme}`}>
           {" "}
           <Nav className={`nav-tvShow ${theme}`}>
@@ -92,6 +105,13 @@ const TVShow = () => {
             >
               SIMILAR
             </NavLink>
+            <NavLink
+              to={`${url}/cast`}
+              className={`navlink ${theme}`}
+              activeClassName="selected"
+            >
+              CAST
+            </NavLink>
           </Nav>
         </Container>
 
@@ -104,6 +124,9 @@ const TVShow = () => {
           </Route>
           <Route path={`${path}/similar`}>
             <CategorySimilar data={similarShows} mediatype="tv" />
+          </Route>
+          <Route path={`${path}/cast`}>
+            <Cast data={castTV} mediatype="tv" />
           </Route>
         </Switch>
       </Container>
