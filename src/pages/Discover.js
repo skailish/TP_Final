@@ -36,8 +36,8 @@ const Discover = () => {
                 name="genre"
                 onChange={(event) => handleGenreChange(event)}
               >
-                {genres.map((genre, index) => (
-                  <Option key={index} value={genre.name}>
+                {genres.map((genre) => (
+                  <Option key={genre.id} value={genre.id}>
                     {genre.name}
                   </Option>
                 ))}
