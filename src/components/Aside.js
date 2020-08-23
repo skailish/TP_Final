@@ -66,12 +66,12 @@ const Aside = ({ user }) => {
               </a>
             </Tooltip>
           ) : (
-            <NavLink to="/login" exact activeClassName="selected">
-              <Tooltip title="Login">
-                <LogIn className={`nav-icon ${theme}`} />
-              </Tooltip>
-            </NavLink>
-          )}
+              <NavLink to="/login" exact activeClassName="selected">
+                <Tooltip title="Login">
+                  <LogIn className={`nav-icon ${theme}`} />
+                </Tooltip>
+              </NavLink>
+            )}
           <Tooltip title="Change the theme">
             {theme === "dark" ? (
               <LightOn
@@ -79,11 +79,11 @@ const Aside = ({ user }) => {
                 className={`nav-icon ${theme}`}
               />
             ) : (
-              <LightOff
-                onClick={() => handleThemeClick(theme)}
-                className={`nav-icon ${theme}`}
-              />
-            )}
+                <LightOff
+                  onClick={() => handleThemeClick(theme)}
+                  className={`nav-icon ${theme}`}
+                />
+              )}
           </Tooltip>
         </Container>
       </Container>
