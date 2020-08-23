@@ -14,7 +14,6 @@ import Pagination from "components/Pagination";
 import PaginationContext from "contexts/PaginationContext";
 
 const Discover = () => {
-  const { page } = useContext(PaginationContext);
   const {
     discover,
     results,
@@ -29,6 +28,9 @@ const Discover = () => {
     handleYearChange,
     handleIntervalChange,
     handleShowResultsClick,
+    searchPage,
+    setSearchPage,
+    searchMaxPage
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
@@ -142,7 +144,8 @@ const Discover = () => {
                   />
                 ))}
             </Container>
-            {showResults && <Pagination/>}
+            {showResults && <Pagination page={searchPage} maxPage={searchMaxPage} setPage={setSearchPage} />
+            }
           </Container>
         ))}
     </>

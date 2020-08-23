@@ -7,11 +7,7 @@ const PaginationProvider = ({ children }) => {
   const [maxPage, setMaxPage] = useState(100);
 
 
-  const toPreviousPage = () => (page !== 1 ? setPage(page - 1) : setPage(page));
 
-  const toNextPage = () => {
-    page !== maxPage ? setPage(page + 1) : setPage(page);
-  };
 
 
 
@@ -37,8 +33,6 @@ const PaginationProvider = ({ children }) => {
         setPage,
         setMaxPage,
         maxPage,
-        toPreviousPage,
-        toNextPage
       }}
     >
       {children}
