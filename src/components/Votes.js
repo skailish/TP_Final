@@ -26,7 +26,7 @@ const Votes = ({ contentName, voteAverage, ...props }) => {
         )}
         <Stars title={contentName} showStars={!isRatingVisible} />
       </Container>
-      {voteAverage && <span className="rating-number" onClick={handleClick}>{isVotingNumberVisible ? voteAverage : <Eye />}</span>}
+      {voteAverage && <span className={`rating-number ${theme}`} onClick={handleClick}>{isVotingNumberVisible ? voteAverage : <Eye />}</span>}
     </Container >
 
   )
