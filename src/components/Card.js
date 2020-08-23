@@ -110,7 +110,6 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
           contentName={title}
           voteAverage={votes}
           voteNumber={votes}
-          className={`media-card-rating ${theme} `}
         />
         {user && favsArray && (
           <Container className="heart-icons-container">

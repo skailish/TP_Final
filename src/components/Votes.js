@@ -7,19 +7,25 @@ import ThemeContext from "../contexts/ThemeContext";
 
 const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
   const { theme } = useContext(ThemeContext);
+  const [isVotingNumberVisible, setIsVotingNumberVisible] = useState(true);
   const [isRatingVisible, setIsRatingVisible] = useState(true);
 
 
   const handleClick = () => {
-    setIsRatingVisible(!isRatingVisible);
+    setIsVotingNumberVisible(!isVotingNumberVisible);
   }
+
+  const handleOnMouseEnter = () => setIsRatingVisible(false)
+  const handleOnMouseLeave = () => setIsRatingVisible(true)
 
   return (
 
-    <Container className={theme} {...props}>
-      <AverageVoteStars voteAverage={Number(voteAverage)} />
-      <Stars title={contentName} />
-      {voteNumber && <span className="rating-number" onClick={handleClick}>{isRatingVisible ? voteNumber : <Eye />}</span>}
+    <Container className={`rating-container ${theme}`} {...props}>
+      <Container onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave} >
+        <AverageVoteStars voteAverage={voteAverage} showRating={isRatingVisible} />
+        <Stars title={contentName} showStars={!isRatingVisible} />
+      </Container>
+      {voteNumber && <span className="rating-number" onClick={handleClick}>{isVotingNumberVisible ? voteNumber : <Eye />}</span>}
     </Container >
 
   )

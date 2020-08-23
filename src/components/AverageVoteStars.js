@@ -1,17 +1,20 @@
 import React from 'react'
 import Star from './Star'
 
-const AverageVoteStars = ({ voteAverage }) => {
-    const rating = voteAverage > 1 ? Math.round(voteAverage / 2) : 0;
-    console.log(rating);
+const AverageVoteStars = ({ voteAverage, showRating }) => {
+    const rating = Math.round(voteAverage > 1 ? voteAverage / 2 : 0);
     return (
-        <div>
-            <div className={"rating"}>
-                {[Array(rating)].map((star, i) => <Star className={'star'} key={i} type={'filled'} />)}
-                <Star type={'half'} voteAverage={voteAverage / 2} />
-                {[Array(rating - 4)].map((star, i) => <Star className={'star'} key={rating + i} type={'empty'} />)}
-            </div>
-        </div>
+        showRating &&
+        (<div className={"rating-stars"}>
+            {(rating &&
+                <>
+                    {[...Array(rating)].map((star, i) => <Star key={i} type={'filled'} className={'average-star'} />)}
+                    <Star type={voteAverage % 2 !== 0 ? 'half' : 'empty'} />
+                    {[...Array(4 - rating)].map((star, i) => <Star key={rating + i} type={'empty'} className={'average-star'} />)}
+                </>
+            )
+            }
+        </div>)
     )
 }
 

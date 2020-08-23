@@ -34,12 +34,5 @@
       @include flex(row, space-between, center);
       width: 20%;
     }
-    .media-card-rating {
-      @include flex(row, flex-start, center);
-
-      &.light {
-        color: $main-text-lightmode;
-      }
-    }
   }
 }

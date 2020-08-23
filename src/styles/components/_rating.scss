@@ -1,16 +1,46 @@
-.rating-stars {
-  @include flex(row, center, center);
-  font-weight: 20px;
-  width: 70px;
-  & input[type="radio"] {
-    display: none;
+.rating-container {
+  @include flex(row, flex-start, center);
+  & * {
+    margin: 0;
+    padding: 0;
   }
-  & .star {
-    cursor: pointer;
-    width: 15px;
-  }
-}
+  .rating-stars {
+    @include flex(row, center, center);
+    & input[type="radio"] {
+      display: none;
+    }
+    .single-star-container {
+      width: 35px;
+      position: relative;
+      @include flex(row, center, space-between);
 
-.rating-number {
-  margin: 0 10px;
+      & label {
+        width: 35px;
+      }
+      & .star-right {
+        transform: scaleX(-1);
+        right: 0;
+      }
+
+      & .star-right,
+      & .star-left,
+      & .average-star {
+        position: absolute;
+      }
+
+      & .average-star {
+        width: 50px;
+      }
+    }
+    & .star {
+      cursor: pointer;
+      width: 35px;
+    }
+  }
+  .rating-number {
+    margin: 0 10px;
+  }
+  &.light {
+    color: $main-text-lightmode;
+  }
 }
