@@ -17,7 +17,7 @@ const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
   return (
 
     <Container className={theme} {...props}>
-      <AverageVoteStars voteAverage={voteAverage} />
+      <AverageVoteStars voteAverage={Number(voteAverage)} />
       <Stars title={contentName} />
       {voteNumber && <span className="rating-number" onClick={handleClick}>{isRatingVisible ? voteNumber : <Eye />}</span>}
     </Container >
