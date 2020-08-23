@@ -56,7 +56,7 @@ const SearchProvider = ({ children }) => {
     switch (interval) {
       case "before":
         {
-          
+
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -69,7 +69,7 @@ const SearchProvider = ({ children }) => {
         break;
       case "exact":
         {
-          
+
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -81,7 +81,7 @@ const SearchProvider = ({ children }) => {
         break;
       default:
         {
-        
+
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -89,7 +89,7 @@ const SearchProvider = ({ children }) => {
             )
             .filter((movie) => movie.release_date.split("-")[0] >= years);
           setDiscover(filteredDiscover);
-          
+
         }
         break;
     }
@@ -145,27 +145,27 @@ const SearchProvider = ({ children }) => {
       const jsonYears =
         mediaAdvance === "tv"
           ? dataJson.results
-              .filter(
-                (serie) =>
-                  serie.first_air_date !== undefined &&
-                  serie.first_air_date !== ""
-              )
-              .map((serie) => serie.first_air_date.split("-")[0])
-              .reduce(reduceYears, [])
-              .sort()
+            .filter(
+              (serie) =>
+                serie.first_air_date !== undefined &&
+                serie.first_air_date !== ""
+            )
+            .map((serie) => serie.first_air_date.split("-")[0])
+            .reduce(reduceYears, [])
+            .sort()
           : dataJson.results
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .map((movie) => movie.release_date.split("-")[0])
-              .reduce(reduceYears, [])
-              .sort();
+            .filter(
+              (movie) =>
+                movie.release_date !== undefined && movie.release_date !== ""
+            )
+            .map((movie) => movie.release_date.split("-")[0])
+            .reduce(reduceYears, [])
+            .sort();
 
       setYears(jsonYears);
       setDiscover(dataJson.results);
       orderByYears(dataJson.results, chosenYear, interval, setDiscover);
-      
+
     };
     getYears();
   }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
@@ -201,7 +201,7 @@ const SearchProvider = ({ children }) => {
         handleOrderByChange,
         handleShowResultsClick,
         setSearchPage,
-        
+
       }}
     >
       {children}

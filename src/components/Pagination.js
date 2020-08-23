@@ -29,7 +29,7 @@ const Pagination = () => {
             className={`pagination-arrow`}
             onClick={() => toPreviousPage()}
           >
-            <ArrowIosBackOutline />
+            <ArrowIosBackOutline className={'arrows'} />
           </ButtonPagination>
         )}
         {page < 5 && (
@@ -84,7 +84,7 @@ const Pagination = () => {
             className={`pagination-arrow`}
             onClick={() => toNextPage()}
           >
-            <ArrowIosForwardOutline />
+            <ArrowIosForwardOutline className={'arrows'} />
           </ButtonPagination>
         )}
       </Container>
