@@ -28,9 +28,6 @@ const Discover = () => {
     handleShowResultsClick,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
- 
-
-
 
   return (
     <>
@@ -54,9 +51,9 @@ const Discover = () => {
           )}
 
           <Select name="year" onChange={(event) => handleIntervalChange(event)}>
-            <Option value="before">Before than</Option>
-            <Option value="exact">Exact</Option>
             <Option value="after">After than</Option>
+            <Option value="exact">Exact</Option>
+            <Option value="before">Before than</Option>
           </Select>
           {years && (
             <Select name="years" onChange={(event) => handleYearChange(event)}>
@@ -73,6 +70,8 @@ const Discover = () => {
           >
             <Option value="popularity.desc">More Popular</Option>
             <Option value="popularity.asc">Less Popular</Option>
+            <Option value="vote_average.desc">More Voted</Option>
+            <Option value="vote_average.asc">Less Voted</Option>
             <Option
               value={
                 mediaAdvance === "tv"
@@ -91,39 +90,24 @@ const Discover = () => {
             >
               Oldest
             </Option>
-            <Option
-              value={
-                mediaAdvance === "tv"
-                  ? "original_name.asc"
-                  : "original_title.asc"
-              }
-            >
-              A-Z
-            </Option>
-            <Option
-              value={
-                mediaAdvance === "tv"
-                  ? "original_name.desc"
-                  : "original_title.desc"
-              }
-            >
-              Z-A
-            </Option>
+            {mediaAdvance === "movie" && (
+              <Option value="original_title.asc">A-Z</Option>
+            )}
+            {mediaAdvance === "movie" && (
+              <Option value="original_title.desc">Z-A</Option>
+            )}
             {mediaAdvance === "movie" && (
               <Option value="revenue.desc">Most Revenue</Option>
             )}
             {mediaAdvance === "movie" && <Option value="">Less Revenue</Option>}
           </Select>
-          <Button
-            onClick={handleShowResultsClick}
-            className={`search-button `}
-          >
+          <Button onClick={handleShowResultsClick} className={`search-button `}>
             <Search className={`search-icon ${theme}`} />
           </Button>
         </Container>
       </Container>
 
-      {console.log(results)}
+  
       {results ||
         (discover && (
           <Container className={`results-container ${theme} `}>
@@ -144,7 +128,9 @@ const Discover = () => {
                 <Card
                   id={result.id}
                   src={result.poster_path}
-                  title={media === "tv" ? result.name : result.title}
+                  title={
+                    mediaAdvance === "tv" ? result.name : result.original_title
+                  }
                   votes={result.vote_average}
                   key={result.id}
                   mediatype={result.media_type}
