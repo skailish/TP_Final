@@ -31,6 +31,7 @@ const Stars = ({ title, showStars }) => {
                                 key={`input_${ratingValueOdd}`}
                             />
                             <Star
+                                className={'star-right'}
                                 key={`star_left_${ratingValueOdd}`}
                                 type={ratingValueOdd <= (hover || rating) ? 'half-filled' : 'half-empty'}
                             />
@@ -48,6 +49,7 @@ const Stars = ({ title, showStars }) => {
                                 key={`input_${ratingValueEven}`}
                             />
                             <Star
+                                className={'star-right'}
                                 key={`star_right_${ratingValueEven}`}
                                 type={ratingValueEven <= (hover || rating) ? 'half-filled' : 'half-empty'}
                             />

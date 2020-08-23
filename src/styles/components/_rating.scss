@@ -5,17 +5,19 @@
     padding: 0;
   }
   .rating-stars {
+    height: 30px;
     @include flex(row, center, center);
     & input[type="radio"] {
       display: none;
     }
     .single-star-container {
-      width: 35px;
+      height: 30px;
+      width: 15px;
       position: relative;
       @include flex(row, center, space-between);
 
       & label {
-        width: 35px;
+        width: 15px;
       }
       & .star-right {
         transform: scaleX(-1);
@@ -26,15 +28,16 @@
       & .star-left,
       & .average-star {
         position: absolute;
+        top: 0;
       }
 
       & .average-star {
-        width: 50px;
+        width: 30px;
       }
     }
     & .star {
       cursor: pointer;
-      width: 35px;
+      width: 15px;
     }
   }
   .rating-number {
