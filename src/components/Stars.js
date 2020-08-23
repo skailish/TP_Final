@@ -12,43 +12,46 @@ const Stars = ({ contentName, showStars }) => {
         showStars &&
         (<div className={`rating-stars`}>
             {[...Array(5)].map((star, i) => {
-                const ratingValueOdd = i + 1;
-                const ratingValueEven = i + 2;
+                const ratingValueOdd = i === 0 ? (i + 1) : ((i * 2) + 1);
+                const ratingValueEven = i === 0 ? (i + 2) : ((i * 2) + 2);
                 return (
                     <Container
                         key={`container_${ratingValueOdd}`}
                         className={`single-star-container ${theme}`}>
+                        <input
+                            type={"radio"}
+                            name={`rating${contentName}`}
+                            value={ratingValueOdd}
+                            onClick={() => setRating(ratingValueOdd)}
+                            key={`input_${ratingValueOdd}`}
+                            id={`input_${ratingValueOdd}`}
+                        />
                         <label
                             key={`label_${ratingValueOdd}`}
                             className={`star-left ${ratingValueOdd <= (hover || rating) ? 'half-filled' : 'half-empty'}`}
                             onMouseEnter={() => setHover(ratingValueOdd)}
-                            onMouseLeave={() => setHover(null)}>
+                            onMouseLeave={() => setHover(null)}
+                            for={`input_${ratingValueOdd}`}>
 
-                            <input
-                                type={"radio"}
-                                name={`rating${contentName}`}
-                                value={ratingValueOdd}
-                                onClick={() => setRating(ratingValueOdd)}
-                                key={`input_${ratingValueOdd}`}
-                            />
                             <Star
-
                                 key={`star_left_${ratingValueOdd}`}
                                 type={ratingValueOdd <= (hover || rating) ? 'half-filled' : 'half-empty'}
                             />
                         </label>
+                        <input
+                            type={"radio"}
+                            name={`rating${contentName}`}
+                            value={ratingValueEven}
+                            onClick={() => setRating(ratingValueEven)}
+                            key={`input_${ratingValueEven}`}
+                            id={`input_${ratingValueEven}`}
+                        />
                         <label
                             key={`label_${ratingValueEven}`}
-                            className={`star-right ${ratingValueOdd <= (hover || rating) ? 'half-filled' : 'half-empty'}`}
+                            className={`star-right ${ratingValueEven <= (hover || rating) ? 'half-filled' : 'half-empty'}`}
                             onMouseEnter={() => setHover(ratingValueEven)}
-                            onMouseLeave={() => setHover(null)}>
-                            <input
-                                type={"radio"}
-                                name={`rating${contentName}`}
-                                value={ratingValueEven}
-                                onClick={() => setRating(ratingValueEven)}
-                                key={`input_${ratingValueEven}`}
-                            />
+                            onMouseLeave={() => setHover(null)}
+                            for={`input_${ratingValueEven}`}>
                             <Star
 
                                 key={`star_right_${ratingValueEven}`}
@@ -58,6 +61,7 @@ const Stars = ({ contentName, showStars }) => {
                     </Container>
 
                 )
+
             })}
         </div>)
     );

@@ -9,9 +9,16 @@
     color: $secondary-color-lightmode;
   }
   .rating-stars {
-    height: 15px;
-    @include flex(row, center, center);
+    height: 30px;
+    width: 75px;
 
+    @include flex(row, center, center);
+    & label {
+      height: 13.328px;
+    }
+    & label .star {
+      vertical-align: top;
+    }
     & input[type="radio"] {
       display: none;
     }
@@ -42,6 +49,7 @@
     & .star {
       cursor: pointer;
       width: 15px;
+      height: 13.328px;
     }
   }
   .rating-number {
