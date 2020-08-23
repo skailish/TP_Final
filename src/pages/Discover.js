@@ -10,8 +10,11 @@ import Text from "components/primitive/Text";
 import Heading from "components/primitive/Heading";
 import Button from "components/primitive/Button";
 import { Search } from "@styled-icons/bootstrap/Search";
+import Pagination from "components/Pagination";
+import PaginationContext from "contexts/PaginationContext";
 
 const Discover = () => {
+  const { page } = useContext(PaginationContext);
   const {
     discover,
     results,
@@ -107,35 +110,39 @@ const Discover = () => {
         </Container>
       </Container>
 
-  
       {results ||
         (discover && (
-          <Container className={`results-container ${theme} `}>
-            {results &&
-              results.map((result) => (
-                <Card
-                  id={result.id}
-                  src={result.poster_path}
-                  title={media === "tv" ? result.name : result.title}
-                  votes={result.vote_average}
-                  key={result.id}
-                  mediatype={result.media_type}
-                />
-              ))}
-            {showResults &&
-              discover &&
-              discover.map((result) => (
-                <Card
-                  id={result.id}
-                  src={result.poster_path}
-                  title={
-                    mediaAdvance === "tv" ? result.name : result.original_title
-                  }
-                  votes={result.vote_average}
-                  key={result.id}
-                  mediatype={result.media_type}
-                />
-              ))}
+          <Container className={`results-pagination-container`}>
+            <Container className={`results-container ${theme} `}>
+              {results &&
+                results.map((result) => (
+                  <Card
+                    id={result.id}
+                    src={result.poster_path}
+                    title={media === "tv" ? result.name : result.title}
+                    votes={result.vote_average}
+                    key={result.id}
+                    mediatype={result.media_type}
+                  />
+                ))}
+              {showResults &&
+                discover &&
+                discover.map((result) => (
+                  <Card
+                    id={result.id}
+                    src={result.poster_path}
+                    title={
+                      mediaAdvance === "tv"
+                        ? result.name
+                        : result.original_title
+                    }
+                    votes={result.vote_average}
+                    key={result.id}
+                    mediatype={result.media_type}
+                  />
+                ))}
+            </Container>
+            {showResults && <Pagination/>}
           </Container>
         ))}
     </>

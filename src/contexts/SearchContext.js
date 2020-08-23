@@ -1,5 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
-import { FreeBreakfast } from "styled-icons/material";
+import React, { createContext, useState, useEffect, useContext } from "react";
+
+import PaginationContext from "contexts/PaginationContext";
 
 const SearchContext = createContext();
 
@@ -19,6 +20,8 @@ const SearchProvider = ({ children }) => {
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [chosenYear, setChosenYear] = useState("2010");
+  const [searchPage, setSearchPage] = useState(1)
+  const [searchMaxPage, setSearchMaxPage] = useState(1000)
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -53,7 +56,7 @@ const SearchProvider = ({ children }) => {
     switch (interval) {
       case "before":
         {
-          console.log("está entrando al before")
+          
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -66,7 +69,7 @@ const SearchProvider = ({ children }) => {
         break;
       case "exact":
         {
-          console.log("está entrando al exact")
+          
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -77,7 +80,8 @@ const SearchProvider = ({ children }) => {
         }
         break;
       default:
-        {console.log("está entrando al after")
+        {
+        
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -85,7 +89,7 @@ const SearchProvider = ({ children }) => {
             )
             .filter((movie) => movie.release_date.split("-")[0] >= years);
           setDiscover(filteredDiscover);
-          console.log(filteredDiscover);
+          
         }
         break;
     }
@@ -94,10 +98,11 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getSearch = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/${media}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&query=${inputValue}&page=1`
+        `https://api.themoviedb.org/3/search/${media}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&query=${inputValue}&page=${searchPage}`
       );
       const dataJson = await response.json();
       setResults(dataJson.results);
+      setSearchMaxPage(dataJson.total_pages);
       setMountResults(true);
     };
     getSearch();
@@ -133,7 +138,7 @@ const SearchProvider = ({ children }) => {
 
     const getYears = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areSortBy}`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areSortBy}&page=${searchPage}`
       );
       const dataJson = await response.json();
 
@@ -160,14 +165,15 @@ const SearchProvider = ({ children }) => {
       setYears(jsonYears);
       setDiscover(dataJson.results);
       orderByYears(dataJson.results, chosenYear, interval, setDiscover);
-      setShowResults(false);
+      
     };
     getYears();
-  }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval]);
+  }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
 
   return (
     <SearchContext.Provider
       value={{
+        searchPage,
         searchVisible,
         visibleResults,
         results,
@@ -181,6 +187,7 @@ const SearchProvider = ({ children }) => {
         mediaAdvance,
         orderBy,
         showResults,
+        searchMaxPage,
         handleSearchBarVisibleClick,
         handleMediaClick,
         setSearchVisible,
@@ -193,6 +200,8 @@ const SearchProvider = ({ children }) => {
         handleYearChange,
         handleOrderByChange,
         handleShowResultsClick,
+        setSearchPage,
+        
       }}
     >
       {children}
