@@ -3,9 +3,10 @@ import Star from './Star'
 
 const AverageVoteStars = ({ voteAverage, showRating }) => {
     const rating = Math.round(voteAverage > 1 ? voteAverage / 2 : 0);
+    console.log(rating);
     return (
         showRating &&
-        (<div className={"rating-stars"}>
+        (<div className={`rating-stars`}>
             {(rating &&
                 <>
                     {[...Array(rating)].map((star, i) => <Star key={i} type={'filled'} className={'average-star'} />)}

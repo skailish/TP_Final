@@ -10,7 +10,7 @@ const Stars = ({ contentName, showStars }) => {
 
     return (
         showStars &&
-        (<div className={`rating-stars ${theme}`}>
+        (<div className={`rating-stars`}>
             {[...Array(5)].map((star, i) => {
                 const ratingValueOdd = i + 1;
                 const ratingValueEven = i + 2;

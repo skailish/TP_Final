@@ -5,7 +5,7 @@ import Container from "./primitive/Container"
 import { Eye } from "@styled-icons/bootstrap/Eye";
 import ThemeContext from "../contexts/ThemeContext";
 
-const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
+const Votes = ({ contentName, voteAverage, ...props }) => {
   const { theme } = useContext(ThemeContext);
   const [isVotingNumberVisible, setIsVotingNumberVisible] = useState(true);
   const [isRatingVisible, setIsRatingVisible] = useState(true);
@@ -21,10 +21,12 @@ const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
   return (
     <Container className={`rating-container ${theme}`} {...props}>
       <Container onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave} >
-        <AverageVoteStars voteAverage={voteAverage} showRating={isRatingVisible} />
+        {(voteAverage &&
+          <AverageVoteStars voteAverage={voteAverage} showRating={isRatingVisible} />
+        )}
         <Stars title={contentName} showStars={!isRatingVisible} />
       </Container>
-      {voteNumber && <span className="rating-number" onClick={handleClick}>{isVotingNumberVisible ? voteNumber : <Eye />}</span>}
+      {voteAverage && <span className="rating-number" onClick={handleClick}>{isVotingNumberVisible ? voteAverage : <Eye />}</span>}
     </Container >
 
   )

@@ -110,7 +110,6 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
         {title && <Votes
           contentName={title}
           voteAverage={votes}
-          voteNumber={votes}
         />}
         {user && favsArray && (
           <Container className="heart-icons-container">
