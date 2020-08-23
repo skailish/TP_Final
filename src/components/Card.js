@@ -107,6 +107,7 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
       </Container>
       <Container className="votes-and-favs-container">
         <Votes
+          contentName={title}
           voteAverage={votes}
           voteNumber={votes}
           className={`media-card-rating ${theme} `}

@@ -1,29 +1,26 @@
-import React, { useContext } from "react";
-import Star from "../components/Star";
+import React, { useState, useContext } from "react";
+import Stars from "./Stars";
+import AverageVoteStars from "./AverageVoteStars";
+import Container from "./primitive/Container"
+import { Eye } from "@styled-icons/bootstrap/Eye";
 import ThemeContext from "../contexts/ThemeContext";
 
-const Votes = ({ voteAverage, voteNumber, ...props }) => {
+const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
   const { theme } = useContext(ThemeContext);
-  const rating = Math.floor(voteAverage / 2);
-  const filledStars = [];
-  for (let i = 0; i < rating; i++) {
-    filledStars.push(' ')
+  const [isRatingVisible, setIsRatingVisible] = useState(true);
+
+
+  const handleClick = () => {
+    setIsRatingVisible(!isRatingVisible);
   }
-  const emptyStars = [];
-  for (let x = (rating + 1); x < 5; x++) {
-    console.log(`rating ${rating}`)
-    console.log(x);
-    emptyStars.push(' ')
-  }
+
   return (
-    <div {...props}>
-      <div className={"rating-stars"}>
-        {filledStars.map(() => <Star classname={`${theme}`} type={'filled'} />)}
-        <Star classname={`${theme}`} type={'half'} />
-        {emptyStars.map(() => <Star classname={`${theme}`} type={'empty'} />)}
-      </div>
-      {voteNumber && <span className="rating-number">{voteNumber}</span>}
-    </div >
+
+    <Container className={theme} {...props}>
+      <AverageVoteStars voteAverage={voteAverage} />
+      <Stars title={contentName} />
+      {voteNumber && <span className="rating-number" onClick={handleClick}>{isRatingVisible ? voteNumber : <Eye />}</span>}
+    </Container >
 
   )
 };

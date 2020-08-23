@@ -2,18 +2,15 @@
   @include flex(row, center, center);
   font-weight: 20px;
   width: 70px;
+  & input[type="radio"] {
+    display: none;
+  }
+  & .star {
+    cursor: pointer;
+    width: 15px;
+  }
 }
 
 .rating-number {
-  padding: 0 5px;
-}
-
-.rating-stars * {
-  cursor: pointer;
-  &:hover.light {
-    color: $secondary-color-lightmode;
-  }
-  &:hover.dark {
-    color: $secondary-color-darkmode;
-  }
+  margin: 0 10px;
 }
