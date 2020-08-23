@@ -32,7 +32,7 @@ const Aside = ({ user }) => {
                 <Home className={`nav-icon ${theme}`} />
               </Tooltip>
             </NavLink>
-            <NavLink to="/movies" exact activeClassName="selected">
+            <NavLink to="/movie" exact activeClassName="selected">
               <Tooltip title="Movie">
                 <Movie className={`nav-icon ${theme}`} />
               </Tooltip>
@@ -84,7 +84,7 @@ const Aside = ({ user }) => {
                 <Home className={`nav-icon ${theme}`} />
               </Tooltip>
             </NavLink>
-            <NavLink to="/movies" exact activeClassName="selected">
+            <NavLink to="/movie" exact activeClassName="selected">
               <Tooltip title="Movie">
                 <Movie className={`nav-icon ${theme}`} />
               </Tooltip>
