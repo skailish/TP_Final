@@ -59,7 +59,7 @@ const SearchBar = () => {
               className={`search-link ${theme}`}
               onClick={handleCloseSearchClick}
             >
-              Advanced search
+              Search by filtering
             </Link>
           </Container>
           <Close

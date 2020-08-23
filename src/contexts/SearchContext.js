@@ -14,7 +14,9 @@ const SearchProvider = ({ children }) => {
   const [genresAdvance, setGenresAdvance] = useState("");
   const [years, setYears] = useState([]);
   const [interval, setInterval] = useState("exact");
-  const [orderBy, setOrderBy] = useState("original_title.asc");
+  const [orderBy, setOrderBy] = useState("popularity.desc");
+  const [discover, setDiscover] = useState([]);
+  const [showResults, setShowResults] = useState(false);
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -38,7 +40,47 @@ const SearchProvider = ({ children }) => {
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
   const handleIntervalChange = (event) => setInterval(event.target.value);
   const handleYearChange = (event) => setYears(event.target.value);
-  const handleOrderByChange = (event) => setOrderBy(event.target.value);
+  const handleOrderByChange = (event) => {
+    console.log(event.target.value);
+    setOrderBy(event.target.value);
+  };
+  const handleShowResultsClick = (event) => {
+    event.preventDefault();
+    setShowResults(true);
+  };
+  const orderDiscoverBy = (orderBy, array, setDiscover) => {
+    switch (orderBy) {
+      case "original_name.asc":
+        {
+          const newArray = array.sort((a, b) => {
+            if (a.original_name < b.original_name) {
+              return -1;
+            }
+            if (a.original_name > b.original_name) {
+              return 1;
+            }
+            return 0;
+          });
+          setDiscover(newArray);
+        }
+        break;
+      case "original_name.desc":
+        {
+          const newArray = array.sort((a, b) => {
+            if (a.original_name < b.original_name) {
+              return 1;
+            }
+            if (a.original_name > b.original_name) {
+              return -1;
+            }
+            return 0;
+          });
+          setDiscover(newArray);
+        }
+        break;
+        
+    }
+  };
 
   useEffect(() => {
     const getSearch = async () => {
@@ -65,13 +107,12 @@ const SearchProvider = ({ children }) => {
 
   useEffect(() => {
     const areGenres = genresAdvance && `&with_genres=${genresAdvance}`;
-    const areQuery = inputValue && `&query=${inputValue}`;
     const areSortBy =
-      orderBy &&
       orderBy !== "original_name.asc" &&
       orderBy !== "original_name.desc" &&
       `&sort_by=${orderBy}`;
-    console
+    console.log(areSortBy);
+    console.log(orderBy);
     const reduceYears = (array, year) => {
       if (array.length < 1) {
         return [...array, year];
@@ -85,26 +126,41 @@ const SearchProvider = ({ children }) => {
 
     const getYears = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areQuery}`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areSortBy}${
+          mediaAdvance === "tv"
+            ? "&include_null_first_air_date=false"
+            : "&include_null_release_date=false"
+        }`
       );
       const dataJson = await response.json();
+
       const jsonYears =
         mediaAdvance === "tv"
           ? dataJson.results
+              .filter(
+                (serie) =>
+                  serie.first_air_date !== undefined &&
+                  serie.first_air_date !== ""
+              )
               .map((serie) => serie.first_air_date.split("-")[0])
               .reduce(reduceYears, [])
               .sort()
           : dataJson.results
+              .filter(
+                (movie) =>
+                  movie.release_date !== undefined && movie.release_date !== ""
+              )
               .map((movie) => movie.release_date.split("-")[0])
               .reduce(reduceYears, [])
               .sort();
 
-      console.log(dataJson.results);
       setYears(jsonYears);
-      setResults(dataJson.results);
+      setDiscover(dataJson.results);
+      orderDiscoverBy(dataJson.results, orderBy, setDiscover);
+      setShowResults(false);
     };
     getYears();
-  }, [mediaAdvance, genresAdvance]);
+  }, [mediaAdvance, genresAdvance, orderBy]);
 
   return (
     <SearchContext.Provider
@@ -113,6 +169,7 @@ const SearchProvider = ({ children }) => {
         visibleResults,
         results,
         media,
+        discover,
         inputValue,
         mountResults,
         genres,
@@ -120,6 +177,7 @@ const SearchProvider = ({ children }) => {
         interval,
         mediaAdvance,
         orderBy,
+        showResults,
         handleSearchBarVisibleClick,
         handleMediaClick,
         setSearchVisible,
@@ -130,6 +188,8 @@ const SearchProvider = ({ children }) => {
         handleMediaChange,
         handleGenreChange,
         handleYearChange,
+        handleOrderByChange,
+        handleShowResultsClick,
       }}
     >
       {children}
