@@ -19,7 +19,6 @@ const Votes = ({ contentName, voteAverage, voteNumber, ...props }) => {
   const handleOnMouseLeave = () => setIsRatingVisible(true)
 
   return (
-
     <Container className={`rating-container ${theme}`} {...props}>
       <Container onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave} >
         <AverageVoteStars voteAverage={voteAverage} showRating={isRatingVisible} />

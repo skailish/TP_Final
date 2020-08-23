@@ -4,21 +4,23 @@
     margin: 0;
     padding: 0;
   }
+  color: $third-color-darkmode;
+  &.light {
+    color: $secondary-color-lightmode;
+  }
   .rating-stars {
-    height: 30px;
+    height: 15px;
     @include flex(row, center, center);
+
     & input[type="radio"] {
       display: none;
     }
     .single-star-container {
-      height: 30px;
+      height: 15px;
       width: 15px;
       position: relative;
-      @include flex(row, center, space-between);
+      @include flex(row, center, center);
 
-      & label {
-        width: 15px;
-      }
       & .star-right {
         transform: scaleX(-1);
         right: 0;
@@ -30,9 +32,11 @@
         position: absolute;
         top: 0;
       }
-
-      & .average-star {
-        width: 30px;
+      &.light {
+        & .star-right,
+        & .star-left {
+          color: $secondary-color-lightmode;
+        }
       }
     }
     & .star {
@@ -42,8 +46,5 @@
   }
   .rating-number {
     margin: 0 10px;
-  }
-  &.light {
-    color: $main-text-lightmode;
   }
 }

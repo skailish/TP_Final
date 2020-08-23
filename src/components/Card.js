@@ -106,11 +106,12 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
         </Container>
       </Container>
       <Container className="votes-and-favs-container">
-        <Votes
+
+        {title && <Votes
           contentName={title}
           voteAverage={votes}
           voteNumber={votes}
-        />
+        />}
         {user && favsArray && (
           <Container className="heart-icons-container">
             {(fav || like) && (
