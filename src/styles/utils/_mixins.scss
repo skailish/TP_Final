@@ -47,7 +47,8 @@
   cursor: pointer;
   transition: 0.5s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #307672;
   }
 
