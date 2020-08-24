@@ -3,7 +3,7 @@ import Star from './Star'
 
 const AverageVoteStars = ({ voteAverage, showRating }) => {
     const rating = Math.round(Math.floor(voteAverage > 1 ? voteAverage / 2 : 0));
-    console.log(rating);
+    
     return (
         showRating &&
         (<div className={`rating-stars`}>
