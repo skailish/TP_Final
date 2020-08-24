@@ -30,22 +30,29 @@ const Discover = () => {
     handleShowResultsClick,
     searchPage,
     setSearchPage,
-    searchMaxPage
+    searchMaxPage,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
   return (
     <>
-      <Container className={`main-search-container`}>
-        <Container as="form" className={`options-container ${theme}`}>
-          <Text className={`search-text ${theme}`}>Filtrar por</Text>
-          <Select name="media" onChange={(event) => handleMediaChange(event)}>
+      <Container className={`main-discover-filter-container ${theme}`}>
+        <Text className={`filter-text ${theme}`}>Filtrar por</Text>
+        <Container as="form" className={`filter-container ${theme}`}>
+          <Select
+            name="media"
+            className={`select-discover ${theme}`}
+            onChange={(event) => handleMediaChange(event)}
+          >
             <Option value="movie">Movie</Option>
             <Option value="tv">TV Show</Option>
           </Select>
           {genres && (
-            <Select name="genre" onChange={(event) => handleGenreChange(event)}>
-              {" "}
+            <Select
+              className={`select-discover ${theme}`}
+              name="genre"
+              onChange={(event) => handleGenreChange(event)}
+            >
               <Option value={false}>All</Option>
               {genres.map((genre) => (
                 <Option key={genre.id} value={genre.id}>
@@ -55,13 +62,21 @@ const Discover = () => {
             </Select>
           )}
 
-          <Select name="year" onChange={(event) => handleIntervalChange(event)}>
+          <Select
+            className={`select-discover ${theme}`}
+            name="year"
+            onChange={(event) => handleIntervalChange(event)}
+          >
             <Option value="after">After than</Option>
             <Option value="exact">Exact</Option>
             <Option value="before">Before than</Option>
           </Select>
           {years && (
-            <Select name="years" onChange={(event) => handleYearChange(event)}>
+            <Select
+              className={`select-discover ${theme}`}
+              name="years"
+              onChange={(event) => handleYearChange(event)}
+            >
               {years.map((year) => (
                 <Option key={year} value={year}>
                   {year}
@@ -70,6 +85,7 @@ const Discover = () => {
             </Select>
           )}
           <Select
+            className={`select-discover ${theme}`}
             name="orderBy"
             onChange={(event) => handleOrderByChange(event)}
           >
@@ -106,7 +122,10 @@ const Discover = () => {
             )}
             {mediaAdvance === "movie" && <Option value="">Less Revenue</Option>}
           </Select>
-          <Button onClick={handleShowResultsClick} className={`search-button `}>
+          <Button
+            onClick={handleShowResultsClick}
+            className={`search-button ${theme} `}
+          >
             <Search className={`search-icon ${theme}`} />
           </Button>
         </Container>
@@ -144,8 +163,13 @@ const Discover = () => {
                   />
                 ))}
             </Container>
-            {showResults && <Pagination page={searchPage} maxPage={searchMaxPage} setPage={setSearchPage} />
-            }
+            {showResults && (
+              <Pagination
+                page={searchPage}
+                maxPage={searchMaxPage}
+                setPage={setSearchPage}
+              />
+            )}
           </Container>
         ))}
     </>

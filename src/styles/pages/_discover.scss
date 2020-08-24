@@ -24,3 +24,61 @@
     background-color: $background-lightmode;
   }
 }
+
+.main-discover-filter-container {
+  width: calc(100vw - 100px);
+  margin-left: 100px;
+  height: 150px;
+  background-color: $background-darkmode;
+  padding: 0 0 20px 80px;
+  @include flex(column, space-evenly, flex-start);
+
+  .filter-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: $main-text-darkmode;
+
+    &.light {
+      color: $main-text-lightmode;
+    }
+  }
+
+  &.light {
+    background-color: $background-footer-lightmode;
+  }
+
+  .filter-container {
+    width: 60%;
+    @include flex(row, space-between, center);
+    &.light {
+      background-color: $background-footer-lightmode;
+    }
+
+    .select-discover {
+      height: 28px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background-color: $background-lightmode;
+      font-weight: 600;
+      color: $main-text-lightmode;
+      & > option {
+        font-weight: 600;
+        height: 25px;
+        padding: 3px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        background-color: $background-lightmode;
+        &.light {
+          background-color: $background-darkmode;
+        }
+      }
+      &.light {
+        background-color: $background-aside-lightmode;
+        color: $main-text-lightmode;
+      }
+    }
+  }
+}
