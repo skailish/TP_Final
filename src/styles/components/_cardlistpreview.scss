@@ -106,11 +106,12 @@
   z-index: 100;
   border: none;
   transition: 0.3s;
-  
 
-  &:hover {
+
+  &:hover,
+  &:focus {
     transition: 0.3s;
-    background: linear-gradient( rgba(27, 38, 44, 0.8), rgba(21, 30, 35, 0.8), rgba(27, 38, 44, 0.8));
+    background: linear-gradient(rgba(27, 38, 44, 0.8), rgba(21, 30, 35, 0.8), rgba(27, 38, 44, 0.8));
   }
 
   &.screen1::-webkit-scrollbar-track {
