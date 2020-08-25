@@ -42,6 +42,7 @@ const SearchBar = () => {
                 name="mediatype"
                 value="movie"
                 className={`radio-input ${theme}`}
+                checked
               />
             </Label>
             <Label className={`search-label ${theme}`}>
