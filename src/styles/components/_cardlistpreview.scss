@@ -108,10 +108,9 @@
   transition: 0.3s;
 
 
-  &:hover,
-  &:focus {
+  &:hover, {
     transition: 0.3s;
-    background: linear-gradient(rgba(27, 38, 44, 0.8), rgba(21, 30, 35, 0.8), rgba(27, 38, 44, 0.8));
+    background-color: rgba(27, 38, 44, 0.9);
   }
 
   &.screen1::-webkit-scrollbar-track {
@@ -119,7 +118,13 @@
   }
 
   &.light {
+    transition: 0.3s;
     background-color: rgba(168, 169, 172, 0.5);
+
+    &:hover {
+      transition: 0.3s;
+      background-color: rgba(168, 169, 172, 0.8);
+    }
   }
 
   & .chevron-icon {
