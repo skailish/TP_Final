@@ -20,8 +20,8 @@ const SearchProvider = ({ children }) => {
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [chosenYear, setChosenYear] = useState("2010");
-  const [searchPage, setSearchPage] = useState(1)
-  const [searchMaxPage, setSearchMaxPage] = useState(1000)
+  const [searchPage, setSearchPage] = useState(1);
+  const [searchMaxPage, setSearchMaxPage] = useState(1000);
   const [maxPage, setMaxPage] = useState(1000);
   const [page, setPage] = useState(1);
 
@@ -58,7 +58,6 @@ const SearchProvider = ({ children }) => {
     switch (interval) {
       case "before":
         {
-
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -71,7 +70,6 @@ const SearchProvider = ({ children }) => {
         break;
       case "exact":
         {
-
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -83,7 +81,6 @@ const SearchProvider = ({ children }) => {
         break;
       default:
         {
-
           const filteredDiscover = discover
             .filter(
               (movie) =>
@@ -91,7 +88,6 @@ const SearchProvider = ({ children }) => {
             )
             .filter((movie) => movie.release_date.split("-")[0] >= years);
           setDiscover(filteredDiscover);
-
         }
         break;
     }
@@ -108,7 +104,7 @@ const SearchProvider = ({ children }) => {
       setMountResults(true);
     };
     getSearch();
-  }, [inputValue, media]);
+  }, [inputValue, media, searchPage]);
 
   useEffect(() => {
     const getGenres = async () => {
@@ -147,27 +143,26 @@ const SearchProvider = ({ children }) => {
       const jsonYears =
         mediaAdvance === "tv"
           ? dataJson.results
-            .filter(
-              (serie) =>
-                serie.first_air_date !== undefined &&
-                serie.first_air_date !== ""
-            )
-            .map((serie) => serie.first_air_date.split("-")[0])
-            .reduce(reduceYears, [])
-            .sort()
+              .filter(
+                (serie) =>
+                  serie.first_air_date !== undefined &&
+                  serie.first_air_date !== ""
+              )
+              .map((serie) => serie.first_air_date.split("-")[0])
+              .reduce(reduceYears, [])
+              .sort()
           : dataJson.results
-            .filter(
-              (movie) =>
-                movie.release_date !== undefined && movie.release_date !== ""
-            )
-            .map((movie) => movie.release_date.split("-")[0])
-            .reduce(reduceYears, [])
-            .sort();
+              .filter(
+                (movie) =>
+                  movie.release_date !== undefined && movie.release_date !== ""
+              )
+              .map((movie) => movie.release_date.split("-")[0])
+              .reduce(reduceYears, [])
+              .sort();
 
       setYears(jsonYears);
       setDiscover(dataJson.results);
       orderByYears(dataJson.results, chosenYear, interval, setDiscover);
-
     };
     getYears();
   }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
@@ -202,7 +197,7 @@ const SearchProvider = ({ children }) => {
         handleYearChange,
         handleOrderByChange,
         handleShowResultsClick,
-        setSearchPage
+        setSearchPage,
       }}
     >
       {children}

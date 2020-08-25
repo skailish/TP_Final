@@ -12,8 +12,9 @@
 .results-container {
   transition: 0.3s ease-in;
   width: calc(100vw - 100px);
-  padding-top: 100px;
-  margin-left: 100px;
+  position: relative;
+
+  left: 100px;
   height: calc(100% - 100px);
   min-height: calc(100vh - 400px);
   background-color: $background-darkmode;
@@ -29,7 +30,7 @@
   width: calc(100vw - 100px);
   margin-left: 100px;
   height: 150px;
-  background-color: $background-darkmode;
+  background-color: $background-lightmode;
   padding: 0 0 20px 80px;
   @include flex(column, space-evenly, flex-start);
 
