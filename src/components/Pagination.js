@@ -19,9 +19,9 @@ const Pagination = ({ page, maxPage, setPage }) => {
 
   return (
   <>
-    { (paginas !== 1) && 
+    { (paginas > 1) && 
     (
-      <Container className={`pagination-container ${theme}`}>
+        <Container className={ `pagination-container ${theme}` }>
         {page > 1 && (
           <ButtonPagination
           className={`pagination-arrow`}
@@ -30,17 +30,16 @@ const Pagination = ({ page, maxPage, setPage }) => {
             <ArrowIosBackOutline className={'arrows'} />
           </ButtonPagination>
           )}
-        {paginas>=6 && 
-        page < 5 && (
+          { paginas >= 6 && page < 5 &&
           <>
             {[...Array(5)].map((pageBtn, i) => (
               <PageButton setPage={setPage} page={page} key={i + 1} value={i + 1} content={i + 1} />
             ))}
-            <PageButton setPage={setPage} page={page} value={maxPage - 3} key={maxPage - 3} content={"..."} />
+            <PageButton setPage={ setPage } page={ page } value={ maxPage - 3 } key={ maxPage - 3 } content={ "..." } />
             <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
           </>
-        )}
-        {page >= 5 && page < maxPage - 4 && (
+        }
+        {paginas >= 6 && page >= 5 && page < maxPage - 4 && (
           <>
             <PageButton setPage={setPage} page={page} value={1} key={1} content={1} />
             <PageButton setPage={setPage} page={page} value={3} key={3} content={"..."} />
@@ -51,7 +50,7 @@ const Pagination = ({ page, maxPage, setPage }) => {
             <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
           </>
         )}
-        {page >= maxPage - 4 && (
+        {paginas >= 6 && page >= maxPage - 4 && (
           <>
             <PageButton setPage={setPage} page={page} value={1} key={1} content={1} />
             <PageButton setPage={setPage} page={page} value={4} key={4} content={"..."} />
@@ -78,12 +77,12 @@ const Pagination = ({ page, maxPage, setPage }) => {
             <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
           </>
         ) }
-        { (paginas < 6 &&
+        { (paginas < 6 && 
                     <>
             {[...Array(paginas-1)].map((pageBtn, i) => (
               <PageButton setPage={setPage} page={page} key={i + 1} value={i + 1} content={i + 1} />
             ))}
-            <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
+            <PageButton setPage={ setPage } page={ page } value={ maxPage } key={ maxPage } content={ maxPage } />
           </>
           
           ) }

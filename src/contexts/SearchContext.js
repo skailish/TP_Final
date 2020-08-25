@@ -1,6 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-import PaginationContext from "contexts/PaginationContext";
 
 const SearchContext = createContext();
 
@@ -201,6 +200,7 @@ const SearchProvider = ({ children }) => {
 
       setYears(jsonYears);
       setDiscover(dataJson.results);
+      setSearchMaxPage(dataJson.total_pages);
       orderByYears(
         dataJson.results,
         chosenYear,

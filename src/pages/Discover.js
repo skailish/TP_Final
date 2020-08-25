@@ -9,7 +9,6 @@ import Text from "components/primitive/Text";
 import Button from "components/primitive/Button";
 import { Search } from "@styled-icons/bootstrap/Search";
 import Pagination from "components/Pagination";
-import PaginationContext from "contexts/PaginationContext";
 
 const Discover = () => {
   const {
@@ -20,7 +19,7 @@ const Discover = () => {
     years,
     showResults,
     mediaAdvance,
-    searchVisible,
+    // searchVisible,
     handleOrderByChange,
     handleMediaChange,
     handleGenreChange,
@@ -199,7 +198,7 @@ const Discover = () => {
           </Container>
         )}
 
-         {showResults && (
+         {searchMaxPage && showResults && (
             <Pagination
               page={searchPage}
               maxPage={searchMaxPage}
