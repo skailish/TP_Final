@@ -163,7 +163,6 @@ const Discover = () => {
       </Container>
 
       <Container className={`results-pagination-container ${theme}`}>
-        {console.log(results)}
         {results && (
           <Container className={`results-container ${theme} `}>
             {results &&

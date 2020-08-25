@@ -44,7 +44,6 @@ const SearchProvider = ({ children }) => {
   };
 
   const handleMediaChange = (event) => {
-    console.log(event.target.value);
     setMediaAdvance(event.target.value);
   };
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
@@ -202,7 +201,6 @@ const SearchProvider = ({ children }) => {
 
       setYears(jsonYears);
       setDiscover(dataJson.results);
-      console.log(dataJson.results);
       orderByYears(
         dataJson.results,
         chosenYear,

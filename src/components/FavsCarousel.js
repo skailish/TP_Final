@@ -24,14 +24,12 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
   }, []);
 
   const handleLeftChevronClick = (carouselScroll, screen, data) => {
-    console.log(screen);
     mediaRef.current.scrollLeft = -250;
     // setScreen(screen - 1);
     // screen <= 1 && setShowLeftBar(false);
     // screen <= data && setShowRightBar(true);
   };
   const handleRightChevronClick = (carouselScroll, screen, data) => {
-    console.log(screen);
     mediaRef.current.scrollLeft = 250;
     // screen >= 0 && setShowLeftBar(true);
     // setScreen(screen + 1);
