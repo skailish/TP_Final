@@ -23,8 +23,6 @@ const SearchProvider = ({ children }) => {
   const [chosenYear, setChosenYear] = useState("2010");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
-  const [maxPage, setMaxPage] = useState(1000);
-  const [page, setPage] = useState(1);
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -246,7 +244,7 @@ const SearchProvider = ({ children }) => {
         handleOrderByChange,
         handleShowResultsClick,
         setSearchPage,
-        setNewSearch,
+        setNewSearch
       }}
     >
       {children}

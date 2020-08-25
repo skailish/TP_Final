@@ -5,7 +5,6 @@ import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBack
 import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
 import ThemeContext from "../contexts/ThemeContext";
 import PageButton from "./PageButton";
-import SearchContext from "contexts/SearchContext";
 
 const Pagination = ({ page, maxPage, setPage }) => {
   const { theme } = useContext(ThemeContext);
@@ -19,17 +18,20 @@ const Pagination = ({ page, maxPage, setPage }) => {
   const paginas = maxPage > 6 ? 6 : maxPage;
 
   return (
-    <>
+  <>
+    { (paginas !== 1) && 
+    (
       <Container className={`pagination-container ${theme}`}>
         {page > 1 && (
           <ButtonPagination
-            className={`pagination-arrow`}
-            onClick={() => toPreviousPage()}
+          className={`pagination-arrow`}
+          onClick={() => toPreviousPage()}
           >
             <ArrowIosBackOutline className={'arrows'} />
           </ButtonPagination>
-        )}
-        {page < 5 && (
+          )}
+        {paginas>=6 && 
+        page < 5 && (
           <>
             {[...Array(5)].map((pageBtn, i) => (
               <PageButton setPage={setPage} page={page} key={i + 1} value={i + 1} content={i + 1} />
@@ -75,7 +77,16 @@ const Pagination = ({ page, maxPage, setPage }) => {
             />
             <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
           </>
-        )}
+        ) }
+        { (paginas < 6 &&
+                    <>
+            {[...Array(paginas-1)].map((pageBtn, i) => (
+              <PageButton setPage={setPage} page={page} key={i + 1} value={i + 1} content={i + 1} />
+            ))}
+            <PageButton setPage={setPage} page={page} value={maxPage} key={maxPage} content={maxPage} />
+          </>
+          
+          ) }
         {page < maxPage && (
           <ButtonPagination
             className={`pagination-arrow`}
@@ -85,8 +96,9 @@ const Pagination = ({ page, maxPage, setPage }) => {
           </ButtonPagination>
         )}
       </Container>
-    </>
-  );
+    )
+  }
+  </>)
 };
 
 export default Pagination;

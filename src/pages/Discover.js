@@ -200,13 +200,13 @@ const Discover = () => {
           </Container>
         )}
 
-        {/*  {showResults && (
+         {showResults && (
             <Pagination
               page={searchPage}
               maxPage={searchMaxPage}
               setPage={setSearchPage}
             />
-          )} */}
+          )}
       </Container>
     </>
   );

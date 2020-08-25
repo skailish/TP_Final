@@ -31,7 +31,7 @@ const Stars = ({ contentName, showStars }) => {
                             className={`star-left ${ratingValueOdd <= (hover || rating) ? 'half-filled' : 'half-empty'}`}
                             onMouseEnter={() => setHover(ratingValueOdd)}
                             onMouseLeave={() => setHover(null)}
-                            for={`input_${ratingValueOdd}`}>
+                            htmlFor={`input_${ratingValueOdd}`}>
 
                             <Star
                                 key={`star_left_${ratingValueOdd}`}
@@ -51,7 +51,7 @@ const Stars = ({ contentName, showStars }) => {
                             className={`star-right ${ratingValueEven <= (hover || rating) ? 'half-filled' : 'half-empty'}`}
                             onMouseEnter={() => setHover(ratingValueEven)}
                             onMouseLeave={() => setHover(null)}
-                            for={`input_${ratingValueEven}`}>
+                            htmlFor={`input_${ratingValueEven}`}>
                             <Star
 
                                 key={`star_right_${ratingValueEven}`}
