@@ -37,7 +37,6 @@ const Trailer = () => {
         `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
       );
       const dataJson = await response.json();
-      console.log(dataJson.results);
 
       const getKey = await dataJson.results.filter((i) => i.type === "Trailer");
 
