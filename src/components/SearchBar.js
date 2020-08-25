@@ -25,7 +25,7 @@ const SearchBar = () => {
     history.push("/discover");
     setNewSearch(true);
   };
-  const handleRedirectClick = () => history.push("/");
+
 
   return (
     <Container className={`main-searchbar-container ${theme}`}>
@@ -70,7 +70,6 @@ const SearchBar = () => {
           <Close
             onClick={() => {
               handleCloseSearchClick();
-              handleRedirectClick();
             }}
             className={`close-options-icon ${theme}`}
           />

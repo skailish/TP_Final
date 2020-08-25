@@ -27,8 +27,8 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
     updateMovieFavs,
   } = useContext(FavsContext);
 
-  const handleMediaDetailsClick = (id, mediaType) => {
-    history.push(`/${mediaType}/${id}/info`);
+  const handleMediaDetailsClick = (id, mediatype) => {
+    history.push(`/${mediatype}/${id}/info`);
   };
 
   const handleFavClick = (id, src, title, votes, mediatype, user) => {

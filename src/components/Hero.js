@@ -25,11 +25,13 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
       {data && (
         <Container as="header" className="hero-container">
           <Container className="hero-image-container" id={data.id}>
-            <Image
-              className="hero-background-image"
-              src={`${imageBaseUrl}${data.backdrop_path}`}
-              alt="Movie background image"
-            />
+            {data.backdrop_path && (
+              <Image
+                className="hero-background-image"
+                src={`${imageBaseUrl}${data.backdrop_path}`}
+                alt="Movie background image"
+              />
+            )}
           </Container>
           <Container className="hero-info">
             <Heading className="hero-heading" onClick={goToInfo}>

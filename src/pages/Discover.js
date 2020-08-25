@@ -147,7 +147,11 @@ const Discover = () => {
                 Most Revenue
               </Option>
             )}
-            {mediaAdvance === "movie" && <Option  className={` ${theme}`} value="">Less Revenue</Option>}
+            {mediaAdvance === "movie" && (
+              <Option className={` ${theme}`} value="">
+                Less Revenue
+              </Option>
+            )}
           </Select>
           <Button
             onClick={handleShowResultsClick}
@@ -158,7 +162,8 @@ const Discover = () => {
         </Container>
       </Container>
 
-      <Container className={`results-pagination-container ${theme}` }>
+      <Container className={`results-pagination-container ${theme}`}>
+        {console.log(results)}
         {results && (
           <Container className={`results-container ${theme} `}>
             {results &&
@@ -169,7 +174,7 @@ const Discover = () => {
                   title={media === "tv" ? result.name : result.title}
                   votes={result.vote_average}
                   key={result.id}
-                  mediatype={result.media_type}
+                  mediatype={mediaAdvance}
                 />
               ))}
           </Container>
@@ -189,7 +194,7 @@ const Discover = () => {
                   }
                   votes={discover.vote_average}
                   key={discover.id}
-                  mediatype={discover.media_type}
+                  mediatype={mediaAdvance}
                 />
               ))}
           </Container>

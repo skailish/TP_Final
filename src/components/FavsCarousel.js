@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Container from "../components/primitive/Container";
+import Container from "./primitive/Container";
 import Card from "./Card";
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
@@ -9,7 +9,7 @@ import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
 import FavsContext from "../contexts/FavsContext";
 
-const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
+const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
   const { theme } = useContext(ThemeContext);
   const { favsArray } = useContext(FavsContext);
   const mediaRef = useRef(null);
@@ -19,20 +19,23 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   const [showRightBar, setShowRightBar] = useState(true);
 
   useEffect(() => {
-    setCarouselScroll(mediaRef.current.scrollWidth / 4);
+    setCarouselScroll(mediaRef.current.scrollWidth / data.length);
+    setScreen(data.length);
   }, []);
 
-  const handleLeftChevronClick = (carouselScroll, screen) => {
-    mediaRef.current.scrollLeft = screen * carouselScroll - carouselScroll;
-    setScreen(screen - 1);
-    screen <= 1 && setShowLeftBar(false);
-    screen <= 3 && setShowRightBar(true);
+  const handleLeftChevronClick = (carouselScroll, screen, data) => {
+    console.log(screen);
+    mediaRef.current.scrollLeft = -250;
+    // setScreen(screen - 1);
+    // screen <= 1 && setShowLeftBar(false);
+    // screen <= data && setShowRightBar(true);
   };
-  const handleRightChevronClick = (carouselScroll, screen) => {
-    mediaRef.current.scrollLeft = Math.round(carouselScroll * (screen + 1));
-    screen >= 0 && setShowLeftBar(true);
-    setScreen(screen + 1);
-    screen >= 2 && setShowRightBar(false);
+  const handleRightChevronClick = (carouselScroll, screen, data) => {
+    console.log(screen);
+    mediaRef.current.scrollLeft = 250;
+    // screen >= 0 && setShowLeftBar(true);
+    // setScreen(screen + 1);
+    // screen >= data && setShowRightBar(false);
   };
 
   return (
@@ -42,23 +45,11 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
         {showLeftBar && (
           <Button
             className={`chevron-container chevron-left ${theme} `}
-            onClick={() => handleLeftChevronClick(carouselScroll, screen)}
+            onClick={() => handleLeftChevronClick(carouselScroll, screen, data.length)}
           >
             <ChevronLeft className={`chevron-icon ${theme} `} />
           </Button>
         )}
-        <Container className="cardlistpreview-title">
-          <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
-            {sectionTitle}
-          </Heading>
-
-          <Link
-            to={`${mediatype}/category/${category}`}
-            className={`cardlistpreview-link ${theme}`}
-          >
-            Explore All
-          </Link>
-        </Container>
         <Container
           className="media-container"
           id="media-container"
@@ -69,19 +60,19 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
             data.map((singleCard) => (
               <Card
                 id={singleCard.id}
-                src={singleCard.poster_path}
-                title={mediatype === "tv" ? singleCard.name : singleCard.title}
-                votes={singleCard.vote_average}
+                src={singleCard.src}
+                title={singleCard.title}
+                votes={singleCard.votes}
                 key={singleCard.id}
                 mediatype={mediatype}
-                like={favsArray.includes(singleCard.id)}
+                like={true}
               />
             ))}
         </Container>
         {showRightBar && (
           <Button
             className={`chevron-container chevron-right ${theme} `}
-            onClick={() => handleRightChevronClick(carouselScroll, screen)}
+            onClick={() => handleRightChevronClick(carouselScroll, screen, data.lenth)}
           >
             <ChevronRight className={`chevron-icon ${theme} `} />
           </Button>
@@ -91,4 +82,4 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   );
 };
 
-export default CardListPreview;
+export default FavsCarousel;

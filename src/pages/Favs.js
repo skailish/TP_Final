@@ -9,6 +9,7 @@ import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import ScrollToTop from "../components/ScrollToTop";
 import FavsContext from "../contexts/FavsContext";
+import FavsCarousel from "../components/FavsCarousel";
 
 const overrideDark = css`
   & div {
@@ -40,15 +41,7 @@ const Favs = ({ user }) => {
 
   return (
     <>
-      {moviesArray.length <= 0 && seriesArray.length <= 0 && (
-        <Container className={`nofavs-container ${theme}`}>
-          <Heading className={`nofavs-heading ${theme}`}>
-            You have no favorites yet, go select some...
-          </Heading>
-        </Container>
-      )}
-
-      {(isLoadingMovie || isLoadingTvShow) && (
+      {(isLoadingMovie || isLoadingTvShow) && !moviesArray && !seriesArray && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
@@ -57,6 +50,14 @@ const Favs = ({ user }) => {
           )}
         </Container>
       )}
+      {moviesArray.length <= 0 && seriesArray.length <= 0 && (
+        <Container className={`nofavs-container ${theme}`}>
+          <Heading className={`nofavs-heading ${theme}`}>
+            You have no favorites yet, go select some...
+          </Heading>
+        </Container>
+      )}
+
       {!isLoadingMovie &&
         !isLoadingTvShow &&
         (moviesArray.length > 0 || seriesArray.length > 0) && (
@@ -72,17 +73,7 @@ const Favs = ({ user }) => {
                 </Heading>
               )}
               <Container className={`favs-cards-container ${theme}`}>
-                {moviesArray.map((fav) => (
-                  <Card
-                    key={fav.id}
-                    id={fav.id}
-                    src={fav.src}
-                    title={fav.title}
-                    votes={fav.votes}
-                    mediatype={fav.mediatype}
-                    like={true}
-                  />
-                ))}
+                <FavsCarousel mediatype="movie" data={moviesArray} />
               </Container>
               <Container>
                 {seriesArray.length > 0 && (
@@ -92,17 +83,7 @@ const Favs = ({ user }) => {
                 )}
 
                 <Container className={`favs-cards-container ${theme}`}>
-                  {seriesArray.map((fav) => (
-                    <Card
-                      key={fav.id}
-                      id={fav.id}
-                      src={fav.src}
-                      title={fav.title}
-                      votes={fav.votes}
-                      mediatype={fav.mediatype}
-                      like={true}
-                    />
-                  ))}
+                  <FavsCarousel mediatype="tv" data={seriesArray} />
                 </Container>
               </Container>
             </Container>
