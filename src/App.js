@@ -21,7 +21,9 @@ import ErrorPage from "./pages/ErrorPage";
 import Movie from "./pages/Movie";
 import UserContext from "./contexts/UserContext";
 import Favs from "./pages/Favs";
+import SearchBar from "./components/SearchBar";
 import FavsContext from "./contexts/FavsContext";
+import Discover from "./pages/Discover";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -47,6 +49,9 @@ function App() {
     <Container className="main-aside-container">
       <Router>
         <Aside user={user} />
+
+        <SearchBar />
+
         <Switch>
           <Route exact path="/">
             <Home />
@@ -77,6 +82,9 @@ function App() {
           </Route>
           <Route exact path="/favs">
             {user ? <Favs user={user} /> : <Redirect to="" />}
+          </Route>
+          <Route exact path="/discover">
+            <Discover />
           </Route>
           <Route>
             <ErrorPage />

@@ -1,0 +1,113 @@
+.main-search-container {
+  width: calc(100vw - 100px);
+  margin-left: 100px;
+  height: 200px;
+  background-color: $background-footer-darkmode;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+    transition: 0.3s ease-in;
+  }
+}
+
+.results-pagination-container {
+  min-height: calc(100vh - 200px);
+  height: 100%;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+    transition: 0.3s ease-in;
+  }
+
+}
+
+.results-container {
+  transition: 0.3s ease-in;
+  width: calc(100vw - 100px);
+  min-height: calc(100vh - 200px);
+  position: relative;
+
+  left: 100px;
+  height: calc(100% - 100px);
+  min-height: calc(100vh - 400px);
+  background-color: $background-darkmode;
+  @include flex(row, space-evenly, center);
+  flex-wrap: wrap;
+  transition: 0.3s ease-in;
+
+  &.light {
+    background-color: $background-lightmode;
+    transition: 0.3s ease-in;
+  }
+}
+
+.main-discover-filter-container {
+  width: calc(100vw - 100px);
+  margin-left: 100px;
+  height: 150px;
+  background-color: $background-footer-darkmode;
+  padding: 0 0 20px 80px;
+  @include flex(column, space-evenly, flex-start);
+  transition: 0.3s ease-in;
+
+  .filter-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: $main-text-darkmode;
+    transition: 0.3s ease-in;
+
+    &.light {
+      transition: 0.3s ease-in;
+      color: $main-text-lightmode;
+    }
+  }
+
+  &.light {
+    transition: 0.3s ease-in;
+    background-color: $background-footer-lightmode;
+  }
+
+  .filter-container {
+    width: 60%;
+    @include flex(row, space-between, center);
+  
+
+    .select-discover {
+      height: 30px;
+      padding: 3px 16px 3px 8px;
+      border: none;
+      outline: none;
+      background-color: $background-footer-darkmode;
+      border-bottom: 1px solid #144d53;
+      font-weight: 600;
+      color: $main-text-darkmode;
+      cursor: pointer;
+      transition: 0.3s ease-in;
+
+      &>option {
+        font-weight: 600;
+        height: 25px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        background-color: $background-footer-darkmode;
+        transition: 0.3s ease-in;
+
+        &.light {
+          background-color: $background-footer-lightmode;
+          transition: 0.3s ease-in;
+        }
+      }
+
+      &.light {
+        background-color: $background-footer-lightmode;
+        color: $main-text-lightmode;
+        border-bottom: 1px solid #992e2e;
+        transition: 0.3s ease-in;
+      }
+    }
+  }
+}

@@ -14,7 +14,12 @@
     @include button(10px, 0 5px 0 0, 35px, 50%);
   }
   .pagination-arrow {
-    @include button(5px, 0 5px 0 0, 20px, 50%);
+    @include button(5px, 0 5px 0 0, 30px, 50%);
+
+    & .arrows {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &.light {

@@ -22,7 +22,9 @@
     position: absolute;
   }
 }
-
+.hero-heading {
+  cursor: pointer;
+}
 .hero-background-image {
   z-index: 0;
   height: 100%;

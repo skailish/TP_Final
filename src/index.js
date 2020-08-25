@@ -9,32 +9,38 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
 import { TvShowProvider } from "./contexts/TvShowContext";
 import { PaginationProvider } from "./contexts/PaginationContext";
+import { CategoryProvider } from "./contexts/CategoryContext";
 import { UserProvider } from "./contexts/UserContext";
 import { FavsProvider } from "./contexts/FavsContext";
+import { SearchProvider } from "./contexts/SearchContext";
 
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <FavsProvider>
-        <MovieProvider>
-          <TvShowProvider>
-            <DataProvider>
-              <ImageProvider>
-                <YouTubeProvider>
-                  <ThemeProvider>
-                    <PaginationProvider>
-                      <App />
-                    </PaginationProvider>
-                  </ThemeProvider>
-                </YouTubeProvider>
-              </ImageProvider>
-            </DataProvider>
-          </TvShowProvider>
-        </MovieProvider>
-      </FavsProvider>
-    </UserProvider>
+    <CategoryProvider>
+      <PaginationProvider>
+        <SearchProvider>
+          <UserProvider>
+            <FavsProvider>
+              <MovieProvider>
+                <TvShowProvider>
+                  <DataProvider>
+                    <ImageProvider>
+                      <YouTubeProvider>
+                        <ThemeProvider>
+                          <App />
+                        </ThemeProvider>
+                      </YouTubeProvider>
+                    </ImageProvider>
+                  </DataProvider>
+                </TvShowProvider>
+              </MovieProvider>
+            </FavsProvider>
+          </UserProvider>
+        </SearchProvider>
+      </PaginationProvider>
+    </CategoryProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
