@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import Heading from "../../components/primitive/Heading";
 import ThemeContext from "../../contexts/ThemeContext";
 import Pagination from "../../components/Pagination";
-import PaginationContext from "../../contexts/PaginationContext";
+import CategoryContext from "../../contexts/CategoryContext";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import ScrollToTop from "../../components/ScrollToTop";
@@ -25,28 +25,18 @@ const overrideLight = css`
 
 const Categories = () => {
   const { media, category } = useParams();
-  const [dataByParams, setDataByParams] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { theme } = useContext(ThemeContext);
-  const { page, setMaxPage, maxPage } = useContext(PaginationContext);
   const { favsArray } = useContext(FavsContext);
+  const { page, setPage, maxPage, dataByParams, setMedia, setCategory, isLoading } = useContext(CategoryContext);
 
   const title2 = category.split("_").join(" ");
 
-  useEffect(() => {
-    setIsLoading(true);
 
-    const getDataByCategoryAndMedia = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/${media}/${category}?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=${page}`
-      );
-      const dataJson = await response.json();
-      setDataByParams(dataJson.results);
-      setMaxPage(dataJson.total_pages);
-      setIsLoading(false);
-    };
-    getDataByCategoryAndMedia();
-  }, [page, media, category, setMaxPage]);
+  
+  useEffect(() => {
+    setMedia(media);
+    setCategory(category);
+  }, [media, category]);
 
   return (
     <>
@@ -80,7 +70,7 @@ const Categories = () => {
               />
             ))}
           </Container>
-          <Pagination currentPage={page} />
+          <Pagination page={page} maxPage={maxPage} setPage={setPage} />
         </Container>
       )}
     </>

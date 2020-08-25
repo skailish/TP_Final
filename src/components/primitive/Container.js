@@ -1,14 +1,15 @@
 import React from "react";
 
-const Container = ({ as = "div", children, ref, ...props }) => {
+const Container = ({ forwarderRef, as = "div", children, ...props }) => {
   const Component = as;
 
-
-   return(
-    <Component ref={ref} {...props}>
+  return (
+    <Component ref={forwarderRef} {...props}>
       {children}
     </Component>
   );
 };
 
-export default Container;
+const forwardedContainer = React.forwardRef(Container);
+
+export default forwardedContainer;

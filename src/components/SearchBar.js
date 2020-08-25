@@ -16,12 +16,16 @@ const SearchBar = () => {
     handleMediaClick,
     handleInputChange,
     handleCloseSearchClick,
+    setNewSearch,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
   const history = useHistory();
 
-  const handleClick = () => history.push("/discover");
-  const handleRedirectClick = () => history.push("/");
+  const handleClick = () => {
+    history.push("/discover");
+    setNewSearch(true);
+  };
+
 
   return (
     <Container className={`main-searchbar-container ${theme}`}>
@@ -34,7 +38,7 @@ const SearchBar = () => {
             className={`options-container ${theme}`}
             onClick={(event) => handleMediaClick(event)}
           >
-            <Text className={`search-text ${theme}`}>Filtrar por</Text>
+            <Text className={`search-text ${theme}`}>Filter By</Text>
             <Label className={`search-label ${theme}`}>
               Movie
               <Input
@@ -42,6 +46,7 @@ const SearchBar = () => {
                 name="mediatype"
                 value="movie"
                 className={`radio-input ${theme}`}
+                defaultChecked
               />
             </Label>
             <Label className={`search-label ${theme}`}>
@@ -65,7 +70,6 @@ const SearchBar = () => {
           <Close
             onClick={() => {
               handleCloseSearchClick();
-              handleRedirectClick();
             }}
             className={`close-options-icon ${theme}`}
           />

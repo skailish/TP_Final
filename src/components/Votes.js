@@ -1,25 +1,35 @@
-import React, { useContext } from "react";
-import { Star } from "@styled-icons/bootstrap/Star";
-import { StarFill } from "@styled-icons/bootstrap/StarFill";
-import Rating from "react-rating";
+import React, { useState, useContext } from "react";
+import Stars from "./Stars";
+import AverageVoteStars from "./AverageVoteStars";
+import Container from "./primitive/Container"
+import { Eye } from "@styled-icons/bootstrap/Eye";
 import ThemeContext from "../contexts/ThemeContext";
 
-const Votes = ({ voteAverage, voteNumber, ...props }) => {
+const Votes = ({ contentName, voteAverage, ...props }) => {
   const { theme } = useContext(ThemeContext);
-  const rating = voteAverage / 2;
+  const [isVotingNumberVisible, setIsVotingNumberVisible] = useState(true);
+  const [isRatingVisible, setIsRatingVisible] = useState(true);
+
+
+  const handleClick = () => {
+    setIsVotingNumberVisible(!isVotingNumberVisible);
+  }
+
+  const handleOnMouseEnter = () => setIsRatingVisible(false)
+  const handleOnMouseLeave = () => setIsRatingVisible(true)
 
   return (
-    <div {...props}>
-      <Rating
-        emptySymbol={<Star className={`rating-stars ${theme}`} />}
-        placeholderSymbol={<StarFill className={`rating-stars ${theme}`} />}
-        fullSymbol={<StarFill className={`rating-stars ${theme}`} />}
-        placeholderRating={rating}
-        fractions={2}
-      />
-      {(voteNumber || voteNumber === 0) && <span className="rating-number">{voteNumber}</span>}
-    </div>
-  );
+    <Container className={`rating-container ${theme}`} {...props}>
+      <Container onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave} >
+        {(voteAverage &&
+          <AverageVoteStars voteAverage={voteAverage} showRating={isRatingVisible} />
+        )}
+        <Stars title={contentName} showStars={!isRatingVisible} />
+      </Container>
+      {voteAverage && <span className={`rating-number ${theme}`} onClick={handleClick}>{isVotingNumberVisible ? voteAverage : <Eye />}</span>}
+    </Container >
+
+  )
 };
 
 export default Votes;

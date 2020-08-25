@@ -15,6 +15,7 @@ import FavsContext from "../contexts/FavsContext";
 
 const Card = ({ id, src, title, votes, mediatype, like }) => {
   const [fav, setFav] = useState(false);
+  const [previousFav, setPreviousFav] = useState("");
   const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
@@ -26,11 +27,14 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
     updateMovieFavs,
   } = useContext(FavsContext);
 
-  const handleMediaDetailsClick = (id, mediaType) => {
-    history.push(`/${mediaType}/${id}/info`);
+  const handleMediaDetailsClick = (id, mediatype) => {
+    history.push(`/${mediatype}/${id}/info`);
   };
 
   const handleFavClick = (id, src, title, votes, mediatype, user) => {
+    if (id === previousFav) {
+      return;
+    }
     setFav(true);
 
     db.collection("Favs")
@@ -46,6 +50,7 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
       .then(() => {
         const newFavs = [...favsArray, id];
         setFavsArray(newFavs);
+        setPreviousFav(id);
       });
   };
 
@@ -62,6 +67,10 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
         const docSelected = response.docs.filter(
           (document) => document.data().id === id
         );
+
+        if (!docSelected[0]) {
+          return;
+        }
         selectedID = docSelected[0].id;
         const index = favsArray.indexOf(id);
         const newArray = [...favsArray];
@@ -74,6 +83,10 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
   };
 
   const deleteFav = (id) => {
+    if (!id) {
+      return;
+    }
+
     db.collection("Favs")
       .doc(user.email)
       .collection(`${mediatype}`)
@@ -106,11 +119,7 @@ const Card = ({ id, src, title, votes, mediatype, like }) => {
         </Container>
       </Container>
       <Container className="votes-and-favs-container">
-        <Votes
-          voteAverage={votes}
-          voteNumber={votes}
-          className={`media-card-rating ${theme} `}
-        />
+        {title && <Votes contentName={title} voteAverage={votes} />}
         {user && favsArray && (
           <Container className="heart-icons-container">
             {(fav || like) && (

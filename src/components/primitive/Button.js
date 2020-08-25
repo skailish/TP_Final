@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../contexts/ThemeContext";
 
-const Button = ({ children, ...props }) => {
+const Button = ({children, forwardedRef, ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <button className={`button ${theme}`} {...props}>
+    <button ref={forwardedRef} className={`button ${theme}`} {...props}>
       {children}
     </button>
   );
 };
 
-export default Button;
+const forwardedButton = React.forwardRef(Button);
+
+export default forwardedButton;

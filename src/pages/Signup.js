@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import firebase from "../configs/firebase";
 import { useHistory, Redirect } from "react-router-dom";
 import Container from "../components/primitive/Container";
@@ -15,6 +15,25 @@ const Signup = ({ user }) => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { setUser } = useContext(UserContext);
+  const emailRef = useRef(null);
+  const passRef = useRef(null);
+  const submitRef = useRef(null);
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
+  const handleEmailDown = (event) => {
+    if (event.key === "Enter") {
+      passRef.current.focus();
+    }
+  };
+
+  const handlePassDown = (event) => {
+    if (event.key === "Enter") {
+      submitRef.current.focus();
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,20 +66,28 @@ const Signup = ({ user }) => {
           <Label className={`form-label ${theme}`}>
             Email
             <Input
+              forwardedRef={emailRef}
+              onKeyDown={handleEmailDown}
               type="email"
               name="email"
+              ref={emailRef}
               className={`form-input ${theme}`}
             />
           </Label>
           <Label className={`form-label ${theme}`}>
             Password
             <Input
+              forwardedRef={passRef}
+              onKeyDown={handlePassDown}
               type="password"
               name="password"
+              ref={passRef}
               className={`form-input ${theme}`}
             />
           </Label>
-          <Button type="submit">Sign Up</Button>
+          <Button ref={submitRef} type="submit">
+            Sign Up
+          </Button>
         </Container>
       </Container>
     </>
