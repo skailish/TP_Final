@@ -30,7 +30,7 @@
   width: calc(100vw - 100px);
   margin-left: 100px;
   height: 150px;
-  background-color: $background-lightmode;
+  background-color: $background-darkmode;
   padding: 0 0 20px 80px;
   @include flex(column, space-evenly, flex-start);
 
