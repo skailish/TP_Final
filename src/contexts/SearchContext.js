@@ -161,7 +161,7 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getYears = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&page=1${areGenres}&sort_by=${
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&page=1&sort_by=${
           mediaAdvance === "movie" ? "release_date.asc" : "first_date_air.asc"
         }`
       );
@@ -193,7 +193,7 @@ const SearchProvider = ({ children }) => {
       setYears(getArray());
     };
     getYears();
-  }, [genresAdvance, mediaAdvance]);
+  }, [mediaAdvance]);
 
   useEffect(() => {
     const areSortBy =

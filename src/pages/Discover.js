@@ -55,9 +55,9 @@ const Discover = () => {
               className={`select-discover ${theme}`}
               name="genre"
               onChange={(event) => handleGenreChange(event)}
-              value={genresAdvance}
+              defaultValue={genresAdvance}
             >
-              <Option className={` ${theme}`} value={false} selected>
+              <Option className={` ${theme}`} value={false} >
                 All
               </Option>
               {genres.map((genre) => (
