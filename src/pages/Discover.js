@@ -29,6 +29,7 @@ const Discover = () => {
     searchPage,
     setSearchPage,
     searchMaxPage,
+    genresAdvance,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
@@ -54,8 +55,9 @@ const Discover = () => {
               className={`select-discover ${theme}`}
               name="genre"
               onChange={(event) => handleGenreChange(event)}
+              value={genresAdvance}
             >
-              <Option className={` ${theme}`} value={false}>
+              <Option className={` ${theme}`} value={false} selected>
                 All
               </Option>
               {genres.map((genre) => (
@@ -198,13 +200,13 @@ const Discover = () => {
           </Container>
         )}
 
-         {searchMaxPage && showResults && (
-            <Pagination
-              page={searchPage}
-              maxPage={searchMaxPage}
-              setPage={setSearchPage}
-            />
-          )}
+        {searchMaxPage && showResults && (
+          <Pagination
+            page={searchPage}
+            maxPage={searchMaxPage}
+            setPage={setSearchPage}
+          />
+        )}
       </Container>
     </>
   );
