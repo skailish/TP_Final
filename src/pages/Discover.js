@@ -176,7 +176,17 @@ const Discover = () => {
                   key={result.id}
                   mediatype={mediaAdvance}
                 />
-              ))}
+              )) }
+            { searchMaxPage && showResults && (
+              <Container>
+
+          <Pagination
+            page={searchPage}
+            maxPage={searchMaxPage}
+            setPage={setSearchPage}
+                />
+                </Container>
+        )}
           </Container>
         )}
         {discover && (
@@ -197,16 +207,20 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
-          </Container>
-        )}
-
         {searchMaxPage && showResults && (
+              <Container>
+
           <Pagination
             page={searchPage}
             maxPage={searchMaxPage}
             setPage={setSearchPage}
           />
+              </Container>
+
         )}
+          </Container>
+        )}
+
       </Container>
     </>
   );

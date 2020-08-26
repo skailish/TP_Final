@@ -18,9 +18,11 @@ const SearchProvider = ({ children }) => {
   const [orderBy, setOrderBy] = useState("popularity.desc");
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [chosenYear, setChosenYear] = useState("2010");
+  const [chosenYear, setChosenYear] = useState('');
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
+
+  const [yearEndPoint, setYearEndPoint] = useState('');
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -47,7 +49,7 @@ const SearchProvider = ({ children }) => {
 
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
   const handleIntervalChange = (event) => setInterval(event.target.value);
-  const handleYearChange = (event) => setChosenYear(event.target.value);
+  const handleYearChange = (event) => { setChosenYear(event.target.value); console.log(event.target.value)};
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
@@ -56,76 +58,35 @@ const SearchProvider = ({ children }) => {
     setShowResults(true);
   };
   const orderByYears = (
-    discover,
-    years,
+    setYearEndPoint,
+    chosenYear,
     interval,
-    setDiscover,
     mediaAdvance
   ) => {
     switch (interval) {
       case "before":
-        {
-          let filteredDiscover = [];
+        
           if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] <= years);
+             setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
           } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] <= years);
+             setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
           }
-
-          setDiscover(filteredDiscover);
-        }
+        
         break;
       case "exact":
-        {
-          let filteredDiscover = [];
-          if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] === years);
+        if (mediaAdvance === "movie") {
+             setYearEndPoint(`&primary_release_year=${chosenYear}`);
           } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] === years);
+             setYearEndPoint(`&first_air_date_year=${chosenYear}`);
           }
-          setDiscover(filteredDiscover);
-        }
+      
         break;
       default:
-        {
-          let filteredDiscover = [];
           if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] >= years);
+             setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
           } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] >= years);
+             setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
           }
-          setDiscover(filteredDiscover);
-        }
         break;
     }
   };
@@ -156,7 +117,7 @@ const SearchProvider = ({ children }) => {
     getGenres();
   }, [mediaAdvance]);
 
-  const areGenres = genresAdvance && `&with_genres=${genresAdvance}`;
+  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : '';
 
   useEffect(() => {
     const getYears = async () => {
@@ -191,6 +152,7 @@ const SearchProvider = ({ children }) => {
         return arrayYears;
       };
       setYears(getArray());
+      setChosenYear(Number(getFirstYear));
     };
     getYears();
   }, [mediaAdvance]);
@@ -211,24 +173,23 @@ const SearchProvider = ({ children }) => {
       }
     };
 
-    const getYears = async () => {
+    const getResults = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areSortBy}&page=${searchPage}`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${yearEndPoint}${areSortBy}&page=${searchPage}`
       );
       const dataJson = await response.json();
 
       setDiscover(dataJson.results);
       setSearchMaxPage(dataJson.total_pages);
       orderByYears(
-        dataJson.results,
+        setYearEndPoint,
         chosenYear,
         interval,
-        setDiscover,
         mediaAdvance
       );
     };
-    getYears();
-  }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
+    getResults();
+  }, [yearEndPoint, areGenres, mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
 
   return (
     <SearchContext.Provider
