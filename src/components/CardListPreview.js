@@ -1,11 +1,14 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Container from "../components/primitive/Container";
-import Card from "./Card";
+
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
+
+import Container from "../components/primitive/Container";
+import Card from "./Card";
 import Heading from "./primitive/Heading";
 import Button from "./primitive/Button";
+
 import ThemeContext from "../contexts/ThemeContext";
 import FavsContext from "../contexts/FavsContext";
 
@@ -28,6 +31,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
     screen <= 1 && setShowLeftBar(false);
     screen <= 3 && setShowRightBar(true);
   };
+
   const handleRightChevronClick = (carouselScroll, screen) => {
     mediaRef.current.scrollLeft = Math.round(carouselScroll * (screen + 1));
     screen >= 0 && setShowLeftBar(true);

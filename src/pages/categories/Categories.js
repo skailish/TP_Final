@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useContext } from "react";
-import Container from "../../components/primitive/Container";
 import { useParams } from "react-router-dom";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
+import Container from "../../components/primitive/Container";
 import Card from "../../components/Card";
 import Heading from "../../components/primitive/Heading";
 import ThemeContext from "../../contexts/ThemeContext";
 import Pagination from "../../components/Pagination";
-import CategoryContext from "../../contexts/CategoryContext";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 import ScrollToTop from "../../components/ScrollToTop";
+
+import CategoryContext from "../../contexts/CategoryContext";
 import FavsContext from "../../contexts/FavsContext";
 
 const overrideDark = css`
@@ -27,12 +30,18 @@ const Categories = () => {
   const { media, category } = useParams();
   const { theme } = useContext(ThemeContext);
   const { favsArray } = useContext(FavsContext);
-  const { page, setPage, maxPage, dataByParams, setMedia, setCategory, isLoading } = useContext(CategoryContext);
+  const {
+    page,
+    setPage,
+    maxPage,
+    dataByParams,
+    setMedia,
+    setCategory,
+    isLoading,
+  } = useContext(CategoryContext);
 
   const title2 = category.split("_").join(" ");
 
-
-  
   useEffect(() => {
     setMedia(media);
     setCategory(category);
@@ -45,8 +54,8 @@ const Categories = () => {
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100" />
           ) : (
-              <BounceLoader css={overrideLight} size="100" />
-            )}
+            <BounceLoader css={overrideLight} size="100" />
+          )}
         </Container>
       )}
       {!isLoading && favsArray && (

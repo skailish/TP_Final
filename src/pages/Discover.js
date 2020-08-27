@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
+
+import { Search } from "@styled-icons/bootstrap/Search";
+
 import Container from "components/primitive/Container";
 import Card from "components/Card";
-import SearchContext from "../contexts/SearchContext";
-import ThemeContext from "../contexts/ThemeContext";
 import Select from "components/primitive/Select";
 import Option from "components/primitive/Option";
 import Text from "components/primitive/Text";
 import Button from "components/primitive/Button";
-import { Search } from "@styled-icons/bootstrap/Search";
 import Pagination from "components/Pagination";
-import PaginationContext from "contexts/PaginationContext";
+import Heading from "components/primitive/Heading";
+
+import SearchContext from "../contexts/SearchContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 const Discover = () => {
   const {
@@ -20,7 +23,7 @@ const Discover = () => {
     years,
     showResults,
     mediaAdvance,
-    searchVisible,
+    // searchVisible,
     handleOrderByChange,
     handleMediaChange,
     handleGenreChange,
@@ -30,6 +33,7 @@ const Discover = () => {
     searchPage,
     setSearchPage,
     searchMaxPage,
+    genresAdvance,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 
@@ -55,6 +59,7 @@ const Discover = () => {
               className={`select-discover ${theme}`}
               name="genre"
               onChange={(event) => handleGenreChange(event)}
+              value={genresAdvance}
             >
               <Option className={` ${theme}`} value={false}>
                 All
@@ -163,7 +168,6 @@ const Discover = () => {
       </Container>
 
       <Container className={`results-pagination-container ${theme}`}>
-      
         {results && (
           <Container className={`results-container ${theme} `}>
             {results &&
@@ -177,10 +181,25 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
+            {searchMaxPage && showResults && (
+              <Container>
+                <Pagination
+                  page={searchPage}
+                  maxPage={searchMaxPage}
+                  setPage={setSearchPage}
+                />
+              </Container>
+            )}
           </Container>
         )}
+
         {discover && (
           <Container className={`results-container ${theme} `}>
+            {discover.length === 0 && (
+              <Heading className="no-results-tilte">
+                No results were found
+              </Heading>
+            )}
             {showResults &&
               discover &&
               discover.map((discover) => (
@@ -197,16 +216,19 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
+            {searchMaxPage && showResults && discover.length > 1 && (
+              <Container>
+                {discover.length > 1 && (
+                  <Pagination
+                    page={searchPage}
+                    maxPage={searchMaxPage}
+                    setPage={setSearchPage}
+                  />
+                )}
+              </Container>
+            )}
           </Container>
         )}
-
-        {/*  {showResults && (
-            <Pagination
-              page={searchPage}
-              maxPage={searchMaxPage}
-              setPage={setSearchPage}
-            />
-          )} */}
       </Container>
     </>
   );

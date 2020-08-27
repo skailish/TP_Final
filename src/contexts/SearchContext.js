@@ -1,6 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
-
-import PaginationContext from "contexts/PaginationContext";
+import React, { createContext, useState, useEffect } from "react";
 
 const SearchContext = createContext();
 
@@ -11,7 +9,6 @@ const SearchProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState([]);
   const [visibleResults, setVisibleResults] = useState(false);
-
   const [genres, setGenres] = useState([]);
   const [mediaAdvance, setMediaAdvance] = useState("movie");
   const [genresAdvance, setGenresAdvance] = useState("");
@@ -20,11 +17,12 @@ const SearchProvider = ({ children }) => {
   const [orderBy, setOrderBy] = useState("popularity.desc");
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [chosenYear, setChosenYear] = useState("2010");
+  const [chosenYear, setChosenYear] = useState("");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
-  const [maxPage, setMaxPage] = useState(1000);
-  const [page, setPage] = useState(1);
+  const [yearEndPoint, setYearEndPoint] = useState("");
+
+  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -34,6 +32,7 @@ const SearchProvider = ({ children }) => {
   const handleMediaClick = (event) => {
     setMedia(event.target.value);
   };
+
   const handleInputChange = (event) => {
     event.preventDefault();
     setInputValue(event.target.input.value);
@@ -48,86 +47,53 @@ const SearchProvider = ({ children }) => {
   const handleMediaChange = (event) => {
     setMediaAdvance(event.target.value);
   };
+
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
+
   const handleIntervalChange = (event) => setInterval(event.target.value);
-  const handleYearChange = (event) => setChosenYear(event.target.value);
+
+  const handleYearChange = (event) => {
+    setChosenYear(event.target.value);
+    console.log(event.target.value);
+  };
+
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
+
   const handleShowResultsClick = (event) => {
     event.preventDefault();
     setShowResults(true);
   };
+
   const orderByYears = (
-    discover,
-    years,
+    setYearEndPoint,
+    chosenYear,
     interval,
-    setDiscover,
     mediaAdvance
   ) => {
     switch (interval) {
       case "before":
-        {
-          let filteredDiscover = [];
-          if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] <= years);
-          } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] <= years);
-          }
-
-          setDiscover(filteredDiscover);
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
         }
+
         break;
       case "exact":
-        {
-          let filteredDiscover = [];
-          if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] === years);
-          } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] === years);
-          }
-          setDiscover(filteredDiscover);
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&primary_release_year=${chosenYear}`);
+        } else {
+          setYearEndPoint(`&first_air_date_year=${chosenYear}`);
         }
+
         break;
       default:
-        {
-          let filteredDiscover = [];
-          if (mediaAdvance === "movie") {
-            filteredDiscover = discover
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .filter((movie) => movie.release_date.split("-")[0] >= years);
-          } else {
-            filteredDiscover = discover
-              .filter(
-                (tv) =>
-                  tv.first_air_date !== undefined && tv.first_air_date !== ""
-              )
-              .filter((tv) => tv.first_air_date.split("-")[0] >= years);
-          }
-          setDiscover(filteredDiscover);
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
         }
         break;
     }
@@ -154,12 +120,50 @@ const SearchProvider = ({ children }) => {
       );
       const dataJson = await response.json();
       setGenres(dataJson.genres);
+      setGenresAdvance(false);
     };
     getGenres();
   }, [mediaAdvance]);
 
   useEffect(() => {
-    const areGenres = genresAdvance && `&with_genres=${genresAdvance}`;
+    const getYears = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&page=1&sort_by=${
+          mediaAdvance === "movie" ? "release_date.asc" : "first_date_air.asc"
+        }`
+      );
+      const dataJson = await response.json();
+      const getFirstYear =
+        mediaAdvance === "movie"
+          ? dataJson.results
+              .filter(
+                (movie) =>
+                  movie.release_date !== undefined && movie.release_date !== ""
+              )[0]
+              .release_date.split("-")[0]
+          : dataJson.results
+              .filter(
+                (serie) =>
+                  serie.first_air_date !== undefined &&
+                  serie.first_air_date !== ""
+              )[0]
+              .first_air_date.split("-")[0];
+
+      const arrayLength = 2021 - Number(getFirstYear);
+      const arrayYears = Array(arrayLength);
+      const getArray = () => {
+        for (let i = 0; i < arrayYears.length; i++) {
+          arrayYears[i] = Number(getFirstYear) + i;
+        }
+        return arrayYears;
+      };
+      setYears(getArray());
+      setChosenYear(Number(getFirstYear));
+    };
+    getYears();
+  }, [mediaAdvance]);
+
+  useEffect(() => {
     const areSortBy =
       orderBy !== "original_name.asc" &&
       orderBy !== "original_name.desc" &&
@@ -175,44 +179,27 @@ const SearchProvider = ({ children }) => {
       }
     };
 
-    const getYears = async () => {
+    const getResults = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${areSortBy}&page=${searchPage}`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${yearEndPoint}${areSortBy}&page=${searchPage}`
       );
       const dataJson = await response.json();
 
-      const jsonYears =
-        mediaAdvance === "tv"
-          ? dataJson.results
-              .filter(
-                (serie) =>
-                  serie.first_air_date !== undefined &&
-                  serie.first_air_date !== ""
-              )
-              .map((serie) => serie.first_air_date.split("-")[0])
-              .reduce(reduceYears, [])
-              .sort()
-          : dataJson.results
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )
-              .map((movie) => movie.release_date.split("-")[0])
-              .reduce(reduceYears, [])
-              .sort();
-
-      setYears(jsonYears);
       setDiscover(dataJson.results);
-      orderByYears(
-        dataJson.results,
-        chosenYear,
-        interval,
-        setDiscover,
-        mediaAdvance
-      );
+      setSearchMaxPage(dataJson.total_pages);
+      orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
     };
-    getYears();
-  }, [mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
+    getResults();
+  }, [
+    yearEndPoint,
+    areGenres,
+    mediaAdvance,
+    genresAdvance,
+    orderBy,
+    chosenYear,
+    interval,
+    searchPage,
+  ]);
 
   return (
     <SearchContext.Provider
@@ -231,6 +218,7 @@ const SearchProvider = ({ children }) => {
         orderBy,
         showResults,
         searchMaxPage,
+        genresAdvance,
         handleSearchBarVisibleClick,
         handleMediaClick,
         setSearchVisible,

@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
-import TvShowContext from "../contexts/TvShowContext";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
 import CardListPreview from "../components/CardListPreview";
 import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
-import ThemeContext from "../contexts/ThemeContext";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 import ScrollToTop from "../components/ScrollToTop";
+
+import TvShowContext from "../contexts/TvShowContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 const overrideDark = css`
   & div {
@@ -30,7 +33,7 @@ const TVSeries = () => {
     dataTvShow,
     voteAverage,
     year,
-    isLoadingTvShow
+    isLoadingTvShow,
   } = useContext(TvShowContext);
   return (
     <>
@@ -41,25 +44,23 @@ const TVSeries = () => {
         !dataTvTop ||
         !dataTvShow ||
         !voteAverage ||
-        !year
-      ) && (
-          <Container className={`onLoading-Container ${theme}`}>
-            {theme === "dark" ? (
-              <BounceLoader css={overrideDark} size="100" />
-            ) : (
-                <BounceLoader css={overrideLight} size="100" />
-              )}
-          </Container>
-        )}
-      {(!isLoadingTvShow &&
+        !year) && (
+        <Container className={`onLoading-Container ${theme}`}>
+          {theme === "dark" ? (
+            <BounceLoader css={overrideDark} size="100" />
+          ) : (
+            <BounceLoader css={overrideLight} size="100" />
+          )}
+        </Container>
+      )}
+      {!isLoadingTvShow &&
         dataTvShowRandom &&
         dataTodayTv &&
         dataCurrentTv &&
         dataTvTop &&
         dataTvShow &&
         voteAverage &&
-        year)
-        && (
+        year && (
           <Container className="main-container">
             <ScrollToTop />
             <Hero

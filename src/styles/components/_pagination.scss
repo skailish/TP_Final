@@ -1,17 +1,26 @@
 .pagination-container {
   @include flex(row, center, center);
-  padding-bottom: 5px;
+  padding: 60px 0 20px 0;
+  transition: 0.3s ease-in;
 
   .pagination-button,
   .pagination-arrow,
   .pagination-arrow {
     &:hover,
     &.active-page {
-      background-color: $third-color-darkmode;
+      transform: scale(1.2);
+      color: $third-color-darkmode;
+      transition: 0.3s ease-in;
+      background-color: transparent;
     }
   }
   .pagination-button {
     @include button(10px, 0 5px 0 0, 35px, 50%);
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
   .pagination-arrow {
     @include button(5px, 0 5px 0 0, 30px, 50%);
@@ -28,12 +37,12 @@
       color: $main-text-darkmode;
     }
     & .pagination-page {
-      background-color: $secondary-color-lightmode;
+      background-color: transparent;
       color: $main-text-darkmode;
       transition: 0.3s ease-in;
       &:hover,
       &.active-page {
-        background-color: $third-color-lightmode;
+        background-color: transparent;
       }
     }
   }

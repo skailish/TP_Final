@@ -2,12 +2,12 @@ import React, { useEffect, useState, useContext } from "react";
 
 import { useParams, useHistory } from "react-router-dom";
 
-import CardEpisodes from "pages/details/CardEpisodes";
-
 import Container from "../../components/primitive/Container";
 import Text from "../../components/primitive/Text";
 import Select from "../../components/primitive/Select";
 import Option from "../../components/primitive/Option";
+
+import CardEpisodes from "pages/details/CardEpisodes";
 
 import ThemeContext from "../../contexts/ThemeContext";
 import TvShowContext from "../../contexts/TvShowContext";
@@ -15,9 +15,7 @@ import TvShowContext from "../../contexts/TvShowContext";
 const Episodes = ({ seasons }) => {
   const { TVId } = useParams();
   const [episodes, setEpisodes] = useState();
-
   const [episodesLength, setEpisodesLength] = useState(0);
-
   const { theme } = useContext(ThemeContext);
   const { seasonNumber, setSeasonNumber } = useContext(TvShowContext);
   const history = useHistory();

@@ -6,7 +6,7 @@ const AverageVoteStars = ({ voteAverage, showRating }) => {
     
     return (
         showRating &&
-        (<div className={`rating-stars`}>
+        (<div className={ `rating-stars` }>
             {((rating > 0) &&
                 <>
                     {[...Array(rating)].map((star, i) => <Star key={i} type={'filled'} className={'average-star'} />)}
@@ -16,6 +16,13 @@ const AverageVoteStars = ({ voteAverage, showRating }) => {
                 </>
             )
             }
+            {((rating === 0) &&
+                <>
+                    {[...Array(5)].map((star, i) => <Star key={i} type={'empty'} className={'average-star'} />)}
+                </>
+            )
+            }
+
         </div>)
     )
 }

@@ -1,16 +1,20 @@
 import React, { useContext, useState } from "react";
 import { db } from "../configs/firebase";
+import { useHistory } from "react-router-dom";
+
+import { Heart } from "@styled-icons/entypo/Heart";
+import { HeartBroken } from "@styled-icons/fa-solid/HeartBroken";
+
 import Container from "./primitive/Container";
 import Votes from "./Votes";
 import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
-import ImageContext from "../contexts/ImageContext";
-import { useHistory } from "react-router-dom";
-import ThemeContext from "../contexts/ThemeContext";
 import noPosterFound from "../images/404PosterNotFound.jpg";
+
+import ImageContext from "../contexts/ImageContext";
+import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
-import { Heart } from "@styled-icons/entypo/Heart";
-import { HeartBroken } from "@styled-icons/fa-solid/HeartBroken";
+
 import FavsContext from "../contexts/FavsContext";
 
 const Card = ({ id, src, title, votes, mediatype, like }) => {

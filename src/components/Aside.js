@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
+
 import firebase from "../configs/firebase";
+
 import { NavLink } from "react-router-dom";
+
 import { Home } from "@styled-icons/ionicons-solid/Home";
 import { Search } from "@styled-icons/bootstrap/Search";
 import { Movie2 as Movie } from "@styled-icons/remix-fill/Movie2";
@@ -10,8 +13,10 @@ import { LogOut } from "@styled-icons/ionicons-sharp/LogOut";
 import { LightbulbFlash as LightOn } from "@styled-icons/remix-fill/LightbulbFlash";
 import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFlash";
 import { Heart } from "@styled-icons/entypo/Heart";
+
 import Container from "../components/primitive/Container";
 import Tooltip from "./Tooltip";
+
 import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
 
@@ -66,12 +71,12 @@ const Aside = ({ user }) => {
               </a>
             </Tooltip>
           ) : (
-              <NavLink to="/login" exact activeClassName="selected">
-                <Tooltip title="Login">
-                  <LogIn className={`nav-icon ${theme}`} />
-                </Tooltip>
-              </NavLink>
-            )}
+            <NavLink to="/login" exact activeClassName="selected">
+              <Tooltip title="Login">
+                <LogIn className={`nav-icon ${theme}`} />
+              </Tooltip>
+            </NavLink>
+          )}
           <Tooltip title="Change the theme">
             {theme === "dark" ? (
               <LightOn
@@ -79,11 +84,11 @@ const Aside = ({ user }) => {
                 className={`nav-icon ${theme}`}
               />
             ) : (
-                <LightOff
-                  onClick={() => handleThemeClick(theme)}
-                  className={`nav-icon ${theme}`}
-                />
-              )}
+              <LightOff
+                onClick={() => handleThemeClick(theme)}
+                className={`nav-icon ${theme}`}
+              />
+            )}
           </Tooltip>
         </Container>
       </Container>

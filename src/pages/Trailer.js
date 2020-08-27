@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
 import Image from "../components/primitive/Image";
 import img from "../images/Error.png";
+
 import ThemeContext from "../contexts/ThemeContext";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 
 const overrideDark = css`
   & div {
@@ -37,7 +40,6 @@ const Trailer = () => {
         `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
       );
       const dataJson = await response.json();
-      console.log(dataJson.results);
 
       const getKey = await dataJson.results.filter((i) => i.type === "Trailer");
 

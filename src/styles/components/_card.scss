@@ -1,15 +1,20 @@
 .media-card {
-  height: 500px;
+  height: 450px;
   width: 235px;
   width: fit-content;
   margin: 20px 15px;
   scroll-snap-align: center;
   z-index: 1;
   cursor: pointer;
-  @include flex(column, center, flex-start);
+  @include flex(column, space-between, flex-start);
 
   .media-card-img {
     height: 350px;
+    transition: 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   .media-card-heading-container {
@@ -29,11 +34,13 @@
     }
   }
   .votes-and-favs-container {
+    width: 100%;
     @include flex(row, space-between, center);
-    width: 95%;
     .heart-icons-container {
-      @include flex(row, space-between, center);
-      width: 20%;
+      padding-right: 20px;
     }
+  }
+
+  @include media($md-breakpoint) {
   }
 }
