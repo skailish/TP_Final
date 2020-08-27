@@ -168,16 +168,6 @@ const SearchProvider = ({ children }) => {
       orderBy !== "original_name.asc" &&
       orderBy !== "original_name.desc" &&
       `&sort_by=${orderBy}`;
-    const reduceYears = (array, year) => {
-      if (array.length < 1) {
-        return [...array, year];
-      } else {
-        if (array.includes(year)) {
-          return array;
-        }
-        return [...array, year];
-      }
-    };
 
     const getResults = async () => {
       const response = await fetch(
