@@ -91,3 +91,11 @@
     display: none;
   }
 }
+
+
+// Para mediaqueries
+@mixin media($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
