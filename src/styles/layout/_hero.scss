@@ -91,8 +91,19 @@ height: 300px;
     margin: 30px 5px 5px;
     padding: 10px;
     width: fit-content;
+    @include media($sm-breakpoint) {
+    margin: 15px 0 0;
+    padding: 2px;
+    & p {
+      display: none;
+    }
+    & svg {
+      padding: 0;
+    }
+    }
   }
   }
+  
   }
 }
 
