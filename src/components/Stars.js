@@ -3,7 +3,7 @@ import ThemeContext from "../contexts/ThemeContext";
 import Star from "./Star"
 import Container from "./primitive/Container"
 
-const Stars = ({ contentName, showStars }) => {
+const Stars = ({ title, showStars }) => {
     const { theme } = useContext(ThemeContext);
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
@@ -20,7 +20,7 @@ const Stars = ({ contentName, showStars }) => {
                         className={`single-star-container ${theme}`}>
                         <input
                             type={"radio"}
-                            name={`rating${contentName}`}
+                            name={`rating${title}`} // el title para que el nombre sea distinto en cada grupo de estrellas, pero iguales entre las estrellas de un mismo grupo.
                             value={ratingValueOdd}
                             onClick={() => setRating(ratingValueOdd)}
                             key={`input_${ratingValueOdd}`}
@@ -40,7 +40,7 @@ const Stars = ({ contentName, showStars }) => {
                         </label>
                         <input
                             type={"radio"}
-                            name={`rating${contentName}`}
+                            name={`rating${title}`}
                             value={ratingValueEven}
                             onClick={() => setRating(ratingValueEven)}
                             key={`input_${ratingValueEven}`}
