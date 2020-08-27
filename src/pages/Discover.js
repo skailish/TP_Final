@@ -9,6 +9,7 @@ import Option from "components/primitive/Option";
 import Text from "components/primitive/Text";
 import Button from "components/primitive/Button";
 import Pagination from "components/Pagination";
+import Heading from "components/primitive/Heading";
 
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -169,6 +170,11 @@ const Discover = () => {
       <Container className={`results-pagination-container ${theme}`}>
         {results && (
           <Container className={`results-container ${theme} `}>
+            {results.length === 0 && (
+              <Heading className="no-results-tilte">
+                No results were found
+              </Heading>
+            )}
             {results &&
               results.map((result) => (
                 <Card
@@ -191,8 +197,14 @@ const Discover = () => {
             )}
           </Container>
         )}
+
         {discover && (
           <Container className={`results-container ${theme} `}>
+            {discover.length === 0 && (
+              <Heading className="no-results-tilte">
+                No results were found
+              </Heading>
+            )}
             {showResults &&
               discover &&
               discover.map((discover) => (
@@ -209,13 +221,15 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
-            {searchMaxPage && showResults && (
+            {searchMaxPage && showResults && discover.length > 1 && (
               <Container>
-                <Pagination
-                  page={searchPage}
-                  maxPage={searchMaxPage}
-                  setPage={setSearchPage}
-                />
+                {discover.length > 1 && (
+                  <Pagination
+                    page={searchPage}
+                    maxPage={searchMaxPage}
+                    setPage={setSearchPage}
+                  />
+                )}
               </Container>
             )}
           </Container>

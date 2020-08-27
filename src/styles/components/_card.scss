@@ -1,5 +1,5 @@
 .media-card {
-  height: 350px;
+  height: 450px;
   width: 235px;
   width: fit-content;
   margin: 20px 15px;
@@ -10,7 +10,11 @@
 
   .media-card-img {
     height: 350px;
+    transition: 0.2s ease-in;
 
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   .media-card-heading-container {
@@ -37,8 +41,6 @@
     }
   }
 
-@include media($md-breakpoint) {
-
-}
-
+  @include media($md-breakpoint) {
+  }
 }

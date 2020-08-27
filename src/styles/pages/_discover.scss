@@ -20,7 +20,6 @@
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
   }
-
 }
 
 .results-container {
@@ -40,6 +39,12 @@
   &.light {
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
+  }
+
+  .no-results-tilte {
+    font-size: 40px;
+    color: $main-text-darkmode;
+    text-align: center;
   }
 }
 
@@ -72,7 +77,6 @@
   .filter-container {
     width: 60%;
     @include flex(row, space-between, center);
-  
 
     .select-discover {
       height: 30px;
@@ -86,7 +90,7 @@
       cursor: pointer;
       transition: 0.3s ease-in;
 
-      &>option {
+      & > option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
