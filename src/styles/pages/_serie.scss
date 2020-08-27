@@ -28,7 +28,9 @@
       padding-bottom: 9px;
       font-weight: 600;
       transition: 0.3s ease-in;
-
+      @include media($sm-breakpoint) {
+        font-size: 12px;
+      }
       &.light {
         color: $main-text-lightmode;
 
@@ -45,10 +47,6 @@
       &:hover {
         color: $main-text-darkmode;
       }
-
-      // &.light {
-      //     background-color: ;
-      // }
 
       &.selected {
         color: $main-text-darkmode;

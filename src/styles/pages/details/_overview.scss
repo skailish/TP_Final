@@ -36,6 +36,15 @@
         }
       }
 
+      @include media($sm-breakpoint) {
+        & p {
+          font-size: 12px;
+        }
+        & > h3 {
+          font-size: 12px;
+        }
+      }
+
       .details-serie-container {
         margin-top: 18px;
 
@@ -49,7 +58,10 @@
             margin: 13px 0;
             width: 50%;
             display: flex;
-
+            @include media($sm-breakpoint) {
+              font-size: 12px;
+              flex-direction: column;
+            }
             .list-item-title {
               width: 50%;
               font-weight: bold;

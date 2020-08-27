@@ -13,4 +13,37 @@
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
   }
+
+  @include media($sm-breakpoint) {
+    & .media-card-cast {
+      @include flex(column, center, center);
+      width: 100px;
+      height: fit-content;
+      margin: 5px;
+      & .img-container {
+        width: 50px;
+        max-height: 50px;
+      }
+      & .media-card-cast {
+        width: 50px;
+        max-height: 50px;
+        text-align: center;
+      }
+      & .cast-heading-container {
+        @include flex(column, center, center);
+        width: fit-content;
+        & h3 {
+          font-size: 12px;
+          text-align: center;
+        }
+        & .media-card-name {
+          padding: 0;
+        }
+      }
+    }
+    & .card-img {
+      border-radius: 50%;
+      margin: 0;
+    }
+  }
 }
