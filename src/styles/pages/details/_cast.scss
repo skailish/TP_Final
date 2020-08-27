@@ -15,6 +15,7 @@
   }
 
   @include media($sm-breakpoint) {
+    padding: 20px;
     & .media-card-cast {
       @include flex(column, center, center);
       width: 100px;
