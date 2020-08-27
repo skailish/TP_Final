@@ -201,7 +201,7 @@ const Discover = () => {
               </Heading>
             )}
             {showResults &&
-              discover &&
+              discover.length > 1 &&
               discover.map((discover) => (
                 <Card
                   id={discover.id}
@@ -216,7 +216,10 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
-            {searchMaxPage && showResults && discover.length > 1 && (
+            {console.log(discover)}
+            {console.log(searchPage)}
+            {console.log(searchMaxPage)}
+            {searchMaxPage !== 0 && showResults && discover.length > 1 && (
               <Container>
                 {discover.length > 1 && (
                   <Pagination

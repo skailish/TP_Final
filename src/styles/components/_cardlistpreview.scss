@@ -139,12 +139,24 @@
   &.chevron-right {
     right: 0;
   }
+
+
+  @media(max-width: $lg-breakpoint) {
+    top: 40px;
+  };
+  @media(max-width: $sm-breakpoint) {
+    width: 40px;
+  }
 }
 
 .chevron-icon {
   height: 40px;
   font-weight: bold;
   color: $main-text-darkmode;
+
+  @media(max-width: $sm-breakpoint) {
+    height: 30px;
+  }
 
   &.light {
     color: $main-text-lightmode;
