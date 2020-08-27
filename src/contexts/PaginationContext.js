@@ -6,11 +6,6 @@ const PaginationProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(100);
 
-
-
-
-
-
   // const onPageChange = (currentPage) => {
   //   const pageButtons = [Array(5)];
   //   return (
@@ -24,7 +19,6 @@ const PaginationProvider = ({ children }) => {
   //     )
   //   )
   // }
-
 
   return (
     <PaginationContext.Provider

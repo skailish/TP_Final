@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
+
+import { GithubSquare } from "@styled-icons/fa-brands/GithubSquare";
+import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
+
 import Container from "./primitive/Container";
 import Heading from "./primitive/Heading";
 import Link from "./primitive/Link";
 import Text from "./primitive/Text";
-import { GithubSquare } from "@styled-icons/fa-brands/GithubSquare";
-import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
+
 import ThemeContext from "../contexts/ThemeContext";
-//import { Mail } from "@styled-icons/entypo/Mail";
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
   const yearCopyright = new Date().getFullYear();
+
   return (
     <Container className={`footer-container ${theme}`}>
       <Container className={`footer-rights-container ${theme}`}>
@@ -35,7 +38,6 @@ const Footer = () => {
             Daniela
           </Heading>
 
-
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://gitlab.com/d-capponi">
               <GithubSquare className={`footer-icon github-icon ${theme}`} />
@@ -47,13 +49,11 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
-
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Luján
           </Heading>
-
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/LoohanZero">
@@ -66,13 +66,11 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
-
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Angie
           </Heading>
-
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/angieTu">
@@ -86,13 +84,11 @@ const Footer = () => {
               />
             </Link>
           </Container>
-
         </Container>
         <Container className="footer-container-personal">
           <Heading className={`footer-heading ${theme}`} level={3}>
             Josefina
           </Heading>
-
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/Jodelrey">
@@ -105,7 +101,6 @@ const Footer = () => {
               <LinkedinSquare className={`footer-icon ${theme}`} />
             </Link>
           </Container>
-
         </Container>
       </Container>
     </Container>

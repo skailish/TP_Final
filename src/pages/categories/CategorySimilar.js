@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
+
 import Container from "../../components/primitive/Container";
 import Card from "../../components/Card";
 import Heading from "../../components/primitive/Heading";
+
 import ThemeContext from "../../contexts/ThemeContext";
 
 const CategorySimilar = ({ data, mediatype }) => {
@@ -15,21 +17,23 @@ const CategorySimilar = ({ data, mediatype }) => {
             {mediatype === "movie" ? "Similar Movies" : "Similar Shows"}
           </Heading>
         </Container>
-        {data &&
-          data.map((singleCard) => (
-            <Card
-              id={singleCard.id}
-              src={singleCard.poster_path}
-              title={
-                mediatype === "movie"
-                  ? singleCard.title
-                  : singleCard.original_name
-              }
-              votes={singleCard.vote_average}
-              key={singleCard.id}
-              mediatype={mediatype}
-            />
-          ))}
+        <Container className={`similar-cards-container ${theme}`}>
+          {data &&
+            data.map((singleCard) => (
+              <Card
+                id={singleCard.id}
+                src={singleCard.poster_path}
+                title={
+                  mediatype === "movie"
+                    ? singleCard.title
+                    : singleCard.original_name
+                }
+                votes={singleCard.vote_average}
+                key={singleCard.id}
+                mediatype={mediatype}
+              />
+            ))}
+        </Container>
       </Container>
     )
   );

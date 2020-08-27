@@ -1,11 +1,14 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Container from "./primitive/Container";
-import Card from "./Card";
+
 import { ChevronRight } from "@styled-icons/bootstrap/ChevronRight";
 import { ChevronLeft } from "@styled-icons/bootstrap/ChevronLeft";
+
+import Container from "./primitive/Container";
+import Card from "./Card";
 import Heading from "./primitive/Heading";
 import Button from "./primitive/Button";
+
 import ThemeContext from "../contexts/ThemeContext";
 import FavsContext from "../contexts/FavsContext";
 
@@ -29,6 +32,7 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
     // screen <= 1 && setShowLeftBar(false);
     // screen <= data && setShowRightBar(true);
   };
+
   const handleRightChevronClick = (carouselScroll, screen, data) => {
     mediaRef.current.scrollLeft = 250;
     // screen >= 0 && setShowLeftBar(true);
@@ -43,7 +47,9 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
         {showLeftBar && (
           <Button
             className={`chevron-container chevron-left ${theme} `}
-            onClick={() => handleLeftChevronClick(carouselScroll, screen, data.length)}
+            onClick={() =>
+              handleLeftChevronClick(carouselScroll, screen, data.length)
+            }
           >
             <ChevronLeft className={`chevron-icon ${theme} `} />
           </Button>
@@ -70,7 +76,9 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
         {showRightBar && (
           <Button
             className={`chevron-container chevron-right ${theme} `}
-            onClick={() => handleRightChevronClick(carouselScroll, screen, data.lenth)}
+            onClick={() =>
+              handleRightChevronClick(carouselScroll, screen, data.lenth)
+            }
           >
             <ChevronRight className={`chevron-icon ${theme} `} />
           </Button>

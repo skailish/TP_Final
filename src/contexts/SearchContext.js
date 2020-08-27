@@ -9,7 +9,6 @@ const SearchProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState([]);
   const [visibleResults, setVisibleResults] = useState(false);
-
   const [genres, setGenres] = useState([]);
   const [mediaAdvance, setMediaAdvance] = useState("movie");
   const [genresAdvance, setGenresAdvance] = useState("");
@@ -18,11 +17,12 @@ const SearchProvider = ({ children }) => {
   const [orderBy, setOrderBy] = useState("popularity.desc");
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [chosenYear, setChosenYear] = useState('');
+  const [chosenYear, setChosenYear] = useState("");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
+  const [yearEndPoint, setYearEndPoint] = useState("");
 
-  const [yearEndPoint, setYearEndPoint] = useState('');
+  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -32,6 +32,7 @@ const SearchProvider = ({ children }) => {
   const handleMediaClick = (event) => {
     setMedia(event.target.value);
   };
+
   const handleInputChange = (event) => {
     event.preventDefault();
     setInputValue(event.target.input.value);
@@ -48,15 +49,23 @@ const SearchProvider = ({ children }) => {
   };
 
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
+
   const handleIntervalChange = (event) => setInterval(event.target.value);
-  const handleYearChange = (event) => { setChosenYear(event.target.value); console.log(event.target.value)};
+
+  const handleYearChange = (event) => {
+    setChosenYear(event.target.value);
+    console.log(event.target.value);
+  };
+
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
+
   const handleShowResultsClick = (event) => {
     event.preventDefault();
     setShowResults(true);
   };
+
   const orderByYears = (
     setYearEndPoint,
     chosenYear,
@@ -65,28 +74,27 @@ const SearchProvider = ({ children }) => {
   ) => {
     switch (interval) {
       case "before":
-        
-          if (mediaAdvance === "movie") {
-             setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
-          } else {
-             setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
-          }
-        
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
+        }
+
         break;
       case "exact":
         if (mediaAdvance === "movie") {
-             setYearEndPoint(`&primary_release_year=${chosenYear}`);
-          } else {
-             setYearEndPoint(`&first_air_date_year=${chosenYear}`);
-          }
-      
+          setYearEndPoint(`&primary_release_year=${chosenYear}`);
+        } else {
+          setYearEndPoint(`&first_air_date_year=${chosenYear}`);
+        }
+
         break;
       default:
-          if (mediaAdvance === "movie") {
-             setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
-          } else {
-             setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
-          }
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
+        }
         break;
     }
   };
@@ -116,8 +124,6 @@ const SearchProvider = ({ children }) => {
     };
     getGenres();
   }, [mediaAdvance]);
-
-  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : '';
 
   useEffect(() => {
     const getYears = async () => {
@@ -162,16 +168,6 @@ const SearchProvider = ({ children }) => {
       orderBy !== "original_name.asc" &&
       orderBy !== "original_name.desc" &&
       `&sort_by=${orderBy}`;
-    const reduceYears = (array, year) => {
-      if (array.length < 1) {
-        return [...array, year];
-      } else {
-        if (array.includes(year)) {
-          return array;
-        }
-        return [...array, year];
-      }
-    };
 
     const getResults = async () => {
       const response = await fetch(
@@ -181,15 +177,19 @@ const SearchProvider = ({ children }) => {
 
       setDiscover(dataJson.results);
       setSearchMaxPage(dataJson.total_pages);
-      orderByYears(
-        setYearEndPoint,
-        chosenYear,
-        interval,
-        mediaAdvance
-      );
+      orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
     };
     getResults();
-  }, [yearEndPoint, areGenres, mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
+  }, [
+    yearEndPoint,
+    areGenres,
+    mediaAdvance,
+    genresAdvance,
+    orderBy,
+    chosenYear,
+    interval,
+    searchPage,
+  ]);
 
   return (
     <SearchContext.Provider

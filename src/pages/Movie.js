@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-
 import {
   useParams,
   NavLink,
@@ -7,8 +6,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
-import ThemeContext from "../contexts/ThemeContext";
 
 import Container from "../components/primitive/Container";
 import Hero from "../components/Hero";
@@ -18,13 +15,14 @@ import CategorySimilar from "./categories/CategorySimilar";
 import Overview from "../pages/details/Overview";
 import Cast from "../pages/details/Cast";
 
+import ThemeContext from "../contexts/ThemeContext";
+
 const Movie = () => {
   const [dataMovieID, setDataMovieID] = useState([]);
   const [year, setYear] = useState(0);
   const [voteAverage, setVoteAverage] = useState(0);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [movieCast, setMovieCast] = useState([]);
-
   const { movieId } = useParams();
   const { path, url } = useRouteMatch();
   const { theme } = useContext(ThemeContext);

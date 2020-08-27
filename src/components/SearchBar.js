@@ -1,14 +1,17 @@
 import React, { useContext, useRef, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+
+import { Search } from "@styled-icons/bootstrap/Search";
+import { Close } from "@styled-icons/ionicons-solid/Close";
+
 import Container from "components/primitive/Container";
 import Input from "components/primitive/Input";
 import Label from "components/primitive/Label";
 import Button from "components/primitive/Button";
 import Text from "components/primitive/Text";
+
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
-import { Search } from "@styled-icons/bootstrap/Search";
-import { Close } from "@styled-icons/ionicons-solid/Close";
 
 const SearchBar = () => {
   const {
@@ -25,7 +28,6 @@ const SearchBar = () => {
     history.push("/discover");
     setNewSearch(true);
   };
-
 
   return (
     <Container className={`main-searchbar-container ${theme}`}>
