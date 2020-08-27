@@ -6,7 +6,9 @@
   width: calc(100% - 100px);
   background-color: $background-footer-darkmode;
   transition: 0.3s ease-in;
-
+  @include media($sm-breakpoint) {
+    height: fit-content;
+  }
   &.light {
     background-color: $background-footer-lightmode;
     transition: 0.3s ease-in;
@@ -21,6 +23,10 @@
 
     & p {
       line-height: 25px;
+      @include media($sm-breakpoint) {
+        font-size: 12px;
+        line-height: 14px;
+      }
     }
 
     .footer-link {
@@ -31,7 +37,6 @@
 
       &.light {
         color: $third-color-lightmode;
-
 
         &:hover {
           color: $secondary-color-lightmode;
@@ -47,34 +52,52 @@
     &.light {
       color: $main-text-lightmode;
     }
-
-
   }
 
   .personal-data-container {
     @include flex(row, space-evenly, center);
     width: 50%;
     padding-top: 20px;
-
+    @include media($sm-breakpoint) {
+      width: 100%;
+      flex-wrap: wrap;
+      padding: 0px;
+    }
     .footer-container-personal {
       @include flex(column-reverse, space-evenly, center);
+
+      @include media($sm-breakpoint) {
+        font-size: 12px;
+        line-height: 14px;
+      }
 
       .footer-heading {
         color: $third-text-color;
         font-size: 15px;
         font-weight: 400;
         padding-bottom: 5px;
-
-
+        @include media($sm-breakpoint) {
+          font-size: 12px;
+          line-height: 14px;
+        }
         &.light {
           color: $main-text-lightmode;
         }
-
       }
 
       .footer-icons-container {
         @include flex(row, space-evenly, center);
         width: 80px;
+
+        @include media($sm-breakpoint) {
+          height: fit-content;
+          width: fit-content;
+          justify-content: center;
+
+          a {
+            transform: scale(0.6);
+          }
+        }
       }
     }
   }
