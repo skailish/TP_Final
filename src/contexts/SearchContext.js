@@ -18,11 +18,11 @@ const SearchProvider = ({ children }) => {
   const [orderBy, setOrderBy] = useState("popularity.desc");
   const [discover, setDiscover] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [chosenYear, setChosenYear] = useState('');
+  const [chosenYear, setChosenYear] = useState("");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
 
-  const [yearEndPoint, setYearEndPoint] = useState('');
+  const [yearEndPoint, setYearEndPoint] = useState("");
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -49,7 +49,10 @@ const SearchProvider = ({ children }) => {
 
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
   const handleIntervalChange = (event) => setInterval(event.target.value);
-  const handleYearChange = (event) => { setChosenYear(event.target.value); console.log(event.target.value)};
+  const handleYearChange = (event) => {
+    setChosenYear(event.target.value);
+    console.log(event.target.value);
+  };
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
@@ -65,28 +68,27 @@ const SearchProvider = ({ children }) => {
   ) => {
     switch (interval) {
       case "before":
-        
-          if (mediaAdvance === "movie") {
-             setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
-          } else {
-             setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
-          }
-        
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.lte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.lte=${chosenYear}-01-01`);
+        }
+
         break;
       case "exact":
         if (mediaAdvance === "movie") {
-             setYearEndPoint(`&primary_release_year=${chosenYear}`);
-          } else {
-             setYearEndPoint(`&first_air_date_year=${chosenYear}`);
-          }
-      
+          setYearEndPoint(`&primary_release_year=${chosenYear}`);
+        } else {
+          setYearEndPoint(`&first_air_date_year=${chosenYear}`);
+        }
+
         break;
       default:
-          if (mediaAdvance === "movie") {
-             setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
-          } else {
-             setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
-          }
+        if (mediaAdvance === "movie") {
+          setYearEndPoint(`&release_date.gte=${chosenYear}-01-01`);
+        } else {
+          setYearEndPoint(`&first_air_date.gte=${chosenYear}-01-01`);
+        }
         break;
     }
   };
@@ -117,7 +119,7 @@ const SearchProvider = ({ children }) => {
     getGenres();
   }, [mediaAdvance]);
 
-  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : '';
+  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
   useEffect(() => {
     const getYears = async () => {
@@ -181,15 +183,19 @@ const SearchProvider = ({ children }) => {
 
       setDiscover(dataJson.results);
       setSearchMaxPage(dataJson.total_pages);
-      orderByYears(
-        setYearEndPoint,
-        chosenYear,
-        interval,
-        mediaAdvance
-      );
+      orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
     };
     getResults();
-  }, [yearEndPoint, areGenres, mediaAdvance, genresAdvance, orderBy, chosenYear, interval, searchPage]);
+  }, [
+    yearEndPoint,
+    areGenres,
+    mediaAdvance,
+    genresAdvance,
+    orderBy,
+    chosenYear,
+    interval,
+    searchPage,
+  ]);
 
   return (
     <SearchContext.Provider

@@ -55,9 +55,9 @@ const Discover = () => {
               className={`select-discover ${theme}`}
               name="genre"
               onChange={(event) => handleGenreChange(event)}
-              defaultValue={genresAdvance}
+              value={genresAdvance}
             >
-              <Option className={` ${theme}`} value={false} >
+              <Option className={` ${theme}`} value={false}>
                 All
               </Option>
               {genres.map((genre) => (
@@ -176,17 +176,16 @@ const Discover = () => {
                   key={result.id}
                   mediatype={mediaAdvance}
                 />
-              )) }
-            { searchMaxPage && showResults && (
+              ))}
+            {searchMaxPage && showResults && (
               <Container>
-
-          <Pagination
-            page={searchPage}
-            maxPage={searchMaxPage}
-            setPage={setSearchPage}
+                <Pagination
+                  page={searchPage}
+                  maxPage={searchMaxPage}
+                  setPage={setSearchPage}
                 />
-                </Container>
-        )}
+              </Container>
+            )}
           </Container>
         )}
         {discover && (
@@ -207,20 +206,17 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
-        {searchMaxPage && showResults && (
+            {searchMaxPage && showResults && (
               <Container>
-
-          <Pagination
-            page={searchPage}
-            maxPage={searchMaxPage}
-            setPage={setSearchPage}
-          />
+                <Pagination
+                  page={searchPage}
+                  maxPage={searchMaxPage}
+                  setPage={setSearchPage}
+                />
               </Container>
-
-        )}
+            )}
           </Container>
         )}
-
       </Container>
     </>
   );
