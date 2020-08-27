@@ -4,7 +4,6 @@ import "./styles/main.scss";
 import App from "./App";
 import { ImageProvider } from "./contexts/ImageContext";
 import { DataProvider } from "./contexts/DataContext";
-import { YouTubeProvider } from "./contexts/YouTubeContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
 import { TvShowProvider } from "./contexts/TvShowContext";
@@ -27,11 +26,9 @@ ReactDOM.render(
                 <TvShowProvider>
                   <DataProvider>
                     <ImageProvider>
-                      <YouTubeProvider>
-                        <ThemeProvider>
-                          <App />
-                        </ThemeProvider>
-                      </YouTubeProvider>
+                      <ThemeProvider>
+                        <App />
+                      </ThemeProvider>
                     </ImageProvider>
                   </DataProvider>
                 </TvShowProvider>
