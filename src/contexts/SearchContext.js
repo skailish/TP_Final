@@ -9,7 +9,6 @@ const SearchProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState([]);
   const [visibleResults, setVisibleResults] = useState(false);
-
   const [genres, setGenres] = useState([]);
   const [mediaAdvance, setMediaAdvance] = useState("movie");
   const [genresAdvance, setGenresAdvance] = useState("");
@@ -21,8 +20,9 @@ const SearchProvider = ({ children }) => {
   const [chosenYear, setChosenYear] = useState("");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
-
   const [yearEndPoint, setYearEndPoint] = useState("");
+
+  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
   const handleSearchBarVisibleClick = () => {
     setSearchVisible(!searchVisible);
@@ -32,6 +32,7 @@ const SearchProvider = ({ children }) => {
   const handleMediaClick = (event) => {
     setMedia(event.target.value);
   };
+
   const handleInputChange = (event) => {
     event.preventDefault();
     setInputValue(event.target.input.value);
@@ -48,18 +49,23 @@ const SearchProvider = ({ children }) => {
   };
 
   const handleGenreChange = (event) => setGenresAdvance(event.target.value);
+
   const handleIntervalChange = (event) => setInterval(event.target.value);
+
   const handleYearChange = (event) => {
     setChosenYear(event.target.value);
     console.log(event.target.value);
   };
+
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
+
   const handleShowResultsClick = (event) => {
     event.preventDefault();
     setShowResults(true);
   };
+
   const orderByYears = (
     setYearEndPoint,
     chosenYear,
@@ -118,8 +124,6 @@ const SearchProvider = ({ children }) => {
     };
     getGenres();
   }, [mediaAdvance]);
-
-  const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
   useEffect(() => {
     const getYears = async () => {

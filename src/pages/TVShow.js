@@ -13,7 +13,6 @@ import Nav from "../components/primitive/Nav";
 import ScrollToTop from "../components/ScrollToTop";
 
 import CategorySimilar from "./categories/CategorySimilar";
-
 import Overview from "./details/Overview";
 import Episodes from "./details/Episodes";
 import Cast from "./details/Cast";
@@ -28,7 +27,6 @@ const TVShow = () => {
   const [similarShows, setSimilarShows] = useState([]);
   const [seasons, setSeasons] = useState(0);
   const [castTV, setCastTV] = useState([]);
-
   const { TVId } = useParams();
   const { path, url } = useRouteMatch();
   const { theme } = useContext(ThemeContext);

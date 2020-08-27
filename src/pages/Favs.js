@@ -1,13 +1,16 @@
 import React, { useEffect, useContext } from "react";
-import ThemeContext from "../contexts/ThemeContext";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
 import Card from "../components/Card";
+import ScrollToTop from "../components/ScrollToTop";
+
+import ThemeContext from "../contexts/ThemeContext";
 import MovieContext from "../contexts/MovieContext";
 import TvShowContext from "../contexts/MovieContext";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
-import ScrollToTop from "../components/ScrollToTop";
 import FavsContext from "../contexts/FavsContext";
 import FavsCarousel from "../components/FavsCarousel";
 

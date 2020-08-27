@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
-import MovieContext from "../contexts/MovieContext";
-import ThemeContext from "../contexts/ThemeContext";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
 import CardListPreview from "../components/CardListPreview";
 import Hero from "../components/Hero";
 import Container from "../components/primitive/Container";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 import ScrollToTop from "../components/ScrollToTop";
+
+import MovieContext from "../contexts/MovieContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 const overrideDark = css`
   & div {
@@ -45,22 +48,22 @@ const Movies = () => {
         !dataMovieTop ||
         !dataMovieUpcoming ||
         !dataNowPlaying) && (
-          <Container className={`onLoading-Container ${theme}`}>
-            {theme === "dark" ? (
-              <BounceLoader css={overrideDark} size="100px" />
-            ) : (
-                <BounceLoader css={overrideLight} size="100px" />
-              )}
-          </Container>
-        )}
-      {(!isLoadingMovie &&
+        <Container className={`onLoading-Container ${theme}`}>
+          {theme === "dark" ? (
+            <BounceLoader css={overrideDark} size="100px" />
+          ) : (
+            <BounceLoader css={overrideLight} size="100px" />
+          )}
+        </Container>
+      )}
+      {!isLoadingMovie &&
         dataMovieRandom &&
         yearMovie &&
         voteAverageMovie &&
         dataMovie &&
         dataMovieTop &&
         dataMovieUpcoming &&
-        dataNowPlaying) && (
+        dataNowPlaying && (
           <Container className="main-container">
             <ScrollToTop />
             <Hero

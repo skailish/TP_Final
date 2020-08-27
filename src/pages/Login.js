@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import firebase from "../configs/firebase";
 import { useHistory, Link, Redirect } from "react-router-dom";
+
 import Container from "../components/primitive/Container";
 import Input from "../components/primitive/Input";
 import Label from "../components/primitive/Label";
 import Heading from "../components/primitive/Heading";
 import Button from "../components/primitive/Button";
 import Text from "../components/primitive/Text";
+
 import ThemeContext from "../contexts/ThemeContext";
 
 const Login = ({ user }) => {
@@ -19,7 +21,6 @@ const Login = ({ user }) => {
 
   useEffect(() => {
     emailRef.current.focus();
-
   }, []);
 
   const handleEmailDown = (event) => {

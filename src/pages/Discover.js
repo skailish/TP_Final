@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
+
+import { Search } from "@styled-icons/bootstrap/Search";
+
 import Container from "components/primitive/Container";
 import Card from "components/Card";
-import SearchContext from "../contexts/SearchContext";
-import ThemeContext from "../contexts/ThemeContext";
 import Select from "components/primitive/Select";
 import Option from "components/primitive/Option";
 import Text from "components/primitive/Text";
 import Button from "components/primitive/Button";
-import { Search } from "@styled-icons/bootstrap/Search";
 import Pagination from "components/Pagination";
+
+import SearchContext from "../contexts/SearchContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 const Discover = () => {
   const {

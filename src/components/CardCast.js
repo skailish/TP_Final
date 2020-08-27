@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 
-import ImageContext from "../contexts/ImageContext";
-import ThemeContext from "../contexts/ThemeContext";
-
 import Container from "./primitive/Container";
 import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
 import noPosterFound from "../images/404PosterNotFound.jpg";
+
+import ImageContext from "../contexts/ImageContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 const CardCast = ({ id, mediatype, src, name, character }) => {
   const { imageBaseUrl } = useContext(ImageContext);

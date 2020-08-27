@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
 import Link from "../components/primitive/Link";
@@ -10,7 +11,7 @@ const ErrorPage = () => {
   const onErrorClick = () => {
     history.push("/");
   };
-  
+
   return (
     <Container className="error-container">
       <Container className="error-background-container" />

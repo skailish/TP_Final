@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
-import ImageContext from "contexts/ImageContext";
-import ThemeContext from "contexts/ThemeContext";
-
 import Container from "components/primitive/Container";
 import Text from "components/primitive/Text";
 import Heading from "components/primitive/Heading";
 import Image from "components/primitive/Image";
 import Span from "components/primitive/Span";
 import noPosterFound from "../../images/404PosterNotFound.jpg";
+
+import ImageContext from "contexts/ImageContext";
+import ThemeContext from "contexts/ThemeContext";
 
 const CardEpisodes = ({ src, episode, title, overview, date }) => {
   const { imageBaseUrl } = useContext(ImageContext);

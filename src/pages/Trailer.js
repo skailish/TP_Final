@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
+
+import { BounceLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
 import Image from "../components/primitive/Image";
 import img from "../images/Error.png";
+
 import ThemeContext from "../contexts/ThemeContext";
-import { BounceLoader } from "react-spinners";
-import { css } from "@emotion/core";
 
 const overrideDark = css`
   & div {

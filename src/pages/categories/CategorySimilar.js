@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
+
 import Container from "../../components/primitive/Container";
 import Card from "../../components/Card";
 import Heading from "../../components/primitive/Heading";
+
 import ThemeContext from "../../contexts/ThemeContext";
 
 const CategorySimilar = ({ data, mediatype }) => {

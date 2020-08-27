@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import firebase from "../configs/firebase";
 import { useHistory, Redirect } from "react-router-dom";
+
 import Container from "../components/primitive/Container";
 import Input from "../components/primitive/Input";
 import Label from "../components/primitive/Label";
 import Heading from "../components/primitive/Heading";
 import Button from "../components/primitive/Button";
-import ThemeContext from "../contexts/ThemeContext";
 import Text from "../components/primitive/Text";
+
+import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
 const Signup = ({ user }) => {

@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
 
-import ImageContext from "../../contexts/ImageContext";
-import ThemeContext from "../../contexts/ThemeContext";
-
 import Container from "../../components/primitive/Container";
 import Image from "../../components/primitive/Image";
 import Text from "../../components/primitive/Text";
@@ -10,6 +7,9 @@ import Heading from "../../components/primitive/Heading";
 import Span from "../../components/primitive/Span";
 import List from "../../components/primitive/List";
 import ListItem from "../../components/primitive/ListItem";
+
+import ImageContext from "../../contexts/ImageContext";
+import ThemeContext from "../../contexts/ThemeContext";
 
 const Overview = ({ data, mediatype }) => {
   const { imageBaseUrl } = useContext(ImageContext);
