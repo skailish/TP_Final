@@ -27,7 +27,12 @@
   flex-wrap: wrap;
   position: relative;
   padding-top: 80px;
-
+  @include media($sm-breakpoint) {
+    width: 100%;
+    top: 40px;
+    left: 0;
+    margin: 0;
+  }
   .category-title-container {
     top: 45px;
     left: 65px;

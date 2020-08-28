@@ -4,7 +4,12 @@
   transition: 0.3s ease-in;
   width: calc(100%-100px);
   margin-left: 100px;
-
+  @include media($sm-breakpoint) {
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+  }
   .pagination-button,
   .pagination-arrow,
   .pagination-arrow {
@@ -19,24 +24,24 @@
   .pagination-button {
     @include button(10px, 0 5px 0 0, 35px, 50%);
     background-color: transparent;
-      @include media($sm-breakpoint) {
-        font-size: 10px;
-        margin: 0;
-        padding: 0;
-        width: 20px;
-      }
+    @include media($sm-breakpoint) {
+      font-size: 10px;
+      margin: 0;
+      padding: 0;
+      width: 20px;
+    }
     &:hover {
       background-color: transparent;
     }
   }
   .pagination-arrow {
     @include button(5px, 0 5px 0 0, 30px, 50%);
-     @include media($sm-breakpoint) {
-        font-size: 10px;
-        margin: 0 10px;
-        padding: 0;
-        width: 20px;
-      }
+    @include media($sm-breakpoint) {
+      font-size: 10px;
+      margin: 0 10px;
+      padding: 0;
+      width: 20px;
+    }
     & .arrows {
       width: 20px;
       height: 20px;

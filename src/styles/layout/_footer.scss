@@ -8,6 +8,10 @@
   transition: 0.3s ease-in;
   @include media($sm-breakpoint) {
     height: fit-content;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
   }
   &.light {
     background-color: $background-footer-lightmode;
@@ -20,10 +24,15 @@
     @include flex(column, space-evenly, center);
     color: $third-text-color;
     text-align: center;
-
+    @include media($sm-breakpoint) {
+      width: 100%;
+      margin: 0 20px;
+      padding: 20px;
+    }
     & p {
       line-height: 25px;
       @include media($sm-breakpoint) {
+        padding: 0 20px;
         font-size: 12px;
         line-height: 14px;
       }
@@ -90,7 +99,7 @@
         width: 80px;
 
         @include media($sm-breakpoint) {
-          height: fit-content;
+          height: 20px;
           width: fit-content;
           justify-content: center;
 

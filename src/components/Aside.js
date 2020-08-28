@@ -21,6 +21,7 @@ import Link from "../components/primitive/Link";
 import Nav from "../components/primitive/Nav";
 import Tooltip from "./Tooltip";
 
+
 import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
 
@@ -51,24 +52,24 @@ const Aside = ({ user }) => {
       <Container as="aside" className={`aside ${theme} ${noShow && "set-show-nav"}`}>
         <Container className="nav-links">
           <NavLink to="/" activeClassName="selected" exact>
-              <Home className={`nav-icon ${theme}`} title={'Home'}/>
+              <Home className={`nav-icon ${theme}`} title={'Home'} onClick={handleToggleNavClick}/>
           </NavLink>
           <NavLink to="/movie" exact activeClassName="selected">
-              <Movie className={`nav-icon ${theme}`} title={'Movie'}/>
+              <Movie className={`nav-icon ${theme}`} title={'Movie'} onClick={handleToggleNavClick}/>
           </NavLink>
           <NavLink to="/tv" exact activeClassName="selected">
-              <TV className={`nav-icon ${theme}`} title={'Tv Series'}/>
+              <TV className={`nav-icon ${theme}`} title={'Tv Series'} onClick={handleToggleNavClick}/>
           </NavLink>
 
-            <Search
-              className={`nav-icon ${theme}`}
-              onClick={() => handleSearchBarVisibleClick()}
-              title={'Search'}
+          <Search
+            className={ `nav-icon ${theme}` }
+            onClick={ () => {handleSearchBarVisibleClick(); handleToggleNavClick()}}
+              title={'Search'} 
             />
 
           {user && (
             <NavLink to="/favs" exact activeClassName="selected">
-                <Heart className={`nav-icon ${theme}`} title={'Favorites'}/>
+                <Heart className={`nav-icon ${theme}`} title={'Favorites'} onClick={handleToggleNavClick}/>
             </NavLink>
           )}
         </Container>

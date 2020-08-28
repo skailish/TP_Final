@@ -5,13 +5,15 @@
   border-bottom: 1px solid #307672;
   background-color: $background-aside-darkmode;
   transition: 0.3s ease-in;
+  position: fixed;
+  z-index: 800;
 
   & .responsive-nav-link {
     padding: 20px;
     @include flex(row, center, center);
   }
 
-  @media(max-width: $sm-breakpoint) {
+  @include media($sm-breakpoint) {
     @include flex(row, space-between, center);
   }
 
@@ -54,19 +56,16 @@
     height: 150px;
   }
 
-  @media(max-width: $sm-breakpoint) {
+  @include media($sm-breakpoint) {
     min-height: calc(100% - 60px);
     top: 60px;
-
   }
-
 }
 
 .set-show-nav {
   transition: 0.3s ease-in;
 
-
-  @media(max-width: $sm-breakpoint) {
+  @include media($sm-breakpoint) {
     transition: 0.3s ease-in;
     transform: translateX(-105px);
     opacity: 0;

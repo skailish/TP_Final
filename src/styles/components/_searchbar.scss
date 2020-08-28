@@ -7,6 +7,12 @@
   transition: ease-in 0.5s;
   background-color: $background-footer-darkmode;
 
+  @include media($sm-breakpoint) {
+    top: 60px;
+    width: calc(100%-100px);
+    left: 100px;
+  }
+
   &.light {
     background-color: $background-lightmode;
   }
@@ -30,7 +36,10 @@
     background-color: $background-footer-darkmode;
     z-index: 200;
     @include flex(column, space-evenly, flex-start);
-
+    @include media($sm-breakpoint) {
+      min-width: 100%;
+      left: 0;
+    }
     &.light {
       background-color: $background-footer-lightmode;
       transition: 0.5s ease-in;
@@ -40,7 +49,7 @@
     &.visible {
       transition: 0.5s ease-in;
       transform: translateY(200px);
-      position:fixed;
+      position: fixed;
     }
 
     .options-container {

@@ -3,7 +3,11 @@
   position: relative;
   width: calc(100vw - 100px);
   height: 620px;
-  height: 620px;
+  @include media($sm-breakpoint) {
+    width: 100%;
+    left: 0;
+    height: 550px;
+  }
 
   &.light {
     background-color: $background-lightmode;
@@ -14,8 +18,10 @@
     top: 45px;
     left: 65px;
     position: absolute;
-
-
+    z-index: 30;
+    @include media($sm-breakpoint) {
+      text-align: center;
+    }
     .cardlistpreview-link {
       padding: 0px 0px 2px 10px;
       color: $fourth-color-darkmode;
@@ -24,7 +30,6 @@
       line-height: 20px;
       font-size: 17px;
       transition: 0.3s;
-
 
       &:hover {
         color: $third-color-darkmode;
@@ -71,6 +76,12 @@
     scroll-behavior: smooth;
     scroll-padding: 15px;
 
+    @include media($sm-breakpoint) {
+      height: fit-content;
+      padding: 20px;
+      margin: 20px;
+    }
+
     &::-webkit-scrollbar {
       width: 12px;
       height: 6px;
@@ -108,7 +119,6 @@
   border: none;
   transition: 0.3s;
 
-
   &:hover {
     transition: 0.3s;
     background-color: rgba(27, 38, 44, 0.9);
@@ -141,11 +151,10 @@
     right: 0;
   }
 
-
-  @media(max-width: $lg-breakpoint) {
+  @media (max-width: $lg-breakpoint) {
     top: 40px;
-  };
-  @media(max-width: $sm-breakpoint) {
+  }
+  @media (max-width: $sm-breakpoint) {
     width: 40px;
   }
 }
@@ -155,7 +164,7 @@
   font-weight: bold;
   color: $main-text-darkmode;
 
-  @media(max-width: $sm-breakpoint) {
+  @media (max-width: $sm-breakpoint) {
     height: 30px;
   }
 
