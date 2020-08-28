@@ -6,10 +6,13 @@
   left: 100px;
   transition: ease-in 0.5s;
   background-color: $background-footer-darkmode;
+
   @include media($sm-breakpoint) {
-    min-width: 100%;
-    left: 0;
+    top: 60px;
+    width: calc(100%-100px);
+    left: 100px;
   }
+  
   &.light {
     background-color: $background-lightmode;
   }
