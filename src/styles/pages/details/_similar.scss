@@ -8,6 +8,10 @@
   transition: 0.3s ease-in;
   padding: 80px 0 100px 0;
 
+  @media (max-width: $sm-breakpoint) {
+    padding-top: 40px;
+  }
+
   &.light {
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
@@ -23,6 +27,10 @@
       background-color: $background-lightmode;
       transition: 0.3s ease-in;
     }
+
+    @media (max-width: $sm-breakpoint) {
+      padding-top: 40px;
+    }
   }
 
   .category-title-container {
@@ -31,8 +39,16 @@
     position: absolute;
     text-transform: capitalize;
 
+    @media (max-width: $sm-breakpoint) {
+      top: 0px;
+    }
+
     .category-heading {
       font-weight: 300;
+
+      @media (max-width: $sm-breakpoint) {
+        font-size: 20px;
+      }
 
       &.light {
         color: $main-text-lightmode;

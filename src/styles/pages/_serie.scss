@@ -1,6 +1,6 @@
 .nav-container {
   transition: 0.3s ease-in;
-  width: calc(100%-100px);
+  width: calc(100% - 100px);
   @include flex(row, center, center);
   transition: 0.3s ease-in;
 
@@ -8,12 +8,22 @@
     background-color: $background-lightmode;
   }
 
+  @include media($sm-breakpoint) {
+    width: 100%;
+  }
+
+
   .nav-tvShow {
     @include flex(row, space-evenly, center);
     flex-wrap: wrap;
     padding-top: 20px;
     margin-top: 15px;
     transition: 0.3s ease-in;
+    width: 40%;
+
+    @include media($sm-breakpoint) {
+      width: 100%;
+    }
 
     &.light {
       background-color: $background-lightmode;
@@ -27,11 +37,13 @@
       padding-bottom: 9px;
       font-weight: 600;
       transition: 0.3s ease-in;
+
       @include media($sm-breakpoint) {
-        font-size: 12px;
+        font-size: 15px;
         margin: 5px;
         padding-bottom: 2px;
       }
+
       &.light {
         color: $main-text-lightmode;
 
@@ -42,6 +54,7 @@
         &.selected {
           color: $third-color-lightmode;
           border-bottom: 2px solid $secondary-color-lightmode;
+
           @include media($sm-breakpoint) {
             border-bottom: 1px solid $secondary-color-lightmode;
           }
@@ -55,6 +68,7 @@
       &.selected {
         color: $main-text-darkmode;
         border-bottom: 2px solid $main-text-darkmode;
+
         @include media($sm-breakpoint) {
           border-bottom: 1px solid $main-text-darkmode;
         }

@@ -10,12 +10,21 @@
     background-color: $background-lightmode;
   }
 
+  @media (max-width: $sm-breakpoint) {
+    width: 90%;
+  }
+
   .select-episodes-container {
     display: flex;
     width: 100%;
     align-items: center;
     margin-left: 100px;
     padding-top: 60px;
+
+    @media (max-width: $sm-breakpoint) {
+      margin-left: 0;
+      @include flex(row, center, center);
+    }
 
     .select-episodes {
       width: 115px;
@@ -27,6 +36,11 @@
       font-family: $secondary-font;
       font-size: 16px;
 
+      @media (max-width: $sm-breakpoint) {
+        font-size: 15px;
+        padding: 5px;
+      }
+
       &:hover {
         background-color: #403f48;
       }
@@ -34,6 +48,10 @@
     .episodes-length {
       margin-left: 18px;
       font-size: 19px;
+
+      @media (max-width: $sm-breakpoint) {
+        font-size: 15px;
+      }
       &.light {
         color: $main-text-lightmode;
       }

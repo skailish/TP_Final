@@ -8,9 +8,9 @@
   background-color: $background-footer-darkmode;
 
   @include media($sm-breakpoint) {
-    top: 60px;
-    width: calc(100%-100px);
-    left: 100px;
+    min-width: 100%;
+    left: 0;
+    
   }
 
   &.light {
@@ -21,6 +21,14 @@
     @include flex(row, space-between, center);
 
     width: calc(100% - 100px);
+
+
+    @include media($sm-breakpoint) {
+      @include flex(row, space-between, flex-start);
+      width: 90%;
+      padding: 0 20px;
+    
+    }
 
     &.light {
       color: $main-text-lightmode;
@@ -36,10 +44,15 @@
     background-color: $background-footer-darkmode;
     z-index: 200;
     @include flex(column, space-evenly, flex-start);
+
     @include media($sm-breakpoint) {
+      @include flex(column, space-evenly, center);
       min-width: 100%;
       left: 0;
+      top: -300px;
+      height: 300px;
     }
+
     &.light {
       background-color: $background-footer-lightmode;
       transition: 0.5s ease-in;
@@ -50,11 +63,28 @@
       transition: 0.5s ease-in;
       transform: translateY(200px);
       position: fixed;
+
+
+      @include media($sm-breakpoint) {
+        transform: translateY(360px);
+        width: 100%;
+
+      }
     }
 
     .options-container {
       @include flex(row, space-evenly, center);
       width: 60%;
+
+      @include media($sm-breakpoint) {
+        @include flex(column, center, flex-start);
+       
+        & > * {
+          padding-bottom: 15px;
+        }
+      
+      }
+     
 
       .search-text {
         color: $main-text-darkmode;
@@ -105,6 +135,12 @@
       @include flex(row, space-evenly, center);
       width: 60%;
       padding-top: 10px;
+
+      
+      @include media($sm-breakpoint) {
+
+        width: 95%;
+      }
 
       .search-input {
         border: none;

@@ -8,26 +8,34 @@
   min-height: 100%;
   align-items: center;
   transition: 0.3s ease-in;
+
+
+
   @include media($sm-breakpoint) {
     padding: 20px;
+    width: 100%;
   }
   .card-episode {
     width: 28%;
     height: 465px;
     margin: 16px 3px;
+
     @include media($sm-breakpoint) {
       text-align: center;
       @include flex(column, space-between, center);
       margin: 10px;
-      padding: 10px;
-      height: auto;
+      padding: 20px 10px;
       align-self: stretch;
+      min-width: 250px;
+      max-height: 300px;
     }
     .img-episode-container {
       width: 100%;
       height: 264px;
+
       @include media($sm-breakpoint) {
-        height: 100px;
+        min-width: 250px;
+        height: 150px;
       }
       & > img {
         width: 100%;
@@ -39,7 +47,7 @@
     .card-episode-title {
       display: flex;
       margin: 15px 0;
-      height: 50px;
+      height: 30px;
       @include media($sm-breakpoint) {
         margin: 5px 0;
         flex-direction: column;
@@ -74,7 +82,8 @@
     .card-episode-overview {
       margin-bottom: 12px;
       height: 113px;
-      @include ellipsis-multiline(13, 1.5, 5, 0);
+      
+      @include ellipsis-multiline(13, 1.2, 5, 0);
       transition: 0.3s ease-in;
       @include media($sm-breakpoint) {
         height: fit-content;

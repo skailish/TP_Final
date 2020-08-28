@@ -5,7 +5,7 @@ import Text from "components/primitive/Text";
 import Heading from "components/primitive/Heading";
 import Image from "components/primitive/Image";
 import Span from "components/primitive/Span";
-import noPosterFound from "../../images/404PosterNotFound.jpg";
+import noImageFound from "../../images/image-not-found-scaled-1150x647.png";
 
 import ImageContext from "contexts/ImageContext";
 import ThemeContext from "contexts/ThemeContext";
@@ -19,7 +19,7 @@ const CardEpisodes = ({ src, episode, title, overview, date }) => {
       <Container className="img-episode-container">
         <Image
           className="media-card-img"
-          src={src ? `${imageBaseUrl}${src}` : noPosterFound}
+          src={src ? `${imageBaseUrl}${src}` : noImageFound}
         />
       </Container>
 

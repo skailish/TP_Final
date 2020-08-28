@@ -23,7 +23,7 @@ const Discover = () => {
     years,
     showResults,
     mediaAdvance,
-    // searchVisible,
+    searchVisible,
     handleOrderByChange,
     handleMediaChange,
     handleGenreChange,
@@ -39,136 +39,145 @@ const Discover = () => {
 
   return (
     <>
-      <Container className={`main-discover-filter-container ${theme}`}>
-        <Text className={`filter-text ${theme}`}>Filter By</Text>
-        <Container as="form" className={`filter-container ${theme}`}>
-          <Select
-            name="media"
-            className={`select-discover ${theme}`}
-            onChange={(event) => handleMediaChange(event)}
-          >
-            <Option className={` ${theme}`} value="movie">
-              Movie
-            </Option>
-            <Option className={` ${theme}`} value="tv">
-              TV Show
-            </Option>
-          </Select>
-          {genres && (
+      {!searchVisible && (
+        <Container className={`main-discover-filter-container ${theme}`}>
+          <Text className={`filter-text ${theme}`}>Filter By</Text>
+          <Container as="form" className={`filter-container ${theme}`}>
             <Select
+              name="media"
               className={`select-discover ${theme}`}
-              name="genre"
-              onChange={(event) => handleGenreChange(event)}
-              value={genresAdvance}
+              onChange={(event) => handleMediaChange(event)}
             >
-              <Option className={` ${theme}`} value={false}>
-                All
+              <Option className={` ${theme}`} value="movie">
+                Movie
               </Option>
-              {genres.map((genre) => (
-                <Option className={` ${theme}`} key={genre.id} value={genre.id}>
-                  {genre.name}
-                </Option>
-              ))}
+              <Option className={` ${theme}`} value="tv">
+                TV Show
+              </Option>
             </Select>
-          )}
+            {genres && (
+              <Select
+                className={`select-discover ${theme}`}
+                name="genre"
+                onChange={(event) => handleGenreChange(event)}
+                value={genresAdvance}
+              >
+                <Option className={` ${theme}`} value={false}>
+                  All
+                </Option>
+                {genres.map((genre) => (
+                  <Option
+                    className={` ${theme}`}
+                    key={genre.id}
+                    value={genre.id}
+                  >
+                    {genre.name}
+                  </Option>
+                ))}
+              </Select>
+            )}
 
-          <Select
-            className={`select-discover ${theme}`}
-            name="year"
-            onChange={(event) => handleIntervalChange(event)}
-          >
-            <Option className={` ${theme}`} value="after">
-              After than
-            </Option>
-            <Option className={` ${theme}`} value="exact">
-              Exact
-            </Option>
-            <Option className={` ${theme}`} value="before">
-              Before than
-            </Option>
-          </Select>
-          {years && (
             <Select
               className={`select-discover ${theme}`}
-              name="years"
-              onChange={(event) => handleYearChange(event)}
+              name="year"
+              onChange={(event) => handleIntervalChange(event)}
             >
-              {years.map((year) => (
-                <Option className={` ${theme}`} key={year} value={year}>
-                  {year}
-                </Option>
-              ))}
+              <Option className={` ${theme}`} value="after">
+                After than
+              </Option>
+              <Option className={` ${theme}`} value="exact">
+                Exact
+              </Option>
+              <Option className={` ${theme}`} value="before">
+                Before than
+              </Option>
             </Select>
-          )}
-          <Select
-            className={`select-discover ${theme}`}
-            name="orderBy"
-            onChange={(event) => handleOrderByChange(event)}
-          >
-            <Option className={` ${theme}`} value="popularity.desc">
-              More Popular
-            </Option>
-            <Option className={` ${theme}`} value="popularity.asc">
-              Less Popular
-            </Option>
-            <Option className={` ${theme}`} value="vote_average.desc">
-              More Voted
-            </Option>
-            <Option className={` ${theme}`} value="vote_average.asc">
-              Less Voted
-            </Option>
-            <Option
-              className={` ${theme}`}
-              value={
-                mediaAdvance === "tv"
-                  ? "first_air_date.desc"
-                  : "release_date.desc"
-              }
+            {years && (
+              <Select
+                className={`select-discover ${theme}`}
+                name="years"
+                onChange={(event) => handleYearChange(event)}
+              >
+                {years.map((year) => (
+                  <Option className={` ${theme}`} key={year} value={year}>
+                    {year}
+                  </Option>
+                ))}
+              </Select>
+            )}
+            <Select
+              className={`select-discover ${theme}`}
+              name="orderBy"
+              onChange={(event) => handleOrderByChange(event)}
             >
-              Newest
-            </Option>
-            <Option
-              className={` ${theme}`}
-              value={
-                mediaAdvance === "tv"
-                  ? "first_air_date.asc"
-                  : "release_date.asc"
-              }
-            >
-              Oldest
-            </Option>
-            {mediaAdvance === "movie" && (
-              <Option className={` ${theme}`} value="original_title.asc">
-                A-Z
+              <Option className={` ${theme}`} value="popularity.desc">
+                More Popular
               </Option>
-            )}
-            {mediaAdvance === "movie" && (
-              <Option className={` ${theme}`} value="original_title.desc">
-                Z-A
+              <Option className={` ${theme}`} value="popularity.asc">
+                Less Popular
               </Option>
-            )}
-            {mediaAdvance === "movie" && (
-              <Option className={` ${theme}`} value="revenue.desc">
-                Most Revenue
+              <Option className={` ${theme}`} value="vote_average.desc">
+                More Voted
               </Option>
-            )}
-            {mediaAdvance === "movie" && (
-              <Option className={` ${theme}`} value="">
-                Less Revenue
+              <Option className={` ${theme}`} value="vote_average.asc">
+                Less Voted
               </Option>
-            )}
-          </Select>
-          <Button
-            onClick={handleShowResultsClick}
-            className={`search-button ${theme} `}
-          >
-            <Search className={`search-icon ${theme}`} />
-          </Button>
+              <Option
+                className={` ${theme}`}
+                value={
+                  mediaAdvance === "tv"
+                    ? "first_air_date.desc"
+                    : "release_date.desc"
+                }
+              >
+                Newest
+              </Option>
+              <Option
+                className={` ${theme}`}
+                value={
+                  mediaAdvance === "tv"
+                    ? "first_air_date.asc"
+                    : "release_date.asc"
+                }
+              >
+                Oldest
+              </Option>
+              {mediaAdvance === "movie" && (
+                <Option className={` ${theme}`} value="original_title.asc">
+                  A-Z
+                </Option>
+              )}
+              {mediaAdvance === "movie" && (
+                <Option className={` ${theme}`} value="original_title.desc">
+                  Z-A
+                </Option>
+              )}
+              {mediaAdvance === "movie" && (
+                <Option className={` ${theme}`} value="revenue.desc">
+                  Most Revenue
+                </Option>
+              )}
+              {mediaAdvance === "movie" && (
+                <Option className={` ${theme}`} value="">
+                  Less Revenue
+                </Option>
+              )}
+            </Select>
+            <Container className="search-discover-icon">
+              <Button
+                onClick={handleShowResultsClick}
+                className={`search-button ${theme} `}
+              >
+                <Search className={`search-icon ${theme}`} />
+              </Button>
+            </Container>
+          </Container>
         </Container>
-      </Container>
+      )}
 
       <Container className={`results-pagination-container ${theme}`}>
-        {results && (
+        {console.log(results)}
+        {searchVisible && results && (
           <Container className={`results-container ${theme} `}>
             {results &&
               results.map((result) => (
@@ -216,9 +225,6 @@ const Discover = () => {
                   mediatype={mediaAdvance}
                 />
               ))}
-            {console.log(discover)}
-            {console.log(searchPage)}
-            {console.log(searchMaxPage)}
             {searchMaxPage !== 0 && showResults && discover.length > 1 && (
               <Container>
                 {discover.length > 1 && (

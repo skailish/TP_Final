@@ -61,6 +61,7 @@
 
   @include media($sm-breakpoint) {
     min-height: calc(100% - 60px);
+    height: calc(100% - 60px);
     top: 60px;
   }
 }

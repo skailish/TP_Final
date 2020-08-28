@@ -61,12 +61,12 @@ const Categories = () => {
       {!isLoading && favsArray && (
         <Container className={`category-pagination-container ${theme}`}>
           <ScrollToTop />
+          <Container className="category-title-container">
+            <Heading className={`category-heading ${theme} `} level={1}>
+              {media === "movie" ? `${title2} movies` : `${title2} tv shows`}
+            </Heading>
+          </Container>
           <Container className={`main-category-container ${theme}`}>
-            <Container className="category-title-container">
-              <Heading className={`category-heading ${theme} `} level={1}>
-                {media === "movie" ? `${title2} movies` : `${title2} tv shows`}
-              </Heading>
-            </Container>
             {dataByParams.map((singleCard) => (
               <Card
                 id={singleCard.id}

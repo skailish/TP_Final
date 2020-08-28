@@ -19,8 +19,6 @@ import { Close } from "@styled-icons/ionicons-solid/Close";
 import Container from "../components/primitive/Container";
 import Link from "../components/primitive/Link";
 import Nav from "../components/primitive/Nav";
-import Tooltip from "./Tooltip";
-
 
 import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
@@ -28,15 +26,15 @@ import SearchContext from "../contexts/SearchContext";
 const Aside = ({ user }) => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
   const { handleSearchBarVisibleClick } = useContext(SearchContext);
-  const [noShow, setNoShow] = useState(true)
+  const [noShow, setNoShow] = useState(true);
 
   const handleLogoutClick = () => {
     firebase.auth().signOut();
   };
 
   const handleToggleNavClick = () => {
-    setNoShow(!noShow)
-  }
+    setNoShow(!noShow);
+  };
 
   return (
     <>
@@ -45,57 +43,92 @@ const Aside = ({ user }) => {
           <Menu className={`nav-icon ${theme}`} />
         </Link>
 
-        <Link className={`responsive-nav-link nav-close-icon ${noShow && "set-show-close"}`} onClick={handleToggleNavClick}>
+        <Link
+          className={`responsive-nav-link nav-close-icon ${
+            noShow && "set-show-close"
+          }`}
+          onClick={handleToggleNavClick}
+        >
           <Close className={`nav-icon ${theme}`} />
         </Link>
       </Nav>
-      <Container as="aside" className={`aside ${theme} ${noShow && "set-show-nav"}`}>
+      <Container
+        as="aside"
+        className={`aside ${theme} ${noShow && "set-show-nav"}`}
+      >
         <Container className="nav-links">
           <NavLink to="/" activeClassName="selected" exact>
-              <Home className={`nav-icon ${theme}`} title={'Home'} onClick={handleToggleNavClick}/>
+            <Home
+              className={`nav-icon ${theme}`}
+              title={"Home"}
+              onClick={handleToggleNavClick}
+            />
           </NavLink>
           <NavLink to="/movie" exact activeClassName="selected">
-              <Movie className={`nav-icon ${theme}`} title={'Movie'} onClick={handleToggleNavClick}/>
+            <Movie
+              className={`nav-icon ${theme}`}
+              title={"Movie"}
+              onClick={handleToggleNavClick}
+            />
           </NavLink>
           <NavLink to="/tv" exact activeClassName="selected">
-              <TV className={`nav-icon ${theme}`} title={'Tv Series'} onClick={handleToggleNavClick}/>
+            <TV
+              className={`nav-icon ${theme}`}
+              title={"Tv Series"}
+              onClick={handleToggleNavClick}
+            />
           </NavLink>
 
           <Search
-            className={ `nav-icon ${theme}` }
-            onClick={ () => {handleSearchBarVisibleClick(); handleToggleNavClick()}}
-              title={'Search'} 
-            />
+            className={`nav-icon ${theme}`}
+            onClick={() => {
+              handleSearchBarVisibleClick();
+              handleToggleNavClick();
+            }}
+            title={"Search"}
+          />
 
           {user && (
             <NavLink to="/favs" exact activeClassName="selected">
-                <Heart className={`nav-icon ${theme}`} title={'Favorites'} onClick={handleToggleNavClick}/>
+              <Heart
+                className={`nav-icon ${theme}`}
+                title={"Favorites"}
+                onClick={handleToggleNavClick}
+              />
             </NavLink>
           )}
         </Container>
         <Container className="user-options">
           {user ? (
-              <a onClick={handleLogoutClick}>
-                <LogOut className={`nav-icon ${theme}`} title={'Logout'} />
-              </a>
+            <a onClick={handleLogoutClick}>
+              <LogOut
+                className={`nav-icon ${theme}`}
+                title={"Logout"}
+                onClick={handleToggleNavClick}
+              />
+            </a>
           ) : (
             <NavLink to="/login" exact activeClassName="selected">
-                <LogIn className={`nav-icon ${theme}`} title={'Login'}/>
+              <LogIn
+                className={`nav-icon ${theme}`}
+                title={"Login"}
+                onClick={handleToggleNavClick}
+              />
             </NavLink>
           )}
-            {theme === "dark" ? (
-              <LightOn
-                onClick={() => handleThemeClick(theme)}
-                className={ `nav-icon ${theme}` }
-                title={'Change the theme'}
-              />
-            ) : (
-              <LightOff
-                onClick={() => handleThemeClick(theme)}
-                  className={ `nav-icon ${theme}` }
-                  title={'Change the theme'}
-              />
-            )}
+          {theme === "dark" ? (
+            <LightOn
+              onClick={() => handleThemeClick(theme)}
+              className={`nav-icon ${theme}`}
+              title={"Change the theme"}
+            />
+          ) : (
+            <LightOff
+              onClick={() => handleThemeClick(theme)}
+              className={`nav-icon ${theme}`}
+              title={"Change the theme"}
+            />
+          )}
         </Container>
       </Container>
     </>

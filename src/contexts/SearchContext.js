@@ -102,7 +102,9 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getSearch = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/${media}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&query=${inputValue}&page=${searchPage}`
+        `https://api.themoviedb.org/3/search/${media}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${
+          inputValue && `&query=${inputValue}`
+        }&page=${searchPage}`
       );
       const dataJson = await response.json();
       setResults(dataJson.results);

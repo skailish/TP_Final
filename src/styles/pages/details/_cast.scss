@@ -15,6 +15,7 @@
   }
 
   @include media($sm-breakpoint) {
+    justify-content: space-between;
     padding: 20px;
     & .media-card-cast {
       @include flex(column, center, center);
@@ -22,8 +23,8 @@
       height: fit-content;
       margin: 5px;
       & .img-container {
-        width: 50px;
-        max-height: 50px;
+        width: 80px;
+        max-height: 80px;
       }
       & .media-card-cast {
         width: 50px;

@@ -9,6 +9,14 @@
   text-align: center;
   @include flex(column, space-evenly, center);
 
+  @media(max-width: $sm-breakpoint) {
+    min-height: calc(100vh - 230px);
+    height: 100%;
+    left: 0;
+    width: 100%;
+    @include flex(column, center, center);
+  }
+
   .form-heading {
     font-size: 40px;
     font-weight: 400;
@@ -19,27 +27,44 @@
       color: $main-text-lightmode;
     }
   }
+
   .form {
     width: 80%;
     height: 200px;
     text-align: center;
     @include flex(column, space-between, center);
 
+    @media(max-width: $sm-breakpoint) {
+      height: 100%;
+      width: 100%;
+
+    }
+
     .button {
       margin-right: 0;
+
+      @media(max-width: $sm-breakpoint) {
+        width: 70%;
+      }
     }
 
     .form-label {
       font-size: 20px;
       width: 450px;
       transition: 0.3s ease-in;
+      @include flex(row, space-between, center);
 
       &.light {
         transition: 0.3s ease-in;
         color: $main-text-lightmode;
       }
 
-      @include flex(row, space-between, center);
+
+      @media(max-width: $sm-breakpoint) {
+        @include flex(column, space-evenly, center);
+        width: 100%;
+        height: 80px;
+      }
 
       .form-input {
         margin-left: 10px;
@@ -57,9 +82,15 @@
           background-color: $main-text-lightmode;
           color: $main-text-darkmode;
         }
+
+        @media(max-width: $sm-breakpoint) {
+          width: 70%;
+          margin-left: 0;
+        }
       }
     }
   }
+
   .form-text {
     color: $main-text-darkmode;
     font-size: 17px;
@@ -68,6 +99,10 @@
     &.light {
       transition: 0.3s;
       color: $main-text-lightmode;
+    }
+
+    @media(max-width: $sm-breakpoint) {
+      padding-top: 30px;
     }
   }
 
@@ -86,6 +121,7 @@
       color: $secondary-color-darkmode;
       transition: 0.3s;
     }
+
     &.light:hover {
       color: $third-color-lightmode;
       transition: 0.3s;
@@ -102,6 +138,7 @@
   width: 100%;
   height: 30px;
   text-align: center;
+
   #error-message {
     color: $third-color-lightmode;
     font-size: 17px;

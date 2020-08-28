@@ -9,5 +9,9 @@
     margin: 0;
     padding: 0;
     top: 360px;
+    min-height: calc(100vh - 260px);
+    height: calc(100% - 260px);
   }
+
+
 }
