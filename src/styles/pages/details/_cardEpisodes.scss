@@ -63,6 +63,7 @@
         margin-left: 10px;
         transition: 0.3s ease-in;
         @include media($sm-breakpoint) {
+          margin: 0;
           font-size: 12px;
         }
         &.light {
