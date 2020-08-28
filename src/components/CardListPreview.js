@@ -21,22 +21,21 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   const [showRightBar, setShowRightBar] = useState(true);
   const [widthScreen, setWidthScreen] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
- 
 
   useEffect(() => {
     setWidthScreen(mediaContainerRef.current.scrollWidth);
     setScrollWidth(mediaRef.current.scrollWidth);
-  
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {
-    mediaRef.current.scrollLeft -= widthScreen;
+    mediaRef.current.scrollLeft -= widthScreen - 20;
     mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
     setShowRightBar(true);
   };
 
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
-    mediaRef.current.scrollLeft += widthScreen;
+    mediaRef.current.scrollLeft += Math.round(widthScreen - 120);
+    console.log(Math.round(widthScreen - 120));
     mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
       setShowRightBar(false);
     setShowLeftBar(true);
@@ -52,9 +51,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
         {showLeftBar && (
           <Button
             className={`chevron-container chevron-left ${theme} `}
-            onClick={() =>
-              handleLeftChevronClick(widthScreen)
-            }
+            onClick={() => handleLeftChevronClick(widthScreen)}
           >
             <ChevronLeft className={`chevron-icon ${theme} `} />
           </Button>
