@@ -5,7 +5,12 @@
   left: 100px;
   @include flex(row, center, center);
   transition: 0.3s ease-in-out;
-
+  @include media($sm-breakpoint) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+  }
   &.light {
     background-color: $background-lightmode;
     transition: 0.3s ease-in-out;
@@ -17,11 +22,9 @@
 
     &.light {
       transition: 0.3s ease-in-out;
-      color: $main-text-lightmode
+      color: $main-text-lightmode;
     }
   }
-
-
 }
 
 .main-favs-container {
@@ -35,11 +38,14 @@
   text-align: center;
   transition: 0.3s ease-in-out;
   @include flex(column, space-evenly, center);
-
+  @include media($sm-breakpoint) {
+    width: 100%;
+    margin: 0;
+    left: 0;
+  }
   &.light {
     transition: 0.3s ease-in-out;
     background-color: $background-lightmode;
-    
   }
 
   .favs-heading {
@@ -49,7 +55,7 @@
 
     &.light {
       transition: 0.3s ease-in-out;
-      color: $main-text-lightmode
+      color: $main-text-lightmode;
     }
   }
 
@@ -62,16 +68,19 @@
 
     &.light {
       transition: 0.3s ease-in-out;
-      color: $main-text-lightmode
+      color: $main-text-lightmode;
     }
   }
 
   .favs-cards-container {
     @include flex(row, space-evenly, center);
     width: calc(100vw - 100px);
-
+    @include media($sm-breakpoint) {
+      width: 100%;
+      margin: 0;
+      left: 0;
+    }
     flex-wrap: wrap;
     position: relative;
-
   }
 }

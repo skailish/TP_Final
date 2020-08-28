@@ -2,9 +2,14 @@
   position: relative;
   width: 100%;
   height: 600px;
-    @include media($md-breakpoint) {
+  @include media($md-breakpoint) {
     @include flex(column, flex-end, flex-start);
-    }
+  }
+  @include media($sm-breakpoint) {
+    top: 60px;
+    height: 300px;
+    margin-bottom: 30px;
+  }
 }
 
 .hero-image-container {
@@ -14,24 +19,17 @@
 
   &::after {
     content: "";
-    background-image: linear-gradient(
-      90deg,
-      #000 37%,
-      transparent 81%,
-      transparent
-    );
-   
+    background-image: linear-gradient(90deg, #000 37%, transparent 81%, transparent);
+
     width: 70%;
     height: 100%;
     position: absolute;
     @include media($md-breakpoint) {
       width: 100%;
-      background-image: linear-gradient(
-      180deg,
-      transparent 50%,
-      transparent 60%,
-      #000 80%
-    );
+      background-image: linear-gradient(180deg, transparent 40%, transparent 42%, #000 65%);
+    }
+    @include media($sm-breakpoint) {
+      background-image: linear-gradient(180deg, transparent 30%, transparent 32%, rgba(#000, 0.9) 45%);
     }
   }
 }
@@ -62,14 +60,18 @@
     height: fit-content;
     margin: 0;
     padding: 20px 60px;
-    }
-   
+  }
+
   & h1 {
     font-weight: 300;
     font-size: 40px;
+    @include media($sm-breakpoint) {
+      font-size: 20px;
+    }
   }
   & a {
     color: $main-text-darkmode;
+<<<<<<< HEAD
   @include media($md-breakpoint) {
   align-self: center;
   & button {
@@ -79,6 +81,26 @@
     background-color: transparent;
   }
   }
+=======
+    @include media($md-breakpoint) {
+      align-self: center;
+      & button {
+        margin: 30px 5px 5px;
+        padding: 10px;
+        width: fit-content;
+        @include media($sm-breakpoint) {
+          margin: 15px 0 0;
+          padding: 2px;
+          & p {
+            display: none;
+          }
+          & svg {
+            padding: 0;
+          }
+        }
+      }
+    }
+>>>>>>> responsive
   }
 }
 
@@ -88,7 +110,7 @@
   @include flex(row, space-between, center);
   @include media($md-breakpoint) {
     padding: 0px;
-    }
+  }
 }
 
 .hero-details {
@@ -99,15 +121,15 @@
   & p {
     padding-right: 5px;
   }
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     display: none;
   }
 }
 .hero-description {
   @include ellipsis-multiline(15, 1.5, 5, 0);
-    @include media($md-breakpoint) {
-  @include ellipsis-multiline(15, 1.5, 2, 0);
-    }
+  @include media($md-breakpoint) {
+    @include ellipsis-multiline(15, 1.5, 2, 0);
+  }
 }
 
 a {

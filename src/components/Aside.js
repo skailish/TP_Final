@@ -19,8 +19,8 @@ import { Close } from "@styled-icons/ionicons-solid/Close";
 import Container from "../components/primitive/Container";
 import Link from "../components/primitive/Link";
 import Nav from "../components/primitive/Nav";
-
 import Tooltip from "./Tooltip";
+
 
 import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
@@ -52,63 +52,50 @@ const Aside = ({ user }) => {
       <Container as="aside" className={`aside ${theme} ${noShow && "set-show-nav"}`}>
         <Container className="nav-links">
           <NavLink to="/" activeClassName="selected" exact>
-            <Tooltip title="Home">
-              <Home className={`nav-icon ${theme}`} />
-            </Tooltip>
+              <Home className={`nav-icon ${theme}`} title={'Home'} onClick={handleToggleNavClick}/>
           </NavLink>
           <NavLink to="/movie" exact activeClassName="selected">
-            <Tooltip title="Movie">
-              <Movie className={`nav-icon ${theme}`} />
-            </Tooltip>
+              <Movie className={`nav-icon ${theme}`} title={'Movie'} onClick={handleToggleNavClick}/>
           </NavLink>
           <NavLink to="/tv" exact activeClassName="selected">
-            <Tooltip title="Tv">
-              <TV className={`nav-icon ${theme}`} />
-            </Tooltip>
+              <TV className={`nav-icon ${theme}`} title={'Tv Series'} onClick={handleToggleNavClick}/>
           </NavLink>
 
-          <Tooltip title="Search">
-            <Search
-              className={`nav-icon ${theme}`}
-              onClick={() => handleSearchBarVisibleClick()}
+          <Search
+            className={ `nav-icon ${theme}` }
+            onClick={ () => {handleSearchBarVisibleClick(); handleToggleNavClick()}}
+              title={'Search'} 
             />
-          </Tooltip>
 
           {user && (
             <NavLink to="/favs" exact activeClassName="selected">
-              <Tooltip title="Favorites">
-                <Heart className={`nav-icon ${theme}`} />
-              </Tooltip>
+                <Heart className={`nav-icon ${theme}`} title={'Favorites'} onClick={handleToggleNavClick}/>
             </NavLink>
           )}
         </Container>
         <Container className="user-options">
           {user ? (
-            <Tooltip title="Logout">
               <a onClick={handleLogoutClick}>
-                <LogOut className={`nav-icon ${theme}`} />
+                <LogOut className={`nav-icon ${theme}`} title={'Logout'} />
               </a>
-            </Tooltip>
           ) : (
             <NavLink to="/login" exact activeClassName="selected">
-              <Tooltip title="Login">
-                <LogIn className={`nav-icon ${theme}`} />
-              </Tooltip>
+                <LogIn className={`nav-icon ${theme}`} title={'Login'}/>
             </NavLink>
           )}
-          <Tooltip title="Change the theme">
             {theme === "dark" ? (
               <LightOn
                 onClick={() => handleThemeClick(theme)}
-                className={`nav-icon ${theme}`}
+                className={ `nav-icon ${theme}` }
+                title={'Change the theme'}
               />
             ) : (
               <LightOff
                 onClick={() => handleThemeClick(theme)}
-                className={`nav-icon ${theme}`}
+                  className={ `nav-icon ${theme}` }
+                  title={'Change the theme'}
               />
             )}
-          </Tooltip>
         </Container>
       </Container>
     </>

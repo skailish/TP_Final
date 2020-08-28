@@ -3,11 +3,11 @@
   width: calc(100vw - 100px);
   overflow: hidden;
   @include flex(column, center, center);
-
-
-  @media(max-width: $sm-breakpoint) {
-    width: 100vw;
-    margin-left: 0;
+  @include media($sm-breakpoint) {
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 360px;
   }
 }
-
