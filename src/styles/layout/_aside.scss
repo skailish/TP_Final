@@ -1,14 +1,41 @@
+.responsive-nav {
+  display: none;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #307672;
+  background-color: $background-aside-darkmode;
+  transition: 0.3s ease-in;
+
+  & .responsive-nav-link {
+    padding: 20px;
+    @include flex(row, center, center);
+  }
+
+  @media(max-width: $sm-breakpoint) {
+    @include flex(row, space-between, center);
+  }
+
+  .nav-close-icon {
+    transform: translateX(0px);
+    transition: 0.3s ease-in;
+  }
+  .set-show-close {
+    transition: 0.3s ease-in;
+    transform: translateX(60px);
+  }
+}
+
 .aside {
   width: 100px;
   border-right: 1px solid #307672;
   height: 100%;
   min-height: 100vh;
   z-index: 999;
-  @include position(fixed, 0, null, null, 0);
   transition: 0.3s ease-in;
+  transform: translateX(0);
   background-color: $background-aside-darkmode;
-
   @include flex(column, space-between, center);
+  @include position(fixed, 0, null, null, 0);
 
   &.light {
     background-color: $background-aside-lightmode;
@@ -21,8 +48,27 @@
     height: 300px;
     margin-top: 50px;
   }
+
   .user-options {
     @include flex(column, space-evenly, center);
     height: 150px;
+  }
+
+  @media(max-width: $sm-breakpoint) {
+    min-height: calc(100% - 60px);
+    top: 60px;
+
+  }
+
+}
+
+.set-show-nav {
+  transition: 0.3s ease-in;
+
+
+  @media(max-width: $sm-breakpoint) {
+    transition: 0.3s ease-in;
+    transform: translateX(-105px);
+    opacity: 0;
   }
 }

@@ -16,37 +16,45 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   const { theme } = useContext(ThemeContext);
   const { favsArray } = useContext(FavsContext);
   const mediaRef = useRef(null);
-  const [carouselScroll, setCarouselScroll] = useState(0);
-  const [screen, setScreen] = useState(0);
+  const mediaContainerRef = useRef(null);
   const [showLeftBar, setShowLeftBar] = useState(false);
   const [showRightBar, setShowRightBar] = useState(true);
+  const [widthScreen, setWidthScreen] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
+ 
 
   useEffect(() => {
-    setCarouselScroll(mediaRef.current.scrollWidth / 4);
+    setWidthScreen(mediaContainerRef.current.scrollWidth);
+    setScrollWidth(mediaRef.current.scrollWidth);
+  
   }, []);
 
-  const handleLeftChevronClick = (carouselScroll, screen) => {
-    mediaRef.current.scrollLeft = screen * carouselScroll - carouselScroll;
-    setScreen(screen - 1);
-    screen <= 1 && setShowLeftBar(false);
-    screen <= 3 && setShowRightBar(true);
+  const handleLeftChevronClick = (widthScreen) => {
+    mediaRef.current.scrollLeft -= widthScreen;
+    mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
+    setShowRightBar(true);
   };
 
-  const handleRightChevronClick = (carouselScroll, screen) => {
-    mediaRef.current.scrollLeft = Math.round(carouselScroll * (screen + 1));
-    screen >= 0 && setShowLeftBar(true);
-    setScreen(screen + 1);
-    screen >= 2 && setShowRightBar(false);
+  const handleRightChevronClick = (widthScreen, scrollWidth) => {
+    mediaRef.current.scrollLeft += widthScreen;
+    mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
+      setShowRightBar(false);
+    setShowLeftBar(true);
   };
 
   return (
     data &&
     favsArray && (
-      <Container className={`cardlistpreview-container ${theme} `}>
+      <Container
+        className={`cardlistpreview-container ${theme} `}
+        forwarderRef={mediaContainerRef}
+      >
         {showLeftBar && (
           <Button
             className={`chevron-container chevron-left ${theme} `}
-            onClick={() => handleLeftChevronClick(carouselScroll, screen)}
+            onClick={() =>
+              handleLeftChevronClick(widthScreen)
+            }
           >
             <ChevronLeft className={`chevron-icon ${theme} `} />
           </Button>
@@ -85,7 +93,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
         {showRightBar && (
           <Button
             className={`chevron-container chevron-right ${theme} `}
-            onClick={() => handleRightChevronClick(carouselScroll, screen)}
+            onClick={() => handleRightChevronClick(widthScreen, scrollWidth)}
           >
             <ChevronRight className={`chevron-icon ${theme} `} />
           </Button>
