@@ -6,7 +6,7 @@
   width: calc(100% - 100px);
   background-color: $background-footer-darkmode;
   transition: 0.3s ease-in;
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     height: fit-content;
     width: 100%;
     left: 0;
@@ -24,14 +24,14 @@
     @include flex(column, space-evenly, center);
     color: $third-text-color;
     text-align: center;
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       width: 100%;
       margin: 0 20px;
       padding: 20px;
     }
     & p {
       line-height: 25px;
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         padding: 0 20px;
         font-size: 12px;
         line-height: 14px;
@@ -67,7 +67,7 @@
     @include flex(row, space-evenly, center);
     width: 50%;
     padding-top: 20px;
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       width: 100%;
       flex-wrap: wrap;
       padding: 0px;
@@ -75,7 +75,7 @@
     .footer-container-personal {
       @include flex(column-reverse, space-evenly, center);
 
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         font-size: 12px;
         line-height: 14px;
       }
@@ -85,7 +85,7 @@
         font-size: 15px;
         font-weight: 400;
         padding-bottom: 5px;
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           font-size: 12px;
           line-height: 14px;
         }
@@ -98,7 +98,7 @@
         @include flex(row, space-evenly, center);
         width: 80px;
 
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           height: 20px;
           width: fit-content;
           justify-content: center;

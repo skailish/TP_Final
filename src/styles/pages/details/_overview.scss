@@ -14,7 +14,7 @@
     padding: 80px 0 36px 0;
 
     margin: 0 0 20px 100px;
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -28,12 +28,12 @@
         width: 100%;
         min-width: 180px;
         height: 100%;
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           width: 200px;
           height: auto;
         }
       }
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         @include flex(row, flex-start, flex-start);
         border-radius: 50%;
         overflow: hidden;
@@ -56,7 +56,7 @@
         }
       }
 
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         width: fit-content;
         margin: 0;
         padding: 30px;
@@ -83,7 +83,7 @@
             width: 50%;
             display: flex;
 
-            @include media($sm-breakpoint) {
+            @include media($md-breakpoint) {
               width: 100%;
               font-size: 12px;
             }

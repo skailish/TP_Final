@@ -13,7 +13,7 @@
     @include flex(row, center, center);
   }
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     @include flex(row, space-between, center);
     @include position(fixed, 0, null, null, 0);
     z-index: 999;
@@ -59,7 +59,7 @@
     height: 150px;
   }
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     min-height: calc(100% - 60px);
     height: calc(100% - 60px);
     top: 60px;
@@ -69,7 +69,7 @@
 .set-show-nav {
   transition: 0.3s ease-in;
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     transition: 0.3s ease-in;
     transform: translateX(-105px);
     opacity: 0;

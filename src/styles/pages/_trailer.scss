@@ -5,7 +5,7 @@
   height: 700px;
   transform: 0.3s ease-in;
   @include flex(column, center, center);
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100vw;
     justify-content: flex-start;
     margin: 20px 0 0;
@@ -19,7 +19,7 @@
   .player-container {
     width: 70%;
     height: 70%;
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       height: fit-content;
     }
   }

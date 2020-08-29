@@ -10,7 +10,7 @@
     transition: 0.3s ease-in;
   }
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
   }
 }
 
@@ -24,7 +24,7 @@
     transition: 0.3s ease-in;
   }
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     min-height: calc(100vh - 133px);
   }
 }
@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   transition: 0.3s ease-in;
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     min-height: 1px;
     height: fit-content;
@@ -72,7 +72,7 @@
   @include flex(column, space-evenly, flex-start);
   transition: 0.3s ease-in;
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     position: absolute;
     top: 60px;
     left: 0;
@@ -104,7 +104,7 @@
     height: 70%;
     @include flex(row, space-between, center);
 
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       @include flex(column, space-between, flex-start);
       width: 100%;
     }
@@ -121,7 +121,7 @@
       cursor: pointer;
       transition: 0.3s ease-in;
 
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         width: 60%;
       }
 
@@ -153,7 +153,7 @@
 
 .search-discover-icon {
   background-color: transparent;
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 80%;
 
     @include flex(row, flex-end, center);

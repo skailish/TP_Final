@@ -3,7 +3,7 @@
   width: calc(100vw - 100px);
   overflow: hidden;
   @include flex(column, center, center);
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     left: 0;
     margin: 0;
@@ -12,6 +12,4 @@
     min-height: calc(100vh - 260px);
     height: calc(100% - 260px);
   }
-
-
 }

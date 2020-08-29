@@ -14,7 +14,7 @@
     transition: 0.3s ease-in;
   }
 
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     justify-content: space-between;
     padding: 20px;
     & .media-card-cast {

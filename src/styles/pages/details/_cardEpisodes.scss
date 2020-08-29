@@ -9,9 +9,7 @@
   align-items: center;
   transition: 0.3s ease-in;
 
-
-
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     padding: 20px;
     width: 100%;
   }
@@ -20,7 +18,7 @@
     height: 465px;
     margin: 16px 3px;
 
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       text-align: center;
       @include flex(column, space-between, center);
       margin: 10px;
@@ -33,7 +31,7 @@
       width: 100%;
       height: 264px;
 
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         min-width: 250px;
         height: 150px;
       }
@@ -48,7 +46,7 @@
       display: flex;
       margin: 15px 0;
       height: 30px;
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         margin: 5px 0;
         flex-direction: column;
         justify-content: flex-start;
@@ -58,7 +56,7 @@
         color: $fourth-color-darkmode;
         transition: 0.3s ease-in;
         font-weight: 600;
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           font-size: 12px;
         }
         &.light {
@@ -70,7 +68,7 @@
         font-weight: 300;
         margin-left: 10px;
         transition: 0.3s ease-in;
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           margin: 0;
           font-size: 12px;
         }
@@ -82,10 +80,10 @@
     .card-episode-overview {
       margin-bottom: 12px;
       height: 113px;
-      
+
       @include ellipsis-multiline(13, 1.2, 5, 0);
       transition: 0.3s ease-in;
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         height: fit-content;
         font-size: 10px;
         & p {
@@ -99,7 +97,7 @@
     .card-episode-date {
       color: $third-text-color;
       transition: 0.3s ease-in;
-      @include media($sm-breakpoint) {
+      @include media($md-breakpoint) {
         font-size: 11px;
       }
       &.light {

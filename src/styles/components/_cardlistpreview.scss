@@ -3,7 +3,7 @@
   position: relative;
   width: calc(100vw - 100px);
   height: 620px;
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     left: 0;
     height: 550px;
@@ -13,7 +13,7 @@
     background-color: $background-lightmode;
   }
 
-  @media(max-width: $sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100vw;
     margin-left: 20px;
     margin-top: 20px;
@@ -25,8 +25,8 @@
     left: 65px;
     position: absolute;
 
-    @media(max-width: $sm-breakpoint) {
-     left: 35px;
+    @include media($md-breakpoint) {
+      left: 35px;
     }
 
     .cardlistpreview-link {
@@ -53,7 +53,7 @@
         // font-weight: bold;
         transition: 0.3s;
       }
-      @media(max-width: $sm-breakpoint) {
+      @include media($md-breakpoint) {
         padding-bottom: 0;
       }
     }
@@ -69,10 +69,9 @@
         color: $main-text-lightmode;
       }
 
-      
-    @media(max-width: $sm-breakpoint) {
-      font-size: 20px;
-    }
+      @include media($md-breakpoint) {
+        font-size: 20px;
+      }
     }
   }
 
@@ -91,7 +90,7 @@
     scroll-behavior: smooth;
     scroll-padding: 15px;
 
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       height: fit-content;
       padding: 20px;
       margin: 20px;
@@ -109,7 +108,7 @@
       background: $main-text-lightmode;
       height: 30px;
     }
-    @media(max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       margin: 25px 0px 0px 0px;
       padding: 25px 0px 0px 0px;
     }
@@ -157,8 +156,6 @@
     }
   }
 
-
-
   & .chevron-icon {
     transition: 0.2s ease-out;
 
@@ -171,21 +168,21 @@
   &.chevron-right {
     right: 0;
 
-    @media(max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       right: 12px;
     }
   }
 
   &.chevron-left {
-    @media(max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       left: -1px;
     }
   }
-  
+
   @media (max-width: $lg-breakpoint) {
     top: 40px;
   }
-  @media (max-width: $sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 40px;
     top: 70px;
   }
@@ -196,7 +193,7 @@
   font-weight: bold;
   color: $main-text-darkmode;
 
-  @media (max-width: $sm-breakpoint) {
+  @include media($md-breakpoint) {
     height: 30px;
   }
 

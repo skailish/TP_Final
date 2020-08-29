@@ -9,7 +9,7 @@
   text-align: center;
   @include flex(column, space-evenly, center);
 
-  @media(max-width: $sm-breakpoint) {
+  @include media($md-breakpoint) {
     min-height: calc(100vh - 230px);
     height: 100%;
     left: 0;
@@ -34,16 +34,15 @@
     text-align: center;
     @include flex(column, space-between, center);
 
-    @media(max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       height: 100%;
       width: 100%;
-
     }
 
     .button {
       margin-right: 0;
 
-      @media(max-width: $sm-breakpoint) {
+      @include media($md-breakpoint) {
         width: 70%;
       }
     }
@@ -59,8 +58,7 @@
         color: $main-text-lightmode;
       }
 
-
-      @media(max-width: $sm-breakpoint) {
+      @include media($md-breakpoint) {
         @include flex(column, space-evenly, center);
         width: 100%;
         height: 80px;
@@ -83,7 +81,7 @@
           color: $main-text-darkmode;
         }
 
-        @media(max-width: $sm-breakpoint) {
+        @include media($md-breakpoint) {
           width: 70%;
           margin-left: 0;
         }
@@ -101,7 +99,7 @@
       color: $main-text-lightmode;
     }
 
-    @media(max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       padding-top: 30px;
     }
   }

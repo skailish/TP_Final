@@ -5,7 +5,7 @@
   width: calc(100%-100px);
   margin-left: 100px;
   z-index: 100;
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     left: 0;
     margin: 0;
@@ -26,7 +26,7 @@
   .pagination-button {
     @include button(10px, 0 5px 0 0, 35px, 50%);
     background-color: transparent;
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       font-size: 15px;
       margin: 0;
       padding: 0;
@@ -38,7 +38,7 @@
   }
   .pagination-arrow {
     @include button(5px, 0 5px 0 0, 30px, 50%);
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       background-color: transparent;
       font-size: 10px;
       margin: 0 10px;

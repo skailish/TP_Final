@@ -8,7 +8,7 @@
   transition: 0.3s ease-in;
   padding: 80px 0 100px 0;
 
-  @media (max-width: $sm-breakpoint) {
+  @include media($md-breakpoint) {
     padding-top: 40px;
   }
 
@@ -28,7 +28,7 @@
       transition: 0.3s ease-in;
     }
 
-    @media (max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       padding-top: 40px;
     }
   }
@@ -39,14 +39,14 @@
     position: absolute;
     text-transform: capitalize;
 
-    @media (max-width: $sm-breakpoint) {
+    @include media($md-breakpoint) {
       top: 0px;
     }
 
     .category-heading {
       font-weight: 300;
 
-      @media (max-width: $sm-breakpoint) {
+      @include media($md-breakpoint) {
         font-size: 20px;
       }
 

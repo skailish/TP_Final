@@ -5,7 +5,7 @@
   left: 100px;
   @include flex(row, center, center);
   transition: 0.3s ease-in-out;
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -38,7 +38,7 @@
   text-align: center;
   transition: 0.3s ease-in-out;
   @include flex(column, space-evenly, center);
-  @include media($sm-breakpoint) {
+  @include media($md-breakpoint) {
     width: 100%;
     margin: 0;
     left: 0;
@@ -75,7 +75,7 @@
   .favs-cards-container {
     @include flex(row, space-evenly, center);
     width: calc(100vw - 100px);
-    @include media($sm-breakpoint) {
+    @include media($md-breakpoint) {
       width: 100%;
       margin: 0;
       left: 0;
