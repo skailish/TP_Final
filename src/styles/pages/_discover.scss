@@ -10,7 +10,8 @@
     transition: 0.3s ease-in;
   }
 
-  @include media($sm-breakpoint) {}
+  @include media($sm-breakpoint) {
+  }
 }
 
 .results-pagination-container {
@@ -44,8 +45,8 @@
   @include media($sm-breakpoint) {
     width: 100%;
     min-height: 1px;
-    height: 100%;
-    padding-bottom: 200px;
+    height: fit-content;
+    margin-bottom: 360px;
     left: 0;
     top: 360px;
   }
@@ -122,10 +123,9 @@
 
       @include media($sm-breakpoint) {
         width: 60%;
-       
       }
 
-      &>option {
+      & > option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
@@ -155,7 +155,7 @@
   background-color: transparent;
   @include media($sm-breakpoint) {
     width: 80%;
-   
+
     @include flex(row, flex-end, center);
   }
 }
