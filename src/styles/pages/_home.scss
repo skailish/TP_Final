@@ -12,4 +12,8 @@
     min-height: calc(100vh - 260px);
     height: calc(100% - 260px);
   }
+
+  &.light {
+    background-color: $background-lightmode;
+  }
 }

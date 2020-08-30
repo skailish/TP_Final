@@ -60,6 +60,10 @@
     font-size: 40px;
     color: $main-text-darkmode;
     text-align: center;
+
+    &.light {
+      color: $main-text-lightmode;
+    }
   }
 }
 

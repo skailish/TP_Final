@@ -76,7 +76,7 @@ const Footer = () => {
             <Link target="_blank" href="https://github.com/angieTu">
               <GithubSquare className={`footer-icon github-icon ${theme}`} />
             </Link>
-            <Link target="_blank" href="">
+            <Link target="_blank" href="https://www.linkedin.com/in/angie-tu/">
               <LinkedinSquare
                 className={`footer-icon ${theme}`}
                 target="_blank"

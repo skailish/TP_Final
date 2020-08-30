@@ -13,6 +13,10 @@
     @include flex(row, center, center);
   }
 
+  &.light {
+    background-color: $background-aside-lightmode;
+  }
+
   @include media($md-breakpoint) {
     @include flex(row, space-between, center);
     @include position(fixed, 0, null, null, 0);

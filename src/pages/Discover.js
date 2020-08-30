@@ -205,7 +205,7 @@ const Discover = () => {
         {discover && (
           <Container className={`results-container ${theme} `}>
             {discover.length === 0 && (
-              <Heading className="no-results-tilte">
+              <Heading className={`no-results-tilte ${theme}`}>
                 No results were found
               </Heading>
             )}

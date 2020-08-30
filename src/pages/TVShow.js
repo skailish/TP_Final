@@ -71,7 +71,7 @@ const TVShow = () => {
 
   return (
     dataTVShowID && (
-      <Container className="main-container">
+      <Container className={`main-container ${theme}`}>
         <ScrollToTop />
         <Hero
           data={dataTVShowID}

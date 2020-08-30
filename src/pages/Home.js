@@ -44,7 +44,7 @@ const Home = () => {
         </Container>
       )}
       {!isLoading && !isLoadingMovie && !isLoadingTvShow && data && (
-        <Container className="main-container">
+        <Container className={`main-container ${theme}`}>
           <ScrollToTop />
           <Hero
             data={data}

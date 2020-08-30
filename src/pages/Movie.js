@@ -64,7 +64,7 @@ const Movie = () => {
 
   return (
     dataMovieID && (
-      <Container className="main-container">
+      <Container className={`main-container ${theme}`}>
         <Hero
           data={dataMovieID}
           year={year}
