@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Container from "./primitive/Container";
 import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
-import noImageFound from "../images/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg";
+import noImageFound from "../images/user.png";
 
 import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -29,7 +29,7 @@ const CardCast = ({ id, mediatype, src, name, character }) => {
       </Container>
 
       <Container className="cast-heading-container">
-        <Heading level={3} className={`media-card-name ${theme} `}>
+        <Heading level={3} className={`media-card-name ${theme} `} id="media-card-name">
           {name}
         </Heading>
         <Heading level={3} className={`media-card-character ${theme} `}>

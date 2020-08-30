@@ -1,7 +1,7 @@
 .media-card-cast {
   height: 350px;
   width: 15%;
-  margin: 41px 33px;
+  margin: 40px;
 
   @include flex(column, center, flex-start);
 
@@ -23,7 +23,7 @@
     @media(max-width: $lg-breakpoint) {
       height: 200px;
       width: 100%;
-   
+
 
     }
 
@@ -36,7 +36,7 @@
         width: 130px;
         max-height: 130px;
         border-radius: 50%;
-      
+
 
       }
     }
@@ -45,30 +45,14 @@
   .cast-heading-container {
     @include flex(column, flex-start, flex-start);
     height: 70px;
-    width: 235px;
+    width: 100%;
+    margin-top: 15px;
 
-    @media(max-width: $lg-breakpoint) {
-      margin-top: 15px;
-    }
     @media(max-width: $md-breakpoint) {
       @include flex(column, center, center);
       width: fit-content;
       margin: 0;
 
-      & h3 {
-        font-size: 12px;
-        text-align: center;
-      }
-
-      .media-card-name {
-        font-size: $default-font-size;
-        font-weight: 300;
-        padding: 10px 0;
-       
-        @media(max-width: $md-breakpoint) {
-          border-radius: 50%;
-          margin: 0;
-        }
 
         @include media($sm-breakpoint) {
           padding: 0;
@@ -77,9 +61,19 @@
         &.light {
           color: $main-text-lightmode;
         }
-      }
+      
     }
 
+    #media-card-name {
+      
+      height: 40px;
+
+      @media(max-width: $md-breakpoint) {
+        font-size: $default-font-size;
+        border-radius: 50%;
+        margin: 0;
+      }
+    }
     .media-card-character {
       color: $third-text-color;
       font-weight: 100;
