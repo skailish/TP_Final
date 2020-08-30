@@ -188,7 +188,7 @@ const Discover = () => {
                   title={media === "tv" ? result.name : result.title}
                   votes={result.vote_average}
                   key={result.id}
-                  mediatype={mediaAdvance}
+                  mediatype={media}
                 />
               ))}
             {searchMaxPage && showResults && (
@@ -207,7 +207,7 @@ const Discover = () => {
           <Container
             className={`results-container discover-results-container ${theme} `}
           >
-            {discover.length === 0 && (
+            {showResults && discover.length === 0 && (
               <Heading className={`no-results-tilte ${theme}`}>
                 No results were found
               </Heading>

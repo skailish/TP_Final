@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import { ArrowBack } from "@styled-icons/ionicons-outline/ArrowBack";
 
 import Container from "../components/primitive/Container";
 import Heading from "../components/primitive/Heading";
+import Button from "../components/primitive/Button";
 import Image from "../components/primitive/Image";
+import Text from "../components/primitive/Text";
 import img from "../images/Error.png";
 
 import ThemeContext from "../contexts/ThemeContext";
@@ -30,6 +33,7 @@ const Trailer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(true);
   const { theme } = useContext(ThemeContext);
+  const history = useHistory();
 
   useEffect(() => {
     const getVideo = async () => {
@@ -50,8 +54,21 @@ const Trailer = () => {
     getVideo();
   }, []);
 
+  const handleGoBackClick = () => {
+    history.goBack()
+  };
+
   return (
     <>
+      <Container className={`go-back-container ${theme}`}>
+        <Button
+          onClick={handleGoBackClick}
+          className={`go-back-button ${theme}`}
+        >
+          <ArrowBack className={`arrow-icon ${theme}`} />
+          <Text className={`go-back-text ${theme}`}>Go Back</Text>
+        </Button>
+      </Container>
       {isLoading && url.length === 0 && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (

@@ -2,9 +2,11 @@
   position: relative;
   width: 100%;
   height: 600px;
+
   @include media($sm-breakpoint) {
     @include flex(column, flex-end, flex-start);
   }
+
   @include media($sm-breakpoint) {
     top: 60px;
     height: 300px;
@@ -24,18 +26,22 @@
     width: 70%;
     height: 100%;
     position: absolute;
+
     @include media($sm-breakpoint) {
       width: 100%;
       background-image: linear-gradient(180deg, transparent 40%, transparent 42%, #000 65%);
     }
+
     @include media($sm-breakpoint) {
       background-image: linear-gradient(180deg, transparent 30%, transparent 32%, rgba(#000, 0.9) 45%);
     }
   }
 }
+
 .hero-heading {
   cursor: pointer;
 }
+
 .hero-background-image {
   z-index: 0;
   background-color: black;
@@ -45,6 +51,7 @@
   position: absolute;
   right: 0;
   top: 0;
+
   @include media($sm-breakpoint) {
     left: auto;
   }
@@ -56,51 +63,90 @@
   width: 40%;
   height: 100%;
   @include flex(column, center, flex-start);
+
   @include media($sm-breakpoint) {
     width: fit-content;
     height: fit-content;
     margin: 0;
     padding: 20px 60px 20px 30px;
   }
+
   @include media($md-breakpoint) {
     width: 100%;
   }
+
   & h1 {
     font-weight: 300;
     font-size: 40px;
+
     @include media($md-breakpoint) {
       font-size: 20px;
     }
   }
+
   & a {
     color: $main-text-darkmode;
+
     @include media($sm-breakpoint) {
       & button {
         margin: 30px 5px 5px;
         padding: 5px 10px;
         width: fit-content;
+        background-color: transparent;
+        transition: 0.3s ease-in;
+
+        & p {
+          transition: 0.3s ease-in;
+
+        }
+      }
+
+      & button.light {
+        background-color: transparent;
+      }
+
+      & button.light:hover,
+      & button.light:focus {
+        background-color: transparent;
+      }
+      & button:hover,
+      & button:focus {
+        background-color: transparent;
+        transition: 0.3s ease-in;
+
+        & p {
+          font-size: 15px;
+          transition: 0.3s ease-in;
+
+        }
       }
     }
   }
 }
+
 a {
   text-decoration: none;
+
   p {
     font-family: $main-font;
     font-size: 18px;
+
     @include media($sm-breakpoint) {
       font-size: 12px;
       font-weight: bold;
     }
   }
 }
+
 .hero-details-container {
   padding: 20px 0;
   width: 75%;
   @include flex(row, space-between, center);
+
   @include media($md-breakpoint) {
     padding: 10px;
   }
+
   @include media($sm-breakpoint) {
     padding: 0px;
   }
@@ -111,24 +157,30 @@ a {
   font-size: $default-font-size;
   color: $third-text-color;
   @include flex(row, center, center);
+
   & p {
     padding-right: 5px;
   }
+
   @include media($md-breakpoint) {
     font-size: 12px;
   }
+
   @include media($sm-breakpoint) {
     &:last-child {
       display: none;
     }
   }
 }
+
 .hero-description {
   @include ellipsis-multiline(15, 1.5, 5, 0);
+
   @include media($md-breakpoint) {
     @include ellipsis-multiline(15, 1.5, 2, 0);
     font-size: 12px;
     max-width: 70%;
+
     @include media(600px) {
       display: none;
     }

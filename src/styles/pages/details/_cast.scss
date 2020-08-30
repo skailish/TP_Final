@@ -17,14 +17,18 @@
   @include media($md-breakpoint) {
     justify-content: space-between;
     padding: 20px;
+   
+
     & .media-card-cast {
       @include flex(column, center, center);
-      width: 100px;
+      width: 130px;
       height: fit-content;
-      margin: 5px;
+      margin: 20px;
+
       & .img-container {
-        width: 80px;
-        max-height: 80px;
+        width: 130px;
+        max-height: 130px;
+       
       }
       & .media-card-cast {
         width: 50px;
@@ -43,9 +47,12 @@
         }
       }
     }
-    & .card-img {
-      border-radius: 50%;
-      margin: 0;
-    }
+
+   
+  }
+
+  @include media($sm-breakpoint) {
+    justify-content: center;
+   
   }
 }

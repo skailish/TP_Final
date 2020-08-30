@@ -51,7 +51,12 @@ const Episodes = ({ seasons }) => {
               seasons
                 .filter((season) => season.name !== "Specials")
                 .map((season, index) => (
-                  <Option value={index + 1} key={season.id} id={season.id}>
+                  <Option
+                    className={`seasons-serie ${theme}`}
+                    value={index + 1}
+                    key={season.id}
+                    id={season.id}
+                  >
                     Season {index + 1}
                   </Option>
                 ))}

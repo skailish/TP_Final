@@ -14,14 +14,15 @@
   @include media($md-breakpoint) {
     width: 100vw;
     justify-content: center;
-    height: calc(100vh - 133px);
-    margin: 27px 0 0 0;
+    height: calc(100vh - 250px);
+    margin: 0px 0 0 0;
+    
   }
 
   @include media($sm-breakpoint) {
     width: 100vw;
     justify-content: center;
-    height: calc(100vh - 133px);
+    height: calc(100vh - 260px);
   }
 
   &.light {
@@ -38,11 +39,12 @@
       height: 35%;
     }
     @include media($md-breakpoint) {
-      width: 60%;
-      height: 40%;
+      width: 80%;
+      height: 50%;
     }
     @include media($sm-breakpoint) {
-      height: fit-content;
+      width: 95%;
+    
     }
   }
 }
@@ -67,4 +69,54 @@
 
 #error-trailer-heading {
   font-weight: normal;
+}
+
+.go-back-container {
+  width: calc(100% - 100px);
+  background-color: transparent;
+  margin-left:  100px;
+  @include flex(row, flex-start, center);
+  height: 80px;
+  padding-left: 15px;
+
+  &.light {
+    background-color: $background-lightmode;
+  }
+
+  @include media($md-breakpoint) {
+    margin-top: 60px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .go-back-button{
+    @include flex(row, flex-start, center);
+    background-color: transparent;
+    cursor: pointer;
+    color: $main-text-darkmode;
+    border: none;
+    outline: none;
+    width: 300px;
+    transition: 0.3s ease-in;
+    
+    &.light {
+      color: $main-text-lightmode;
+    }
+
+    &:hover {
+      color: $third-color-darkmode;
+      transition: 0.3s ease-in;
+
+      &.light {
+        color: $secondary-color-lightmode;
+      }
+  
+    }
+      .go-back-text {
+        font-size: 20px;
+        padding-left: 10px;
+      }
+   
+  }
+
 }

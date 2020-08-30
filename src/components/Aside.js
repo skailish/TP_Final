@@ -118,13 +118,19 @@ const Aside = ({ user }) => {
           )}
           {theme === "dark" ? (
             <LightOn
-              onClick={() => handleThemeClick(theme)}
+              onClick={() => {
+                handleThemeClick(theme);
+                handleToggleNavClick();
+              }}
               className={`nav-icon ${theme}`}
               title={"Change the theme"}
             />
           ) : (
             <LightOff
-              onClick={() => handleThemeClick(theme)}
+              onClick={() => {
+                handleThemeClick(theme);
+                handleToggleNavClick();
+              }}
               className={`nav-icon ${theme}`}
               title={"Change the theme"}
             />

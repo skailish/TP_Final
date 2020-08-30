@@ -35,14 +35,29 @@
       font-family: $secondary-font;
       font-size: 16px;
 
+
       @include media($md-breakpoint) {
         font-size: 15px;
         padding: 5px;
+        
       }
 
       &:hover {
-        background-color: #403f48;
+        background-color: $main-text-lightmode;
+       
       }
+      
+  &.light {
+    background-color: $background-footer-lightmode;
+    color: $main-text-lightmode;
+  }
+
+  .seasons-serie {
+    @media(max-width: $md-breakpoint) {
+      font-size: 13px;
+      
+    }
+  }
     }
     .episodes-length {
       margin-left: 18px;

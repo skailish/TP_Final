@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Container from "./primitive/Container";
 import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
-import noPosterFound from "../images/404PosterNotFound.jpg";
+import noImageFound from "../images/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg";
 
 import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -22,7 +22,7 @@ const CardCast = ({ id, mediatype, src, name, character }) => {
     >
       <Container className="img-container">
         <Image
-          src={src ? `${imageBaseUrl}${src}` : noPosterFound}
+          src={src ? `${imageBaseUrl}${src}` : noImageFound}
           className="card-img"
           alt={`Image showing poster of "${character}/${name}"`}
         />

@@ -108,3 +108,13 @@
     color: $third-color-lightmode;
   }
 }
+
+.arrow-icon {
+  width: 30px;
+  color: $third-color-darkmode;
+
+  &.light {
+    transition: 0.3s ease-in;
+    color: $third-color-lightmode;
+  }
+}
