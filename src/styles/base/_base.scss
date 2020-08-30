@@ -40,7 +40,7 @@ h5 {
   width: 99.2vw;
   overflow: hidden;
 
-  @include media($md-breakpoint) {
+  @include media($lg-breakpoint) {
     width: 100vw;
   }
 }

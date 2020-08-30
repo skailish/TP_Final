@@ -15,6 +15,7 @@
 
   &.light {
     background-color: $background-aside-lightmode;
+    border-bottom: 1px solid #992e2e;
   }
 
   @include media($md-breakpoint) {

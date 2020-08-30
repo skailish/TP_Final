@@ -9,18 +9,41 @@
   text-align: center;
   @include flex(column, space-evenly, center);
 
-  @include media($md-breakpoint) {
-    min-height: calc(100vh - 230px);
+  @include media($lg-breakpoint) {
+    min-height: calc(100vh - 300px);
     height: 100%;
     left: 0;
     width: 100%;
     @include flex(column, center, center);
   }
 
+  @include media($md-breakpoint) {
+    min-height: calc(100vh - 207px);
+    height: 100%;
+    left: 0;
+    width: 100%;
+    @include flex(column, center, center);
+  }
+
+  @include media($sm-breakpoint) {
+    min-height: calc(100vh - 178px);
+    height: 100%;
+    left: 0;
+    width: 100%;
+    @include flex(column, center, center);
+    padding: 0;
+    margin-top: 60px;
+  }
+
   .form-heading {
     font-size: 40px;
     font-weight: 400;
     transition: 0.3s ease-in;
+
+    @include media($sm-breakpoint) {
+      font-size: 30px;
+      padding-top: 20px;
+    }
 
     &.light {
       transition: 0.3s ease-in;
@@ -56,6 +79,15 @@
       &.light {
         transition: 0.3s ease-in;
         color: $main-text-lightmode;
+        &:focus {
+          background-color: $background-aside-darkmode;
+        }
+      }
+
+      @include media($lg-breakpoint) {
+        @include flex(column, space-evenly, center);
+        width: 80%;
+        height: 80px;
       }
 
       @include media($md-breakpoint) {
@@ -81,6 +113,11 @@
           color: $main-text-darkmode;
         }
 
+        @include media($lg-breakpoint) {
+          width: 60%;
+          margin-left: 0;
+        }
+
         @include media($md-breakpoint) {
           width: 70%;
           margin-left: 0;
@@ -99,7 +136,7 @@
       color: $main-text-lightmode;
     }
 
-    @include media($md-breakpoint) {
+    @include media($lg-breakpoint) {
       padding-top: 30px;
     }
   }

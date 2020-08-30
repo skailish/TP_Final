@@ -9,9 +9,6 @@
     background-color: $background-lightmode;
     transition: 0.3s ease-in;
   }
-
-  @include media($md-breakpoint) {
-  }
 }
 
 .results-pagination-container {
@@ -43,7 +40,7 @@
   transition: 0.3s ease-in;
 
   &.discover-results-container {
-    @include media($md-breakpoint) {
+    @include media($sm-breakpoint) {
       width: 100%;
       min-height: 1px;
       height: fit-content;
@@ -76,7 +73,7 @@
       color: $main-text-lightmode;
     }
 
-    @include media($md-breakpoint) {
+    @include media($sm-breakpoint) {
       padding-top: 60px;
     }
   }
@@ -174,7 +171,6 @@
   background-color: transparent;
   @include media($md-breakpoint) {
     width: 80%;
-
     @include flex(row, flex-end, center);
   }
 }

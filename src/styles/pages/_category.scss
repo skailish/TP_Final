@@ -1,12 +1,3 @@
-.onLoading-Container {
-  min-height: calc(100vh - 200px);
-  @include flex(row, center, center);
-
-  &.light {
-    background-color: $background-lightmode;
-  }
-}
-
 .category-pagination-container {
   display: flex;
   flex-direction: column;

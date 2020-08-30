@@ -129,7 +129,7 @@
       width: 60%;
       padding-top: 10px;
 
-      @include media($md-breakpoint) {
+      @include media($sm-breakpoint) {
         width: 90%;
       }
 
@@ -145,9 +145,9 @@
         font-size: 18px;
         transition: ease-in 0.5s;
 
-        @include media($md-breakpoint) {
+        @include media($sm-breakpoint) {
           width: 80%;
-          padding-left: 3;
+          padding-left: 3px;
           margin-right: 3px;
         }
 
