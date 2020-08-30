@@ -8,7 +8,6 @@ body {
   color: #fff;
   font-family: $main-font;
   position: relative;
-
 }
 
 //Juego con el scroll... pensemos colores... para que no aparezca la barra fea del navegador
@@ -40,6 +39,10 @@ h5 {
   flex-direction: column;
   width: 99.2vw;
   overflow: hidden;
+
+  @include media($md-breakpoint) {
+    width: 100vw;
+  }
 }
 
 .category-pagination-container {

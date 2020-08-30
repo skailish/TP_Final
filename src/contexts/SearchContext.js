@@ -102,14 +102,15 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getSearch = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/${media}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${
+        `https://api.themoviedb.org/3/search/${
+          !media ? "movie" : media
+        }?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${
           inputValue && `&query=${inputValue}`
         }&page=${searchPage}`
       );
       const dataJson = await response.json();
       setResults(dataJson.results);
       setSearchMaxPage(dataJson.total_pages);
-
       setNewSearch(false);
     };
     getSearch();

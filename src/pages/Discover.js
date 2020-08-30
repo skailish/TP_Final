@@ -10,6 +10,7 @@ import Text from "components/primitive/Text";
 import Button from "components/primitive/Button";
 import Pagination from "components/Pagination";
 import Heading from "components/primitive/Heading";
+import ScrollToTop from "components/ScrollToTop";
 
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -39,6 +40,7 @@ const Discover = () => {
 
   return (
     <>
+      <ScrollToTop />
       {!searchVisible && (
         <Container className={`main-discover-filter-container ${theme}`}>
           <Text className={`filter-text ${theme}`}>Filter By</Text>
@@ -176,7 +178,6 @@ const Discover = () => {
       )}
 
       <Container className={`results-pagination-container ${theme}`}>
-        {console.log(results)}
         {searchVisible && results && (
           <Container className={`results-container ${theme} `}>
             {results &&
@@ -203,7 +204,9 @@ const Discover = () => {
         )}
 
         {discover && (
-          <Container className={`results-container ${theme} `}>
+          <Container
+            className={`results-container discover-results-container ${theme} `}
+          >
             {discover.length === 0 && (
               <Heading className={`no-results-tilte ${theme}`}>
                 No results were found
