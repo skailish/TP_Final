@@ -16,8 +16,8 @@
         background-position-y: center;
         opacity: 0.9;
         @include media($md-breakpoint) {
-            left: 0;
             background-size: cover;
+            background-position-x: center;
         }
     }
 
@@ -30,13 +30,16 @@
             font-family: "ITC Benguiat";
             font-size: 50px;
             @include media($md-breakpoint) {
-                padding: 30px;
+                padding-top: 30px;
                 font-size: 30px;
             }
         }
 
         .error-redirection-container {
             margin-top: 55px;
+            @include media($md-breakpoint) {
+                margin-top: 10px;
+            }
         }
 
         .error-redirection {
@@ -45,8 +48,8 @@
             font-size: 23px;
             line-height: 35px;
             @include media($md-breakpoint) {
-                font-size: 20px;
-                line-height: 23px;
+                font-size: 13px;
+                line-height: 15px;
                 padding: 5px 20px;
             }
         }
