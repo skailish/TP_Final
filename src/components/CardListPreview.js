@@ -34,7 +34,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   };
 
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
-    mediaRef.current.scrollLeft += widthScreen * 1.07;
+    mediaRef.current.scrollLeft += widthScreen * 0.95;
     mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
       setShowRightBar(false);
     setShowLeftBar(true);
