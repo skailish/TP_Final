@@ -28,15 +28,15 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {
-    mediaRef.current.scrollLeft -= widthScreen;
+    mediaRef.current.scrollLeft -= widthScreen - 20;
     mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
     setShowRightBar(true);
   };
 
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
-    mediaRef.current.scrollLeft += widthScreen;
+    mediaRef.current.scrollLeft += widthScreen - 80;
     mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
-    setShowRightBar(false);
+      setShowRightBar(false);
     setShowLeftBar(true);
   };
 
