@@ -94,12 +94,7 @@
     &.light {
       background-color: $background-lightmode;
     }
-    &:first-child {
-      margin-left: 60px;
-    }
-    &:last-child{
-      margin-right: 60px;
-    }
+
 
     @include media($md-breakpoint) {
       height: fit-content;
