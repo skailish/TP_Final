@@ -25,6 +25,7 @@ const Discover = () => {
     showResults,
     mediaAdvance,
     searchVisible,
+    discoverMaxPage,
     handleOrderByChange,
     handleMediaChange,
     handleGenreChange,
@@ -177,9 +178,10 @@ const Discover = () => {
         </Container>
       )}
 
-      <Container className={`results-pagination-container ${theme}`}>
+      <Container className={`results-pagination-container ${searchVisible && "main-results-container"} ${theme}`}>
         {searchVisible && results && (
           <Container className={`results-container ${theme} `}>
+            <Container className="cards-results-container">
             {results &&
               results.map((result) => (
                 <Card
@@ -191,7 +193,8 @@ const Discover = () => {
                   mediatype={media}
                 />
               ))}
-            {searchMaxPage && showResults && (
+              </Container>
+            {searchMaxPage && (
               <Container>
                 <Pagination
                   page={searchPage}
@@ -203,37 +206,39 @@ const Discover = () => {
           </Container>
         )}
 
-        {discover && (
+        {showResults && discover && (
           <Container
-            className={`results-container discover-results-container ${theme} `}
+            className={`discover-results-container ${theme} `}
           >
             {showResults && discover.length === 0 && (
               <Heading className={`no-results-tilte ${theme}`}>
                 No results were found
               </Heading>
             )}
-            {showResults &&
-              discover.length > 1 &&
-              discover.map((discover) => (
-                <Card
-                  id={discover.id}
-                  src={discover.poster_path}
-                  title={
-                    mediaAdvance === "tv"
-                      ? discover.name
-                      : discover.original_title
-                  }
-                  votes={discover.vote_average}
-                  key={discover.id}
-                  mediatype={mediaAdvance}
-                />
-              ))}
-            {searchMaxPage !== 0 && showResults && discover.length > 1 && (
+            <Container className="cards-discover-container">
+              {showResults &&
+                discover.length > 1 &&
+                discover.map((discover) => (
+                  <Card
+                    id={discover.id}
+                    src={discover.poster_path}
+                    title={
+                      mediaAdvance === "tv"
+                        ? discover.name
+                        : discover.original_title
+                    }
+                    votes={discover.vote_average}
+                    key={discover.id}
+                    mediatype={mediaAdvance}
+                  />
+                ))}
+            </Container>
+            {discoverMaxPage !== 0 && showResults && discover.length > 1 && (
               <Container>
                 {discover.length > 1 && (
                   <Pagination
                     page={searchPage}
-                    maxPage={searchMaxPage}
+                    maxPage={discoverMaxPage}
                     setPage={setSearchPage}
                   />
                 )}

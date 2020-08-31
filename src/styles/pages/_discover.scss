@@ -22,33 +22,53 @@
   }
 
   @include media($md-breakpoint) {
-    min-height: calc(100vh - 133px);
+    min-height: calc(100vh - 410px);
+
   }
+
+  @include media($md-breakpoint) {
+    min-height: calc(100vh - 433px);
+
+  }
+
+  &.main-results-container {
+    @include media($md-breakpoint) {
+      min-height: calc(100vh - 107px);
+    }
+    @include media($sm-breakpoint) {
+      min-height: calc(100vh - 133px);
+    }
+  }
+
+
+
+}
+
+.cards-discover-container,
+.cards-results-container {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
 }
 
 .results-container {
+  margin-top: 200px;
   transition: 0.3s ease-in;
   width: calc(100vw - 100px);
-  min-height: calc(100vh - 200px);
+  // min-height: calc(100vh - 200px);
   position: relative;
   left: 100px;
-  height: calc(100% - 100px);
   min-height: calc(100vh - 400px);
+  height: 100%;
   background-color: $background-darkmode;
   @include flex(row, space-evenly, center);
   flex-wrap: wrap;
   transition: 0.3s ease-in;
 
-  &.discover-results-container {
-    @include media($sm-breakpoint) {
-      width: 100%;
-      min-height: 1px;
-      height: fit-content;
-      margin-bottom: 60px;
-      left: 0;
-      top: 60px;
-    }
+  @media(max-width: $md-breakpoint) {
+    margin-top: 50px;
   }
+
+
 
   @include media($md-breakpoint) {
     width: 100%;
@@ -58,6 +78,7 @@
     left: 0;
     top: 360px;
   }
+
 
   &.light {
     background-color: $background-lightmode;
@@ -79,14 +100,51 @@
   }
 }
 
-.main-discover-filter-container {
+.discover-results-container {
+  margin-top: 200px;
+  transition: 0.3s ease-in;
   width: calc(100vw - 100px);
+  position: relative;
+  left: 100px;
+  min-height: calc(100vh - 400px);
+  height: 100%;
+  background-color: $background-darkmode;
+  @include flex(row, space-evenly, center);
+  flex-wrap: wrap;
+  transition: 0.3s ease-in;
+
+
+  @media(max-width: $md-breakpoint) {
+    top: 0;
+    margin-bottom: 0;
+    margin-top: 100px;
+  }
+
+  @include media($sm-breakpoint) {
+    width: 100%;
+    min-height: 1px;
+    height: fit-content;
+    margin-bottom: 60px;
+    left: 0;
+    top: 60px;
+  }
+}
+
+.main-discover-filter-container {
+  box-sizing: border-box;
+  width: calc(100vw - 100px);
+  position: absolute;
   margin-left: 100px;
   height: 150px;
   background-color: $background-footer-darkmode;
   padding: 0 0 20px 80px;
   @include flex(column, space-evenly, flex-start);
   transition: 0.3s ease-in;
+
+  @include media($lg-breakpoint) {
+    padding: 10px 0 10px 80px;
+
+  }
 
   @include media($md-breakpoint) {
     position: relative;
@@ -120,6 +178,12 @@
     height: 70%;
     @include flex(row, space-between, center);
 
+    @include media($lg-breakpoint) {
+      width: 85%;
+      height: 35%;
+
+    }
+
     @include media($md-breakpoint) {
       @include flex(column, space-between, flex-start);
       width: 100%;
@@ -141,7 +205,7 @@
         width: 60%;
       }
 
-      & > option {
+      &>option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
@@ -169,6 +233,7 @@
 
 .search-discover-icon {
   background-color: transparent;
+
   @include media($md-breakpoint) {
     width: 80%;
     @include flex(row, flex-end, center);

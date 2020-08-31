@@ -19,6 +19,7 @@
   }
 
   .footer-rights-container {
+    box-sizing: border-box;
     width: calc(100% - 100px);
     padding: 25px 0 0 25px;
     @include flex(column, space-evenly, center);

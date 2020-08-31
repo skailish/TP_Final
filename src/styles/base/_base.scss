@@ -37,12 +37,12 @@ h5 {
 .main-aside-container {
   display: flex;
   flex-direction: column;
-  width: 99.2vw;
+  width: 100vw;
   overflow: hidden;
 
-  @include media($lg-breakpoint) {
-    width: 100vw;
-  }
+  // @include media($lg-breakpoint) {
+  //   width: 100vw;
+  // }
 }
 
 .category-pagination-container {

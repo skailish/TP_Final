@@ -3,6 +3,7 @@
   position: relative;
   width: calc(100vw - 100px);
   height: 620px;
+
   @include media($md-breakpoint) {
     width: 100%;
     left: 0;
@@ -15,7 +16,6 @@
 
   @include media($sm-breakpoint) {
     width: 100vw;
-    margin-left: 20px;
     margin-top: 30px;
   }
 
@@ -53,6 +53,7 @@
         font-size: 18px;
         transition: 0.3s;
       }
+
       @include media($md-breakpoint) {
         padding-bottom: 0;
       }
@@ -83,19 +84,27 @@
     height: 90%;
     display: flex;
     scroll-snap-type: x mandatory;
-    position: absolute;
+    // position: absolute;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-align: center;
     scroll-behavior: smooth;
-    scroll-padding: 15px;
+
+    // scroll-padding: 15px;
     &.light {
       background-color: $background-lightmode;
     }
+
     @include media($md-breakpoint) {
       height: fit-content;
-      padding: 20px;
-      margin: 20px;
+      padding: 20px 15px;
+      margin: 20px 0;
+    }
+
+    @include media($sm-breakpoint) {
+
+      padding: 20px 60px;
+
     }
 
     &::-webkit-scrollbar {
@@ -110,10 +119,7 @@
       background: $main-text-lightmode;
       height: 30px;
     }
-    @include media($md-breakpoint) {
-      margin: 25px 0px 0px 0px;
-      padding: 25px 0px 0px 0px;
-    }
+
   }
 
   & img {
@@ -129,7 +135,7 @@
 .chevron-container {
   cursor: pointer;
   position: absolute;
-  height: 75%;
+  height: 80%;
   width: 60px;
   background-color: rgba(27, 38, 44, 0.8);
   outline: none;
@@ -169,10 +175,6 @@
 
   &.chevron-right {
     right: 0;
-
-    @include media($md-breakpoint) {
-      right: 12px;
-    }
   }
 
   &.chevron-left {
@@ -184,9 +186,10 @@
   @media (max-width: $lg-breakpoint) {
     top: 40px;
   }
+
   @include media($md-breakpoint) {
     width: 40px;
-    top: 70px;
+    top: 90px;
   }
 }
 

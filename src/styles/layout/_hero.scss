@@ -46,14 +46,13 @@
   z-index: 0;
   background-color: black;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: absolute;
   right: 0;
   top: 0;
 
   @include media($sm-breakpoint) {
-    left: auto;
+    // left: auto;
+    right: -33%;
   }
 }
 
@@ -109,6 +108,7 @@
       & button.light:focus {
         background-color: transparent;
       }
+
       & button:hover,
       & button:focus {
         background-color: transparent;

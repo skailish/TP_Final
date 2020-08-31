@@ -5,12 +5,17 @@
   width: calc(100%-100px);
   margin-left: 100px;
   z-index: 100;
+  @include media($lg-breakpoint) {
+   margin-left: 0;
+
+  }
   @include media($md-breakpoint) {
     width: 100%;
     left: 0;
     margin: 0;
     padding: 0;
     padding-bottom: 10px;
+
   }
   .pagination-button,
   .pagination-arrow,

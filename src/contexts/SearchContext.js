@@ -20,6 +20,7 @@ const SearchProvider = ({ children }) => {
   const [chosenYear, setChosenYear] = useState("");
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
+  const [discoverMaxPage, setDiscoverMaxPage] = useState(1000);
   const [yearEndPoint, setYearEndPoint] = useState("");
 
   const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
@@ -54,7 +55,7 @@ const SearchProvider = ({ children }) => {
 
   const handleYearChange = (event) => {
     setChosenYear(event.target.value);
-    console.log(event.target.value);
+    
   };
 
   const handleOrderByChange = (event) => {
@@ -179,7 +180,7 @@ const SearchProvider = ({ children }) => {
       const dataJson = await response.json();
 
       setDiscover(dataJson.results);
-      setSearchMaxPage(dataJson.total_pages);
+      setDiscoverMaxPage(dataJson.total_pages);
       orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
     };
     getResults();
@@ -212,6 +213,7 @@ const SearchProvider = ({ children }) => {
         showResults,
         searchMaxPage,
         genresAdvance,
+        discoverMaxPage,
         handleSearchBarVisibleClick,
         handleMediaClick,
         setSearchVisible,
@@ -226,6 +228,7 @@ const SearchProvider = ({ children }) => {
         handleShowResultsClick,
         setSearchPage,
         setNewSearch,
+        setShowResults,
       }}
     >
       {children}

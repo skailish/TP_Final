@@ -20,11 +20,20 @@ const DataProvider = ({ children }) => {
       );
       const dataJson = await response.json();
       setData(dataJson.results[indexRandom]);
-      const date =
-        dataJson.results[indexRandom].media_type === "movie"
-          ? dataJson.results[indexRandom].release_date.split("-")[0]
-          : dataJson.results[indexRandom].first_air_date.split("-")[0];
-      setYear(date);
+
+      if (
+        dataJson.results[indexRandom].release_date ||
+        dataJson.results[indexRandom].first_air_date
+      ) {
+        const date =
+          dataJson.results[indexRandom].media_type === "movie"
+            ? dataJson.results[indexRandom].release_date.split("-")[0]
+            : dataJson.results[indexRandom].first_air_date.split("-")[0];
+        setYear(date);
+      } else {
+        setYear("");
+      }
+
       setVoteAverage(dataJson.results[indexRandom].vote_average);
       setMediatype(dataJson.results[indexRandom].media_type);
       setIsLoading(false);

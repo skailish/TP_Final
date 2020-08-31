@@ -7,6 +7,7 @@
   transition: 0.3s ease-in;
   position: fixed;
   z-index: 800;
+  box-sizing: border-box;
 
   & .responsive-nav-link {
     padding: 20px;

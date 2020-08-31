@@ -20,6 +20,7 @@ const SearchBar = () => {
     handleInputChange,
     handleCloseSearchClick,
     setNewSearch,
+    setShowResults,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
   const history = useHistory();
@@ -27,6 +28,7 @@ const SearchBar = () => {
   const handleClick = () => {
     history.push("/discover");
     setNewSearch(true);
+    setShowResults(false);
   };
 
   return (

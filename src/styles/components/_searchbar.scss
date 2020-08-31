@@ -129,6 +129,10 @@
       width: 60%;
       padding-top: 10px;
 
+      @include media($lg-breakpoint) {
+        margin-left: 15px;
+      }
+
       @include media($sm-breakpoint) {
         width: 90%;
       }
@@ -145,7 +149,7 @@
         font-size: 18px;
         transition: ease-in 0.5s;
 
-        @include media($sm-breakpoint) {
+        @include media($md-breakpoint) {
           width: 80%;
           padding-left: 3px;
           margin-right: 3px;
@@ -163,6 +167,7 @@
             background-color: $background-footer-lightmode;
             border-bottom: 1px solid #992e2e;
             color: $third-color-lightmode;
+            
           }
         }
 
