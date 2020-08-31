@@ -4,7 +4,10 @@
     width: calc(100vw - 100px);
     position: relative;
     left: 100px;
-
+    @include media($md-breakpoint) {
+        left: 0;
+        width: 100%;
+    }
     .error-background-container {
         position: absolute;
         width: 100%;
@@ -12,6 +15,10 @@
         background-image: url(../../images/Upside-Down-S2.png);
         background-position-y: center;
         opacity: 0.9;
+        @include media($md-breakpoint) {
+            left: 0;
+            background-size: cover;
+        }
     }
 
     .error-heading-container {
@@ -19,12 +26,13 @@
         text-align: center;
         padding-top: 65px;
 
-
-
         .error-heading {
             font-family: "ITC Benguiat";
             font-size: 50px;
-
+            @include media($md-breakpoint) {
+                padding: 30px;
+                font-size: 30px;
+            }
         }
 
         .error-redirection-container {
@@ -36,7 +44,11 @@
             font-weight: normal;
             font-size: 23px;
             line-height: 35px;
-
+            @include media($md-breakpoint) {
+                font-size: 20px;
+                line-height: 23px;
+                padding: 5px 20px;
+            }
         }
 
         .error-link {
@@ -74,7 +86,6 @@
     }
 }
 
-
 @keyframes StrangersHeadingFade {
     0% {
         opacity: 1;
@@ -99,8 +110,6 @@
         opacity: 1;
     }
 
-
-
     50% {
         opacity: 0;
     }
@@ -117,7 +126,6 @@
         opacity: 1;
     }
 
-
     94% {
         opacity: 0;
     }
@@ -133,7 +141,6 @@
     100% {
         opacity: 1;
     }
-
 }
 
 .error-heading {

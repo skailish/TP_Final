@@ -82,7 +82,7 @@ const Trailer = () => {
         <Container className={`main-error-container ${theme}`}>
           <Image src={img} className="error-img" />
           <Heading classname={`${theme}`} id="error-trailer-heading" level={1}>
-            ...Ups, this {media === "movie" ? media : "TV show"} doesn´t have a
+            ...Ups, this {media === "movie" ? media : "TV show"} doesn't have a
             trailer.
           </Heading>
         </Container>

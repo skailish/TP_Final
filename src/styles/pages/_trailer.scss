@@ -16,7 +16,6 @@
     justify-content: center;
     height: calc(100vh - 250px);
     margin: 0px 0 0 0;
-    
   }
 
   @include media($sm-breakpoint) {
@@ -44,7 +43,6 @@
     }
     @include media($sm-breakpoint) {
       width: 95%;
-    
     }
   }
 }
@@ -53,10 +51,18 @@
   height: 100%;
   line-height: 120px;
   min-height: calc(100vh - 200px);
-
+  @include media($md-breakpoint) {
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+  }
   .error-img {
     width: 500px;
     border-radius: 10px;
+    @include media($sm-breakpoint) {
+      margin-bottom: 20px;
+      width: 90%;
+    }
   }
 
   &.light {
@@ -74,7 +80,7 @@
 .go-back-container {
   width: calc(100% - 100px);
   background-color: transparent;
-  margin-left:  100px;
+  margin-left: 100px;
   @include flex(row, flex-start, center);
   height: 80px;
   padding-left: 15px;
@@ -89,7 +95,7 @@
     width: 100%;
   }
 
-  .go-back-button{
+  .go-back-button {
     @include flex(row, flex-start, center);
     background-color: transparent;
     cursor: pointer;
@@ -98,7 +104,7 @@
     outline: none;
     width: 300px;
     transition: 0.3s ease-in;
-    
+
     &.light {
       color: $main-text-lightmode;
     }
@@ -110,13 +116,10 @@
       &.light {
         color: $secondary-color-lightmode;
       }
-  
     }
-      .go-back-text {
-        font-size: 20px;
-        padding-left: 10px;
-      }
-   
+    .go-back-text {
+      font-size: 20px;
+      padding-left: 10px;
+    }
   }
-
 }
