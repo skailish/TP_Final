@@ -1,7 +1,7 @@
 .cardlistpreview-container {
   padding-top: 35px;
   position: relative;
-  width: calc(100% - 100px);
+  width: calc(100vw - 100px);
   height: 620px;
 
   @include media($md-breakpoint) {
@@ -80,7 +80,7 @@
     padding: 25px 0px 0px 0px;
     margin: 25px 0 0 35px;
     overflow: hidden;
-    width: 100%;
+    width: 95%;
     height: 90%;
     display: flex;
     scroll-snap-type: x mandatory;
@@ -89,9 +89,9 @@
     overflow-y: hidden;
     scroll-snap-align: center;
     scroll-behavior: smooth;
-    scroll-padding: 15px;
+    scroll-padding: 10px ;
 
-
+  
     &.light {
       background-color: $background-lightmode;
     }
