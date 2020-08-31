@@ -24,6 +24,7 @@
     top: 45px;
     left: 65px;
     position: absolute;
+    z-index: 90;
 
     @include media($md-breakpoint) {
       left: 35px;
@@ -88,7 +89,9 @@
     scroll-snap-align: center;
     scroll-behavior: smooth;
     scroll-padding: 15px;
-
+    &.light {
+      background-color: $background-lightmode;
+    }
     @include media($md-breakpoint) {
       height: fit-content;
       padding: 20px;

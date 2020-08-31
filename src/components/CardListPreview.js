@@ -69,7 +69,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
           </Link>
         </Container>
         <Container
-          className="media-container"
+          className={`media-container ${theme}`}
           id="media-container"
           forwarderRef={mediaRef}
         >

@@ -64,7 +64,7 @@ const Movies = () => {
         dataMovieTop &&
         dataMovieUpcoming &&
         dataNowPlaying && (
-          <Container className="main-container">
+      <Container className={`main-container ${theme}`}>
             <ScrollToTop />
             <Hero
               data={dataMovieRandom}

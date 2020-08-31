@@ -105,7 +105,7 @@ const TVSeries = () => {
           dataTvShow &&
           voteAverage &&
           year !== 0 && (
-            <Container className="main-container">
+      <Container className={`main-container ${theme}`}>
               <ScrollToTop />
               <Hero
                 data={dataTvShowRandom}
