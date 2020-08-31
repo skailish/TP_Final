@@ -4,10 +4,22 @@
     width: calc(100vw - 100px);
     position: relative;
     left: 100px;
+
+    @include media($lg-breakpoint) {
+        min-height: calc(100vh - 200px);
+    }
+
     @include media($md-breakpoint) {
+        min-height: calc(100vh - 106px);
         left: 0;
         width: 100%;
     }
+
+    @include media($sm-breakpoint) {
+        min-height: calc(100vh - 128px);
+
+    }
+
     .error-background-container {
         position: absolute;
         width: 100%;
@@ -15,7 +27,8 @@
         background-image: url(../../images/Upside-Down-S2.png);
         background-position-y: center;
         opacity: 0.9;
-        @include media($md-breakpoint) {
+
+        @include media($lg-breakpoint) {
             background-size: cover;
             background-position-x: center;
         }
@@ -29,6 +42,7 @@
         .error-heading {
             font-family: "ITC Benguiat";
             font-size: 50px;
+
             @include media($md-breakpoint) {
                 padding-top: 30px;
                 font-size: 30px;
@@ -37,6 +51,7 @@
 
         .error-redirection-container {
             margin-top: 55px;
+
             @include media($md-breakpoint) {
                 margin-top: 10px;
             }
@@ -47,6 +62,7 @@
             font-weight: normal;
             font-size: 23px;
             line-height: 35px;
+
             @include media($md-breakpoint) {
                 font-size: 13px;
                 line-height: 15px;
@@ -101,6 +117,7 @@
     4% {
         opacity: 1;
     }
+
     6% {
         opacity: 0;
     }
