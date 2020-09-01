@@ -5,10 +5,19 @@
   left: 100px;
   @include flex(row, center, center);
   transition: 0.3s ease-in-out;
+
   @include media($md-breakpoint) {
+    min-height: calc(100vh - 110px);
+    text-align: center;
     width: 100%;
     margin: 0;
-    padding: 0;
+    left: 0;
+  }
+  @include media($sm-breakpoint) {
+    min-height: calc(100vh - 123px);
+    text-align: center;
+    width: 100%;
+    margin: 0;
     left: 0;
   }
   &.light {
@@ -23,6 +32,15 @@
     &.light {
       transition: 0.3s ease-in-out;
       color: $main-text-lightmode;
+    }
+    @include media($md-breakpoint) {
+      font-size: 30px;
+    }
+    @include media($sm-breakpoint) {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      width: 90%;
     }
   }
 }
