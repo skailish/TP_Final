@@ -30,6 +30,9 @@
       margin: 0 20px;
       padding: 20px;
     }
+    @include media($sm-breakpoint) {
+      width: 100%;
+    }
     & p {
       line-height: 25px;
       @include media($md-breakpoint) {

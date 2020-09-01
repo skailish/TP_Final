@@ -102,7 +102,7 @@
     }
 
     @include media($sm-breakpoint) {
-      padding: 20px 0;
+      padding: 20px 0px;
       // width: 95%;
     }
 
@@ -142,10 +142,11 @@
   z-index: 100;
   border: none;
   transition: 0.3s;
-  @include media(600px) {
+
+  @include media($sm-breakpoint) {
     display: none;
   }
-  
+
   &:hover {
     transition: 0.3s;
     background-color: rgba(27, 38, 44, 0.8);
