@@ -24,6 +24,15 @@
   @include media($xs-breakpoint) {
     min-height: calc(100vh - 135px);
   }
+
+  @media (max-width: 320px) {
+    min-height: calc(100vh - 127px);
+  }
+
+  @media (max-width: 280px) {
+    min-height: calc(100vh - 150px);
+  }
+
   &.light {
     background-color: $background-lightmode;
     transition: 0.3s ease-in-out;
