@@ -45,14 +45,14 @@ const TVSeries = () => {
         !dataTvShow ||
         !voteAverage ||
         !year) && (
-        <Container className={`onLoading-Container ${theme}`}>
-          {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100" />
-          ) : (
-            <BounceLoader css={overrideLight} size="100" />
-          )}
-        </Container>
-      )}
+          <Container className={`onLoading-Container ${theme}`}>
+            {theme === "dark" ? (
+              <BounceLoader css={overrideDark} size="100" />
+            ) : (
+                <BounceLoader css={overrideLight} size="100" />
+              )}
+          </Container>
+        )}
       {!isLoadingTvShow &&
         dataTvShowRandom &&
         dataTodayTv &&
@@ -98,48 +98,48 @@ const TVSeries = () => {
         )}
       {console.log(
         !isLoadingTvShow &&
-          dataTvShowRandom &&
-          dataTodayTv &&
-          dataCurrentTv &&
-          dataTvTop &&
-          dataTvShow &&
-          voteAverage &&
-          year !== 0 && (
-      <Container className={`main-container ${theme}`}>
-              <ScrollToTop />
-              <Hero
-                data={dataTvShowRandom}
-                year={year}
-                voteAverage={voteAverage}
-                mediatype="tv"
-              />
-              <CardListPreview
-                mediatype="tv"
-                data={dataTvShow}
-                sectionTitle="Popular TV Shows"
-                category="popular"
-              />
+        dataTvShowRandom &&
+        dataTodayTv &&
+        dataCurrentTv &&
+        dataTvTop &&
+        dataTvShow &&
+        voteAverage &&
+        year !== 0 && (
+          <Container className={`main-container ${theme}`}>
+            <ScrollToTop />
+            <Hero
+              data={dataTvShowRandom}
+              year={year}
+              voteAverage={voteAverage}
+              mediatype="tv"
+            />
+            <CardListPreview
+              mediatype="tv"
+              data={dataTvShow}
+              sectionTitle="Popular TV Shows"
+              category="popular"
+            />
 
-              <CardListPreview
-                mediatype="tv"
-                data={dataTvTop}
-                sectionTitle="Top Rated TV Shows"
-                category="top_rated"
-              />
-              <CardListPreview
-                mediatype="tv"
-                data={dataCurrentTv}
-                sectionTitle="Currently Airing TV Shows"
-                category="on_the_air"
-              />
-              <CardListPreview
-                mediatype="tv"
-                data={dataTodayTv}
-                sectionTitle="TV Shows Airing Today"
-                category="airing_today"
-              />
-            </Container>
-          )
+            <CardListPreview
+              mediatype="tv"
+              data={dataTvTop}
+              sectionTitle="Top Rated TV Shows"
+              category="top_rated"
+            />
+            <CardListPreview
+              mediatype="tv"
+              data={dataCurrentTv}
+              sectionTitle="Currently Airing TV Shows"
+              category="on_the_air"
+            />
+            <CardListPreview
+              mediatype="tv"
+              data={dataTodayTv}
+              sectionTitle="TV Shows Airing Today"
+              category="airing_today"
+            />
+          </Container>
+        )
       )}
     </>
   );

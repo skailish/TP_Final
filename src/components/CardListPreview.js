@@ -21,6 +21,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   const [showRightBar, setShowRightBar] = useState(true);
   const [widthScreen, setWidthScreen] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
+  const windowWidth = window.innerWidth;
 
   useEffect(() => {
     setWidthScreen(mediaContainerRef.current.scrollWidth);
@@ -28,16 +29,21 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {
-    mediaRef.current.scrollLeft -= widthScreen - 20;
-    mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
-    setShowRightBar(true);
+    if (windowWidth > 480) {
+      mediaRef.current.scrollLeft -= widthScreen - 20;
+      mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
+      setShowRightBar(true);
+    }
   };
 
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
     mediaRef.current.scrollLeft += widthScreen - 120;
-    mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
-      setShowRightBar(false);
-    setShowLeftBar(true);
+    if (windowWidth > 480) {
+
+      mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
+        setShowRightBar(false);
+      setShowLeftBar(true);
+    }
   };
 
   return (

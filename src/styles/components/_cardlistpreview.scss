@@ -91,11 +91,9 @@
     scroll-behavior: smooth;
     scroll-padding: 15px;
 
-  
     &.light {
       background-color: $background-lightmode;
     }
-
 
     @include media($md-breakpoint) {
       height: fit-content;
@@ -120,7 +118,6 @@
       background: $main-text-lightmode;
       height: 30px;
     }
-
   }
 
   & img {
@@ -145,7 +142,10 @@
   z-index: 100;
   border: none;
   transition: 0.3s;
-
+  @include media(600px) {
+    display: none;
+  }
+  
   &:hover {
     transition: 0.3s;
     background-color: rgba(27, 38, 44, 0.8);
