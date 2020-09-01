@@ -91,11 +91,9 @@
     scroll-behavior: smooth;
     scroll-padding: 15px;
 
-  
     &.light {
       background-color: $background-lightmode;
     }
-
 
     @include media($md-breakpoint) {
       height: fit-content;
@@ -104,7 +102,7 @@
     }
 
     @include media($sm-breakpoint) {
-      padding: 20px 0;
+      padding: 20px 0px;
       // width: 95%;
     }
 
@@ -120,7 +118,6 @@
       background: $main-text-lightmode;
       height: 30px;
     }
-
   }
 
   & img {

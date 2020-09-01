@@ -28,13 +28,13 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {
-    mediaRef.current.scrollLeft -= widthScreen;
+    mediaRef.current.scrollLeft -= widthScreen - 20;
     mediaRef.current.scrollLeft <= widthScreen && setShowLeftBar(false);
     setShowRightBar(true);
   };
 
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
-    mediaRef.current.scrollLeft += widthScreen;
+    mediaRef.current.scrollLeft += widthScreen - 120;
     mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
       setShowRightBar(false);
     setShowLeftBar(true);
@@ -44,7 +44,7 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
     data &&
     favsArray && (
       <Container
-        className={`cardlistpreview-container ${theme} `}
+        className={`cardlistpreview-container  cardlistpreview-favs ${theme} `}
         forwarderRef={mediaContainerRef}
       >
         {showLeftBar && (

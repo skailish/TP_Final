@@ -57,6 +57,12 @@
       transition: 0.3s ease-in-out;
       color: $main-text-lightmode;
     }
+    @include media($lg-breakpoint) {
+      margin-top: 60px;
+    }
+    @include media($sm-breakpoint) {
+      font-size: 30px;
+    }
   }
 
   .favs-subheading {
@@ -69,6 +75,43 @@
     &.light {
       transition: 0.3s ease-in-out;
       color: $main-text-lightmode;
+    }
+    @include media($lg-breakpoint) {
+      padding: 30px 0 0 70px;
+    }
+    @include media($md-breakpoint) {
+      display: inline-block;
+      padding: 20px 0 0 0;
+      font-size: 30px;
+    }
+    @include media($sm-breakpoint) {
+      font-size: 20px;
+    }
+  }
+
+  .cardlistpreview-favs .media-container {
+    @include media($lg-breakpoint) {
+      padding: 0;
+      margin-top: 0;
+      width: 95%;
+    }
+    @include media($md-breakpoint) {
+      padding: 0;
+      margin-left: 50px;
+      width: 95%;
+    }
+  }
+
+  .cardlistpreview-favs {
+    @include media($sm-breakpoint) {
+      margin-top: 0;
+      padding: 5px 10px 0 10px;
+      .chevron-container {
+        display: none;
+      }
+      .media-container {
+        margin: 5px 10px;
+      }
     }
   }
 
