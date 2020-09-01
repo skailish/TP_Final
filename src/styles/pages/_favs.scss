@@ -3,22 +3,26 @@
   width: calc(100vw -100px);
   position: relative;
   left: 100px;
+
   @include flex(row, center, center);
   transition: 0.3s ease-in-out;
 
   @include media($md-breakpoint) {
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - 107px);
     text-align: center;
     width: 100%;
     margin: 0;
     left: 0;
   }
   @include media($sm-breakpoint) {
-    min-height: calc(100vh - 133px);
-    text-align: center;
-    width: 100%;
-    margin: 0;
-    left: 0;
+    min-height: calc(100vh - 134px);
+  }
+  @media (max-width: 450px) and (min-width: 414px) {
+    min-height: calc(100vh - 122px);
+  }
+
+  @include media($xs-breakpoint) {
+    min-height: calc(100vh - 135px);
   }
   &.light {
     background-color: $background-lightmode;
@@ -56,16 +60,25 @@
   text-align: center;
   transition: 0.3s ease-in-out;
   @include flex(column, space-evenly, center);
-  @include media($md-breakpoint) {
+
+  @include media($lg-breakpoint) {
     width: 100%;
     margin: 0;
     left: 0;
+    padding-top: 30px;
   }
+
   &.light {
     transition: 0.3s ease-in-out;
     background-color: $background-lightmode;
   }
 
+  .favs-carousel-container {
+    @include media($md-breakpoint) {
+      @include flex(column, center, center);
+      width: 90%;
+    }
+  }
   .favs-heading {
     font-size: 40px;
     color: $main-text-darkmode;
@@ -107,40 +120,23 @@
     }
   }
 
-  .cardlistpreview-favs .media-container {
-    @include media($lg-breakpoint) {
-      padding: 0;
-      margin-top: 0;
-      width: 95%;
-    }
-    @include media($md-breakpoint) {
-      padding: 0;
-      margin-left: 50px;
-      width: 95%;
-    }
-  }
-
-  .cardlistpreview-favs {
-    @include media($sm-breakpoint) {
-      margin-top: 0;
-      padding: 5px 10px 0 10px;
-      .chevron-container {
-        display: none;
-      }
-      .media-container {
-        margin: 5px 10px;
-      }
-    }
-  }
-
   .favs-cards-container {
     @include flex(row, space-evenly, center);
     width: calc(100vw - 100px);
-    @include media($md-breakpoint) {
+
+    .cardlistpreview-container {
+      @include media($sm-breakpoint) {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    @include media($lg-breakpoint) {
       width: 100%;
       margin: 0;
       left: 0;
     }
+
     flex-wrap: wrap;
     position: relative;
   }

@@ -44,7 +44,7 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
     data &&
     favsArray && (
       <Container
-        className={`cardlistpreview-container  cardlistpreview-favs ${theme} `}
+        className={`cardlistpreview-container  ${theme} `}
         forwarderRef={mediaContainerRef}
       >
         {showLeftBar && (
@@ -74,7 +74,7 @@ const FavsCarousel = ({ mediatype, data, sectionTitle }) => {
               />
             ))}
         </Container>
-        {console.log(widthScreen, scrollWidth)}
+
         {showRightBar && widthScreen - scrollWidth < 60 && (
           <Button
             className={`chevron-container chevron-right ${theme} `}

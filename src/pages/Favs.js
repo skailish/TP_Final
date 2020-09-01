@@ -69,7 +69,7 @@ const Favs = ({ user }) => {
             <Heading level={1} className={`favs-heading ${theme}`}>
               Your Favorites
             </Heading>
-            <Container>
+            <Container className={`favs-carousel-container ${theme}`}>
               {moviesArray.length > 0 && (
                 <Heading level={2} className={`favs-subheading ${theme}`}>
                   Your Movies
@@ -78,16 +78,15 @@ const Favs = ({ user }) => {
               <Container className={`favs-cards-container ${theme}`}>
                 <FavsCarousel mediatype="movie" data={moviesArray} />
               </Container>
-              <Container>
-                {seriesArray.length > 0 && (
-                  <Heading level={2} className={`favs-subheading ${theme}`}>
-                    Your Series
-                  </Heading>
-                )}
 
-                <Container className={`favs-cards-container ${theme}`}>
-                  <FavsCarousel mediatype="tv" data={seriesArray} />
-                </Container>
+              {seriesArray.length > 0 && (
+                <Heading level={2} className={`favs-subheading ${theme}`}>
+                  Your Series
+                </Heading>
+              )}
+
+              <Container className={`favs-cards-container ${theme}`}>
+                <FavsCarousel mediatype="tv" data={seriesArray} />
               </Container>
             </Container>
           </Container>

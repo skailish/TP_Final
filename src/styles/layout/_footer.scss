@@ -32,6 +32,7 @@
     }
     @include media($sm-breakpoint) {
       width: 100%;
+      margin: 0;
     }
     & p {
       line-height: 25px;
