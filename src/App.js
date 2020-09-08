@@ -6,24 +6,26 @@ import {
   Redirect,
 } from "react-router-dom";
 import firebase from "configs/firebase";
-import Aside from "./components/Aside";
-import Footer from "./components/Footer";
-import Container from "./components/primitive/Container";
-import Movies from "./pages/Movies";
-import Home from "./pages/Home";
-import TVSeries from "./pages/TVSeries";
-import Categories from "./pages/categories/Categories";
-import TVShow from "./pages/TVShow";
-import Trailer from "./pages/Trailer";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import ErrorPage from "./pages/ErrorPage";
-import Movie from "./pages/Movie";
+
+import { Aside, Footer, Container, SearchBar } from "./components";
+
+import {
+  Movies,
+  Home,
+  TVSeries,
+  Categories,
+  TVShow,
+  Trailer,
+  Login,
+  Signup,
+  ErrorPage,
+  Movie,
+  Favs,
+  Discover,
+} from "./pages";
+
 import UserContext from "./contexts/UserContext";
-import Favs from "./pages/Favs";
-import SearchBar from "./components/SearchBar";
 import FavsContext from "./contexts/FavsContext";
-import Discover from "./pages/Discover";
 
 function App() {
   const { user, setUser } = useContext(UserContext);

@@ -7,16 +7,11 @@ import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import { ArrowBack } from "@styled-icons/ionicons-outline/ArrowBack";
 
-import Container from "../components/primitive/Container";
-import Heading from "../components/primitive/Heading";
-import Button from "../components/primitive/Button";
-import Image from "../components/primitive/Image";
-import Text from "../components/primitive/Text";
+import { Container, Heading, Button, Image, Text } from "../components";
+
 import img from "../images/Error.png";
 
 import ThemeContext from "../contexts/ThemeContext";
-
-
 
 const overrideDark = css`
   & div {
@@ -58,7 +53,7 @@ const Trailer = () => {
   }, []);
 
   const handleGoBackClick = () => {
-    history.goBack()
+    history.goBack();
   };
 
   return (

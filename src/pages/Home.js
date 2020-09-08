@@ -3,10 +3,7 @@ import React, { useContext } from "react";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import Hero from "../components/Hero";
-import Container from "../components/primitive/Container";
-import CardListPreview from "../components/CardListPreview";
-import ScrollToTop from "../components/ScrollToTop";
+import { Hero, Container, CardListPreview, ScrollToTop } from "../components";
 
 import DataContext from "../contexts/DataContext";
 import MovieContext from "../contexts/MovieContext";

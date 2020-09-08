@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 
 import { Search } from "@styled-icons/bootstrap/Search";
 
-import Container from "components/primitive/Container";
-import Card from "components/Card";
-import Select from "components/primitive/Select";
-import Option from "components/primitive/Option";
-import Text from "components/primitive/Text";
-import Button from "components/primitive/Button";
-import Pagination from "components/Pagination";
-import Heading from "components/primitive/Heading";
-import ScrollToTop from "components/ScrollToTop";
+import {
+  Container,
+  Card,
+  Select,
+  Option,
+  Text,
+  Button,
+  Pagination,
+  Heading,
+  ScrollToTop,
+} from "components";
 
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -178,22 +180,26 @@ const Discover = () => {
         </Container>
       )}
 
-      <Container className={`results-pagination-container ${searchVisible && "main-results-container"} ${theme}`}>
+      <Container
+        className={`results-pagination-container ${
+          searchVisible && "main-results-container"
+        } ${theme}`}
+      >
         {searchVisible && results && (
           <Container className={`results-container ${theme} `}>
             <Container className="cards-results-container">
-            {results &&
-              results.map((result) => (
-                <Card
-                  id={result.id}
-                  src={result.poster_path}
-                  title={media === "tv" ? result.name : result.title}
-                  votes={result.vote_average}
-                  key={result.id}
-                  mediatype={media}
-                />
-              ))}
-              </Container>
+              {results &&
+                results.map((result) => (
+                  <Card
+                    id={result.id}
+                    src={result.poster_path}
+                    title={media === "tv" ? result.name : result.title}
+                    votes={result.vote_average}
+                    key={result.id}
+                    mediatype={media}
+                  />
+                ))}
+            </Container>
             {searchMaxPage && (
               <Container>
                 <Pagination
@@ -207,9 +213,7 @@ const Discover = () => {
         )}
 
         {showResults && discover && (
-          <Container
-            className={`discover-results-container ${theme} `}
-          >
+          <Container className={`discover-results-container ${theme} `}>
             {showResults && discover.length === 0 && (
               <Heading className={`no-results-tilte ${theme}`}>
                 No results were found

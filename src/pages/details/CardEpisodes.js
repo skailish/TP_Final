@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
 
-import Container from "components/primitive/Container";
-import Text from "components/primitive/Text";
-import Heading from "components/primitive/Heading";
-import Image from "components/primitive/Image";
-import Span from "components/primitive/Span";
+import {Container, Text, Heading, Image, Span } from "components"
+
 import noImageFound from "../../images/image-not-found-scaled-1150x647.png";
 
 import ImageContext from "contexts/ImageContext";

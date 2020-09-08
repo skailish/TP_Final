@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 
-import Container from "../../components/primitive/Container";
-import Image from "../../components/primitive/Image";
-import Text from "../../components/primitive/Text";
-import Heading from "../../components/primitive/Heading";
-import Span from "../../components/primitive/Span";
-import List from "../../components/primitive/List";
-import ListItem from "../../components/primitive/ListItem";
+import {
+  Container,
+  Image,
+  Text,
+  Heading,
+  Span,
+  List,
+  ListItem,
+} from "../../components";
 
 import ImageContext from "../../contexts/ImageContext";
 import ThemeContext from "../../contexts/ThemeContext";

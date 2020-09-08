@@ -3,10 +3,7 @@ import React, { useContext } from "react";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import CardListPreview from "../components/CardListPreview";
-import Hero from "../components/Hero";
-import Container from "../components/primitive/Container";
-import ScrollToTop from "../components/ScrollToTop";
+import { CardListPreview, Hero, Container, ScrollToTop } from "../components";
 
 import MovieContext from "../contexts/MovieContext";
 import ThemeContext from "../contexts/ThemeContext";
@@ -64,7 +61,7 @@ const Movies = () => {
         dataMovieTop &&
         dataMovieUpcoming &&
         dataNowPlaying && (
-      <Container className={`main-container ${theme}`}>
+          <Container className={`main-container ${theme}`}>
             <ScrollToTop />
             <Hero
               data={dataMovieRandom}

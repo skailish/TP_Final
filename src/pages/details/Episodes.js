@@ -3,10 +3,7 @@ import API_KEY from "../../utils/API_KEY";
 
 import { useParams, useHistory } from "react-router-dom";
 
-import Container from "../../components/primitive/Container";
-import Text from "../../components/primitive/Text";
-import Select from "../../components/primitive/Select";
-import Option from "../../components/primitive/Option";
+import { Container, Text, Select, Option } from "../../components";
 
 import CardEpisodes from "pages/details/CardEpisodes";
 

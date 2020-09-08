@@ -8,15 +8,9 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
-import Container from "../components/primitive/Container";
-import Hero from "../components/Hero";
-import Nav from "../components/primitive/Nav";
-import ScrollToTop from "../components/ScrollToTop";
+import { Container, Hero, Nav, ScrollToTop } from "../components";
 
-import CategorySimilar from "./categories/CategorySimilar";
-import Overview from "./details/Overview";
-import Episodes from "./details/Episodes";
-import Cast from "./details/Cast";
+import { CategorySimilar, Overview, Episodes, Cast } from "../pages";
 
 import ThemeContext from "../contexts/ThemeContext";
 import TvShowContext from "../contexts/TvShowContext";

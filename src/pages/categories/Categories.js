@@ -4,13 +4,9 @@ import { useParams } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import Container from "../../components/primitive/Container";
-import Card from "../../components/Card";
-import Heading from "../../components/primitive/Heading";
-import ThemeContext from "../../contexts/ThemeContext";
-import Pagination from "../../components/Pagination";
-import ScrollToTop from "../../components/ScrollToTop";
+import {Container, Card, Heading, Pagination, ScrollToTop} from "../../components"
 
+import ThemeContext from "../../contexts/ThemeContext";
 import CategoryContext from "../../contexts/CategoryContext";
 import FavsContext from "../../contexts/FavsContext";
 

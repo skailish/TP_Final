@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import Container from "../components/primitive/Container";
-import Heading from "../components/primitive/Heading";
-import Link from "../components/primitive/Link";
+import { Container, Heading, Link } from "../components";
 
 const ErrorPage = () => {
   const history = useHistory();

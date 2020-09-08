@@ -8,13 +8,9 @@ import {
   Route,
 } from "react-router-dom";
 
-import Container from "../components/primitive/Container";
-import Hero from "../components/Hero";
-import Nav from "../components/primitive/Nav";
+import { Container, Hero, Nav } from "../components";
 
-import CategorySimilar from "./categories/CategorySimilar";
-import Overview from "../pages/details/Overview";
-import Cast from "../pages/details/Cast";
+import { CategorySimilar, Overview, Cast } from "../pages";
 
 import ThemeContext from "../contexts/ThemeContext";
 

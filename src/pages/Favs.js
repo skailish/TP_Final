@@ -3,10 +3,7 @@ import React, { useEffect, useContext } from "react";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import Container from "../components/primitive/Container";
-import Heading from "../components/primitive/Heading";
-import Card from "../components/Card";
-import ScrollToTop from "../components/ScrollToTop";
+import { Container, Heading, Card, ScrollToTop } from "../components";
 
 import ThemeContext from "../contexts/ThemeContext";
 import MovieContext from "../contexts/MovieContext";

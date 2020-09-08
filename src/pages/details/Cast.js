@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
-import Container from "../../components/primitive/Container";
-import CardCast from "../../components/CardCast";
+import {Container, CardCast} from "../../components"
 
 import ThemeContext from "../../contexts/ThemeContext";
 
