@@ -7,7 +7,14 @@ import {
 } from "react-router-dom";
 import firebase from "configs/firebase";
 
-import { Aside, Footer, Container, SearchBar } from "./components";
+import {
+  Aside,
+  Footer,
+  Container,
+  SearchBar,
+  NavGuest,
+  NavAuth,
+} from "./components";
 
 import {
   Movies,
@@ -50,7 +57,7 @@ function App() {
   return (
     <Container className="main-aside-container">
       <Router>
-        <Aside user={user} />
+        {user ? <NavAuth /> : <NavGuest />}
 
         <SearchBar />
 

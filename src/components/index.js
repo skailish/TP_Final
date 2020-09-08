@@ -30,6 +30,8 @@ import Star from "./Star";
 import Stars from "./Stars";
 import Votes from "./Votes";
 import ThemeToggle from "./ThemeToggle";
+import NavGuest from "./NavGuest";
+import NavAuth from "./NavAuth";
 
 export {
   Button,
@@ -63,4 +65,6 @@ export {
   Stars,
   Votes,
   ThemeToggle,
+  NavGuest,
+  NavAuth,
 };
