@@ -97,7 +97,7 @@ const TVSeries = () => {
             />
           </Container>
         )}
-      {console.log(
+      {/* {console.log(
         !isLoadingTvShow &&
           tvShowRandom &&
           todayTv &&
@@ -141,7 +141,7 @@ const TVSeries = () => {
               />
             </Container>
           )
-      )}
+      )} */}
     </>
   );
 };
