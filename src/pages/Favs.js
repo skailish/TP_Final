@@ -85,7 +85,7 @@ const Favs = () => {
                       mediatype="movie"
                       data={moviesArray}
                       sectionTitle="Your Favorites Movies"
-                      isFavs={false}
+                      isFavs={true}
                     />
                   )}
                   {seriesArray.length > 0 && (
@@ -93,7 +93,7 @@ const Favs = () => {
                       mediatype="tv"
                       data={seriesArray}
                       sectionTitle="Your Favorites Tv Shows"
-                      isFavs={false}
+                      isFavs={true}
                     />
                   )}
                 </Container>

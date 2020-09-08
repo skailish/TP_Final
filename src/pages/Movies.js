@@ -70,34 +70,33 @@ const Movies = () => {
               mediatype="movie"
             />
 
-            {/* <Container className={`container-details-movie ${theme}`}></Container> */}
             <CardListPreview
               mediatype="movie"
               data={movie}
               sectionTitle="Trending Movies"
               category="popular"
-              isFavs={true}
+              isFavs={false}
             />
             <CardListPreview
               mediatype="movie"
               data={movieTop}
               sectionTitle="Top Rated Movies"
               category="top_rated"
-              isFavs={true}
+              isFavs={false}
             />
             <CardListPreview
               mediatype="movie"
               data={movieUpcoming}
               sectionTitle="Upcoming Movies"
               category="upcoming"
-              isFavs={true}
+              isFavs={false}
             />
             <CardListPreview
               mediatype="movie"
               data={nowPlaying}
               sectionTitle="Now Playing Movies"
               category="now_playing"
-              isFavs={true}
+              isFavs={false}
             />
           </Container>
         )}

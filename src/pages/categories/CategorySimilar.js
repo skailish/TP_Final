@@ -19,16 +19,17 @@ const CategorySimilar = ({ data, mediatype }) => {
           {data &&
             data.map((singleCard) => (
               <Card
-                id={singleCard.id}
-                src={singleCard.poster_path}
-                title={
-                  mediatype === "movie"
-                    ? singleCard.title
-                    : singleCard.original_name
-                }
-                votes={singleCard.vote_average}
-                key={singleCard.id}
-                mediatype={mediatype}
+                cardInfo={{
+                  id: singleCard.id,
+                  src: singleCard.poster_path,
+                  title:
+                    mediatype === "movie"
+                      ? singleCard.title
+                      : singleCard.original_name,
+                  votes: singleCard.vote_average,
+                  key: singleCard.id,
+                  mediatype: mediatype,
+                }}
               />
             ))}
         </Container>
