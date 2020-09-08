@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import API_KEY from "../utils/API_KEY";
 
 const DataContext = createContext();
 
@@ -16,7 +17,7 @@ const DataProvider = ({ children }) => {
       const indexRandom = Math.floor(Math.random() * 20);
 
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?page=${pageRandom}&api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/trending/all/day?page=${pageRandom}&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setData(dataJson.results[indexRandom]);

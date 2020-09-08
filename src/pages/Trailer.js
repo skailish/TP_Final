@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import API_KEY from "../utils/API_KEY";
 import { useParams, useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 
@@ -14,6 +15,8 @@ import Text from "../components/primitive/Text";
 import img from "../images/Error.png";
 
 import ThemeContext from "../contexts/ThemeContext";
+
+
 
 const overrideDark = css`
   & div {
@@ -41,7 +44,7 @@ const Trailer = () => {
       setIsError(false);
 
       const response = await fetch(
-        `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
+        `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=${API_KEY}&language=en-US`
       );
       const dataJson = await response.json();
 

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import API_KEY from "../utils/API_KEY";
 
 const SearchContext = createContext();
 
@@ -120,7 +121,7 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getGenres = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US`
+        `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`
       );
       const dataJson = await response.json();
       setGenres(dataJson.genres);
@@ -132,7 +133,7 @@ const SearchProvider = ({ children }) => {
   useEffect(() => {
     const getYears = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&page=1&sort_by=${
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US&page=1&sort_by=${
           mediaAdvance === "movie" ? "release_date.asc" : "first_date_air.asc"
         }`
       );
@@ -175,7 +176,7 @@ const SearchProvider = ({ children }) => {
 
     const getResults = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US${areGenres}${yearEndPoint}${areSortBy}&page=${searchPage}`
+        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US${areGenres}${yearEndPoint}${areSortBy}&page=${searchPage}`
       );
       const dataJson = await response.json();
 

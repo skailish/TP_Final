@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import API_KEY from "../utils/API_KEY";
 
 const TvShowContext = createContext();
 
@@ -18,7 +19,7 @@ const TvShowProvider = ({ children }) => {
 
     const getTvShows = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setDataTvShow(dataJson.results);
@@ -34,7 +35,7 @@ const TvShowProvider = ({ children }) => {
 
     const getTvShowsRandom = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?page=${pageRandom}&api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/tv/popular?page=${pageRandom}&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setDataTvShowRandom(dataJson.results[indexRandom]);
@@ -50,7 +51,7 @@ const TvShowProvider = ({ children }) => {
 
     const getTvTop = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
       setDataTvTop(dataJson.results);
@@ -64,7 +65,7 @@ const TvShowProvider = ({ children }) => {
 
     const getTvCurrent = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/on_the_air?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
       setDataCurrentTv(dataJson.results);
@@ -78,7 +79,7 @@ const TvShowProvider = ({ children }) => {
 
     const getTvToday = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/airing_today?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
       setDataTodayTv(dataJson.results);

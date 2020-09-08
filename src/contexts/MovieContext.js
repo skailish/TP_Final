@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import API_KEY from "../utils/API_KEY";
 
 const MovieContext = createContext();
 
@@ -16,7 +17,7 @@ const MovieProvider = ({ children }) => {
     setIsLoadingMovie(true);
     const getMovies = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?page=1&api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/movie/popular?page=1&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setDataMovie(dataJson.results);
@@ -31,7 +32,7 @@ const MovieProvider = ({ children }) => {
     const indexRandom = Math.floor(Math.random() * 20);
     const getMovies = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?page=${pageRandom}&api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/movie/popular?page=${pageRandom}&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setDataMovieRandom(dataJson.results[indexRandom]);
@@ -46,7 +47,7 @@ const MovieProvider = ({ children }) => {
     setIsLoadingMovie(true);
     const getMoviesTop = async () => {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
 
@@ -61,7 +62,7 @@ const MovieProvider = ({ children }) => {
 
     const getMoviesNowPlaying = async () => {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
 
@@ -76,7 +77,7 @@ const MovieProvider = ({ children }) => {
 
     const getMoviesUpcoming = async () => {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
 

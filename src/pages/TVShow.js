@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import API_KEY from "../utils/API_KEY";
 import {
   useParams,
   Route,
@@ -35,7 +36,7 @@ const TVShow = () => {
   useEffect(() => {
     const getTVShowID = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}?api_key=d6798e588b7a270cba41fa64d417d9e7`
+        `https://api.themoviedb.org/3/tv/${TVId}?api_key=${API_KEY}`
       );
       const dataJson = await response.json();
       setDataTVShowID(dataJson);
@@ -50,7 +51,7 @@ const TVShow = () => {
     // const pageRandom = Math.floor(Math.random() * 100) + 1;
     const getSimilarShows = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}/similar?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/${TVId}/similar?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
       setSimilarShows(dataJson.results);
@@ -61,7 +62,7 @@ const TVShow = () => {
   useEffect(() => {
     const getCastTV = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}/credits?api_key=d6798e588b7a270cba41fa64d417d9e7&language=en-US`
+        `https://api.themoviedb.org/3/tv/${TVId}/credits?api_key=${API_KEY}&language=en-US`
       );
       const dataJson = await response.json();
       setCastTV(dataJson.cast);
