@@ -14,7 +14,6 @@ import Select from "./primitive/Select";
 import Span from "./primitive/Span";
 import Text from "./primitive/Text";
 
-import Aside from "./Aside";
 import AverageVoteStars from "./AverageVoteStars";
 import Card from "./Card";
 import CardCast from "./CardCast";
@@ -49,7 +48,6 @@ export {
   Select,
   Span,
   Text,
-  Aside,
   AverageVoteStars,
   Card,
   CardCast,
