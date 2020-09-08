@@ -23,12 +23,10 @@
 
   @include media($md-breakpoint) {
     min-height: calc(100vh - 410px);
-
   }
 
   @include media($md-breakpoint) {
     min-height: calc(100vh - 433px);
-
   }
 
   &.main-results-container {
@@ -39,9 +37,6 @@
       min-height: calc(100vh - 133px);
     }
   }
-
-
-
 }
 
 .cards-discover-container,
@@ -64,11 +59,9 @@
   flex-wrap: wrap;
   transition: 0.3s ease-in;
 
-  @media(max-width: $md-breakpoint) {
+  @media (max-width: $md-breakpoint) {
     margin-top: 50px;
   }
-
-
 
   @include media($md-breakpoint) {
     width: 100%;
@@ -78,7 +71,6 @@
     left: 0;
     top: 360px;
   }
-
 
   &.light {
     background-color: $background-lightmode;
@@ -113,8 +105,11 @@
   flex-wrap: wrap;
   transition: 0.3s ease-in;
 
+  &.light {
+    background-color: $background-lightmode;
+  }
 
-  @media(max-width: $md-breakpoint) {
+  @media (max-width: $md-breakpoint) {
     top: 0;
     margin-bottom: 0;
     margin-top: 100px;
@@ -143,7 +138,6 @@
 
   @include media($lg-breakpoint) {
     padding: 10px 0 10px 80px;
-
   }
 
   @include media($md-breakpoint) {
@@ -181,7 +175,6 @@
     @include media($lg-breakpoint) {
       width: 85%;
       height: 35%;
-
     }
 
     @include media($md-breakpoint) {
@@ -205,7 +198,7 @@
         width: 60%;
       }
 
-      &>option {
+      & > option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
