@@ -11,6 +11,7 @@ import { CategoryProvider } from "./contexts/CategoryContext";
 import { UserProvider } from "./contexts/UserContext";
 import { FavsProvider } from "./contexts/FavsContext";
 import { SearchProvider } from "./contexts/SearchContext";
+import { DiscoverProvider } from "./contexts/DiscoverContext";
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -19,19 +20,21 @@ ReactDOM.render(
     <CategoryProvider>
       <PaginationProvider>
         <SearchProvider>
-          <UserProvider>
-            <FavsProvider>
-              <MovieProvider>
-                <TvShowProvider>
-                  <DataProvider>
-                    <ThemeProvider>
-                      <App />
-                    </ThemeProvider>
-                  </DataProvider>
-                </TvShowProvider>
-              </MovieProvider>
-            </FavsProvider>
-          </UserProvider>
+          <DiscoverProvider>
+            <UserProvider>
+              <FavsProvider>
+                <MovieProvider>
+                  <TvShowProvider>
+                    <DataProvider>
+                      <ThemeProvider>
+                        <App />
+                      </ThemeProvider>
+                    </DataProvider>
+                  </TvShowProvider>
+                </MovieProvider>
+              </FavsProvider>
+            </UserProvider>
+          </DiscoverProvider>
         </SearchProvider>
       </PaginationProvider>
     </CategoryProvider>

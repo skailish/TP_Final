@@ -14,30 +14,34 @@ import {
   ScrollToTop,
 } from "components";
 
+import DiscoverContext from "../contexts/DiscoverContext";
 import SearchContext from "../contexts/SearchContext";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Discover = () => {
   const {
     discover,
-    results,
-    media,
     genres,
     years,
-    showResults,
     mediaAdvance,
-    searchVisible,
+    genresAdvance,
     discoverMaxPage,
-    handleOrderByChange,
+    handleIntervalChange,
     handleMediaChange,
     handleGenreChange,
     handleYearChange,
-    handleIntervalChange,
-    handleShowResultsClick,
+    handleOrderByChange,
+    setDiscoverPage,
+  } = useContext(DiscoverContext);
+  const {
     searchPage,
-    setSearchPage,
+    searchVisible,
+    results,
+    media,
+    showResults,
     searchMaxPage,
-    genresAdvance,
+    handleShowResultsClick,
+    setSearchPage,
   } = useContext(SearchContext);
   const { theme } = useContext(ThemeContext);
 

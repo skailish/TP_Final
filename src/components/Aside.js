@@ -15,6 +15,7 @@ import { LightbulbFlash as LightOff } from "@styled-icons/remix-line/LightbulbFl
 import { Heart } from "@styled-icons/entypo/Heart";
 import { Menu } from "@styled-icons/evaicons-solid/Menu";
 import { Close } from "@styled-icons/ionicons-solid/Close";
+import { Binoculars } from "@styled-icons/boxicons-solid/Binoculars";
 
 import Container from "../components/primitive/Container";
 import Link from "../components/primitive/Link";
@@ -75,6 +76,14 @@ const Aside = ({ user }) => {
             <TV
               className={`nav-icon ${theme}`}
               title={"Tv Series"}
+              onClick={handleToggleNavClick}
+            />
+          </NavLink>
+
+          <NavLink to="/discover" exact activeClassName="selected">
+            <Binoculars
+              className={`nav-icon ${theme}`}
+              title={"Discover"}
               onClick={handleToggleNavClick}
             />
           </NavLink>
