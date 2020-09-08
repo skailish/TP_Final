@@ -1,3 +1,25 @@
+Trabajo práctico final del bootcamp de Ada ITW. 
+Realizado entre Angie Turne, Daniela Capponi, Josefina del Rey y María Luján Sanchez.
+
+## Angie Turne: 
+Github: https://github.com/angieTu 
+Linkedin: https://www.linkedin.com/in/angie-tu/
+
+## Daniela Capponi: 
+Github: https://github.com/skailish 
+Linkedin: https://www.linkedin.com/in/danielacapponi/
+
+## Josefina del Rey: 
+Github: https://github.com/Jodelrey 
+Linkedin: https://www.linkedin.com/in/josefina-del-rey/
+
+## María Luján Sanchez: 
+Github: https://github.com/LoohanZero
+Linkedin: https://www.linkedin.com/in/lujansanchez/
+
+---------------------------------------------------------
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
