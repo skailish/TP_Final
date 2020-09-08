@@ -23,11 +23,11 @@ const overrideLight = css`
 const TVSeries = () => {
   const { theme } = useContext(ThemeContext);
   const {
-    dataTodayTv,
-    dataCurrentTv,
-    dataTvTop,
-    dataTvShowRandom,
-    dataTvShow,
+    todayTv,
+    currentTv,
+    tvTop,
+    tvShowRandom,
+    tvShow,
     voteAverage,
     year,
     isLoadingTvShow,
@@ -35,11 +35,11 @@ const TVSeries = () => {
   return (
     <>
       {(isLoadingTvShow ||
-        !dataTvShowRandom ||
-        !dataTodayTv ||
-        !dataCurrentTv ||
-        !dataTvTop ||
-        !dataTvShow ||
+        !tvShowRandom ||
+        !todayTv ||
+        !currentTv ||
+        !tvTop ||
+        !tvShow ||
         !voteAverage ||
         !year) && (
         <Container className={`onLoading-Container ${theme}`}>
@@ -51,43 +51,43 @@ const TVSeries = () => {
         </Container>
       )}
       {!isLoadingTvShow &&
-        dataTvShowRandom &&
-        dataTodayTv &&
-        dataCurrentTv &&
-        dataTvTop &&
-        dataTvShow &&
+        tvShowRandom &&
+        todayTv &&
+        currentTv &&
+        tvTop &&
+        tvShow &&
         voteAverage &&
         year && (
           <Container className={`main-container ${theme}`}>
             <ScrollToTop />
             <Hero
-              data={dataTvShowRandom}
+              data={tvShowRandom}
               year={year}
               voteAverage={voteAverage}
               mediatype="tv"
             />
             <CardListPreview
               mediatype="tv"
-              data={dataTvShow}
+              data={tvShow}
               sectionTitle="Popular TV Shows"
               category="popular"
             />
 
             <CardListPreview
               mediatype="tv"
-              data={dataTvTop}
+              data={tvTop}
               sectionTitle="Top Rated TV Shows"
               category="top_rated"
             />
             <CardListPreview
               mediatype="tv"
-              data={dataCurrentTv}
+              data={currentTv}
               sectionTitle="Currently Airing TV Shows"
               category="on_the_air"
             />
             <CardListPreview
               mediatype="tv"
-              data={dataTodayTv}
+              data={todayTv}
               sectionTitle="TV Shows Airing Today"
               category="airing_today"
             />
@@ -95,43 +95,43 @@ const TVSeries = () => {
         )}
       {console.log(
         !isLoadingTvShow &&
-          dataTvShowRandom &&
-          dataTodayTv &&
-          dataCurrentTv &&
-          dataTvTop &&
-          dataTvShow &&
+          tvShowRandom &&
+          todayTv &&
+          currentTv &&
+          tvTop &&
+          tvShow &&
           voteAverage &&
           year !== 0 && (
             <Container className={`main-container ${theme}`}>
               <ScrollToTop />
               <Hero
-                data={dataTvShowRandom}
+                data={tvShowRandom}
                 year={year}
                 voteAverage={voteAverage}
                 mediatype="tv"
               />
               <CardListPreview
                 mediatype="tv"
-                data={dataTvShow}
+                data={tvShow}
                 sectionTitle="Popular TV Shows"
                 category="popular"
               />
 
               <CardListPreview
                 mediatype="tv"
-                data={dataTvTop}
+                data={tvTop}
                 sectionTitle="Top Rated TV Shows"
                 category="top_rated"
               />
               <CardListPreview
                 mediatype="tv"
-                data={dataCurrentTv}
+                data={currentTv}
                 sectionTitle="Currently Airing TV Shows"
                 category="on_the_air"
               />
               <CardListPreview
                 mediatype="tv"
-                data={dataTodayTv}
+                data={todayTv}
                 sectionTitle="TV Shows Airing Today"
                 category="airing_today"
               />

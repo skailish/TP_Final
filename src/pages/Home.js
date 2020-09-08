@@ -27,8 +27,8 @@ const Home = () => {
   const { data, year, voteAverage, mediatype, isLoading } = useContext(
     DataContext
   );
-  const { dataMovie, isLoadingMovie } = useContext(MovieContext);
-  const { dataTvShow, isLoadingTvShow } = useContext(TvShowContext);
+  const { movie, isLoadingMovie } = useContext(MovieContext);
+  const { tvShow, isLoadingTvShow } = useContext(TvShowContext);
   return (
     <>
       {(isLoading || isLoadingMovie || isLoadingTvShow) && (
@@ -51,13 +51,13 @@ const Home = () => {
           />
           <CardListPreview
             mediatype="movie"
-            data={dataMovie}
+            data={movie}
             sectionTitle="Trending Movies"
             category="popular"
           />
           <CardListPreview
             mediatype="tv"
-            data={dataTvShow}
+            data={tvShow}
             sectionTitle="Trending TV Shows"
             category="popular"
           />

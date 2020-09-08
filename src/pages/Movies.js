@@ -25,26 +25,26 @@ const overrideLight = css`
 const Movies = () => {
   const { theme } = useContext(ThemeContext);
   const {
-    dataMovieRandom,
+    movieRandom,
     yearMovie,
     voteAverageMovie,
-    dataMovie,
-    dataMovieTop,
-    dataMovieUpcoming,
-    dataNowPlaying,
+    movie,
+    movieTop,
+    movieUpcoming,
+    nowPlaying,
     isLoadingMovie,
   } = useContext(MovieContext);
 
   return (
     <>
       {(isLoadingMovie ||
-        !dataMovieRandom ||
+        !movieRandom ||
         !yearMovie ||
         !voteAverageMovie ||
-        !dataMovie ||
-        !dataMovieTop ||
-        !dataMovieUpcoming ||
-        !dataNowPlaying) && (
+        !movie ||
+        !movieTop ||
+        !movieUpcoming ||
+        !nowPlaying) && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
             <BounceLoader css={overrideDark} size="100px" />
@@ -54,17 +54,17 @@ const Movies = () => {
         </Container>
       )}
       {!isLoadingMovie &&
-        dataMovieRandom &&
+        movieRandom &&
         yearMovie &&
         voteAverageMovie &&
-        dataMovie &&
-        dataMovieTop &&
-        dataMovieUpcoming &&
-        dataNowPlaying && (
+        movie &&
+        movieTop &&
+        movieUpcoming &&
+        nowPlaying && (
           <Container className={`main-container ${theme}`}>
             <ScrollToTop />
             <Hero
-              data={dataMovieRandom}
+              data={movieRandom}
               year={yearMovie}
               voteAverage={voteAverageMovie}
               mediatype="movie"
@@ -73,25 +73,25 @@ const Movies = () => {
             {/* <Container className={`container-details-movie ${theme}`}></Container> */}
             <CardListPreview
               mediatype="movie"
-              data={dataMovie}
+              data={movie}
               sectionTitle="Trending Movies"
               category="popular"
             />
             <CardListPreview
               mediatype="movie"
-              data={dataMovieTop}
+              data={movieTop}
               sectionTitle="Top Rated Movies"
               category="top_rated"
             />
             <CardListPreview
               mediatype="movie"
-              data={dataMovieUpcoming}
+              data={movieUpcoming}
               sectionTitle="Upcoming Movies"
               category="upcoming"
             />
             <CardListPreview
               mediatype="movie"
-              data={dataNowPlaying}
+              data={nowPlaying}
               sectionTitle="Now Playing Movies"
               category="now_playing"
             />

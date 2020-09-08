@@ -16,7 +16,7 @@ import ThemeContext from "../contexts/ThemeContext";
 import TvShowContext from "../contexts/TvShowContext";
 
 const TVShow = () => {
-  const [dataTVShowID, setDataTVShowID] = useState([]);
+  const [tvShowID, setTvShowID] = useState([]);
   const [year, setYear] = useState(0);
   const [voteAverage, setVoteAverage] = useState(0);
   const [similarShows, setSimilarShows] = useState([]);
@@ -33,7 +33,7 @@ const TVShow = () => {
         `https://api.themoviedb.org/3/tv/${TVId}?api_key=${API_KEY}`
       );
       const dataJson = await response.json();
-      setDataTVShowID(dataJson);
+      setTvShowID(dataJson);
       setVoteAverage(dataJson.vote_average);
       setYear(dataJson.first_air_date.split("-")[0]);
       setSeasons(dataJson.seasons);
@@ -65,11 +65,11 @@ const TVShow = () => {
   }, [TVId]);
 
   return (
-    dataTVShowID && (
+    tvShowID && (
       <Container className={`main-container ${theme}`}>
         <ScrollToTop />
         <Hero
-          data={dataTVShowID}
+          data={tvShowID}
           year={year}
           voteAverage={voteAverage}
           mediatype="tv"
@@ -112,7 +112,7 @@ const TVShow = () => {
 
         <Switch>
           <Route path={`${path}/info`}>
-            <Overview data={dataTVShowID} mediatype="tv" />
+            <Overview data={tvShowID} mediatype="tv" />
           </Route>
           <Route path={`${path}/season/:seasonNumber`}>
             <Episodes seasons={seasons} />

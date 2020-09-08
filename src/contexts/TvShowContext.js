@@ -4,13 +4,13 @@ import API_KEY from "../utils/API_KEY";
 const TvShowContext = createContext();
 
 const TvShowProvider = ({ children }) => {
-  const [dataTvShow, setDataTvShow] = useState([]);
-  const [dataTvShowRandom, setDataTvShowRandom] = useState([]);
-  const [dataTvTop, setDataTvTop] = useState([]);
+  const [tvShow, setTvShow] = useState([]);
+  const [tvShowRandom, setTvShowRandom] = useState([]);
+  const [tvTop, setTvTop] = useState([]);
   const [year, setYear] = useState(0);
   const [voteAverage, setVoteAverage] = useState(0);
-  const [dataCurrentTv, setDataCurrentTv] = useState([]);
-  const [dataTodayTv, setDataTodayTv] = useState([]);
+  const [currentTv, setCurrentTv] = useState([]);
+  const [todayTv, setTodayTv] = useState([]);
   const [isLoadingTvShow, setIsLoadingTvShow] = useState(true);
   const [seasonNumber, setSeasonNumber] = useState(1);
 
@@ -22,7 +22,7 @@ const TvShowProvider = ({ children }) => {
         `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`
       );
       const dataJson = await response.json();
-      setDataTvShow(dataJson.results);
+      setTvShow(dataJson.results);
       setIsLoadingTvShow(false);
     };
     getTvShows();
@@ -38,7 +38,7 @@ const TvShowProvider = ({ children }) => {
         `https://api.themoviedb.org/3/tv/popular?page=${pageRandom}&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
-      setDataTvShowRandom(dataJson.results[indexRandom]);
+      setTvShowRandom(dataJson.results[indexRandom]);
       setYear(dataJson.results[indexRandom].first_air_date.split("-")[0]);
       setVoteAverage(dataJson.results[indexRandom].vote_average);
       setIsLoadingTvShow(false);
@@ -54,7 +54,7 @@ const TvShowProvider = ({ children }) => {
         `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
-      setDataTvTop(dataJson.results);
+      setTvTop(dataJson.results);
       setIsLoadingTvShow(false);
     };
     getTvTop();
@@ -68,7 +68,7 @@ const TvShowProvider = ({ children }) => {
         `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
-      setDataCurrentTv(dataJson.results);
+      setCurrentTv(dataJson.results);
       setIsLoadingTvShow(false);
     };
     getTvCurrent();
@@ -82,7 +82,7 @@ const TvShowProvider = ({ children }) => {
         `https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&language=en-US&page=1`
       );
       const dataJson = await response.json();
-      setDataTodayTv(dataJson.results);
+      setTodayTv(dataJson.results);
       setIsLoadingTvShow(false);
     };
     getTvToday();
@@ -91,11 +91,11 @@ const TvShowProvider = ({ children }) => {
   return (
     <TvShowContext.Provider
       value={{
-        dataTodayTv,
-        dataCurrentTv,
-        dataTvTop,
-        dataTvShow,
-        dataTvShowRandom,
+        todayTv,
+        currentTv,
+        tvTop,
+        tvShow,
+        tvShowRandom,
         year,
         voteAverage,
         isLoadingTvShow,

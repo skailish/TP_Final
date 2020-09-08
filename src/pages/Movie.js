@@ -15,7 +15,7 @@ import { CategorySimilar, Overview, Cast } from "../pages";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Movie = () => {
-  const [dataMovieID, setDataMovieID] = useState([]);
+  const [movieID, setMovieID] = useState([]);
   const [year, setYear] = useState(0);
   const [voteAverage, setVoteAverage] = useState(0);
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -30,7 +30,7 @@ const Movie = () => {
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
       );
       const dataJson = await response.json();
-      setDataMovieID(dataJson);
+      setMovieID(dataJson);
       setVoteAverage(dataJson.vote_average);
       setYear(dataJson.release_date.split("-")[0]);
     };
@@ -60,10 +60,10 @@ const Movie = () => {
   }, [movieId]);
 
   return (
-    dataMovieID && (
+    movieID && (
       <Container className={`main-container ${theme}`}>
         <Hero
-          data={dataMovieID}
+          data={movieID}
           year={year}
           voteAverage={voteAverage}
           mediatype="movie"
@@ -97,7 +97,7 @@ const Movie = () => {
         </Container>
         <Switch>
           <Route path={`${path}/info`}>
-            <Overview data={dataMovieID} mediatype="movie" />
+            <Overview data={movieID} mediatype="movie" />
           </Route>
           <Route path={`${path}/cast`}>
             <Cast data={movieCast} mediatype="movie" />

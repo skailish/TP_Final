@@ -4,13 +4,13 @@ import API_KEY from "../utils/API_KEY";
 const MovieContext = createContext();
 
 const MovieProvider = ({ children }) => {
-  const [dataMovieRandom, setDataMovieRandom] = useState([]);
-  const [dataMovieTop, setDataMovieTop] = useState([]);
-  const [dataMovieUpcoming, setDataMovieUpcoming] = useState([]);
-  const [dataNowPlaying, setDataNowPlaying] = useState([]);
+  const [movieRandom, setMovieRandom] = useState([]);
+  const [movieTop, setMovieTop] = useState([]);
+  const [movieUpcoming, setMovieUpcoming] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
   const [yearMovie, setYearMovie] = useState();
   const [voteAverageMovie, setVoteAverageMovie] = useState(0);
-  const [dataMovie, setDataMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [isLoadingMovie, setIsLoadingMovie] = useState(true);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const MovieProvider = ({ children }) => {
         `https://api.themoviedb.org/3/movie/popular?page=1&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
-      setDataMovie(dataJson.results);
+      setMovie(dataJson.results);
       setIsLoadingMovie(false);
     };
     getMovies();
@@ -35,7 +35,7 @@ const MovieProvider = ({ children }) => {
         `https://api.themoviedb.org/3/movie/popular?page=${pageRandom}&api_key=${API_KEY}`
       );
       const dataJson = await response.json();
-      setDataMovieRandom(dataJson.results[indexRandom]);
+      setMovieRandom(dataJson.results[indexRandom]);
       setYearMovie(dataJson.results[indexRandom].release_date.split("-")[0]);
       setVoteAverageMovie(dataJson.results[indexRandom].vote_average);
       setIsLoadingMovie(false);
@@ -51,7 +51,7 @@ const MovieProvider = ({ children }) => {
       );
       const dataJson = await response.json();
 
-      setDataMovieTop(dataJson.results);
+      setMovieTop(dataJson.results);
       setIsLoadingMovie(false);
     };
     getMoviesTop();
@@ -66,7 +66,7 @@ const MovieProvider = ({ children }) => {
       );
       const dataJson = await response.json();
 
-      setDataNowPlaying(dataJson.results);
+      setNowPlaying(dataJson.results);
       setIsLoadingMovie(false);
     };
     getMoviesNowPlaying();
@@ -81,7 +81,7 @@ const MovieProvider = ({ children }) => {
       );
       const dataJson = await response.json();
 
-      setDataMovieUpcoming(dataJson.results);
+      setMovieUpcoming(dataJson.results);
       setIsLoadingMovie(false);
     };
     getMoviesUpcoming();
@@ -90,14 +90,14 @@ const MovieProvider = ({ children }) => {
   return (
     <MovieContext.Provider
       value={{
-        dataMovieRandom,
+        movieRandom,
         yearMovie,
         voteAverageMovie,
-        dataMovie,
-        dataMovieTop,
-        dataMovieUpcoming,
-        dataNowPlaying,
-        isLoadingMovie
+        movie,
+        movieTop,
+        movieUpcoming,
+        nowPlaying,
+        isLoadingMovie,
       }}
     >
       {children}
