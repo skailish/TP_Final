@@ -12,9 +12,11 @@ import FavIconToggle from "./FavIconToggle";
 
 import ThemeContext from "../contexts/ThemeContext";
 
-const Card = ({ id, src, title, votes, mediatype, like }) => {
+const Card = ({ cardInfo }) => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
+
+  const { id, src, title, votes, mediatype, like } = cardInfo;
 
   const handleMediaDetailsClick = (id, mediatype) => {
     history.push(`/${mediatype}/${id}/info`);

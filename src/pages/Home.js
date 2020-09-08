@@ -54,14 +54,14 @@ const Home = () => {
             data={movie}
             sectionTitle="Trending Movies"
             category="popular"
-            isFavs={true}
+            isFavs={false}
           />
           <CardListPreview
             mediatype="tv"
             data={tvShow}
             sectionTitle="Trending TV Shows"
             category="popular"
-            isFavs={true}
+            isFavs={false}
           />
         </Container>
       )}

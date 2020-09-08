@@ -70,7 +70,7 @@ const CardListPreview = ({
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
             {sectionTitle}
           </Heading>
-          {isFavs && (
+          {!isFavs && (
             <Link
               to={`${mediatype}/category/${category}`}
               className={`cardlistpreview-link ${theme}`}
@@ -88,13 +88,16 @@ const CardListPreview = ({
             favsArray &&
             data.map((singleCard) => (
               <Card
-                id={singleCard.id}
-                src={isFavs ? singleCard.poster_path : singleCard.src}
-                title={mediatype === "tv" ? singleCard.name : singleCard.title}
-                votes={singleCard.vote_average}
                 key={singleCard.id}
-                mediatype={mediatype}
-                like={favsArray.includes(singleCard.id)}
+                cardInfo={{
+                  id: singleCard.id,
+                  src: !isFavs ? singleCard.poster_path : singleCard.src,
+                  title:
+                    mediatype === "tv" ? singleCard.name : singleCard.title,
+                  votes: !isFavs ? singleCard.vote_average : singleCard.votes,
+                  mediatype: mediatype,
+                  like: isFavs ? true : favsArray.includes(singleCard.id),
+                }}
               />
             ))}
         </Container>
