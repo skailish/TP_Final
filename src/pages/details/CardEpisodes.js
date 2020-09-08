@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
+import imageBaseUrl from "../../utils/ImageBaseUrl";
+
 import {Container, Text, Heading, Image, Span } from "components"
 
 import noImageFound from "../../images/image-not-found-scaled-1150x647.png";
 
-import ImageContext from "contexts/ImageContext";
 import ThemeContext from "contexts/ThemeContext";
 
 const CardEpisodes = ({ src, episode, title, overview, date }) => {
-  const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
 
   return (

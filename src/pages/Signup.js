@@ -7,11 +7,11 @@ import { Container, Input, Label, Heading, Button, Text } from "../components";
 import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
-const Signup = ({ user }) => {
+const Signup = () => {
   const [error, setError] = useState(false);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const emailRef = useRef(null);
   const passRef = useRef(null);
   const submitRef = useRef(null);

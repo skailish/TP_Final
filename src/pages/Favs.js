@@ -1,15 +1,21 @@
 import React, { useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import { Container, Heading, Card, ScrollToTop } from "../components";
+import {
+  Container,
+  Heading,
+  ScrollToTop,
+  FavsCarousel,
+} from "../components";
 
 import ThemeContext from "../contexts/ThemeContext";
 import MovieContext from "../contexts/MovieContext";
 import TvShowContext from "../contexts/MovieContext";
 import FavsContext from "../contexts/FavsContext";
-import FavsCarousel from "../components/FavsCarousel";
+import UserContext from "../contexts/UserContext";
 
 const overrideDark = css`
   & div {
@@ -23,7 +29,7 @@ const overrideLight = css`
   }
 `;
 
-const Favs = ({ user }) => {
+const Favs = () => {
   const {
     moviesArray,
     seriesArray,
@@ -33,6 +39,7 @@ const Favs = ({ user }) => {
   const { theme } = useContext(ThemeContext);
   const { isLoadingMovie } = useContext(MovieContext);
   const { isLoadingTvShow } = useContext(TvShowContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     updateSeriesFavs(user);
@@ -41,53 +48,61 @@ const Favs = ({ user }) => {
 
   return (
     <>
-      {(isLoadingMovie || isLoadingTvShow) && !moviesArray && !seriesArray && (
-        <Container className={`onLoading-Container ${theme}`}>
-          {theme === "dark" ? (
-            <BounceLoader css={overrideDark} size="100px" />
-          ) : (
-            <BounceLoader css={overrideLight} size="100px" />
-          )}
-        </Container>
-      )}
-      {moviesArray.length <= 0 && seriesArray.length <= 0 && (
-        <Container className={`nofavs-container ${theme}`}>
-          <Heading className={`nofavs-heading ${theme}`}>
-            You have no favorites yet, go select some...
-          </Heading>
-        </Container>
-      )}
-
-      {!isLoadingMovie &&
-        !isLoadingTvShow &&
-        (moviesArray.length > 0 || seriesArray.length > 0) && (
-          <Container className={`main-favs-container ${theme}`}>
-            <ScrollToTop />
-            <Heading level={1} className={`favs-heading ${theme}`}>
-              Your Favorites
-            </Heading>
-            <Container className={`favs-carousel-container ${theme}`}>
-              {moviesArray.length > 0 && (
-                <Heading level={2} className={`favs-subheading ${theme}`}>
-                  Your Movies
-                </Heading>
-              )}
-              <Container className={`favs-cards-container ${theme}`}>
-                <FavsCarousel mediatype="movie" data={moviesArray} />
+      {!user ? (
+        <Redirect to="" />
+      ) : (
+        <>
+          {(isLoadingMovie || isLoadingTvShow) &&
+            !moviesArray &&
+            !seriesArray && (
+              <Container className={`onLoading-Container ${theme}`}>
+                {theme === "dark" ? (
+                  <BounceLoader css={overrideDark} size="100px" />
+                ) : (
+                  <BounceLoader css={overrideLight} size="100px" />
+                )}
               </Container>
-
-              {seriesArray.length > 0 && (
-                <Heading level={2} className={`favs-subheading ${theme}`}>
-                  Your Series
-                </Heading>
-              )}
-
-              <Container className={`favs-cards-container ${theme}`}>
-                <FavsCarousel mediatype="tv" data={seriesArray} />
-              </Container>
+            )}
+          {moviesArray.length <= 0 && seriesArray.length <= 0 && (
+            <Container className={`nofavs-container ${theme}`}>
+              <Heading className={`nofavs-heading ${theme}`}>
+                You have no favorites yet, go select some...
+              </Heading>
             </Container>
-          </Container>
-        )}
+          )}
+
+          {!isLoadingMovie &&
+            !isLoadingTvShow &&
+            (moviesArray.length > 0 || seriesArray.length > 0) && (
+              <Container className={`main-favs-container ${theme}`}>
+                <ScrollToTop />
+                <Heading level={1} className={`favs-heading ${theme}`}>
+                  Your Favorites
+                </Heading>
+                <Container className={`favs-carousel-container ${theme}`}>
+                  {moviesArray.length > 0 && (
+                    <Heading level={2} className={`favs-subheading ${theme}`}>
+                      Your Movies
+                    </Heading>
+                  )}
+                  <Container className={`favs-cards-container ${theme}`}>
+                    <FavsCarousel mediatype="movie" data={moviesArray} />
+                  </Container>
+
+                  {seriesArray.length > 0 && (
+                    <Heading level={2} className={`favs-subheading ${theme}`}>
+                      Your Series
+                    </Heading>
+                  )}
+
+                  <Container className={`favs-cards-container ${theme}`}>
+                    <FavsCarousel mediatype="tv" data={seriesArray} />
+                  </Container>
+                </Container>
+              </Container>
+            )}
+        </>
+      )}
     </>
   );
 };

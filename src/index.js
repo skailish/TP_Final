@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/main.scss";
 import App from "./App";
-import { ImageProvider } from "./contexts/ImageContext";
 import { DataProvider } from "./contexts/DataContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { MovieProvider } from "./contexts/MovieContext";
@@ -25,11 +24,9 @@ ReactDOM.render(
               <MovieProvider>
                 <TvShowProvider>
                   <DataProvider>
-                    <ImageProvider>
-                      <ThemeProvider>
-                        <App />
-                      </ThemeProvider>
-                    </ImageProvider>
+                    <ThemeProvider>
+                      <App />
+                    </ThemeProvider>
                   </DataProvider>
                 </TvShowProvider>
               </MovieProvider>

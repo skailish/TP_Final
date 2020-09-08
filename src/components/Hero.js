@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 
+import imageBaseUrl from "../utils/ImageBaseUrl";
+
 import { PlayCircle } from "@styled-icons/feather/PlayCircle";
 
 import Votes from "./Votes";
@@ -11,11 +13,9 @@ import Text from "./primitive/Text";
 import Span from "./primitive/Span";
 import Button from "./primitive/Button";
 
-import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
 
 const Hero = ({ data, year, voteAverage, mediatype }) => {
-  const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
   const history = useHistory();
 

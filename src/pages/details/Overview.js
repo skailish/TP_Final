@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 
+import imageBaseUrl from "../../utils/ImageBaseUrl";
+
 import {
   Container,
   Image,
@@ -10,11 +12,9 @@ import {
   ListItem,
 } from "../../components";
 
-import ImageContext from "../../contexts/ImageContext";
 import ThemeContext from "../../contexts/ThemeContext";
 
 const Overview = ({ data, mediatype }) => {
-  const { imageBaseUrl } = useContext(ImageContext);
   const { theme } = useContext(ThemeContext);
 
   const formatter = new Intl.NumberFormat("en-US", {

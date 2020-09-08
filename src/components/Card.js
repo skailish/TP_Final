@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import imageBaseUrl from "../utils/ImageBaseUrl";
 import { db } from "../configs/firebase";
 import { useHistory } from "react-router-dom";
 
@@ -11,7 +12,6 @@ import Heading from "./primitive/Heading";
 import Image from "./primitive/Image";
 import noPosterFound from "../images/404PosterNotFound.jpg";
 
-import ImageContext from "../contexts/ImageContext";
 import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
@@ -20,7 +20,6 @@ import FavsContext from "../contexts/FavsContext";
 const Card = ({ id, src, title, votes, mediatype, like }) => {
   const [fav, setFav] = useState(false);
   const [previousFav, setPreviousFav] = useState("");
-  const { imageBaseUrl } = useContext(ImageContext);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);

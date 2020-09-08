@@ -5,11 +5,13 @@ import { useHistory, Link, Redirect } from "react-router-dom";
 import { Container, Input, Label, Heading, Button, Text } from "../components";
 
 import ThemeContext from "../contexts/ThemeContext";
+import UserContext from "../contexts/UserContext"
 
-const Login = ({ user }) => {
+const Login = () => {
   const [error, setError] = useState(false);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
   const emailRef = useRef(null);
   const passRef = useRef(null);
   const submitRef = useRef(null);

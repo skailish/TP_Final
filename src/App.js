@@ -55,42 +55,22 @@ function App() {
         <SearchBar />
 
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/movie">
-            <Movies />
-          </Route>
-          <Route exact path="/tv">
-            <TVSeries />
-          </Route>
-          <Route exact path="/:media/category/:category">
-            <Categories />
-          </Route>
-          <Route path="/tv/:TVId">
-            <TVShow />
-          </Route>
-          <Route path="/movie/:movieId">
-            <Movie />
-          </Route>
-          <Route exact path="/video/:media/:id">
-            <Trailer />
-          </Route>
-          <Route exact path="/login">
-            <Login user={user} />
-          </Route>
-          <Route exact path="/signup">
-            <Signup user={user} />
-          </Route>
-          <Route exact path="/favs">
-            {user ? <Favs user={user} /> : <Redirect to="" />}
-          </Route>
-          <Route exact path="/discover">
-            <Discover />
-          </Route>
-          <Route>
-            <ErrorPage />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/movie" component={Movies} />
+          <Route exact path="/tv" component={TVSeries} />
+          <Route
+            exact
+            path="/:media/category/:category"
+            component={Categories}
+          />
+          <Route path="/tv/:TVId" component={TVShow} />
+          <Route path="/movie/:movieId" component={Movie} />
+          <Route exact path="/video/:media/:id" component={Trailer} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/favs" component={Favs} />
+          <Route exact path="/discover" component={Discover} />
+          <Route component={ErrorPage} />
         </Switch>
       </Router>
       <Footer />
