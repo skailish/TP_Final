@@ -71,6 +71,7 @@ const TVSeries = () => {
               data={tvShow}
               sectionTitle="Popular TV Shows"
               category="popular"
+              isFavs={true}
             />
 
             <CardListPreview
@@ -78,18 +79,21 @@ const TVSeries = () => {
               data={tvTop}
               sectionTitle="Top Rated TV Shows"
               category="top_rated"
+              isFavs={true}
             />
             <CardListPreview
               mediatype="tv"
               data={currentTv}
               sectionTitle="Currently Airing TV Shows"
               category="on_the_air"
+              isFavs={true}
             />
             <CardListPreview
               mediatype="tv"
               data={todayTv}
               sectionTitle="TV Shows Airing Today"
               category="airing_today"
+              isFavs={true}
             />
           </Container>
         )}

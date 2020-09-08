@@ -8,7 +8,7 @@ import {
   Container,
   Heading,
   ScrollToTop,
-  FavsCarousel,
+  CardListPreview,
 } from "../components";
 
 import ThemeContext from "../contexts/ThemeContext";
@@ -81,23 +81,21 @@ const Favs = () => {
                 </Heading>
                 <Container className={`favs-carousel-container ${theme}`}>
                   {moviesArray.length > 0 && (
-                    <Heading level={2} className={`favs-subheading ${theme}`}>
-                      Your Movies
-                    </Heading>
+                    <CardListPreview
+                      mediatype="movie"
+                      data={moviesArray}
+                      sectionTitle="Your Favorites Movies"
+                      isFavs={false}
+                    />
                   )}
-                  <Container className={`favs-cards-container ${theme}`}>
-                    <FavsCarousel mediatype="movie" data={moviesArray} />
-                  </Container>
-
                   {seriesArray.length > 0 && (
-                    <Heading level={2} className={`favs-subheading ${theme}`}>
-                      Your Series
-                    </Heading>
+                    <CardListPreview
+                      mediatype="tv"
+                      data={seriesArray}
+                      sectionTitle="Your Favorites Tv Shows"
+                      isFavs={false}
+                    />
                   )}
-
-                  <Container className={`favs-cards-container ${theme}`}>
-                    <FavsCarousel mediatype="tv" data={seriesArray} />
-                  </Container>
                 </Container>
               </Container>
             )}

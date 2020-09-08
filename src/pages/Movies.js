@@ -76,24 +76,28 @@ const Movies = () => {
               data={movie}
               sectionTitle="Trending Movies"
               category="popular"
+              isFavs={true}
             />
             <CardListPreview
               mediatype="movie"
               data={movieTop}
               sectionTitle="Top Rated Movies"
               category="top_rated"
+              isFavs={true}
             />
             <CardListPreview
               mediatype="movie"
               data={movieUpcoming}
               sectionTitle="Upcoming Movies"
               category="upcoming"
+              isFavs={true}
             />
             <CardListPreview
               mediatype="movie"
               data={nowPlaying}
               sectionTitle="Now Playing Movies"
               category="now_playing"
+              isFavs={true}
             />
           </Container>
         )}

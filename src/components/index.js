@@ -18,7 +18,6 @@ import AverageVoteStars from "./AverageVoteStars";
 import Card from "./Card";
 import CardCast from "./CardCast";
 import CardListPreview from "./CardListPreview";
-import FavsCarousel from "./FavsCarousel";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import PageButton from "./PageButton";
@@ -52,7 +51,6 @@ export {
   Card,
   CardCast,
   CardListPreview,
-  FavsCarousel,
   Footer,
   Hero,
   PageButton,

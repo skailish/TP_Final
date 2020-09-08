@@ -12,7 +12,13 @@ import Button from "./primitive/Button";
 import ThemeContext from "../contexts/ThemeContext";
 import FavsContext from "../contexts/FavsContext";
 
-const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
+const CardListPreview = ({
+  mediatype,
+  data,
+  sectionTitle,
+  category,
+  isFavs,
+}) => {
   const { theme } = useContext(ThemeContext);
   const { favsArray } = useContext(FavsContext);
   const mediaRef = useRef(null);
@@ -39,7 +45,6 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
   const handleRightChevronClick = (widthScreen, scrollWidth) => {
     mediaRef.current.scrollLeft += widthScreen - 120;
     if (windowWidth > 480) {
-
       mediaRef.current.scrollLeft >= scrollWidth - widthScreen * 2 &&
         setShowRightBar(false);
       setShowLeftBar(true);
@@ -65,13 +70,14 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
           <Heading className={`cardlistpreview-heading ${theme} `} level={1}>
             {sectionTitle}
           </Heading>
-
-          <Link
-            to={`${mediatype}/category/${category}`}
-            className={`cardlistpreview-link ${theme}`}
-          >
-            Explore All
-          </Link>
+          {isFavs && (
+            <Link
+              to={`${mediatype}/category/${category}`}
+              className={`cardlistpreview-link ${theme}`}
+            >
+              Explore All
+            </Link>
+          )}
         </Container>
         <Container
           className={`media-container ${theme}`}
@@ -83,7 +89,7 @@ const CardListPreview = ({ mediatype, data, sectionTitle, category }) => {
             data.map((singleCard) => (
               <Card
                 id={singleCard.id}
-                src={singleCard.poster_path}
+                src={isFavs ? singleCard.poster_path : singleCard.src}
                 title={mediatype === "tv" ? singleCard.name : singleCard.title}
                 votes={singleCard.vote_average}
                 key={singleCard.id}
