@@ -20,16 +20,15 @@ import CardCast from "./CardCast";
 import CardListPreview from "./CardListPreview";
 import Footer from "./Footer";
 import Hero from "./Hero";
+import NavAuth from "./NavAuth";
+import NavGuest from "./NavGuest";
 import PageButton from "./PageButton";
 import Pagination from "./Pagination";
 import ScrollToTop from "./ScrollToTop";
 import SearchBar from "./SearchBar";
 import Star from "./Star";
-import Stars from "./Stars";
 import Votes from "./Votes";
 import ThemeToggle from "./ThemeToggle";
-import NavGuest from "./NavGuest";
-import NavAuth from "./NavAuth";
 
 export {
   Button,
@@ -53,14 +52,13 @@ export {
   CardListPreview,
   Footer,
   Hero,
+  NavAuth,
+  NavGuest,
   PageButton,
   Pagination,
   ScrollToTop,
   SearchBar,
   Star,
-  Stars,
   Votes,
   ThemeToggle,
-  NavGuest,
-  NavAuth,
 };

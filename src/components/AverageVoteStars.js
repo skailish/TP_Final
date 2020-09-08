@@ -1,11 +1,11 @@
 import React from 'react'
 import Star from './Star'
 
-const AverageVoteStars = ({ voteAverage, showRating }) => {
+const AverageVoteStars = ({ voteAverage }) => {
     const rating = Math.round(Math.floor(voteAverage > 1 ? voteAverage / 2 : 0));
     
     return (
-        showRating &&
+        voteAverage &&
         (<div className={ `rating-stars` }>
             {((rating > 0) &&
                 <>
