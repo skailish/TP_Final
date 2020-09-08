@@ -29,6 +29,7 @@ import SearchBar from "./SearchBar";
 import Star from "./Star";
 import Stars from "./Stars";
 import Votes from "./Votes";
+import ThemeToggle from "./ThemeToggle";
 
 export {
   Button,
@@ -61,4 +62,5 @@ export {
   Star,
   Stars,
   Votes,
+  ThemeToggle,
 };
