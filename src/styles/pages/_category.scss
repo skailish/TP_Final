@@ -3,14 +3,14 @@
   flex-direction: column;
   min-height: 100%;
   align-items: center;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   width: calc(100% - 100px);
   position: relative;
   left: 100px;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
   }
 
   @include media($md-breakpoint) {
@@ -35,6 +35,9 @@
     left: 0;
     margin: 0;
   }
+  @include media($sm-breakpoint) {
+    top: 0;
+  }
 }
 
 .category-title-container {
@@ -42,13 +45,17 @@
   left: 65px;
   position: absolute;
   text-transform: capitalize;
+  @include media($md-breakpoint) {
+    top: 20px;
+    text-align: center;
+  }
 
   .category-heading {
     font-weight: 300;
 
     @include media($md-breakpoint) {
       font-size: 25px;
-      padding: 40px 0;
+      padding: 20px 0;
     }
 
     &.light {

@@ -2,8 +2,8 @@
   width: calc(100vw - 100px);
   overflow: hidden;
   @include flex(column, center, center);
-  transition: 0.3s ease-in;
-  min-height: calc(100vh - 865px);;
+  transition: 0.3sease-in;
+  min-height: calc(100vh - 865px);
 
   &.light {
     background-color: $background-lightmode;

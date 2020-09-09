@@ -5,7 +5,7 @@
   left: 100px;
   width: calc(100% - 100px);
   background-color: $background-footer-darkmode;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   @include media($md-breakpoint) {
     height: fit-content;
     width: 100%;
@@ -15,7 +15,7 @@
   }
   &.light {
     background-color: $background-footer-lightmode;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
   }
 
   .footer-rights-container {

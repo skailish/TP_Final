@@ -1,13 +1,12 @@
 .pagination-container {
   @include flex(row, center, center);
   padding: 60px 0 20px 0;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   width: calc(100%-100px);
   margin-left: 100px;
   z-index: 100;
   @include media($lg-breakpoint) {
-   margin-left: 0;
-
+    margin-left: 0;
   }
   @include media($md-breakpoint) {
     width: 100%;
@@ -15,7 +14,6 @@
     margin: 0;
     padding: 0;
     padding-bottom: 10px;
-
   }
   .pagination-button,
   .pagination-arrow,
@@ -24,7 +22,7 @@
     &.active-page {
       transform: scale(1.2);
       color: $third-color-darkmode;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       background-color: transparent;
     }
   }
@@ -59,7 +57,7 @@
 
   &.light {
     & .pagination-button {
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       color: $main-text-lightmode;
     }
     & .pagination-arrow {
@@ -68,7 +66,7 @@
     & .pagination-page {
       background-color: transparent;
       color: $main-text-darkmode;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       &:hover,
       &.active-page {
         background-color: transparent;

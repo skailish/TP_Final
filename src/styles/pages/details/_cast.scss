@@ -7,18 +7,16 @@
   display: flex;
   min-height: 100%;
   align-items: center;
-  transition: 0.3s ease-in;
-
+  transition: 0.3sease-in;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
   }
 
   @include media($md-breakpoint) {
     justify-content: space-between;
     padding: 20px;
-   
 
     & .media-card-cast {
       @include flex(column, center, center);
@@ -29,7 +27,6 @@
       & .img-container {
         width: 130px;
         max-height: 130px;
-       
       }
       & .media-card-cast {
         width: 50px;
@@ -48,12 +45,9 @@
         }
       }
     }
-
-   
   }
 
   @include media($sm-breakpoint) {
     justify-content: center;
-   
   }
 }

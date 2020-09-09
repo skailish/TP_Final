@@ -5,7 +5,7 @@
   left: 100px;
 
   @include flex(row, center, center);
-  transition: 0.3s ease-in-out;
+  transition: 0.3sease-in-out;
 
   @include media($md-breakpoint) {
     min-height: calc(100vh - 107px);
@@ -35,15 +35,15 @@
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3s ease-in-out;
+    transition: 0.3sease-in-out;
   }
 
   .nofavs-heading {
     font-weight: normal;
-    transition: 0.3s ease-in-out;
+    transition: 0.3sease-in-out;
 
     &.light {
-      transition: 0.3s ease-in-out;
+      transition: 0.3sease-in-out;
       color: $main-text-lightmode;
     }
     @include media($md-breakpoint) {
@@ -64,10 +64,10 @@
   height: 100%;
   position: relative;
   left: 100px;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   padding: 50px 0;
-  text-align: center;
-  transition: 0.3s ease-in-out;
+
+  transition: 0.3sease-in-out;
   @include flex(column, space-evenly, center);
 
   @include media($lg-breakpoint) {
@@ -78,7 +78,7 @@
   }
 
   &.light {
-    transition: 0.3s ease-in-out;
+    transition: 0.3sease-in-out;
     background-color: $background-lightmode;
   }
 
@@ -91,10 +91,10 @@
   .favs-heading {
     font-size: 40px;
     color: $main-text-darkmode;
-    transition: 0.3s ease-in-out;
+    transition: 0.3sease-in-out;
 
     &.light {
-      transition: 0.3s ease-in-out;
+      transition: 0.3sease-in-out;
       color: $main-text-lightmode;
     }
     @include media($lg-breakpoint) {
@@ -110,10 +110,10 @@
     text-align: left;
     padding: 50px 0 30px 70px;
     font-weight: normal;
-    transition: 0.3s ease-in-out;
+    transition: 0.3sease-in-out;
 
     &.light {
-      transition: 0.3s ease-in-out;
+      transition: 0.3sease-in-out;
       color: $main-text-lightmode;
     }
     @include media($lg-breakpoint) {

@@ -1,8 +1,8 @@
 .nav-container {
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   width: calc(100% - 100px);
   @include flex(row, center, center);
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
 
   &.light {
     background-color: $background-lightmode;
@@ -17,7 +17,7 @@
     flex-wrap: wrap;
     padding-top: 20px;
     margin-top: 15px;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     width: 80%;
 
     @include media($md-breakpoint) {
@@ -32,10 +32,10 @@
       color: $third-text-color;
       text-decoration: none;
       font-size: 22px;
-      transition: 0.2s;
+      transition: 0.3s;
       padding-bottom: 9px;
       font-weight: 600;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
 
       @include media($md-breakpoint) {
         font-size: 15px;

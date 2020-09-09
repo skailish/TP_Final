@@ -7,10 +7,17 @@
   z-index: 1;
   cursor: pointer;
   @include flex(column, space-between, flex-start);
+  transition: 0.1s ease-in;
+
+  &:hover h3.media-card-heading {
+    transition: 0.1s ease-in;
+    color: $third-color-darkmode;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
 
   .media-card-img {
     height: 350px;
-    transition: 0.2s ease-in;
+    transition: 0.3s ease-in;
 
     &:hover {
       transform: scale(1.01);
@@ -42,6 +49,5 @@
   }
 
   @include media($md-breakpoint) {
-    
   }
 }

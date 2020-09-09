@@ -7,7 +7,7 @@
   display: flex;
   min-height: 100%;
   align-items: center;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
 
   @include media($md-breakpoint) {
     padding: 20px;
@@ -54,7 +54,7 @@
       }
       & > span {
         color: $fourth-color-darkmode;
-        transition: 0.3s ease-in;
+        transition: 0.3sease-in;
         font-weight: 600;
         @include media($md-breakpoint) {
           font-size: 12px;
@@ -67,7 +67,7 @@
         font-size: 1em;
         font-weight: 300;
         margin-left: 10px;
-        transition: 0.3s ease-in;
+        transition: 0.3sease-in;
         @include media($md-breakpoint) {
           margin: 0;
           font-size: 12px;
@@ -82,7 +82,7 @@
       height: 113px;
 
       @include ellipsis-multiline(13, 1.2, 5, 0);
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       @include media($md-breakpoint) {
         height: fit-content;
         font-size: 10px;
@@ -96,7 +96,7 @@
     }
     .card-episode-date {
       color: $third-text-color;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       @include media($md-breakpoint) {
         font-size: 11px;
       }

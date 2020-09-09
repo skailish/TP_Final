@@ -30,6 +30,7 @@ import Star from "./Star";
 import Votes from "./Votes";
 import ThemeToggle from "./ThemeToggle";
 import Modal from "./Modal";
+import GoBackButton from "./GoBackButton";
 
 export {
   Button,
@@ -63,4 +64,5 @@ export {
   Votes,
   ThemeToggle,
   Modal,
+  GoBackButton,
 };

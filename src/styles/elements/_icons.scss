@@ -95,16 +95,16 @@
 
 .close-options-icon {
   width: 30px;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   cursor: pointer;
 
   &:hover {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     color: $third-color-darkmode;
   }
 
   &.light {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     color: $third-color-lightmode;
   }
 }
@@ -114,7 +114,7 @@
   color: $third-color-darkmode;
 
   &.light {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     color: $third-color-lightmode;
   }
 }

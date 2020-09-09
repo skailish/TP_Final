@@ -1,179 +1,178 @@
 .error-container {
+  min-height: calc(100vh - 100px);
+  @include flex(column, flex-start, center);
+  width: calc(100vw - 100px);
+  position: relative;
+  left: 100px;
+
+  @include media($lg-breakpoint) {
+    min-height: calc(100vh - 200px);
+  }
+
+  @include media($md-breakpoint) {
+    min-height: calc(100vh - 106px);
+    left: 0;
+    width: 100%;
+  }
+
+  @include media($sm-breakpoint) {
+    min-height: calc(100vh - 128px);
+  }
+
+  .error-background-container {
+    position: absolute;
+    width: 100%;
     min-height: calc(100vh - 100px);
-    @include flex(column, flex-start, center);
-    width: calc(100vw - 100px);
-    position: relative;
-    left: 100px;
+    background-image: url(../../images/Upside-Down-S2.png);
+    background-position-y: center;
+    opacity: 0.9;
 
     @include media($lg-breakpoint) {
-        min-height: calc(100vh - 200px);
+      background-size: cover;
+      background-position-x: center;
+    }
+  }
+
+  .error-heading-container {
+    position: absolute;
+    text-align: center;
+    padding-top: 65px;
+
+    .error-heading {
+      font-family: "ITC Benguiat";
+      font-size: 50px;
+
+      @include media($md-breakpoint) {
+        padding-top: 30px;
+        font-size: 30px;
+      }
     }
 
-    @include media($md-breakpoint) {
-        min-height: calc(100vh - 106px);
-        left: 0;
-        width: 100%;
+    .error-redirection-container {
+      margin-top: 55px;
+
+      @include media($md-breakpoint) {
+        margin-top: 10px;
+      }
     }
 
-    @include media($sm-breakpoint) {
-        min-height: calc(100vh - 128px);
+    .error-redirection {
+      font-family: "ITC Benguiat";
+      font-weight: normal;
+      font-size: 23px;
+      line-height: 35px;
 
+      @include media($md-breakpoint) {
+        font-size: 13px;
+        line-height: 15px;
+        padding: 5px 20px;
+      }
     }
 
-    .error-background-container {
-        position: absolute;
-        width: 100%;
-        min-height: calc(100vh - 100px);
-        background-image: url(../../images/Upside-Down-S2.png);
-        background-position-y: center;
-        opacity: 0.9;
+    .error-link {
+      cursor: pointer;
+      color: $fourth-color-darkmode;
+      transition: 0.3sease-in;
 
-        @include media($lg-breakpoint) {
-            background-size: cover;
-            background-position-x: center;
-        }
+      &:hover {
+        color: $third-color-darkmode;
+        transition: 0.3sease-in;
+      }
     }
-
-    .error-heading-container {
-        position: absolute;
-        text-align: center;
-        padding-top: 65px;
-
-        .error-heading {
-            font-family: "ITC Benguiat";
-            font-size: 50px;
-
-            @include media($md-breakpoint) {
-                padding-top: 30px;
-                font-size: 30px;
-            }
-        }
-
-        .error-redirection-container {
-            margin-top: 55px;
-
-            @include media($md-breakpoint) {
-                margin-top: 10px;
-            }
-        }
-
-        .error-redirection {
-            font-family: "ITC Benguiat";
-            font-weight: normal;
-            font-size: 23px;
-            line-height: 35px;
-
-            @include media($md-breakpoint) {
-                font-size: 13px;
-                line-height: 15px;
-                padding: 5px 20px;
-            }
-        }
-
-        .error-link {
-            cursor: pointer;
-            color: $fourth-color-darkmode;
-            transition: 0.3s ease-in;
-
-            &:hover {
-                color: $third-color-darkmode;
-                transition: 0.3s ease-in;
-            }
-        }
-    }
+  }
 }
 
 @keyframes StrangersFade {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    20% {
-        opacity: 0;
-    }
+  20% {
+    opacity: 0;
+  }
 
-    40% {
-        opacity: 1;
-    }
+  40% {
+    opacity: 1;
+  }
 
-    60% {
-        opacity: 0;
-    }
+  60% {
+    opacity: 0;
+  }
 
-    80% {
-        opacity: 1;
-    }
+  80% {
+    opacity: 1;
+  }
 }
 
 @keyframes StrangersHeadingFade {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    2% {
-        opacity: 0;
-    }
+  2% {
+    opacity: 0;
+  }
 
-    4% {
-        opacity: 1;
-    }
+  4% {
+    opacity: 1;
+  }
 
-    6% {
-        opacity: 0;
-    }
+  6% {
+    opacity: 0;
+  }
 
-    8% {
-        opacity: 0;
-    }
+  8% {
+    opacity: 0;
+  }
 
-    10% {
-        opacity: 1;
-    }
+  10% {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 
-    52% {
-        opacity: 1;
-    }
+  52% {
+    opacity: 1;
+  }
 
-    54% {
-        opacity: 0;
-    }
+  54% {
+    opacity: 0;
+  }
 
-    56% {
-        opacity: 1;
-    }
+  56% {
+    opacity: 1;
+  }
 
-    94% {
-        opacity: 0;
-    }
+  94% {
+    opacity: 0;
+  }
 
-    96% {
-        opacity: 1;
-    }
+  96% {
+    opacity: 1;
+  }
 
-    98% {
-        opacity: 0;
-    }
+  98% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 .error-heading {
-    animation-name: StrangersHeadingFade;
-    animation-duration: 2000ms;
-    animation-delay: 1200ms;
-    animation-timing-function: ease-in-out;
+  animation-name: StrangersHeadingFade;
+  animation-duration: 2000ms;
+  animation-delay: 1200ms;
+  animation-timing-function: ease-in-out;
 }
 
 .error-redirection-container {
-    animation-name: StrangersFade;
-    animation-duration: 300ms;
-    animation-delay: 300ms;
-    animation-iteration-count: 2;
-    animation-timing-function: ease-in-out;
+  animation-name: StrangersFade;
+  animation-duration: 300ms;
+  animation-delay: 300ms;
+  animation-iteration-count: 2;
+  animation-timing-function: ease-in-out;
 }

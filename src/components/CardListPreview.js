@@ -97,9 +97,13 @@ const CardListPreview = ({
                 cardInfo={{
                   id: singleCard.id,
                   src: !isFavs ? singleCard.poster_path : singleCard.src,
-                  title:
-                    mediatype === "tv" ? singleCard.name : singleCard.title,
+                  title: !isFavs
+                    ? mediatype === "tv"
+                      ? singleCard.name
+                      : singleCard.title
+                    : singleCard.title,
                   votes: !isFavs ? singleCard.vote_average : singleCard.votes,
+
                   mediatype: mediatype,
                   like: isFavs ? true : favsArray.includes(singleCard.id),
                 }}

@@ -4,7 +4,14 @@ import { useParams } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-import {Container, Card, Heading, Pagination, ScrollToTop} from "../../components"
+import {
+  Container,
+  Card,
+  Heading,
+  Pagination,
+  ScrollToTop,
+  GoBackButton,
+} from "../../components";
 
 import ThemeContext from "../../contexts/ThemeContext";
 import CategoryContext from "../../contexts/CategoryContext";
@@ -45,6 +52,7 @@ const Categories = () => {
 
   return (
     <>
+      <GoBackButton />
       {isLoading && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
@@ -65,13 +73,15 @@ const Categories = () => {
           <Container className={`main-category-container ${theme}`}>
             {dataByParams.map((singleCard) => (
               <Card
-                id={singleCard.id}
-                src={singleCard.poster_path}
-                title={media === "movie" ? singleCard.title : singleCard.name}
-                votes={singleCard.vote_average}
-                key={singleCard.id}
-                mediatype={media}
-                like={favsArray.includes(singleCard.id)}
+                cardInfo={{
+                  id: singleCard.id,
+                  src: singleCard.poster_path,
+                  title: media === "movie" ? singleCard.title : singleCard.name,
+                  votes: singleCard.vote_average,
+                  key: singleCard.id,
+                  mediatype: media,
+                  like: favsArray.includes(singleCard.id),
+                }}
               />
             ))}
           </Container>

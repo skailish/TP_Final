@@ -4,7 +4,7 @@
   height: 60px;
   border-bottom: 1px solid #307672;
   background-color: $background-aside-darkmode;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   position: fixed;
   z-index: 800;
   box-sizing: border-box;
@@ -27,11 +27,11 @@
 
   .nav-close-icon {
     transform: translateX(0px);
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
   }
 
   .set-show-close {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     transform: translateX(60px);
   }
 }
@@ -42,7 +42,7 @@
   height: 100%;
   min-height: 100vh;
   z-index: 999;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   transform: translateX(0);
   background-color: $background-aside-darkmode;
   @include flex(column, space-between, center);
@@ -56,11 +56,13 @@
 
   .nav-links {
     @include flex(column, space-between, center);
-    height: 350px;
-    margin-top: 50px;
-
-
-
+    height: 400px;
+    margin-top: 30px;
+  }
+  @include media($md-breakpoint) {
+    min-height: calc(100% - 60px);
+    height: calc(100% - 60px);
+    top: 60px;
   }
 }
 
@@ -77,7 +79,7 @@
 
   .nav-text {
     padding-top: 5px;
-    font-size: 15px;
+    font-size: 12px;
     transition: 0.3s;
     color: $main-text-darkmode;
     cursor: pointer;
@@ -86,25 +88,18 @@
       color: $main-text-lightmode;
     }
   }
-
-
-  @include media($md-breakpoint) {
-    min-height: calc(100% - 60px);
-    height: calc(100% - 60px);
-    top: 60px;
-  }
 }
 
 .user-options {
   @include flex(column, space-evenly, center);
-  height: 200px;
+  height: 140px;
 }
 
 .set-show-nav {
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
 
   @include media($md-breakpoint) {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     transform: translateX(-105px);
     opacity: 0;
   }

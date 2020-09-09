@@ -5,7 +5,7 @@
   display: flex;
   height: 100%;
   align-items: center;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   padding: 80px 0 100px 0;
 
   @include media($md-breakpoint) {
@@ -14,7 +14,7 @@
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
   }
 
   .similar-cards-container {
@@ -25,7 +25,7 @@
 
     &.light {
       background-color: $background-lightmode;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
     }
 
     @include media($md-breakpoint) {

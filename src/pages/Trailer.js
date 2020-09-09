@@ -5,9 +5,8 @@ import ReactPlayer from "react-player";
 
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/core";
-import { ArrowBack } from "@styled-icons/ionicons-outline/ArrowBack";
 
-import { Container, Heading, Button, Image, Text } from "../components";
+import { Container, Heading, Image, GoBackButton } from "../components";
 
 import img from "../images/Error.png";
 
@@ -52,21 +51,9 @@ const Trailer = () => {
     getVideo();
   }, []);
 
-  const handleGoBackClick = () => {
-    history.goBack();
-  };
-
   return (
     <>
-      <Container className={`go-back-container ${theme}`}>
-        <Button
-          onClick={handleGoBackClick}
-          className={`go-back-button ${theme}`}
-        >
-          <ArrowBack className={`arrow-icon ${theme}`} />
-          <Text className={`go-back-text ${theme}`}>Go Back</Text>
-        </Button>
-      </Container>
+      <GoBackButton />
       {isLoading && url.length === 0 && (
         <Container className={`onLoading-Container ${theme}`}>
           {theme === "dark" ? (
@@ -79,7 +66,7 @@ const Trailer = () => {
       {!isLoading && isError && (
         <Container className={`main-error-container ${theme}`}>
           <Image src={img} className="error-img" />
-          <Heading classname={`${theme}`} id="error-trailer-heading" level={1}>
+          <Heading className={`${theme}`} id="error-trailer-heading" level={1}>
             ...Ups, this {media === "movie" ? media : "TV show"} doesn't have a
             trailer.
           </Heading>

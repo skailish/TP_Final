@@ -138,7 +138,9 @@ const NavAuth = () => {
               className={`nav-icon ${theme}`}
               title={"Favorites"}
               onClick={handleToggleNavClick}
+              title={"Favs"}
             />
+            <Text className={`nav-text ${theme}`}>Favs</Text>
           </NavLink>
         </Container>
         <Container className="user-options">
@@ -148,7 +150,7 @@ const NavAuth = () => {
               title={"Logout"}
               onClick={handleToggleNavClick}
             />
-             <Text className={`nav-text ${theme}`}>Logout</Text>
+            <Text className={`nav-text ${theme}`}>Logout</Text>
           </Link>
 
           <ThemeToggle

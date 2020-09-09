@@ -4,7 +4,7 @@
   height: 100%;
   position: relative;
   left: 100px;
-  transition: 0.3s ease-in;
+  transition: 0.3sease-in;
   padding: 50px 0;
   text-align: center;
   @include flex(column, space-evenly, center);
@@ -38,7 +38,7 @@
   .form-heading {
     font-size: 40px;
     font-weight: 400;
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
 
     @include media($sm-breakpoint) {
       font-size: 30px;
@@ -46,7 +46,7 @@
     }
 
     &.light {
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       color: $main-text-lightmode;
     }
   }
@@ -73,11 +73,11 @@
     .form-label {
       font-size: 20px;
       width: 450px;
-      transition: 0.3s ease-in;
+      transition: 0.3sease-in;
       @include flex(row, space-between, center);
 
       &.light {
-        transition: 0.3s ease-in;
+        transition: 0.3sease-in;
         color: $main-text-lightmode;
         &:focus {
           background-color: $background-aside-darkmode;
@@ -103,12 +103,12 @@
         border: none;
         outline: none;
         width: 300px;
-        transition: 0.3s ease-in;
+        transition: 0.3sease-in;
         padding: 10px;
         font-size: 15px;
 
         &.light {
-          transition: 0.3s ease-in;
+          transition: 0.3sease-in;
           background-color: $main-text-lightmode;
           color: $main-text-darkmode;
         }
@@ -164,7 +164,7 @@
   }
 
   &.light {
-    transition: 0.3s ease-in;
+    transition: 0.3sease-in;
     background-color: $background-lightmode;
   }
 }
