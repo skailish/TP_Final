@@ -4,19 +4,19 @@ Realizado entre Angie Turne, Daniela Capponi, Josefina del Rey y María Luján S
 https://theadamovie.netlify.app/
 
 ## Angie Turne: 
-Github: https://github.com/angieTu 
+Github: https://github.com/angieTu <br />
 Linkedin: https://www.linkedin.com/in/angie-tu/
 
 ## Daniela Capponi: 
-Github: https://github.com/skailish 
+Github: https://github.com/skailish <br />
 Linkedin: https://www.linkedin.com/in/danielacapponi/
 
 ## Josefina del Rey: 
-Github: https://github.com/Jodelrey 
+Github: https://github.com/Jodelrey <br />
 Linkedin: https://www.linkedin.com/in/josefina-del-rey/
 
 ## María Luján Sanchez: 
-Github: https://github.com/LoohanZero
+Github: https://github.com/LoohanZero <br />
 Linkedin: https://www.linkedin.com/in/lujansanchez/
 
 ---------------------------------------------------------
