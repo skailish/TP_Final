@@ -126,7 +126,7 @@
 }
 
 .main-discover-filter-container {
-  box-sizing: border-box;
+  box-sizing: content-box;
   width: calc(100vw - 100px);
   position: absolute;
   margin-left: 100px;
@@ -134,7 +134,7 @@
   background-color: $background-footer-darkmode;
   padding-left: 80px;
   @include flex(column, space-evenly, flex-start);
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   @include media($lg-breakpoint) {
     padding: 10px 0 10px 80px;
@@ -169,7 +169,7 @@
 
   .filter-container {
     width: 60%;
-    height: 50%;
+    height: 30%;
     @include flex(row, space-between, center);
 
     @include media($lg-breakpoint) {
