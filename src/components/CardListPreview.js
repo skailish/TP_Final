@@ -37,6 +37,8 @@ const CardListPreview = ({
     setWidthScreen(mediaContainerRef.current.scrollWidth);
     setScrollWidth(mediaRef.current.scrollWidth);
     window.addEventListener("resize", handleResize);
+    if (mediaContainerRef.current.scrollWidth > mediaRef.current.scrollWidth)
+      setShowRightBar(false);
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {
