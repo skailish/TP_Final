@@ -76,7 +76,7 @@ const NavGuest = () => {
               title={"Movie"}
               onClick={handleToggleNavClick}
             />
-            <Text className={`nav-text ${theme}`}>Movie</Text>
+            <Text className={`nav-text ${theme}`}>Movies</Text>
           </NavLink>
           <NavLink
             to="/tv"
