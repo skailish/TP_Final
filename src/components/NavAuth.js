@@ -17,7 +17,9 @@ import { Binoculars } from "@styled-icons/boxicons-solid/Binoculars";
 import Container from "../components/primitive/Container";
 import Link from "../components/primitive/Link";
 import Nav from "../components/primitive/Nav";
+import Text from "../components/primitive/Text";
 import ThemeToggle from "../components/ThemeToggle";
+import Modal from "./Modal";
 
 import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
@@ -26,9 +28,13 @@ const NavAuth = () => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
   const { handleSearchBarVisibleClick } = useContext(SearchContext);
   const [noShow, setNoShow] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const handleLogoutClick = () => {
-    firebase.auth().signOut();
+    setModal(true);
+
+    setTimeout(() => firebase.auth().signOut(), 1000);
+    setTimeout(() => setModal(false), 1000);
   };
 
   const handleToggleNavClick = () => {
@@ -36,6 +42,7 @@ const NavAuth = () => {
   };
   return (
     <>
+      {modal && <Modal text="You have logged off successfully!" />}
       <Nav className={`responsive-nav ${theme}`}>
         <Link className="responsive-nav-link" onClick={handleToggleNavClick}>
           <Menu className={`nav-icon ${theme}`} />
@@ -55,46 +62,78 @@ const NavAuth = () => {
         className={`aside ${theme} ${noShow && "set-show-nav"}`}
       >
         <Container className="nav-links">
-          <NavLink to="/" activeClassName="selected" exact>
+          <NavLink
+            to="/"
+            className="nav-icon-container"
+            activeClassName="selected"
+            exact
+          >
             <Home
               className={`nav-icon ${theme}`}
               title={"Home"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Home</Text>
           </NavLink>
-          <NavLink to="/movie" exact activeClassName="selected">
+          <NavLink
+            to="/movie"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <Movie
               className={`nav-icon ${theme}`}
               title={"Movie"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Movie</Text>
           </NavLink>
-          <NavLink to="/tv" exact activeClassName="selected">
+          <NavLink
+            to="/tv"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <TV
               className={`nav-icon ${theme}`}
               title={"Tv Series"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>TV Shows</Text>
           </NavLink>
 
-          <NavLink to="/discover" exact activeClassName="selected">
+          <NavLink
+            to="/discover"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <Binoculars
               className={`nav-icon ${theme}`}
               title={"Discover"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Discover</Text>
           </NavLink>
 
-          <Search
-            className={`nav-icon ${theme}`}
-            onClick={() => {
-              handleSearchBarVisibleClick();
-              handleToggleNavClick();
-            }}
-            title={"Search"}
-          />
+          <Container className="nav-icon-container">
+            <Search
+              className={`nav-icon ${theme}`}
+              onClick={() => {
+                handleSearchBarVisibleClick();
+                handleToggleNavClick();
+              }}
+              title={"Search"}
+            />
+            <Text className={`nav-text ${theme}`}>Search</Text>
+          </Container>
 
-          <NavLink to="/favs" exact activeClassName="selected">
+          <NavLink
+            to="/favs"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <Heart
               className={`nav-icon ${theme}`}
               title={"Favorites"}
@@ -103,13 +142,14 @@ const NavAuth = () => {
           </NavLink>
         </Container>
         <Container className="user-options">
-          <a onClick={handleLogoutClick}>
+          <Link onClick={handleLogoutClick} className="nav-icon-container">
             <LogOut
               className={`nav-icon ${theme}`}
               title={"Logout"}
               onClick={handleToggleNavClick}
             />
-          </a>
+             <Text className={`nav-text ${theme}`}>Logout</Text>
+          </Link>
 
           <ThemeToggle
             onClick={() => {

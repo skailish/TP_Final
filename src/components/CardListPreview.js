@@ -29,9 +29,14 @@ const CardListPreview = ({
   const [scrollWidth, setScrollWidth] = useState(0);
   const windowWidth = window.innerWidth;
 
+  const handleResize = () => {
+    setWidthScreen(window.innerWidth);
+  };
+
   useEffect(() => {
     setWidthScreen(mediaContainerRef.current.scrollWidth);
     setScrollWidth(mediaRef.current.scrollWidth);
+    window.addEventListener("resize", handleResize);
   }, []);
 
   const handleLeftChevronClick = (widthScreen) => {

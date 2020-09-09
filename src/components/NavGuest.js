@@ -15,6 +15,7 @@ import { Binoculars } from "@styled-icons/boxicons-solid/Binoculars";
 
 import Container from "../components/primitive/Container";
 import Link from "../components/primitive/Link";
+import Text from "../components/primitive/Text";
 import Nav from "../components/primitive/Nav";
 import ThemeToggle from "../components/ThemeToggle";
 
@@ -25,10 +26,6 @@ const NavGuest = () => {
   const { theme, handleThemeClick } = useContext(ThemeContext);
   const { handleSearchBarVisibleClick } = useContext(SearchContext);
   const [noShow, setNoShow] = useState(true);
-
-  const handleLogoutClick = () => {
-    firebase.auth().signOut();
-  };
 
   const handleToggleNavClick = () => {
     setNoShow(!noShow);
@@ -55,52 +52,86 @@ const NavGuest = () => {
         className={`aside ${theme} ${noShow && "set-show-nav"}`}
       >
         <Container className="nav-links">
-          <NavLink to="/" activeClassName="selected" exact>
+          <NavLink
+            to="/"
+            className="nav-icon-container"
+            activeClassName="selected"
+            exact
+          >
             <Home
               className={`nav-icon ${theme}`}
               title={"Home"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Home</Text>
           </NavLink>
-          <NavLink to="/movie" exact activeClassName="selected">
+          <NavLink
+            to="/movie"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <Movie
               className={`nav-icon ${theme}`}
               title={"Movie"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Movie</Text>
           </NavLink>
-          <NavLink to="/tv" exact activeClassName="selected">
+          <NavLink
+            to="/tv"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <TV
               className={`nav-icon ${theme}`}
               title={"Tv Series"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>TV Shows</Text>
           </NavLink>
 
-          <NavLink to="/discover" exact activeClassName="selected">
+          <NavLink
+            to="/discover"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <Binoculars
               className={`nav-icon ${theme}`}
               title={"Discover"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Discover</Text>
           </NavLink>
 
-          <Search
-            className={`nav-icon ${theme}`}
-            onClick={() => {
-              handleSearchBarVisibleClick();
-              handleToggleNavClick();
-            }}
-            title={"Search"}
-          />
+          <Container className="nav-icon-container">
+            <Search
+              className={`nav-icon ${theme}`}
+              onClick={() => {
+                handleSearchBarVisibleClick();
+                handleToggleNavClick();
+              }}
+              title={"Search"}
+            />
+            <Text className={`nav-text ${theme}`}>Search</Text>
+          </Container>
+          
         </Container>
         <Container className="user-options">
-          <NavLink to="/login" exact activeClassName="selected">
+          <NavLink
+            to="/login"
+            exact
+            className="nav-icon-container"
+            activeClassName="selected"
+          >
             <LogIn
               className={`nav-icon ${theme}`}
               title={"Login"}
               onClick={handleToggleNavClick}
             />
+            <Text className={`nav-text ${theme}`}>Login</Text>
           </NavLink>
 
           <ThemeToggle

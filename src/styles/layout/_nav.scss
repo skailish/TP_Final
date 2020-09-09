@@ -58,18 +58,46 @@
     @include flex(column, space-between, center);
     height: 350px;
     margin-top: 50px;
+
+
+
+  }
+}
+
+.nav-icon-container {
+  @include flex(column, center, center);
+
+  &.selected .nav-text.light {
+    color: $secondary-color-lightmode;
   }
 
-  .user-options {
-    @include flex(column, space-evenly, center);
-    height: 150px;
+  &.selected .nav-text {
+    color: $fourth-color-darkmode;
   }
+
+  .nav-text {
+    padding-top: 5px;
+    font-size: 15px;
+    transition: 0.3s;
+    color: $main-text-darkmode;
+    cursor: pointer;
+
+    &.light {
+      color: $main-text-lightmode;
+    }
+  }
+
 
   @include media($md-breakpoint) {
     min-height: calc(100% - 60px);
     height: calc(100% - 60px);
     top: 60px;
   }
+}
+
+.user-options {
+  @include flex(column, space-evenly, center);
+  height: 200px;
 }
 
 .set-show-nav {

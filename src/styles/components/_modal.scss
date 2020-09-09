@@ -1,0 +1,22 @@
+.modal-container {
+    height: 100px;
+    width: 300px;
+    background-color: $third-color-darkmode;
+    position: fixed;
+    left: 45%;
+    top: 30%;
+    @include flex(row, center, center);
+    z-index: 999;
+    border-radius: 10px;
+}
+.background-blurred {
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    z-index: 300;
+
+}
+.modal-text {
+    color: $main-text-darkmode;
+}

@@ -2,13 +2,22 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import firebase from "../configs/firebase";
 import { useHistory, Redirect } from "react-router-dom";
 
-import { Container, Input, Label, Heading, Button, Text } from "../components";
+import {
+  Container,
+  Input,
+  Label,
+  Heading,
+  Button,
+  Text,
+  Modal,
+} from "../components";
 
 import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
 const Signup = () => {
   const [error, setError] = useState(false);
+  const [modal, setModal] = useState(false);
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { user, setUser } = useContext(UserContext);
@@ -34,6 +43,8 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    event.persist();
+
     setError(false);
     firebase
       .auth()
@@ -41,55 +52,58 @@ const Signup = () => {
         event.target.email.value,
         event.target.password.value
       )
+      .then(() => setModal(true))
       .then(() => setUser(event.target.email.value))
-      .then(() => history.push("/"))
+      .then(() => setTimeout(() => history.push("/"), 1000))
       .catch((error) => setError(error.message));
   };
 
-  return !user ? (
+  return (
     <>
-      <Container className={`form-container ${theme}`}>
-        <Heading level={1} className={`form-heading ${theme}`}>
-          Sign Up
-        </Heading>
-        <Container id="auth-error">
-          {error && <Text id="error-message">{error}</Text>}
-        </Container>
-        <Container
-          as="form"
-          onSubmit={handleSubmit}
-          className={`form ${theme}`}
-        >
-          <Label className={`form-label ${theme}`}>
-            Email
-            <Input
-              forwardedRef={emailRef}
-              onKeyDown={handleEmailDown}
-              type="email"
-              name="email"
-              ref={emailRef}
-              className={`form-input ${theme}`}
-            />
-          </Label>
-          <Label className={`form-label ${theme}`}>
-            Password
-            <Input
-              forwardedRef={passRef}
-              onKeyDown={handlePassDown}
-              type="password"
-              name="password"
-              ref={passRef}
-              className={`form-input ${theme}`}
-            />
-          </Label>
-          <Button ref={submitRef} type="submit">
+      {modal && <Modal text="Your new account has been created!" />}
+      {(!user || (user && modal)) && (
+        <Container className={`form-container ${theme}`}>
+          <Heading level={1} className={`form-heading ${theme}`}>
             Sign Up
-          </Button>
+          </Heading>
+          <Container id="auth-error">
+            {error && <Text id="error-message">{error}</Text>}
+          </Container>
+          <Container
+            as="form"
+            onSubmit={handleSubmit}
+            className={`form ${theme}`}
+          >
+            <Label className={`form-label ${theme}`}>
+              Email
+              <Input
+                forwardedRef={emailRef}
+                onKeyDown={handleEmailDown}
+                type="email"
+                name="email"
+                ref={emailRef}
+                className={`form-input ${theme}`}
+              />
+            </Label>
+            <Label className={`form-label ${theme}`}>
+              Password
+              <Input
+                forwardedRef={passRef}
+                onKeyDown={handlePassDown}
+                type="password"
+                name="password"
+                ref={passRef}
+                className={`form-input ${theme}`}
+              />
+            </Label>
+            <Button ref={submitRef} type="submit">
+              Sign Up
+            </Button>
+          </Container>
         </Container>
-      </Container>
+      )}
+      {user && !modal && <Redirect to="/" />}
     </>
-  ) : (
-    <Redirect to="/" />
   );
 };
 

@@ -1,7 +1,7 @@
 @import "./utils/_variables";
-
 @import "./utils/functions";
 @import "./utils/mixins";
+
 @import "./base/base";
 @import "./base/_font";
 
@@ -19,7 +19,7 @@
 @import "./pages/discover";
 @import "./pages/details/cast";
 
-@import "./layout/aside";
+@import "./layout/nav";
 @import "./layout/hero";
 @import "./layout/footer";
 @import "./layout/loader";
@@ -30,6 +30,7 @@
 @import "./components/pagination";
 @import "./components/searchbar";
 @import "./components/cardCast";
+@import "./components/modal";
 
 @import "./elements/icons";
 @import "./elements/links";
