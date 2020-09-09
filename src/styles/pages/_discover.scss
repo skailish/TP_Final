@@ -132,7 +132,7 @@
   margin-left: 100px;
   height: 150px;
   background-color: $background-footer-darkmode;
-  padding: 0 0 20px 80px;
+  padding-left: 80px;
   @include flex(column, space-evenly, flex-start);
   transition: 0.3sease-in;
 
