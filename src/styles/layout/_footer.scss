@@ -104,9 +104,8 @@
         width: 80px;
 
         @include media($md-breakpoint) {
-          height: 20px;
-          width: fit-content;
-          justify-content: center;
+          height: 30px;
+          width: 60px;
 
           a {
             transform: scale(0.6);

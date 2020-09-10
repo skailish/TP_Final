@@ -40,7 +40,6 @@ const Login = () => {
       submitRef.current.focus();
     }
   };
-  const handleModal = () => {};
 
   const handleSubmit = (event) => {
     event.preventDefault();
