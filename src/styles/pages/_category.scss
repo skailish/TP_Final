@@ -3,14 +3,14 @@
   flex-direction: column;
   min-height: 100%;
   align-items: center;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   width: calc(100% - 100px);
   position: relative;
   left: 100px;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 
   @include media($md-breakpoint) {
@@ -35,6 +35,7 @@
     left: 0;
     margin: 0;
   }
+
   @include media($sm-breakpoint) {
     top: 0;
   }
@@ -42,9 +43,10 @@
 
 .category-title-container {
   top: 45px;
-  left: 65px;
+  left: 30px;
   position: absolute;
   text-transform: capitalize;
+
   @include media($md-breakpoint) {
     top: 20px;
     text-align: center;

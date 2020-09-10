@@ -7,11 +7,11 @@
   display: flex;
   min-height: 100%;
   align-items: center;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 
   @include media($md-breakpoint) {
@@ -28,18 +28,22 @@
         width: 130px;
         max-height: 130px;
       }
+
       & .media-card-cast {
         width: 50px;
         max-height: 50px;
         text-align: center;
       }
+
       & .cast-heading-container {
         @include flex(column, center, center);
         width: fit-content;
+
         & h3 {
           font-size: 12px;
           text-align: center;
         }
+
         & .media-card-name {
           padding: 0;
         }

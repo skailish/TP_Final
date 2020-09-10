@@ -1,8 +1,8 @@
 .nav-container {
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   width: calc(100% - 100px);
   @include flex(row, center, center);
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
@@ -13,11 +13,11 @@
   }
 
   .nav-tvShow {
-    @include flex(row, space-around, center);
+    @include flex(row, center, center);
     flex-wrap: wrap;
     padding-top: 20px;
     margin-top: 15px;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     width: 80%;
 
     @include media($md-breakpoint) {
@@ -33,9 +33,9 @@
       text-decoration: none;
       font-size: 22px;
       transition: 0.3s;
-      padding-bottom: 9px;
+      padding: 0 15px 9px 15px;
       font-weight: 600;
-      transition: 0.3sease-in;
+      transition: 0.3s ease-in;
 
       @include media($md-breakpoint) {
         font-size: 15px;

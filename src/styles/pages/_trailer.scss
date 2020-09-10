@@ -24,6 +24,7 @@
     height: calc(100vh - 260px);
   }
 
+
   &.light {
     background-color: $background-lightmode;
     transform: 0.3s ease-in;
@@ -34,16 +35,30 @@
     height: 70%;
 
     @include media($lg-breakpoint) {
-      width: 80%;
-      height: 35%;
+      width: 90%;
+      height: 40%;
     }
+
     @include media($md-breakpoint) {
-      width: 80%;
-      height: 50%;
-    }
-    @include media($sm-breakpoint) {
       width: 95%;
+      height: 55%;
     }
+  }
+}
+
+.main-trailer-container {
+  @include flex(column, space-evenly, center);
+}
+.trailer-heading {
+  font-size: 40px;
+  font-weight: normal;
+
+  &.light {
+    color: $main-text-lightmode;
+  }
+
+  @include media($sm-breakpoint) {
+    font-size: 25px;
   }
 }
 
@@ -51,14 +66,17 @@
   height: 100%;
   line-height: 120px;
   min-height: calc(100vh - 200px);
+
   @include media($md-breakpoint) {
     font-size: 12px;
     line-height: 30px;
     text-align: center;
   }
+
   .error-img {
     width: 500px;
     border-radius: 10px;
+
     @include media($sm-breakpoint) {
       margin-bottom: 20px;
       width: 90%;
@@ -68,6 +86,7 @@
   &.light {
     color: $main-text-lightmode;
   }
+
   &.light {
     background-color: $background-lightmode;
   }
@@ -101,9 +120,8 @@
     cursor: pointer;
     color: $main-text-darkmode;
     border: none;
-    outline: none;
     width: 300px;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
 
     &.light {
       color: $main-text-lightmode;
@@ -111,12 +129,13 @@
 
     &:hover {
       color: $third-color-darkmode;
-      transition: 0.3sease-in;
+      transition: 0.3s ease-in;
 
       &.light {
         color: $secondary-color-lightmode;
       }
     }
+
     .go-back-text {
       font-size: 20px;
       padding-left: 10px;

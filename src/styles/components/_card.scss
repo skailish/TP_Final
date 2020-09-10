@@ -1,8 +1,10 @@
 .media-card {
   height: 450px;
   width: 235px;
-  width: fit-content;
+  box-sizing: border-box;
+  width: 25%;
   margin: 20px 15px;
+  padding: 0 3px;
   scroll-snap-align: center;
   z-index: 1;
   cursor: pointer;
@@ -48,6 +50,5 @@
     }
   }
 
-  @include media($md-breakpoint) {
-  }
+  
 }

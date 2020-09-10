@@ -4,7 +4,7 @@
   height: 60px;
   border-bottom: 1px solid #307672;
   background-color: $background-aside-darkmode;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   position: fixed;
   z-index: 800;
   box-sizing: border-box;
@@ -27,11 +27,11 @@
 
   .nav-close-icon {
     transform: translateX(0px);
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 
   .set-show-close {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     transform: translateX(60px);
   }
 }
@@ -42,7 +42,7 @@
   height: 100%;
   min-height: 100vh;
   z-index: 999;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   transform: translateX(0);
   background-color: $background-aside-darkmode;
   @include flex(column, space-between, center);
@@ -59,6 +59,7 @@
     height: 400px;
     margin-top: 30px;
   }
+
   @include media($md-breakpoint) {
     min-height: calc(100% - 60px);
     height: calc(100% - 60px);
@@ -97,10 +98,10 @@
 }
 
 .set-show-nav {
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   @include media($md-breakpoint) {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     transform: translateX(-105px);
     opacity: 0;
   }

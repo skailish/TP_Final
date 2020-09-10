@@ -74,6 +74,7 @@ const Trailer = () => {
       )}
       {!isLoading && !isError && (
         <Container className={`main-trailer-container ${theme}`}>
+          <Heading className={`trailer-heading ${theme}` }>Trailer</Heading>
           <Container className="player-container">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${url[0].key}`}

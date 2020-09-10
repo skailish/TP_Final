@@ -14,6 +14,7 @@
   }
 }
 
+
 .hero-image-container {
   width: 100%;
   height: 100%;
@@ -21,12 +22,10 @@
 
   &::after {
     content: "";
-    background-image: linear-gradient(
-      90deg,
-      #000 37%,
-      transparent 81%,
-      transparent
-    );
+    background-image: linear-gradient(90deg,
+        #000 37%,
+        transparent 81%,
+        transparent);
 
     width: 70%;
     height: 100%;
@@ -34,21 +33,17 @@
 
     @include media($sm-breakpoint) {
       width: 100%;
-      background-image: linear-gradient(
-        180deg,
-        transparent 40%,
-        transparent 42%,
-        #000 65%
-      );
+      background-image: linear-gradient(180deg,
+          rgba(0, 0, 0, 0) 40%,
+          rgba(0, 0, 0, 0.3) 42%,
+          #000 65%);
     }
 
     @include media($sm-breakpoint) {
-      background-image: linear-gradient(
-        180deg,
-        transparent 30%,
-        transparent 32%,
-        rgba(#000, 0.9) 45%
-      );
+      background-image: linear-gradient(180deg,
+          rgba(0, 0, 0, 0) 40%,
+          rgba(0, 0, 0, 0.3) 55%,
+          rgba(#000, 0.9) 70%);
     }
   }
 }
@@ -102,16 +97,19 @@
     color: $main-text-darkmode;
     margin: 40px 20px 0 0;
 
+
     @include media($sm-breakpoint) {
+      margin: 0;
+
       & button {
-        margin: 30px 5px 5px;
+
         padding: 5px 10px;
         width: fit-content;
         background-color: transparent;
-        transition: 0.3sease-in;
+        transition: 0.3s ease-in;
 
         & p {
-          transition: 0.3sease-in;
+          transition: 0.3s ease-in;
         }
       }
 
@@ -127,11 +125,11 @@
       & button:hover,
       & button:focus {
         background-color: transparent;
-        transition: 0.3sease-in;
+        transition: 0.3s ease-in;
 
         & p {
           font-size: 15px;
-          transition: 0.3sease-in;
+          transition: 0.3s ease-in;
         }
       }
     }

@@ -3,7 +3,7 @@
   overflow: hidden;
   @include flex(column, center, center);
   position: relative;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
@@ -55,6 +55,7 @@
         }
       }
     }
+
     .episodes-length {
       margin-left: 18px;
       font-size: 19px;
@@ -62,6 +63,7 @@
       @include media($md-breakpoint) {
         font-size: 15px;
       }
+
       &.light {
         color: $main-text-lightmode;
       }

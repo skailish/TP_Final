@@ -72,11 +72,11 @@
     .error-link {
       cursor: pointer;
       color: $fourth-color-darkmode;
-      transition: 0.3sease-in;
+      transition: 0.3s ease-in;
 
       &:hover {
         color: $third-color-darkmode;
-        transition: 0.3sease-in;
+        transition: 0.3s ease-in;
       }
     }
   }

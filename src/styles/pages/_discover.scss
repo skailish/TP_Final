@@ -3,22 +3,22 @@
   margin-left: 100px;
   height: 200px;
   background-color: $background-footer-darkmode;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 }
 
 .results-pagination-container {
   min-height: calc(100vh - 200px);
   height: 100%;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 
   @include media($md-breakpoint) {
@@ -33,6 +33,7 @@
     @include media($md-breakpoint) {
       min-height: calc(100vh - 107px);
     }
+
     @include media($sm-breakpoint) {
       min-height: calc(100vh - 133px);
     }
@@ -47,7 +48,7 @@
 
 .results-container {
   margin-top: 200px;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   width: calc(100vw - 100px);
   // min-height: calc(100vh - 200px);
   position: relative;
@@ -57,7 +58,7 @@
   background-color: $background-darkmode;
   @include flex(row, space-evenly, center);
   flex-wrap: wrap;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   @media (max-width: $md-breakpoint) {
     margin-top: 50px;
@@ -74,7 +75,7 @@
 
   &.light {
     background-color: $background-lightmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
   }
 
   .no-results-tilte {
@@ -94,7 +95,7 @@
 
 .discover-results-container {
   margin-top: 200px;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   width: calc(100vw - 100px);
   position: relative;
   left: 100px;
@@ -103,7 +104,7 @@
   background-color: $background-darkmode;
   @include flex(row, space-evenly, center);
   flex-wrap: wrap;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
 
   &.light {
     background-color: $background-lightmode;
@@ -154,16 +155,16 @@
     font-size: 20px;
     font-weight: 600;
     color: $main-text-darkmode;
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
 
     &.light {
-      transition: 0.3sease-in;
+      transition: 0.3s ease-in;
       color: $main-text-lightmode;
     }
   }
 
   &.light {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     background-color: $background-footer-lightmode;
   }
 
@@ -191,13 +192,13 @@
       font-weight: 600;
       color: $main-text-darkmode;
       cursor: pointer;
-      transition: 0.3sease-in;
+      transition: 0.3s ease-in;
 
       @include media($md-breakpoint) {
         width: 60%;
       }
 
-      & > option {
+      &>option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
@@ -205,11 +206,11 @@
         border: none;
         outline: none;
         background-color: $background-footer-darkmode;
-        transition: 0.3sease-in;
+        transition: 0.3s ease-in;
 
         &.light {
           background-color: $background-footer-lightmode;
-          transition: 0.3sease-in;
+          transition: 0.3s ease-in;
         }
       }
 
@@ -217,7 +218,7 @@
         background-color: $background-footer-lightmode;
         color: $main-text-lightmode;
         border-bottom: 1px solid #992e2e;
-        transition: 0.3sease-in;
+        transition: 0.3s ease-in;
       }
     }
   }

@@ -46,7 +46,7 @@
   }
 
   &:hover {
-    color: $secondary-color-darkmode;
+    color: $fifth-color-darkmode;
     transition: 0.3s;
   }
 
@@ -56,7 +56,7 @@
   }
 
   &.light:hover {
-    color: $third-color-lightmode;
+    color: $fourth-color-lightmode;
     transition: 0.3s;
   }
 }
@@ -103,16 +103,16 @@
 
 .close-options-icon {
   width: 30px;
-  transition: 0.3sease-in;
+  transition: 0.3s ease-in;
   cursor: pointer;
 
   &:hover {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     color: $third-color-darkmode;
   }
 
   &.light {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     color: $third-color-lightmode;
   }
 }
@@ -122,7 +122,7 @@
   color: $third-color-darkmode;
 
   &.light {
-    transition: 0.3sease-in;
+    transition: 0.3s ease-in;
     color: $third-color-lightmode;
   }
 }
