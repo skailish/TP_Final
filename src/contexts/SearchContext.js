@@ -14,9 +14,11 @@ const SearchProvider = ({ children }) => {
   const [searchPage, setSearchPage] = useState(1);
   const [searchMaxPage, setSearchMaxPage] = useState(1000);
 
-  const handleSearchBarVisibleClick = () => {
-    setSearchVisible(!searchVisible);
-    setVisibleResults(false);
+  const handleSearchBarVisible = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      setSearchVisible(!searchVisible);
+      setVisibleResults(false);
+    }
   };
 
   const handleMediaClick = (event) => {
@@ -67,7 +69,7 @@ const SearchProvider = ({ children }) => {
         inputValue,
         showResults,
         searchMaxPage,
-        handleSearchBarVisibleClick,
+        handleSearchBarVisible,
         handleMediaClick,
         setSearchVisible,
         setVisibleResults,

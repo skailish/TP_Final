@@ -25,10 +25,12 @@ const SearchBar = () => {
   const { theme } = useContext(ThemeContext);
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push("/discover");
-    setNewSearch(true);
-    setShowResults(false);
+  const handleSearch = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      history.push("/discover");
+      setNewSearch(true);
+      setShowResults(false);
+    }
   };
 
   return (
@@ -76,6 +78,8 @@ const SearchBar = () => {
               handleCloseSearchClick();
             }}
             className={`close-options-icon ${theme}`}
+            aria-hidden="true"
+            aria-label="Close"
           />
         </Container>
         <Container
@@ -92,10 +96,15 @@ const SearchBar = () => {
           />
           <Button
             type="submit"
-            onClick={handleClick}
+            onClick={(event) => handleSearch(event)}
+            onKeyDown={(event) => handleSearch(event)}
             className={`search-button `}
           >
-            <Search className={`search-icon ${theme}`} />
+            <Search
+              className={`search-icon ${theme}`}
+              aria-hidden="true"
+              aria-label="Search"
+            />
           </Button>
         </Container>
       </Container>

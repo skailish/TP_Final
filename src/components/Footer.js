@@ -40,13 +40,21 @@ const Footer = () => {
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://gitlab.com/d-capponi">
-              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+              <GithubSquare
+                className={`footer-icon github-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="GitHub"
+              />
             </Link>
             <Link
               target="_blank"
               href="https://www.linkedin.com/in/danielacapponi/"
             >
-              <LinkedinSquare className={`footer-icon ${theme}`} />
+              <LinkedinSquare
+                className={`footer-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="LinkedIn"
+              />
             </Link>
           </Container>
         </Container>
@@ -57,13 +65,21 @@ const Footer = () => {
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/LoohanZero">
-              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+              <GithubSquare
+                className={`footer-icon github-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="GitHub"
+              />
             </Link>
             <Link
               target="_blank"
               href="https://www.linkedin.com/in/luján-sanchez-6493ba70/"
             >
-              <LinkedinSquare className={`footer-icon ${theme}`} />
+              <LinkedinSquare
+                className={`footer-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="LinkedIn"
+              />
             </Link>
           </Container>
         </Container>
@@ -74,13 +90,19 @@ const Footer = () => {
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/angieTu">
-              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+              <GithubSquare
+                className={`footer-icon github-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="GitHub"
+              />
             </Link>
             <Link target="_blank" href="https://www.linkedin.com/in/angie-tu/">
               <LinkedinSquare
                 className={`footer-icon ${theme}`}
                 target="_blank"
                 href=""
+                aria-hidden="true"
+                aria-label="LinkedIn"
               />
             </Link>
           </Container>
@@ -92,13 +114,21 @@ const Footer = () => {
 
           <Container className="footer-icons-container">
             <Link target="_blank" href="https://github.com/Jodelrey">
-              <GithubSquare className={`footer-icon github-icon ${theme}`} />
+              <GithubSquare
+                className={`footer-icon github-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="GitHub"
+              />
             </Link>
             <Link
               target="_blank"
               href="https://www.linkedin.com/in/josefina-del-rey/"
             >
-              <LinkedinSquare className={`footer-icon ${theme}`} />
+              <LinkedinSquare
+                className={`footer-icon ${theme}`}
+                aria-hidden="true"
+                aria-label="LinkedIn"
+              />
             </Link>
           </Container>
         </Container>

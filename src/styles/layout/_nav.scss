@@ -68,6 +68,7 @@
 
 .nav-icon-container {
   @include flex(column, center, center);
+  padding: 5px;
 
   &.selected .nav-text.light {
     color: $secondary-color-lightmode;

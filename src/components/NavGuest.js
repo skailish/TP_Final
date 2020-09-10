@@ -23,28 +23,35 @@ import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
 
 const NavGuest = () => {
-  const { theme, handleThemeClick } = useContext(ThemeContext);
-  const { handleSearchBarVisibleClick } = useContext(SearchContext);
+  const { theme, handleTheme } = useContext(ThemeContext);
+  const { handleSearchBarVisible } = useContext(SearchContext);
   const [noShow, setNoShow] = useState(true);
 
-  const handleToggleNavClick = () => {
-    setNoShow(!noShow);
+  const handleToggleNav = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      setNoShow(!noShow);
+    }
   };
 
   return (
     <>
       <Nav className={`responsive-nav ${theme}`}>
-        <Link className="responsive-nav-link" onClick={handleToggleNavClick}>
-          <Menu className={`nav-icon ${theme}`} />
+        <Link
+          className="responsive-nav-link"
+          onClick={(event) => handleToggleNav(event)}
+          onKeyDown={(event) => handleToggleNav(event)}
+        >
+          <Menu className={`nav-icon ${theme}`} aria-hidden="true" />
         </Link>
 
         <Link
           className={`responsive-nav-link nav-close-icon ${
             noShow && "set-show-close"
           }`}
-          onClick={handleToggleNavClick}
+          onClick={(event) => handleToggleNav(event)}
+          onKeyDown={(event) => handleToggleNav(event)}
         >
-          <Close className={`nav-icon ${theme}`} />
+          <Close className={`nav-icon ${theme}`} aria-hidden="true" />
         </Link>
       </Nav>
       <Container
@@ -61,7 +68,8 @@ const NavGuest = () => {
             <Home
               className={`nav-icon ${theme}`}
               title={"Home"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Home</Text>
           </NavLink>
@@ -74,7 +82,8 @@ const NavGuest = () => {
             <Movie
               className={`nav-icon ${theme}`}
               title={"Movie"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Movies</Text>
           </NavLink>
@@ -87,7 +96,8 @@ const NavGuest = () => {
             <TV
               className={`nav-icon ${theme}`}
               title={"Tv Series"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>TV Shows</Text>
           </NavLink>
@@ -101,23 +111,31 @@ const NavGuest = () => {
             <Binoculars
               className={`nav-icon ${theme}`}
               title={"Discover"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Discover</Text>
           </NavLink>
 
-          <Container className="nav-icon-container">
+          <Container
+            className="nav-icon-container"
+            tabindex="0"
+            onClick={(event) => {
+              handleSearchBarVisible(event);
+              handleToggleNav(event);
+            }}
+            onKeyDown={(event) => {
+              handleSearchBarVisible(event);
+              handleToggleNav(event);
+            }}
+          >
             <Search
               className={`nav-icon ${theme}`}
-              onClick={() => {
-                handleSearchBarVisibleClick();
-                handleToggleNavClick();
-              }}
               title={"Search"}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Search</Text>
           </Container>
-          
         </Container>
         <Container className="user-options">
           <NavLink
@@ -129,15 +147,20 @@ const NavGuest = () => {
             <LogIn
               className={`nav-icon ${theme}`}
               title={"Login"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Login</Text>
           </NavLink>
 
           <ThemeToggle
-            onClick={() => {
-              handleThemeClick();
-              handleToggleNavClick();
+            onClick={(event) => {
+              handleTheme(event);
+              handleToggleNav(event);
+            }}
+            onKeyDown={(event) => {
+              handleTheme(event);
+              handleToggleNav(event);
             }}
           />
         </Container>

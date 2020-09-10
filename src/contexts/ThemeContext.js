@@ -5,13 +5,15 @@ const ThemeContext = createContext();
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark");
 
-  const handleThemeClick = () => {
-    const toggleTheme = theme === "dark" ? "light" : "dark";
-    setTheme(toggleTheme);
+  const handleTheme = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      const toggleTheme = theme === "dark" ? "light" : "dark";
+      setTheme(toggleTheme);
+    }
   };
 
   return (
-    <ThemeContext.Provider value={{ handleThemeClick, theme }}>
+    <ThemeContext.Provider value={{ handleTheme, theme }}>
       {children}
     </ThemeContext.Provider>
   );

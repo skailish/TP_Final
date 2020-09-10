@@ -18,8 +18,10 @@ const Card = ({ cardInfo }) => {
 
   const { id, src, title, votes, mediatype, like } = cardInfo;
 
-  const handleMediaDetailsClick = (id, mediatype) => {
-    history.push(`/${mediatype}/${id}/info`);
+  const handleMediaDetails = (event, id, mediatype) => {
+    if (event.key === "Enter" || event.type === "click") {
+      history.push(`/${mediatype}/${id}/info`);
+    }
   };
 
   return (
@@ -29,8 +31,11 @@ const Card = ({ cardInfo }) => {
       as="article"
       className="media-card"
       mediatype={mediatype}
+      tabindex="0"
+      onClick={(event) => handleMediaDetails(event, id, mediatype)}
+      onKeyDown={(event) => handleMediaDetails(event, id, mediatype)}
     >
-      <Container onClick={() => handleMediaDetailsClick(id, mediatype)}>
+      <Container>
         <Image
           src={src ? `${imageBaseUrl}${src}` : noPosterFound}
           className="media-card-img"

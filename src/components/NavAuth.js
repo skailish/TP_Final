@@ -25,36 +25,45 @@ import ThemeContext from "../contexts/ThemeContext";
 import SearchContext from "../contexts/SearchContext";
 
 const NavAuth = () => {
-  const { theme, handleThemeClick } = useContext(ThemeContext);
-  const { handleSearchBarVisibleClick } = useContext(SearchContext);
+  const { theme, handleTheme } = useContext(ThemeContext);
+  const { handleSearchBarVisible } = useContext(SearchContext);
   const [noShow, setNoShow] = useState(true);
   const [modal, setModal] = useState(false);
 
-  const handleLogoutClick = () => {
-    setModal(true);
+  const handleLogout = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      setModal(true);
 
-    setTimeout(() => firebase.auth().signOut(), 1000);
-    setTimeout(() => setModal(false), 1000);
+      setTimeout(() => firebase.auth().signOut(), 1000);
+      setTimeout(() => setModal(false), 1000);
+    }
   };
 
-  const handleToggleNavClick = () => {
-    setNoShow(!noShow);
+  const handleToggleNav = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      setNoShow(!noShow);
+    }
   };
   return (
     <>
       {modal && <Modal text="You have logged off successfully!" />}
       <Nav className={`responsive-nav ${theme}`}>
-        <Link className="responsive-nav-link" onClick={handleToggleNavClick}>
-          <Menu className={`nav-icon ${theme}`} />
+        <Link
+          className="responsive-nav-link"
+          onClick={(event) => handleToggleNav(event)}
+          onKeyDown={(event) => handleToggleNav(event)}
+        >
+          <Menu className={`nav-icon ${theme}`} aria-hidden="true" />
         </Link>
 
         <Link
           className={`responsive-nav-link nav-close-icon ${
             noShow && "set-show-close"
           }`}
-          onClick={handleToggleNavClick}
+          onClick={(event) => handleToggleNav(event)}
+          onKeyDown={(event) => handleToggleNav(event)}
         >
-          <Close className={`nav-icon ${theme}`} />
+          <Close className={`nav-icon ${theme}`} aria-hidden="true" />
         </Link>
       </Nav>
       <Container
@@ -71,7 +80,8 @@ const NavAuth = () => {
             <Home
               className={`nav-icon ${theme}`}
               title={"Home"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Home</Text>
           </NavLink>
@@ -84,7 +94,8 @@ const NavAuth = () => {
             <Movie
               className={`nav-icon ${theme}`}
               title={"Movie"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Movies</Text>
           </NavLink>
@@ -97,7 +108,8 @@ const NavAuth = () => {
             <TV
               className={`nav-icon ${theme}`}
               title={"Tv Series"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>TV Shows</Text>
           </NavLink>
@@ -111,19 +123,28 @@ const NavAuth = () => {
             <Binoculars
               className={`nav-icon ${theme}`}
               title={"Discover"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Discover</Text>
           </NavLink>
 
-          <Container className="nav-icon-container">
+          <Container
+            className="nav-icon-container"
+            tabindex="0"
+            onClick={(event) => {
+              handleSearchBarVisible(event);
+              handleToggleNav(event);
+            }}
+            onKeyDown={(event) => {
+              handleSearchBarVisible(event);
+              handleToggleNav(event);
+            }}
+          >
             <Search
               className={`nav-icon ${theme}`}
-              onClick={() => {
-                handleSearchBarVisibleClick();
-                handleToggleNavClick();
-              }}
               title={"Search"}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Search</Text>
           </Container>
@@ -137,26 +158,41 @@ const NavAuth = () => {
             <Heart
               className={`nav-icon ${theme}`}
               title={"Favorites"}
-              onClick={handleToggleNavClick}
+              onClick={handleToggleNav}
               title={"Favs"}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Favs</Text>
           </NavLink>
         </Container>
         <Container className="user-options">
-          <Link onClick={handleLogoutClick} className="nav-icon-container">
+          <Link
+            onClick={(event) => {
+              handleLogout(event);
+              handleToggleNav(event);
+            }}
+            onKeyDown={(event) => {
+              handleLogout(event);
+              handleToggleNav(event);
+            }}
+            className="nav-icon-container"
+          >
             <LogOut
               className={`nav-icon ${theme}`}
               title={"Logout"}
-              onClick={handleToggleNavClick}
+              aria-hidden="true"
             />
             <Text className={`nav-text ${theme}`}>Logout</Text>
           </Link>
 
           <ThemeToggle
-            onClick={() => {
-              handleThemeClick();
-              handleToggleNavClick();
+            onClick={(event) => {
+              handleTheme(event);
+              handleToggleNav(event);
+            }}
+            onKeyDown={(event) => {
+              handleTheme(event);
+              handleToggleNav(event);
             }}
           />
         </Container>

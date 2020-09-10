@@ -177,7 +177,11 @@ const Discover = () => {
                 onClick={handleShowResultsClick}
                 className={`search-button ${theme} `}
               >
-                <Search className={`search-icon ${theme}`} />
+                <Search
+                  className={`search-icon ${theme}`}
+                  aria-hidden="true"
+                  aria-label="Search"
+                />
               </Button>
             </Container>
           </Container>
@@ -195,12 +199,14 @@ const Discover = () => {
               {results &&
                 results.map((result) => (
                   <Card
-                    id={result.id}
-                    src={result.poster_path}
-                    title={media === "tv" ? result.name : result.title}
-                    votes={result.vote_average}
-                    key={result.id}
-                    mediatype={media}
+                    cardInfo={{
+                      id: result.id,
+                      src: result.poster_path,
+                      title: media === "tv" ? result.name : result.title,
+                      votes: result.vote_average,
+                      key: result.id,
+                      mediatype: media,
+                    }}
                   />
                 ))}
             </Container>
@@ -228,16 +234,18 @@ const Discover = () => {
                 discover.length > 1 &&
                 discover.map((discover) => (
                   <Card
-                    id={discover.id}
-                    src={discover.poster_path}
-                    title={
-                      mediaAdvance === "tv"
-                        ? discover.name
-                        : discover.original_title
-                    }
-                    votes={discover.vote_average}
-                    key={discover.id}
-                    mediatype={mediaAdvance}
+                    cardInfo={{
+                      id: discover.id,
+                      src: discover.poster_path,
+                      title:
+                        mediaAdvance === "tv"
+                          ? discover.name
+                          : discover.original_title,
+
+                      votes: discover.vote_average,
+                      key: discover.id,
+                      mediatype: mediaAdvance,
+                    }}
                   />
                 ))}
             </Container>
