@@ -19,6 +19,9 @@
     min-height: calc(100% - 60px);
     height: 100%;
   }
+  @include media($sm-breakpoint) {
+    min-height: calc(100% - 230px);
+  }
 }
 
 .main-category-container {
@@ -42,18 +45,27 @@
 }
 
 .category-title-container {
-  top: 45px;
-  left: 30px;
+  top: 40px;
+  left: 35px;
   position: absolute;
   text-transform: capitalize;
 
+  @include media($lg-breakpoint) {
+    left: 50px;
+  }
+
   @include media($md-breakpoint) {
-    top: 20px;
+    top: 40px;
+    left: 95px;
     text-align: center;
   }
 
+  @include media($sm-breakpoint) {
+    left: 70px;
+  }
+
   .category-heading {
-    font-weight: 300;
+    font-weight: 700;
 
     @include media($md-breakpoint) {
       font-size: 25px;

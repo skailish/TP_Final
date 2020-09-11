@@ -34,7 +34,7 @@ const Overview = ({ data, mediatype }) => {
           <Container className="info-serie-container">
             <Container className="title-serie">
               <Heading level={3}>Storyline</Heading>
-              <Text>{data.overview}</Text>
+              <Text id="overview-description" >{data.overview}</Text>
             </Container>
             <Container className="details-serie-container">
               <List className="details-serie-list">

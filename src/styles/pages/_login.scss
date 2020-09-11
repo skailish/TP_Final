@@ -1,6 +1,6 @@
 .form-container {
   width: calc(100vw - 100px);
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 300px);
   height: 100%;
   position: relative;
   left: 100px;
@@ -18,7 +18,7 @@
   }
 
   @include media($md-breakpoint) {
-    min-height: calc(100vh - 207px);
+    min-height: calc(100vh - 217px);
     height: 100%;
     left: 0;
     width: 100%;
@@ -26,7 +26,7 @@
   }
 
   @include media($sm-breakpoint) {
-    min-height: calc(100vh - 178px);
+    min-height: calc(100vh - 208px);
     height: 100%;
     left: 0;
     width: 100%;
@@ -53,17 +53,19 @@
 
   .form {
     width: 80%;
-    height: 200px;
+    height: 250px;
     text-align: center;
     @include flex(column, space-between, center);
 
     @include media($md-breakpoint) {
+      min-height: 260px;
       height: 100%;
       width: 100%;
     }
 
     .button {
       margin-right: 0;
+      width: 300px;
 
       @include media($md-breakpoint) {
         width: 70%;
@@ -72,9 +74,8 @@
 
     .form-label {
       font-size: 20px;
-      width: 450px;
       transition: 0.3s ease-in;
-      @include flex(row, space-between, center);
+      @include flex(column, space-between, flex-start);
 
       &.light {
         transition: 0.3s ease-in;
@@ -98,8 +99,9 @@
       }
 
       .form-input {
-        margin-left: 10px;
+        margin: 10px 0;
         line-height: 15px;
+        box-sizing: border-box;
         border-radius: 5px;
         border: none;
         outline: none;

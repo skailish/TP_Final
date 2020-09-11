@@ -10,36 +10,51 @@
     color: $main-text-lightmode;
   }
 
+  @include media($md-breakpoint) {
+    width: 100%;
+    
+  }
+
   .serie-container {
     @include flex(row, center, center);
     padding: 80px 0 36px 0;
 
     margin: 0 0 20px 100px;
 
-    @include media($md-breakpoint) {
+    @include media($lg-breakpoint) {
+      padding: 60px 20px 40px 20px;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 0;
-      padding: 20px;
+      width: 80%;
+    }
+
+    @include media($md-breakpoint) {
+      width: 80%;
+
+    }
+
+    @include media($sm-breakpoint) {
       width: 100%;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .img-serie-container {
-      width: 20%;
-
+  
       &>img {
-        width: 100%;
+        
         min-width: 180px;
-        height: 100%;
+        height: 450px;
 
-        @include media($md-breakpoint) {
+        @include media($lg-breakpoint) {
           width: 200px;
           height: auto;
         }
       }
 
-      @include media($md-breakpoint) {
+      @include media($lg-breakpoint) {
         @include flex(row, flex-start, flex-start);
         border-radius: 50%;
         overflow: hidden;
@@ -51,18 +66,22 @@
     }
 
     .info-serie-container {
-      width: 60%;
-      margin: 0 20px 0 64px;
+      width: 55%;
+      margin: 0 40px 0 64px;
 
       .title-serie {
         &>h3 {
-          font-size: 24px;
+          font-size: 35px;
           font-weight: 100;
-          margin-bottom: 12px;
+          margin-bottom: 20px;
+        }
+
+        & p {
+          font-size: 17px;
         }
       }
 
-      @include media($md-breakpoint) {
+      @include media($lg-breakpoint) {
         width: fit-content;
         margin: 0;
         padding: 30px;
@@ -75,23 +94,35 @@
           margin: 10px;
           font-size: 12px;
         }
+
+        @include media($sm-breakpoint) {
+  
+          & p {
+           text-align: center;
+          }
+  
+          & h3 {
+            text-align: center;
+          }
+        }
       }
 
       .details-serie-container {
         margin-top: 18px;
 
         .details-serie-list {
+          margin-top: 40px;
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
 
           .list-item {
             list-style: none;
-            margin: 13px 0;
+            margin: 20px 0;
             width: 50%;
             display: flex;
 
-            @include media($md-breakpoint) {
+            @include media($lg-breakpoint) {
               width: 100%;
               font-size: 12px;
             }
@@ -103,6 +134,7 @@
 
             .list-item-details {
               width: 100%;
+              padding-left: 5px;
             }
           }
         }

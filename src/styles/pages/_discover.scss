@@ -25,8 +25,8 @@
     min-height: calc(100vh - 410px);
   }
 
-  @include media($md-breakpoint) {
-    min-height: calc(100vh - 433px);
+  @include media($sm-breakpoint) {
+    min-height: calc(100vh - 465px);
   }
 
   &.main-results-container {
@@ -35,7 +35,7 @@
     }
 
     @include media($sm-breakpoint) {
-      min-height: calc(100vh - 133px);
+      min-height: calc(100vh - 165px);
     }
   }
 }

@@ -16,7 +16,7 @@
   }
 
   @include media($sm-breakpoint) {
-    min-height: calc(100vh - 134px);
+    min-height: calc(100vh - 165px);
   }
 
   @media (max-width: 450px) and (min-width: 414px) {

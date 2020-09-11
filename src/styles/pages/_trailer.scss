@@ -21,7 +21,8 @@
   @include media($sm-breakpoint) {
     width: 100vw;
     justify-content: center;
-    height: calc(100vh - 260px);
+    height: calc(100vh - 300px);
+    min-height: calc(100vh - 300px);
   }
 
 
@@ -48,6 +49,7 @@
 
 .main-trailer-container {
   @include flex(column, space-evenly, center);
+
 }
 .trailer-heading {
   font-size: 40px;

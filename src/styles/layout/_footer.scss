@@ -15,6 +15,10 @@
     padding: 0;
   }
 
+  @include media($sm-breakpoint) {
+    height: 170px;
+  }
+
   &.light {
     background-color: $background-footer-lightmode;
     transition: 0.3s ease-in;

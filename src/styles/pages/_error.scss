@@ -16,7 +16,7 @@
   }
 
   @include media($sm-breakpoint) {
-    min-height: calc(100vh - 128px);
+    min-height: calc(100vh - 165px);
   }
 
   .error-background-container {
