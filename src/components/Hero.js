@@ -45,6 +45,7 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
               <Span className="hero-details">
                 <Text>{data.vote_count}</Text> <Text>Reviews</Text>
               </Span>
+
               {year && (
                 <Span className="hero-details">
                   <Text>{year}</Text>
@@ -56,7 +57,10 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
             </Container>
             <Text className="hero-description">{data.overview}</Text>
 
-            <Link className="hero-button-container" to={`/video/${mediatype}/${data.id}`}>
+            <Link
+              className="hero-button-container"
+              to={`/video/${mediatype}/${data.id}`}
+            >
               <Button className={`button hero-button ${theme}`}>
                 <PlayCircle className="play-icon" />
                 <Text>Watch Video</Text>

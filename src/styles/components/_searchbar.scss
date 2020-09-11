@@ -68,7 +68,7 @@
     }
 
     .options-container {
-      @include flex(row, space-evenly, center);
+      @include flex(row, space-around, center);
       width: 60%;
 
       @include media($md-breakpoint) {
@@ -81,23 +81,28 @@
 
       .search-text {
         color: $main-text-darkmode;
-        font-size: 18px;
+        font-size: 23px;
+        font-weight: 600;
 
         &.light {
           color: $main-text-lightmode;
         }
       }
 
+      .radio-buttons-container {
+        @include flex(column, center, flex-start);
+        padding-top: 20px;
+      }
       .search-label {
         @include flex(row, space-evenly, center);
-        margin-right: 10px;
+        padding-top: 5px;
 
         &.light {
           color: $main-text-lightmode;
         }
 
         .radio-input {
-          margin-left: 10px;
+          margin-right: 10px;
         }
       }
 
@@ -125,16 +130,17 @@
     }
 
     .search-input-container {
-      @include flex(row, space-evenly, center);
+      @include flex(row, flex-start, center);
       width: 60%;
       padding-top: 10px;
+      margin-left: 55px;
 
       @include media($lg-breakpoint) {
         margin-left: 15px;
       }
-
-      @include media($sm-breakpoint) {
-        width: 90%;
+      @include media($md-breakpoint) {
+        width: 95%;
+        justify-content: flex-start;
       }
 
       .search-input {

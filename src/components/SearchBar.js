@@ -45,26 +45,27 @@ const SearchBar = () => {
             onClick={(event) => handleMediaClick(event)}
           >
             <Text className={`search-text ${theme}`}>Filter By</Text>
-            <Label className={`search-label ${theme}`}>
-              Movie
-              <Input
-                type="radio"
-                name="mediatype"
-                value="movie"
-                className={`radio-input ${theme}`}
-                defaultChecked
-              />
-            </Label>
-            <Label className={`search-label ${theme}`}>
-              TV Show
-              <Input
-                type="radio"
-                name="mediatype"
-                value="tv"
-                className={`radio-input ${theme}`}
-              />
-            </Label>
-
+            <Container className="radio-buttons-container">
+              <Label className={`search-label ${theme}`}>
+                <Input
+                  type="radio"
+                  name="mediatype"
+                  value="movie"
+                  className={`radio-input ${theme}`}
+                  defaultChecked
+                />
+                Movie
+              </Label>
+              <Label className={`search-label ${theme}`}>
+                <Input
+                  type="radio"
+                  name="mediatype"
+                  value="tv"
+                  className={`radio-input ${theme}`}
+                />
+                TV Show
+              </Label>
+            </Container>
             <Link
               to="/discover"
               className={`search-link ${theme}`}

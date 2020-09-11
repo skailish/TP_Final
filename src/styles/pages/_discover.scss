@@ -149,6 +149,7 @@
     height: 300px;
     margin-left: 0;
     padding: 0 30px;
+    box-sizing: border-box;
   }
 
   .filter-text {
@@ -182,9 +183,13 @@
       @include flex(column, space-between, flex-start);
       width: 100%;
     }
+    @include media($sm-breakpoint) {
+      height: 60%;
+    }
 
     .select-discover {
       height: 30px;
+      margin-top: 5px;
       padding: 3px 16px 3px 8px;
       border: none;
       background-color: $background-footer-darkmode;
@@ -197,8 +202,11 @@
       @include media($md-breakpoint) {
         width: 60%;
       }
+      @include media($md-breakpoint) {
+        width: 45%;
+      }
 
-      &>option {
+      & > option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
@@ -230,5 +238,11 @@
   @include media($md-breakpoint) {
     width: 80%;
     @include flex(row, flex-end, center);
+  }
+  @include media($sm-breakpoint) {
+    width: 65%;
+    @include flex(row, flex-end, center);
+    position: absolute;
+    top: 240px;
   }
 }

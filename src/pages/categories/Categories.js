@@ -71,19 +71,24 @@ const Categories = () => {
             </Heading>
           </Container>
           <Container className={`main-category-container ${theme}`}>
-            {dataByParams.map((singleCard) => (
-              <Card
-                cardInfo={{
-                  id: singleCard.id,
-                  src: singleCard.poster_path,
-                  title: media === "movie" ? singleCard.title : singleCard.name,
-                  votes: singleCard.vote_average,
-                  key: singleCard.id,
-                  mediatype: media,
-                  like: favsArray.includes(singleCard.id),
-                }}
-              />
-            ))}
+            {dataByParams.map((singleCard) =>
+              media === "movie" && singleCard.name ? (
+                <Container className="main-category-container"></Container>
+              ) : (
+                <Card
+                  cardInfo={{
+                    id: singleCard.id,
+                    src: singleCard.poster_path,
+                    title:
+                      media === "movie" ? singleCard.title : singleCard.name,
+                    votes: singleCard.vote_average,
+                    key: singleCard.id,
+                    mediatype: media,
+                    like: favsArray.includes(singleCard.id),
+                  }}
+                />
+              )
+            )}
           </Container>
           <Pagination page={page} maxPage={maxPage} setPage={setPage} />
         </Container>

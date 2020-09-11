@@ -29,6 +29,9 @@
     @include media($md-breakpoint) {
       left: 35px;
     }
+    @include media($sm-breakpoint) {
+      left: 20px;
+    }
 
     .cardlistpreview-link {
       padding: 0px 0px 2px 10px;
