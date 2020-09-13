@@ -21,7 +21,6 @@
   .pagination-button,
   .pagination-arrow,
   .pagination-arrow {
-
     &:hover,
     &.active-page {
       transform: scale(1.2);
@@ -62,6 +61,7 @@
     & .arrows {
       width: 20px;
       height: 20px;
+      color: white;
     }
   }
 
