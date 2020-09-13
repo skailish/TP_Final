@@ -32,12 +32,13 @@
   .pagination-button {
     @include button(10px, 0 5px 0 0, 35px, 50%);
     background-color: transparent;
+    font-size: 15px;
 
     @include media($md-breakpoint) {
-      font-size: 15px;
+      font-size: 17px;
       margin: 0;
       padding: 0;
-      width: 20px;
+      width: 60px;
     }
 
     &:hover {
