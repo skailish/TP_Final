@@ -46,6 +46,7 @@
 .cards-results-container {
   @include flex(row, center, center);
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .results-container {

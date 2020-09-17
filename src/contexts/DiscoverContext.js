@@ -174,6 +174,7 @@ const DiscoverProvider = ({ children }) => {
         orderBy,
         genresAdvance,
         discoverMaxPage,
+        discoverPage,
         handleIntervalChange,
         handleMediaChange,
         handleGenreChange,

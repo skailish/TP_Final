@@ -33,6 +33,7 @@ const Discover = () => {
     handleYearChange,
     handleOrderByChange,
     setDiscoverPage,
+    discoverPage
   } = useContext(DiscoverContext);
   const {
     searchPage,
@@ -254,9 +255,9 @@ const Discover = () => {
               <Container>
                 {discover.length > 1 && (
                   <Pagination
-                    page={searchPage}
+                    page={discoverPage}
                     maxPage={discoverMaxPage}
-                    setPage={setSearchPage}
+                    setPage={setDiscoverPage}
                   />
                 )}
               </Container>
