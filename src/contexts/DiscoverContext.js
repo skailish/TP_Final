@@ -68,92 +68,100 @@ const DiscoverProvider = ({ children }) => {
     }
   };
 
-  const dataGenres = useFetch( `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`, [mediaAdvance]);
-
-  useEffect(() => {
-    dataGenres && setGenres(dataGenres.genres);
-    dataGenres && setGenresAdvance(false);
-
-  }, []);
-
-
-  // useEffect(() => {
-  //   const getGenres = async () => {
-  //     const response = await fetch(
-  //       `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`
-  //     );
-  //     const dataJson = await response.json();
-  //     setGenres(dataJson.genres);
-  //     setGenresAdvance(false);
-  //   };
-  //   getGenres();
-  // }, [mediaAdvance]);
-
-  useEffect(() => {
-    const getYears = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US&page=1&sort_by=${
-          mediaAdvance === "movie" ? "release_date.asc" : "first_date_air.asc"
-        }`
+  const getFirstYear = (dataYears, mediaAdvance) => {
+    console.log(dataYears);
+    console.log(mediaAdvance);
+    if (!dataYears) {
+      return "";
+    } else {
+      console.log(
+        dataYears.results.filter(
+          (serie) =>
+            serie.first_air_date !== undefined && serie.first_air_date !== ""
+        )[0]
       );
-      const dataJson = await response.json();
-      const getFirstYear =
-        mediaAdvance === "movie"
-          ? dataJson.results
-              .filter(
-                (movie) =>
-                  movie.release_date !== undefined && movie.release_date !== ""
-              )[0]
-              .release_date.split("-")[0]
-          : dataJson.results
-              .filter(
-                (serie) =>
-                  serie.first_air_date !== undefined &&
-                  serie.first_air_date !== ""
-              )[0]
-              .first_air_date.split("-")[0];
+      return mediaAdvance === "movie"
+        ? dataYears.results
+            .filter(
+              (movie) =>
+                movie.release_date !== undefined && movie.release_date !== ""
+            )[0]
+            .release_date.split("-")[0]
+        : dataYears.results
+            .filter(
+              (serie) =>
+                serie.first_air_date !== undefined &&
+                serie.first_air_date !== ""
+            )[0]
+            .first_air_date.split("-")[0];
+    }
+  };
 
-      const arrayLength = 2021 - Number(getFirstYear);
-      const arrayYears = Array(arrayLength);
-      const getArray = () => {
-        for (let i = 0; i < arrayYears.length; i++) {
-          arrayYears[i] = Number(getFirstYear) + i;
-        }
-        return arrayYears;
-      };
-      setYears(getArray());
-      setChosenYear(Number(getFirstYear));
-    };
-    getYears();
-  }, [mediaAdvance]);
+  const getArray = (arrayYears, firstYear) => {
+    for (let i = 0; i < arrayYears.length; i++) {
+      arrayYears[i] = Number(firstYear) + i;
+    }
+    return arrayYears;
+  };
 
-  useEffect(() => {
-    const areSortBy =
+  const dataGenres = useFetch(
+    `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`,
+    [mediaAdvance]
+  );
+
+  const dataYears = useFetch(
+    `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US&page=1&sort_by=${
+      mediaAdvance === "movie" ? "release_date.asc" : "first_date_air.asc"
+    }`,
+    [mediaAdvance]
+  );
+
+  const dataSortBy = useFetch(
+    `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US${areGenres}${yearEndPoint}${
       orderBy !== "original_name.asc" &&
       orderBy !== "original_name.desc" &&
-      `&sort_by=${orderBy}`;
+      `&sort_by=${orderBy}`
+    }&page=${discoverPage}`,
+    [
+      yearEndPoint,
+      areGenres,
+      mediaAdvance,
+      genresAdvance,
+      orderBy,
+      chosenYear,
+      interval,
+      discoverPage,
+    ]
+  );
 
-    const getResults = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/discover/${mediaAdvance}?api_key=${API_KEY}&language=en-US${areGenres}${yearEndPoint}${areSortBy}&page=${discoverPage}`
-      );
-      const dataJson = await response.json();
+  useEffect(() => {
+    const firstYear = dataYears && getFirstYear(dataYears, mediaAdvance);
+    const currentDate = new Date();
+    const arrayLength =
+      firstYear && currentDate.getFullYear() - Number(firstYear) + 1;
+    const arrayYears = arrayLength && Array(arrayLength);
+    dataYears && setYears(getArray(arrayYears, firstYear));
+    dataYears && setChosenYear(Number(firstYear));
+  }, [dataYears])
 
-      setDiscover(dataJson.results);
-      setDiscoverMaxPage(dataJson.total_pages);
+  useEffect(() =>  {
+    dataGenres && setGenres(dataGenres.genres);
+    dataGenres && setGenresAdvance(false);
+  }, [dataGenres])
+
+
+  useEffect(() => {
+    dataSortBy && setDiscover(dataSortBy.results);
+    dataSortBy && setDiscoverMaxPage(dataSortBy.total_pages);
+    dataSortBy &&
       orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
-    };
-    getResults();
-  }, [
-    yearEndPoint,
-    areGenres,
-    mediaAdvance,
-    genresAdvance,
-    orderBy,
-    chosenYear,
-    interval,
-    discoverPage,
-  ]);
+
+    dataSortBy && setDiscover(dataSortBy.results);
+    dataSortBy && setDiscoverMaxPage(dataSortBy.total_pages);
+    dataSortBy &&
+      orderByYears(setYearEndPoint, chosenYear, interval, mediaAdvance);
+  }, [dataSortBy, mediaAdvance]);
+
 
   return (
     <DiscoverContext.Provider

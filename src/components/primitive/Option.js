@@ -2,7 +2,7 @@ import React from "react";
 
 const Option = ({ children, ...props }) => {
   return (
-    <option {...props} tabindex="0">
+    <option {...props} tabIndex="0">
       {children}
     </option>
   );

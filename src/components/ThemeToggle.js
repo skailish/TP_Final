@@ -12,7 +12,7 @@ const ThemeToggle = ({ ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <Container className="nav-icon-container" tabindex="0" {...props}>
+    <Container className="nav-icon-container" tabIndex="0" {...props}>
       {theme === "dark" ? (
         <>
           <LightOn

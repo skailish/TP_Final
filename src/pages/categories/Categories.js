@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { BounceLoader } from "react-spinners";
@@ -63,35 +63,37 @@ const Categories = () => {
         </Container>
       )}
       {!isLoading && favsArray && (
-        <Container className={`category-pagination-container ${theme}`}>
+        <>
           <ScrollToTop />
-          <Container className="category-title-container">
-            <Heading className={`category-heading ${theme} `} level={1}>
-              {media === "movie" ? `${title2} movies` : `${title2} tv shows`}
-            </Heading>
+          <Container className={`category-pagination-container ${theme}`}>
+            <Container className="category-title-container">
+              <Heading className={`category-heading ${theme} `} level={1}>
+                {media === "movie" ? `${title2} movies` : `${title2} tv shows`}
+              </Heading>
+            </Container>
+            <Container className={`main-category-container ${theme}`}>
+              {dataByParams.map((singleCard) =>
+                media === "movie" && singleCard.name ? (
+                  <Container className="main-category-container"></Container>
+                ) : (
+                  <Card
+                    cardInfo={{
+                      id: singleCard.id,
+                      src: singleCard.poster_path,
+                      title:
+                        media === "movie" ? singleCard.title : singleCard.name,
+                      votes: singleCard.vote_average,
+                      key: singleCard.id,
+                      mediatype: media,
+                      like: favsArray.includes(singleCard.id),
+                    }}
+                  />
+                )
+              )}
+            </Container>
+            <Pagination page={page} maxPage={maxPage} setPage={setPage} />
           </Container>
-          <Container className={`main-category-container ${theme}`}>
-            {dataByParams.map((singleCard) =>
-              media === "movie" && singleCard.name ? (
-                <Container className="main-category-container"></Container>
-              ) : (
-                <Card
-                  cardInfo={{
-                    id: singleCard.id,
-                    src: singleCard.poster_path,
-                    title:
-                      media === "movie" ? singleCard.title : singleCard.name,
-                    votes: singleCard.vote_average,
-                    key: singleCard.id,
-                    mediatype: media,
-                    like: favsArray.includes(singleCard.id),
-                  }}
-                />
-              )
-            )}
-          </Container>
-          <Pagination page={page} maxPage={maxPage} setPage={setPage} />
-        </Container>
+        </>
       )}
     </>
   );

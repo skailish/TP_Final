@@ -7,7 +7,7 @@ const Button = ({ children, forwardedRef, ...props }) => {
   return (
     <button
       ref={forwardedRef}
-      tabindex="0"
+      tabIndex="0"
       className={`button ${theme}`}
       {...props}
     >

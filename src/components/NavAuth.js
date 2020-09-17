@@ -131,7 +131,7 @@ const NavAuth = () => {
 
           <Container
             className="nav-icon-container"
-            tabindex="0"
+            tabIndex="0"
             onClick={(event) => {
               handleSearchBarVisible(event);
               handleToggleNav(event);

@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import API_KEY from "../utils/API_KEY";
 import useFetch from "../hooks/useFetch";
 
+
 const CategoryContext = createContext();
 
 const CategoryProvider = ({ children }) => {

@@ -14,6 +14,8 @@
 .results-pagination-container {
   min-height: calc(100vh - 200px);
   height: 100%;
+  width: calc(100vw - 100px);
+  margin-left: 100px;
   transition: 0.3s ease-in;
 
   &.light {
@@ -52,7 +54,7 @@
   width: calc(100vw - 100px);
   // min-height: calc(100vh - 200px);
   position: relative;
-  left: 100px;
+  // left: 100px;
   min-height: calc(100vh - 400px);
   height: 100%;
   background-color: $background-darkmode;
@@ -98,7 +100,7 @@
   transition: 0.3s ease-in;
   width: calc(100vw - 100px);
   position: relative;
-  left: 100px;
+  // left: 100px;
   min-height: calc(100vh - 400px);
   height: 100%;
   background-color: $background-darkmode;
@@ -128,9 +130,9 @@
 
 .main-discover-filter-container {
   box-sizing: content-box;
-  width: calc(100vw - 100px);
+  width: calc(100vw - 190px);
   position: absolute;
-  margin-left: 100px;
+  left: 100px;
   height: 150px;
   background-color: $background-footer-darkmode;
   padding-left: 80px;
@@ -139,6 +141,7 @@
 
   @include media($lg-breakpoint) {
     padding: 10px 0 10px 80px;
+    width: calc(100vh - 400px);
   }
 
   @include media($md-breakpoint) {
@@ -150,6 +153,7 @@
     margin-left: 0;
     padding: 0 30px;
     box-sizing: border-box;
+    @include flex(column, center, flex-start)
   }
 
   .filter-text {
@@ -161,6 +165,14 @@
     &.light {
       transition: 0.3s ease-in;
       color: $main-text-lightmode;
+    }
+
+    @include media($md-breakpoint) {
+      padding-bottom: 40px;
+    }
+
+    @include media($sm-breakpoint) {
+      padding-bottom: 20px;
     }
   }
 
@@ -182,7 +194,9 @@
     @include media($md-breakpoint) {
       @include flex(column, space-between, flex-start);
       width: 100%;
+      height: 50%;
     }
+
     @include media($sm-breakpoint) {
       height: 60%;
     }
@@ -202,11 +216,12 @@
       @include media($md-breakpoint) {
         width: 60%;
       }
+
       @include media($md-breakpoint) {
         width: 45%;
       }
 
-      & > option {
+      &>option {
         font-weight: 600;
         height: 25px;
         padding: 5px;
@@ -239,6 +254,7 @@
     width: 80%;
     @include flex(row, flex-end, center);
   }
+
   @include media($sm-breakpoint) {
     width: 65%;
     @include flex(row, flex-end, center);

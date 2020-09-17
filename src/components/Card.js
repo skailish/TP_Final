@@ -31,7 +31,7 @@ const Card = ({ cardInfo }) => {
       as="article"
       className="media-card"
       mediatype={mediatype}
-      tabindex="0"
+      tabIndex="0"
       onClick={(event) => handleMediaDetails(event, id, mediatype)}
       onKeyDown={(event) => handleMediaDetails(event, id, mediatype)}
     >

@@ -16,7 +16,11 @@ const GoBackButton = () => {
   };
   return (
     <Container className={`go-back-container ${theme}`}>
-      <Button onClick={handleGoBackClick} className={`go-back-button ${theme}`} tabindex="0" >
+      <Button
+        onClick={handleGoBackClick}
+        className={`go-back-button ${theme}`}
+        tabIndex="0"
+      >
         <ArrowBack className={`arrow-icon ${theme}`} aria-hidden="true" />
         <Text className={`go-back-text ${theme}`}>Go Back</Text>
       </Button>
