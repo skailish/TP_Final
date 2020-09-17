@@ -19,7 +19,6 @@ const Pagination = ({ page, maxPage, setPage }) => {
 
   const getPagination = (amountOfPages, page, setPage) => {
     let pagination = [];
-    console.log(pagination);
     if (amountOfPages >= 6 && page < 5) {
       pagination = [...Array(5)].map((pageBtn, i) => (
         <PageButton
@@ -96,7 +95,6 @@ const Pagination = ({ page, maxPage, setPage }) => {
           content={maxPage}
         />)
     } else if (amountOfPages >= 6 && page >= maxPage - 4) {
-      console.log(pagination);
       pagination.push(
         <PageButton
           setPage={setPage}

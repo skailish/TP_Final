@@ -32,14 +32,14 @@ const Card = ({ cardInfo }) => {
       className="media-card"
       mediatype={mediatype}
       tabindex="0"
-      onClick={(event) => handleMediaDetails(event, id, mediatype)}
       onKeyDown={(event) => handleMediaDetails(event, id, mediatype)}
-    >
+      >
       <Container>
         <Image
           src={src ? `${imageBaseUrl}${src}` : noPosterFound}
           className="media-card-img"
           alt={`Image showing poster of "${title}"`}
+          onClick={(event) => handleMediaDetails(event, id, mediatype)}
         />
       </Container>
       <Container className="votes-and-favs-container">
@@ -54,7 +54,7 @@ const Card = ({ cardInfo }) => {
         />
       </Container>
       <Container className="media-card-heading-container">
-        <Heading level={3} className={`media-card-heading ${theme} `}>
+        <Heading level={3} className={`media-card-heading ${theme} `} onClick={(event) => handleMediaDetails(event, id, mediatype)}>
           {title}
         </Heading>
       </Container>

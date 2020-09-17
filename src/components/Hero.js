@@ -41,7 +41,7 @@ const Hero = ({ data, year, voteAverage, mediatype }) => {
               {mediatype === "movie" ? data.title : data.name}
             </Heading>
             <Container className="hero-details-container">
-              <Votes voteAverage={voteAverage} />
+              <Votes contentName={data.title} voteAverage={voteAverage} />
               <Span className="hero-details">
                 <Text>{data.vote_count}</Text> <Text>Reviews</Text>
               </Span>

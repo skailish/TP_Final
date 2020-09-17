@@ -8,49 +8,22 @@
   &.light {
     color: $secondary-color-lightmode;
   }
+
   .rating-stars {
     height: 30px;
     width: 75px;
-
+    cursor: default;
     @include flex(row, center, center);
-    & label {
-      height: 13.328px;
-    }
-    & label .star {
-      vertical-align: top;
-    }
 
-    .single-star-container {
-      height: 15px;
-      width: 15px;
-      position: relative;
-      @include flex(row, center, center);
-
-      & .star-right {
-        transform: scaleX(-1);
-        right: 0;
-      }
-
-      & .star-right,
-      & .star-left,
-      & .average-star {
-        position: absolute;
-        top: 0;
-      }
-      &.light {
-        & .star-right,
-        & .star-left {
-          color: $secondary-color-lightmode;
-        }
-      }
-    }
     & .star {
       width: 15px;
       height: 13.328px;
     }
   }
   .rating-number {
+    @include flex(row, center, center);
     text-align: center;
+    vertical-align: middle;
     width: 20px;
     height: 15px;
     color: $third-color-darkmode;
@@ -58,5 +31,8 @@
     &.light {
       color: $secondary-color-lightmode;
     }
+  }
+  .eyeVoting {
+    color: red;
   }
 }
