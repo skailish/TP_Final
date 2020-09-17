@@ -5,10 +5,11 @@ import { StarHalfAlt as FilledHalf } from "@styled-icons/fa-solid/StarHalfAlt";
 
 const Star = ({ type }) => {
   const STAR = {
+    "empty" : <EmptyStar className="star" />,
     "half" : <FilledHalf className="star" />,
     "filled" : <FilledStar className="star" />,
-    "empty" : <EmptyStar className="star" />
   }
+ 
   return (
     <>
       {STAR[type]}     

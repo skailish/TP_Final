@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { Eye } from "@styled-icons/bootstrap/Eye";
+import { EyeFill } from "@styled-icons/bootstrap/EyeFill";
 
 import AverageVoteStars from "./AverageVoteStars";
 import Container from "./primitive/Container";
@@ -17,17 +17,15 @@ const Votes = ({ contentName, voteAverage, ...props }) => {
 
 
   return (
-    <Container className={`rating-container ${theme}`} {...props}>
-
-        <AverageVoteStars
-          voteAverage={voteAverage}
-        />
-
-      {voteAverage && (
-        <span className={`rating-number ${theme}`} onClick={handleClick}>
-          {isVotingNumberVisible ? voteAverage : <Eye />}
-        </span>
-      )}
+    <Container className={`rating-container ${theme}`} {...props} onClick={handleClick}>
+      { isVotingNumberVisible && (voteAverage || voteAverage === 0) && (        <>
+        <AverageVoteStars voteAverage={ voteAverage > 0 ? voteAverage : 0}      />
+        <span className={`rating-number ${theme}`} >
+          { voteAverage }
+          </span>
+          </>        )
+      }
+      {!isVotingNumberVisible && (<><EyeFill/><span>Show rating</span></>)}
     </Container>
   );
 };

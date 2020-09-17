@@ -2,11 +2,10 @@ import React from 'react'
 import Star from './Star'
 
 const AverageVoteStars = ({ voteAverage }) => {
-    const rating = Math.round(Math.floor(voteAverage > 1 ? voteAverage / 2 : 0));
-    
+    const rating = Math.round(Math.floor(voteAverage > 0 ? voteAverage / 2 : 0));
     const getAverageVoteStars = (rating) => {
         let stars = [];
-        if (rating === 0) {
+        if (rating < 1) {
             stars = [...Array(5)].map((star, i) => 'empty');
         } else {
             // Estrellas llenas
@@ -22,13 +21,12 @@ const AverageVoteStars = ({ voteAverage }) => {
         }
         return stars;
     }
-
     const stars = getAverageVoteStars(rating);
-            
     return (
-        voteAverage &&
+        (voteAverage || voteAverage === 0) &&
         <div className={ `rating-stars` }>
-        {stars && stars.map((star,i) => <Star key={i} type={star} className={ 'average-star' }/>)}
+            {
+                stars && stars.map((starType, i) => <Star key={ i } type={ starType } />) }
         </div>
     )
 }
