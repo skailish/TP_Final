@@ -10,6 +10,8 @@ const DataProvider = ({ children }) => {
   const [mediatype, setMediatype] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+
+  
   useEffect(() => {
     const getTrending = async () => {
       setIsLoading(true);

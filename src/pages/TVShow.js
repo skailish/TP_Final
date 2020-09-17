@@ -8,6 +8,8 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
+import useFetch from "../hooks/useFetch";
+
 import { Container, Hero, Nav, ScrollToTop } from "../components";
 
 import { CategorySimilar, Overview, Episodes, Cast } from "../pages";
@@ -27,42 +29,30 @@ const TVShow = () => {
   const { theme } = useContext(ThemeContext);
   const { seasonNumber } = useContext(TvShowContext);
 
-  useEffect(() => {
-    const getTVShowID = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}?api_key=${API_KEY}`
-      );
-      const dataJson = await response.json();
-      setTvShowID(dataJson);
-      setVoteAverage(dataJson.vote_average);
-      setYear(dataJson.first_air_date.split("-")[0]);
-      setSeasons(dataJson.seasons);
-    };
-    getTVShowID();
-  }, [TVId]);
+  const dataJsonTVID = useFetch(
+    `https://api.themoviedb.org/3/tv/${TVId}?api_key=${API_KEY}`,
+    [TVId]
+  );
+
+  const dataJsonSimilarShows = useFetch(
+    `https://api.themoviedb.org/3/tv/${TVId}/similar?api_key=${API_KEY}&language=en-US&page=1`,
+    [TVId]
+  );
+
+  const dataCastTv = useFetch(
+    `https://api.themoviedb.org/3/tv/${TVId}/credits?api_key=${API_KEY}&language=en-US`,
+    [TVId]
+  );
 
   useEffect(() => {
-    // const pageRandom = Math.floor(Math.random() * 100) + 1;
-    const getSimilarShows = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}/similar?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const dataJson = await response.json();
-      setSimilarShows(dataJson.results);
-    };
-    getSimilarShows();
-  }, [TVId]);
+    dataJsonTVID && setTvShowID(dataJsonTVID);
+    dataJsonTVID && setVoteAverage(dataJsonTVID.vote_average);
+    dataJsonTVID && setYear(dataJsonTVID.first_air_date.split("-")[0]);
+    dataJsonTVID && setSeasons(dataJsonTVID.seasons);
+    dataJsonSimilarShows && setSimilarShows(dataJsonSimilarShows.results);
+    dataCastTv && setCastTV(dataCastTv.cast);
+  }, [dataJsonTVID, dataJsonSimilarShows, dataCastTv]);
 
-  useEffect(() => {
-    const getCastTV = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}/credits?api_key=${API_KEY}&language=en-US`
-      );
-      const dataJson = await response.json();
-      setCastTV(dataJson.cast);
-    };
-    getCastTV();
-  }, [TVId]);
 
   return (
     tvShowID && (

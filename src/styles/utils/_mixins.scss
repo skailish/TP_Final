@@ -50,6 +50,7 @@
   &:hover,
   &:focus {
     background-color: #307672;
+    filter: brightness(120%);
   }
 
   &.light {

@@ -48,6 +48,7 @@
   &:hover {
     color: $fifth-color-darkmode;
     transition: 0.3s;
+    filter: brightness(120%);
   }
 
   &.light {

@@ -8,6 +8,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import useFetch from "../hooks/useFetch";
+
 import { Container, Hero, Nav } from "../components";
 
 import { CategorySimilar, Overview, Cast } from "../pages";
@@ -24,40 +26,27 @@ const Movie = () => {
   const { path, url } = useRouteMatch();
   const { theme } = useContext(ThemeContext);
 
-  useEffect(() => {
-    const getMovieId = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-      );
-      const dataJson = await response.json();
-      setMovieID(dataJson);
-      setVoteAverage(dataJson.vote_average);
-      setYear(dataJson.release_date.split("-")[0]);
-    };
-    getMovieId();
-  }, [movieId]);
+  const dataJsonMovieId = useFetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
+    [movieId]
+  );
+  const jsonSimilarMovies = useFetch(
+    `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`,
+    [movieId]
+  );
+  const jsonMovieCast = useFetch(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`,
+    [movieId]
+  );
 
   useEffect(() => {
-    const getSimilarMovies = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const dataJson = await response.json();
-      setSimilarMovies(dataJson.results);
-    };
-    getSimilarMovies();
-  }, [movieId]);
+    dataJsonMovieId && setMovieID(dataJsonMovieId);
+    dataJsonMovieId && setVoteAverage(dataJsonMovieId.vote_average);
+    dataJsonMovieId && setYear(dataJsonMovieId.release_date.split("-")[0]);
+    jsonSimilarMovies && setSimilarMovies(jsonSimilarMovies.results);
+    jsonMovieCast && setMovieCast(jsonMovieCast.cast);
+  }, [dataJsonMovieId, jsonSimilarMovies, jsonMovieCast]);
 
-  useEffect(() => {
-    const getMovieCast = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`
-      );
-      const dataJson = await response.json();
-      setMovieCast(dataJson.cast);
-    };
-    getMovieCast();
-  }, [movieId]);
 
   return (
     movieID && (

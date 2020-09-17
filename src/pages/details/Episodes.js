@@ -7,6 +7,8 @@ import { Container, Text, Select, Option } from "../../components";
 
 import CardEpisodes from "pages/details/CardEpisodes";
 
+import useFetch from "../../hooks/useFetch";
+
 import ThemeContext from "../../contexts/ThemeContext";
 import TvShowContext from "../../contexts/TvShowContext";
 
@@ -18,18 +20,18 @@ const Episodes = ({ seasons }) => {
   const { seasonNumber, setSeasonNumber } = useContext(TvShowContext);
   const history = useHistory();
 
-  useEffect(() => {
-    const getEpisodes = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${TVId}/season/${seasonNumber}?api_key=${API_KEY}&language=en-US`
-      );
-      const dataJson = await response.json();
-      setEpisodes(dataJson.episodes);
-      setEpisodesLength(dataJson.episodes.length);
-    };
-    getEpisodes();
-  }, [seasonNumber]);
+  const dataJson = useFetch(
+    `https://api.themoviedb.org/3/tv/${TVId}/season/${seasonNumber}?api_key=${API_KEY}&language=en-US`,
+    [seasonNumber]
+  );
 
+  useEffect(() => {
+    dataJson && setEpisodes(dataJson.episodes);
+    dataJson && setEpisodesLength(dataJson.episodes.length);
+  }, [dataJson]);
+
+
+  
   const handleChange = (event) => {
     const newValue = Number(event.target.value);
     setSeasonNumber(newValue);

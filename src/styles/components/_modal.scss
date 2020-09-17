@@ -8,6 +8,23 @@
     @include flex(row, center, center);
     z-index: 999;
     border-radius: 10px;
+
+    @include media($md-breakpoint) {
+        left: 30%;
+        top: 45%;
+    }
+
+    @include media($sm-breakpoint) {
+        height: 100px;
+        width: 200px;
+        left: 27%;
+        top: 40%;
+    }
+
+    @include media(280px) {
+        left: 15%;
+        top: 40%;
+    }
 }
 .background-blurred {
     height: 100%;
@@ -19,4 +36,9 @@
 }
 .modal-text {
     color: $main-text-darkmode;
+
+    @include media($sm-breakpoint) {
+       font-size: 15px;
+       text-align: center;
+    }
 }

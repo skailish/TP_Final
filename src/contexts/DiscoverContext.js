@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import API_KEY from "../utils/API_KEY";
+import useFetch from "../hooks/useFetch";
 
 const DiscoverContext = createContext();
 
@@ -15,7 +16,6 @@ const DiscoverProvider = ({ children }) => {
   const [yearEndPoint, setYearEndPoint] = useState("");
   const [discoverMaxPage, setDiscoverMaxPage] = useState(1000);
   const [discoverPage, setDiscoverPage] = useState(1);
-
 
   const areGenres = genresAdvance ? `&with_genres=${genresAdvance}` : "";
 
@@ -68,17 +68,26 @@ const DiscoverProvider = ({ children }) => {
     }
   };
 
+  const dataGenres = useFetch( `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`, [mediaAdvance]);
+
   useEffect(() => {
-    const getGenres = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`
-      );
-      const dataJson = await response.json();
-      setGenres(dataJson.genres);
-      setGenresAdvance(false);
-    };
-    getGenres();
-  }, [mediaAdvance]);
+    dataGenres && setGenres(dataGenres.genres);
+    dataGenres && setGenresAdvance(false);
+
+  }, []);
+
+
+  // useEffect(() => {
+  //   const getGenres = async () => {
+  //     const response = await fetch(
+  //       `https://api.themoviedb.org/3/genre/${mediaAdvance}/list?api_key=${API_KEY}&language=en-US`
+  //     );
+  //     const dataJson = await response.json();
+  //     setGenres(dataJson.genres);
+  //     setGenresAdvance(false);
+  //   };
+  //   getGenres();
+  // }, [mediaAdvance]);
 
   useEffect(() => {
     const getYears = async () => {
